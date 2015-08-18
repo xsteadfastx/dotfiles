@@ -1,0 +1,21 @@
+---
+- name: install deps
+  apt:
+    name={{ item }}
+    state=present
+  with_items:
+    - curl
+    - python-virtualenv
+
+- name: needed dirs
+  file:
+    path={{ item }}
+    state=directory
+  with_items:
+    - ~/.local
+    - ~/.local/bin
+
+- name: install pipsi
+  shell:
+    curl https://raw.githubusercontent.com/mitsuhiko/pipsi/master/get-pipsi.py | python
+    creates=~/.local/bin/pipsi
