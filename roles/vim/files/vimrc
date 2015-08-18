@@ -1,0 +1,80 @@
+source $HOME/.vim/python.vim
+source $HOME/.vim/html.vim
+
+set nocompatible
+filetype off
+
+set enc=utf-8
+set fenc=utf-8
+set fileencoding=utf-8
+
+" vundle
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Bundle 'gmarik/Vundle.vim'
+Bundle 'tpope/vim-fugitive'
+Bundle 'davidhalter/jedi-vim'
+Bundle 'klen/python-mode'
+Bundle 'scrooloose/syntastic'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'Townk/vim-autoclose'
+Bundle 'bling/vim-airline'
+Bundle 'scrooloose/nerdtree'
+"Bundle 'SirVer/ultisnips'
+"Bundle 'honza/vim-snippets'
+"Bundle 'Shougo/neocomplete.vim'
+"Bundle 'chilicuil/vim-sprunge'
+Bundle 'alfredodeza/pytest.vim'
+Bundle 'godlygeek/tabular'
+Bundle 'plasticboy/vim-markdown'
+Bundle 'jceb/vim-orgmode'
+Bundle 'tpope/vim-speeddating'
+Bundle 'freitass/todo.txt-vim'
+Bundle 'tpope/vim-git'
+call vundle#end()
+filetype plugin indent on
+
+set number
+syntax on
+set backspace=2
+set laststatus=2
+"set nofoldenable
+set colorcolumn=79
+
+" show whitespace
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+au InsertLeave * match ExtraWhitespace /\s\+$/
+
+" color and theme
+set background=dark
+colorscheme solarized
+
+" keymaps
+let mapleader = ","
+let maplocalleader = "\\"
+nnoremap <F9> to :!python %<CR> " run python
+map <C-n> :NERDTreeToggle<CR> " open nerdtree
+vnoremap <Leader>s :sort<CR> " sort marked text
+vnoremap < <gv " better indentation
+vnoremap > >gv " better indentation
+
+" python-mode
+let g:pymode_rope_lookup_project = 0
+let g:pymode_rope = 0
+
+" ultisnip
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" neocomplete
+"let g:neocomplete#enable_at_startup = 1
+"let g:neocomplete#enable_smart_case = 1
+"let g:neocomplete#sources#syntax#min_keyword_length = 3
+"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+
+" Pytest
+nmap <silent><Leader>f <Esc>:Pytest file<CR>
+nmap <silent><Leader>c <Esc>:Pytest class<CR>
+nmap <silent><Leader>m <Esc>:Pytest method<CR>
+nmap <silent><Leader>p <Esc>:Pytest project<CR>

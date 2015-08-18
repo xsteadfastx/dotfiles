@@ -1,0 +1,40 @@
+---
+- name: install deps
+  apt:
+    name=imagemagick
+    state=present
+  tags:
+   - x11
+
+- name: needed dirs
+  file:
+    path={{ item }}
+    state=directory
+  with_items:
+    - ~/.i3
+    - ~/.local/bin
+  tags:
+    - x11
+
+- name: copy config
+  copy:
+    src=config
+    dest=~/.i3/config
+  tags:
+    - x11
+
+- name: copy i3status
+  copy:
+    src=i3status.conf
+    dest=~/.i3status.conf
+  tags:
+    - x11
+
+
+- name: copy lock script
+  copy:
+    src=lock.sh
+    dest=~/.local/bin/lock.sh
+    mode=755
+  tags:
+    - x11

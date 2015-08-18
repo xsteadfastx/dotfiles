@@ -1,0 +1,10 @@
+---
+- name: install deps
+  apt:
+    name=git
+    state=present
+
+- name: copy gitconfig
+  copy:
+    src=gitconfig
+    dest=~/.gitconfig

@@ -1,0 +1,14 @@
+---
+- name: copy Xresources
+  copy:
+    src=xresources
+    dest=~/.Xresources
+  tags:
+    - x11
+
+- name: copy xprofile
+  copy:
+    src=xprofile
+    dest=~/.xprofile
+  tags:
+    - x11

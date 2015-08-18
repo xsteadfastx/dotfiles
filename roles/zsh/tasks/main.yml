@@ -1,0 +1,26 @@
+---
+- name: install deps
+  apt:
+    name=zsh
+    state=present
+
+- name: clone oh-my-zsh
+  git:
+    repo=https://github.com/robbyrussell/oh-my-zsh.git
+    dest=~/.oh-my-zsh
+
+- name: copy zshrc
+  copy:
+    src=zshrc
+    dest=~/.zshrc
+
+- name: copy bash aliases
+  copy:
+    src=bash_aliases
+    dest=~/.bash_aliases
+
+- name: set shell
+  user:
+    name={{ ansible_env.USER }}
+    shell=/usr/bin/zsh
+  sudo: yes

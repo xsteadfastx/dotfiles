@@ -1,0 +1,31 @@
+---
+- name: install deps
+  apt:
+    name=vim
+    state=present
+
+- name: needed dirs
+  file:
+    path=~/.vim
+    state=directory
+  with_items:
+    - ~/.vim
+    - ~/.vim/bundle
+
+- name: copy vimrc
+  copy:
+    src=vimrc
+    dest=~/.vimrc
+
+- name: copy vim files
+  copy:
+    src={{ item }}
+    dest=~/.vim/{{ item }}
+  with_items:
+    - html.vim
+    - python.vim
+
+- name: clone Vundle repo
+  git:
+    repo=https://github.com/gmarik/Vundle.vim.git
+    dest=~/.vim/bundle/Vundle.vim

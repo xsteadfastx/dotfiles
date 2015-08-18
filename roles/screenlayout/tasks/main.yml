@@ -1,0 +1,17 @@
+---
+- name: needed dirs
+  file:
+    name=~/.screenlayout
+    state=directory
+  tags:
+    - x11
+
+- name: copy layout files
+  copy:
+    src={{ item }}
+    dest=~/.screenlayout/{{ item | basename }}
+    mode=755
+  with_fileglob:
+    - ./*
+  tags:
+    - x11

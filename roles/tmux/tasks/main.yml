@@ -1,0 +1,10 @@
+---
+- name: install deps
+  apt:
+    name=tmux
+    state=present
+
+- name: copy tmux config
+  copy:
+    src=tmux.conf
+    dest=~/.tmux.conf

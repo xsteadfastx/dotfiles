@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  roles:
+    - git
+    - i3
+    - screenlayout
+    - tmux
+    - vim
+    - xresources
+    - zsh
