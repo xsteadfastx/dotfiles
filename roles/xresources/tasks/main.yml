@@ -1,14 +1,10 @@
 ---
-- name: copy Xresources
+- name: copy files
   copy:
-    src=xresources
-    dest=~/.Xresources
-  tags:
-    - x11
-
-- name: copy xprofile
-  copy:
-    src=xprofile
-    dest=~/.xprofile
+    src={{ item.src }}
+    dest={{ item.dest }}
+  with_items:
+    - {'src': 'xresources', 'dest': '~/.Xresources'}
+    - {'src': 'xprofile', 'dest': '~/.xprofile'}
   tags:
     - x11

@@ -10,15 +10,13 @@
     repo=https://github.com/robbyrussell/oh-my-zsh.git
     dest=~/.oh-my-zsh
 
-- name: copy zshrc
+- name: copy files
   copy:
-    src=zshrc
-    dest=~/.zshrc
-
-- name: copy bash aliases
-  copy:
-    src=bash_aliases
-    dest=~/.bash_aliases
+    src={{ item.src }}
+    dest={{ item.dest }}
+  with_items:
+    - {'src': 'zshrc', 'dest': '~/.zshrc'}
+    - {'src': 'bash_aliases', 'dest': '~/.bash_aliases'}
 
 - name: set shell
   user:

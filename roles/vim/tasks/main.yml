@@ -13,18 +13,14 @@
     - ~/.vim
     - ~/.vim/bundle
 
-- name: copy vimrc
+- name: copy files
   copy:
-    src=vimrc
-    dest=~/.vimrc
-
-- name: copy vim files
-  copy:
-    src={{ item }}
-    dest=~/.vim/{{ item }}
+    src={{ item.src }}
+    dest={{ item.dest }}
   with_items:
-    - html.vim
-    - python.vim
+    - {'src': 'vimrc', 'dest': '~/.vimrc'}
+    - {'src': 'html.vim', 'dest': '~/.vim/html.vim'}
+    - {'src': 'python.vim', 'dest': '~/.vim/python.vim'}
 
 - name: clone Vundle repo
   git:

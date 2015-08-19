@@ -1,6 +1,6 @@
-install:
+install-base:
 	ansible-playbook -i hosts site.yml --skip-tags "x11" -c local --ask-sudo-pass
-installx11:
+install-x11:
 	ansible-playbook -i hosts site.yml -c local --ask-sudo-pass
-deps:
+install-deps:
 	sudo apt-get install -y git ansible

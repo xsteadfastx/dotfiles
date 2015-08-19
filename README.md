@@ -1,8 +1,9 @@
 # batcave
-init my batcave aka my dotfiles and linux environment
+sets up my batcave aka environment
 
 ![batcave](batcave.jpg)
 
 ## install
-1. install deps with `make deps`
-2. init environment with `make install` or the x11 environment with `make installx11`
+* `make install-deps`: installs git and ansible
+* `make install-base`: installs and configurates zsh, vim, tmux, pipsi and git
+* `make install-x11`: installs and configurates the base stuff plus i3, xresources and screenlayouts
