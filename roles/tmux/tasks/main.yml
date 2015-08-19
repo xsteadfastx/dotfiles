@@ -3,6 +3,7 @@
   apt:
     name=tmux
     state=present
+  sudo: yes
 
 - name: copy tmux config
   copy:

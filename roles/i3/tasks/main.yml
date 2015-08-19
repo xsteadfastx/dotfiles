@@ -1,10 +1,15 @@
 ---
 - name: install deps
   apt:
-    name=imagemagick
+    name={{ item }}
     state=present
+  with_items:
+    - imagemagick
+    - scrot
+    - xautolock
+  sudo: yes
   tags:
-   - x11
+    - x11
 
 - name: needed dirs
   file:

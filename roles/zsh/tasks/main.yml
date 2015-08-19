@@ -3,6 +3,7 @@
   apt:
     name=zsh
     state=present
+  sudo: yes
 
 - name: clone oh-my-zsh
   git:
