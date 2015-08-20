@@ -3,7 +3,6 @@
   roles:
     - git
     - i3
-    - pipsi
     - screenlayout
     - tmux
     - vim

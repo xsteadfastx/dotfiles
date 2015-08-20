@@ -160,8 +160,7 @@ bar {
 
 # OWN STUFF
 #exec --no-startup-id xsetroot -solid "#333333"
-#exec --no-startup-id feh --no-xinerama --bg-tile ~/annex/Wallpaper/batman_art_red.png
-exec --no-startup-id feh --no-xinerama --bg-tile ~/annex/Wallpaper/batman_owls.png
+exec --no-startup-id feh --no-xinerama --bg-tile ~/.i3/wallpaper.png
 exec --no-startup-id nm-applet &
 exec --no-startup-id volumeicon &
 exec --no-startup-id dropbox start &
@@ -169,7 +168,6 @@ exec --no-startup-id owncloud &
 #exec --no-startup-id seafile-applet &
 #exec --no-startup-id kupfer &
 exec --no-startup-id xfce4-power-manager &
-#exec xautolock -time 10 -locker 'i3lock -i annex/Wallpaper/tardis_wallpaper.png -t' &
 #bindsym Control+mod1+l exec i3lock -i ~/annex/Wallpaper/batman_art_red.png -t
 exec xautolock -time 1 -locker '~/.local/bin/lock.sh' &
 bindsym Control+mod1+l exec ~/.local/bin/lock.sh

@@ -3,4 +3,4 @@ install-base:
 install-x11:
 	ansible-playbook -i hosts site.yml -c local --ask-sudo-pass
 install-deps:
-	sudo apt-get install -y git ansible
+	sudo apt-get install -y curl git python-virtualenv && curl https://raw.githubusercontent.com/mitsuhiko/pipsi/master/get-pipsi.py | python && pipsi install ansible

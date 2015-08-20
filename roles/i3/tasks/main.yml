@@ -31,6 +31,7 @@
   with_items:
     - i3
     - imagemagick
+    - feh
     - scrot
     - xautolock
   sudo: yes
@@ -63,6 +64,7 @@
   with_items:
     - {'src': 'config', 'dest': '~/.i3/config'}
     - {'src': 'i3status.conf', 'dest': '~/.i3status.conf'}
+    - {'src': 'wallpaper.png', 'dest': '~/.i3/wallpaper.png'}
   tags:
     - x11
 
