@@ -31,6 +31,7 @@ Bundle 'jceb/vim-orgmode'
 Bundle 'tpope/vim-speeddating'
 Bundle 'freitass/todo.txt-vim'
 Bundle 'tpope/vim-git'
+Bundle 'junegunn/goyo.vim'
 call vundle#end()
 filetype plugin indent on
 
