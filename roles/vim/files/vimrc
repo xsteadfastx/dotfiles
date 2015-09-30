@@ -84,3 +84,6 @@ nmap <silent><Leader>p <Esc>:Pytest project<CR>
 if has('nvim')
     runtime! plugin/python_setup.vim
 endif
+
+" custom commands
+command Tox vsplit term://tox
