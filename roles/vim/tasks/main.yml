@@ -1,8 +1,23 @@
 ---
+- name: add neovim repo
+  apt_repository:
+    repo=ppa:neovim-ppa/unstable
+    state=present
+  sudo: yes
+
 - name: install deps
   apt:
-    name=vim
-    state=present
+    name={{ item }}
+    state=latest
+  with_items:
+    - vim
+    - neovim
+  sudo: yes
+
+- name: install neovim python package
+  pip:
+    name=neovim
+    state=latest
   sudo: yes
 
 - name: needed dirs
@@ -21,6 +36,12 @@
     - {'src': 'vimrc', 'dest': '~/.vimrc'}
     - {'src': 'html.vim', 'dest': '~/.vim/html.vim'}
     - {'src': 'python.vim', 'dest': '~/.vim/python.vim'}
+
+- name: nvimrc symlink
+  file:
+    src=~/.vimrc
+    dest=~/.nvimrc
+    state=link
 
 - name: clone Vundle repo
   git:
