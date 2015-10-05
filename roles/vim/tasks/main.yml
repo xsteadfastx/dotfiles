@@ -10,7 +10,10 @@
     name={{ item }}
     state=latest
   with_items:
-    - vim
+    - python-dev
+    - python-pip
+    - python3-dev
+    - python3-pip
     - neovim
   sudo: yes
 
