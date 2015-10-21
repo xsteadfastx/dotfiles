@@ -32,6 +32,7 @@ Bundle 'tpope/vim-speeddating'
 Bundle 'freitass/todo.txt-vim'
 Bundle 'tpope/vim-git'
 Bundle 'junegunn/goyo.vim'
+Bundle 'reedes/vim-pencil'
 call vundle#end()
 filetype plugin indent on
 
@@ -90,3 +91,10 @@ command Tox vsplit term://tox
 
 " tabstuff
 autocmd BufRead,BufNewFile *yml,*yaml set tabstop=2 expandtab shiftwidth=2 softtabstop=2
+
+" writing
+let g:pencil#wrapModeDefault = 'soft'
+augroup pencil
+    autocmd!
+    autocmd FileType markdown,mkd call pencil#init()
+augroup END
