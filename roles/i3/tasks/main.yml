@@ -3,8 +3,6 @@
   apt_repository:
     repo='deb http://debian.sur5r.net/i3/ {{ ansible_distribution_release }} universe'
   sudo: yes
-  tags:
-    - x11
 
 - name: super-ugly hack to allow unauthenticated packages to install
   copy:
@@ -14,15 +12,11 @@
     group=root
     mode=0644
   sudo: yes
-  tags:
-    - x11
 
 - name: install i3 apt key
   apt:
     name=sur5r-keyring
   sudo: yes
-  tags:
-    - x11
 
 - name: install deps
   apt:
@@ -35,16 +29,12 @@
     - scrot
     - xautolock
   sudo: yes
-  tags:
-    - x11
 
 - name: remove hack that allows unauthenticated packages to install
   file:
     path=/etc/apt/apt.conf.d/99temp
     state=absent
   sudo: yes
-  tags:
-    - x11
 
 - name: needed dirs
   file:
@@ -54,8 +44,6 @@
     - ~/.i3
     - ~/.local
     - ~/.local/bin
-  tags:
-    - x11
 
 - name: copy files
   copy:
@@ -65,13 +53,9 @@
     - {'src': 'config', 'dest': '~/.i3/config'}
     - {'src': 'i3status.conf', 'dest': '~/.i3status.conf'}
     - {'src': 'wallpaper.png', 'dest': '~/.i3/wallpaper.png'}
-  tags:
-    - x11
 
 - name: copy lock script
   copy:
     src=lock.sh
     dest=~/.local/bin/lock.sh
     mode=755
-  tags:
-    - x11

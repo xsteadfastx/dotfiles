@@ -6,5 +6,3 @@
   with_items:
     - {'src': 'xresources', 'dest': '~/.Xresources'}
     - {'src': 'xprofile', 'dest': '~/.xprofile'}
-  tags:
-    - x11

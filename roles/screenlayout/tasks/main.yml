@@ -3,8 +3,6 @@
   file:
     name=~/.screenlayout
     state=directory
-  tags:
-    - x11
 
 - name: copy layout files
   copy:
@@ -13,5 +11,3 @@
     mode=755
   with_fileglob:
     - ./*
-  tags:
-    - x11

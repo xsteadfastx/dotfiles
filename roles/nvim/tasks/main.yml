@@ -1,0 +1,31 @@
+---
+- name: add neovim repo
+  apt_repository:
+    repo=ppa:neovim-ppa/unstable
+    state=present
+  sudo: yes
+
+- name: install deps
+  apt:
+    name={{ item }}
+    state=latest
+    update_cache=yes
+  with_items:
+    - python-dev
+    - python-pip
+    - python3-dev
+    - python3-pip
+    - neovim
+  sudo: yes
+
+- name: install neovim python package
+  pip:
+    name=neovim
+    state=latest
+  sudo: yes
+
+- name: nvimrc symlink
+  file:
+    src=~/.vimrc
+    dest=~/.nvimrc
+    state=link

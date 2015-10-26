@@ -2,9 +2,11 @@
 - hosts: localhost
   roles:
     - git
-    - i3
-    - screenlayout
     - tmux
     - vim
+    - nvim
+    - zsh
+    - i3
+    - screenlayout
     - xresources
     - zsh

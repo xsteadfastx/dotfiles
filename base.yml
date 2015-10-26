@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+  roles:
+    - git
+    - tmux
+    - vim
+    - zsh
