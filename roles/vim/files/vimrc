@@ -2,7 +2,7 @@ source $HOME/.vim/python.vim
 source $HOME/.vim/html.vim
 
 set nocompatible
-filetype off
+filetype plugin on
 
 set enc=utf-8
 set fenc=utf-8
@@ -93,6 +93,8 @@ command Tox vsplit term://tox
 autocmd BufRead,BufNewFile *yml,*yaml set tabstop=2 expandtab shiftwidth=2 softtabstop=2
 
 " writing
+au! BufRead,BufNewFile *.markdown set filetype=mkd
+au! BufRead,BufNewFile *.md       set filetype=mkd
 let g:pencil#wrapModeDefault = 'soft'
 augroup pencil
     autocmd!
