@@ -93,10 +93,9 @@ command Tox vsplit term://tox
 autocmd BufRead,BufNewFile *yml,*yaml set tabstop=2 expandtab shiftwidth=2 softtabstop=2
 
 " writing
-au! BufRead,BufNewFile *.markdown set filetype=mkd
-au! BufRead,BufNewFile *.md       set filetype=mkd
 let g:pencil#wrapModeDefault = 'soft'
 augroup pencil
     autocmd!
+    au! BufRead,BufNewFile *.markdown,*.md set filetype=markdown
     autocmd FileType markdown,mkd call pencil#init()
 augroup END
