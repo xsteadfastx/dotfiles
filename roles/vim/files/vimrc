@@ -98,5 +98,5 @@ let g:pencil#wrapModeDefault = 'soft'
 augroup pencil
     autocmd!
     au! BufRead,BufNewFile *.markdown,*.md set filetype=markdown
-    autocmd FileType markdown,mkd call pencil#init()
+    autocmd FileType markdown,mkd,rst call pencil#init()
 augroup END
