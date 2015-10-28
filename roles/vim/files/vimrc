@@ -17,7 +17,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'klen/python-mode'
 Bundle 'scrooloose/syntastic'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'Townk/vim-autoclose'
+"Bundle 'Townk/vim-autoclose'
 Bundle 'bling/vim-airline'
 Bundle 'scrooloose/nerdtree'
 "Bundle 'SirVer/ultisnips'
@@ -38,6 +38,7 @@ Bundle 'vim-scripts/indentpython.vim'
 Bundle 'nvie/vim-flake8'
 Bundle 'Shougo/neocomplete.vim'
 Bundle 'Rykka/riv.vim'
+Bundle 'jiangmiao/auto-pairs'
 call vundle#end()
 filetype plugin indent on
 
