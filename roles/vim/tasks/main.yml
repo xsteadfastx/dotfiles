@@ -5,6 +5,7 @@
     state=latest
   with_items:
     - vim
+    - vim-nox
   sudo: yes
 
 - name: needed dirs
