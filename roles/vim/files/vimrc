@@ -37,6 +37,7 @@ Bundle 'reedes/vim-pencil'
 Bundle 'vim-scripts/indentpython.vim'
 Bundle 'nvie/vim-flake8'
 Bundle 'Shougo/neocomplete.vim'
+Bundle 'Rykka/riv.vim'
 call vundle#end()
 filetype plugin indent on
 
