@@ -10,11 +10,12 @@
 
 - name: needed dirs
   file:
-    path=~/.vim
+    path={{ item }}
     state=directory
   with_items:
     - ~/.vim
     - ~/.vim/bundle
+    - ~/.vim/ftplugin
 
 - name: copy files
   copy:
@@ -22,8 +23,8 @@
     dest={{ item.dest }}
   with_items:
     - {'src': 'vimrc', 'dest': '~/.vimrc'}
-    - {'src': 'html.vim', 'dest': '~/.vim/html.vim'}
-    - {'src': 'python.vim', 'dest': '~/.vim/python.vim'}
+    - {'src': 'html.vim', 'dest': '~/.vim/ftplugin/html.vim'}
+    - {'src': 'python.vim', 'dest': '~/.vim/ftplugin/python.vim'}
 
 - name: clone Vundle repo
   git:
