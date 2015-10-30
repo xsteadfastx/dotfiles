@@ -14,23 +14,14 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'klen/python-mode'
 Bundle 'scrooloose/syntastic'
 Bundle 'altercation/vim-colors-solarized'
-"Bundle 'Townk/vim-autoclose'
 Bundle 'bling/vim-airline'
 Bundle 'scrooloose/nerdtree'
-"Bundle 'SirVer/ultisnips'
-"Bundle 'honza/vim-snippets'
-"Bundle 'Shougo/neocomplete.vim'
-"Bundle 'chilicuil/vim-sprunge'
-"Bundle 'alfredodeza/pytest.vim'
 Bundle 'godlygeek/tabular'
 Bundle 'plasticboy/vim-markdown'
-"Bundle 'jceb/vim-orgmode'
-"Bundle 'tpope/vim-speeddating'
 "Bundle 'freitass/todo.txt-vim'
 Bundle 'tpope/vim-git'
 Bundle 'junegunn/goyo.vim'
 Bundle 'reedes/vim-pencil'
-"Bundle 'Valloric/YouCompleteMe'
 Bundle 'vim-scripts/indentpython.vim'
 Bundle 'nvie/vim-flake8'
 Bundle 'Shougo/neocomplete.vim'
@@ -79,7 +70,7 @@ autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 "inoremap <silent> <CR> <CR><c-o>:pclose<CR>
-"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " NEOVIM
 if has('nvim')
