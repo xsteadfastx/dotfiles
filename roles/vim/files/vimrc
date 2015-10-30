@@ -10,7 +10,8 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Bundle 'gmarik/Vundle.vim'
 Bundle 'tpope/vim-fugitive'
-"Bundle 'davidhalter/jedi-vim'
+Bundle 'davidhalter/jedi-vim'
+Bundle 'ervandew/supertab'
 Bundle 'klen/python-mode'
 Bundle 'scrooloose/syntastic'
 Bundle 'altercation/vim-colors-solarized'
@@ -70,7 +71,7 @@ autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 "inoremap <silent> <CR> <CR><c-o>:pclose<CR>
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " NEOVIM
 if has('nvim')
