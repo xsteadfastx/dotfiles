@@ -24,8 +24,13 @@
     state=latest
   sudo: yes
 
+- name: create config directory
+  file:
+    path=~/.config/nvim
+    state=directory
+
 - name: nvimrc symlink
   file:
     src=~/.vimrc
-    dest=~/.nvimrc
+    dest=~/.config/nvim/init.vim
     state=link
