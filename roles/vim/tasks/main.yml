@@ -15,7 +15,8 @@
   with_items:
     - ~/.vim
     - ~/.vim/bundle
-    - ~/.vim/ftplugin
+    - ~/.vim/autoload
+    - ~/.vim/autoload/ftplugin
 
 - name: copy files
   copy:
@@ -23,8 +24,8 @@
     dest={{ item.dest }}
   with_items:
     - {'src': 'vimrc', 'dest': '~/.vimrc'}
-    - {'src': 'html.vim', 'dest': '~/.vim/ftplugin/html.vim'}
-    - {'src': 'python.vim', 'dest': '~/.vim/ftplugin/python.vim'}
+    - {'src': 'html.vim', 'dest': '~/.vim/autoload/ftplugin/html.vim'}
+    - {'src': 'python.vim', 'dest': '~/.vim/autoload/ftplugin/python.vim'}
 
 - name: clone Vundle repo
   git:

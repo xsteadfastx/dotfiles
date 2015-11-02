@@ -6,7 +6,7 @@ install:
 x11: install
 	ansible-playbook -i hosts x11.yml -c local --ask-sudo-pass
 
-nvim: install
+nvim:
 	ansible-playbook -i hosts nvim.yml -c local --ask-sudo-pass
 
 all: x11 nvim
