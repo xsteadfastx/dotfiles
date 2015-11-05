@@ -25,7 +25,7 @@ Bundle 'junegunn/goyo.vim'
 Bundle 'reedes/vim-pencil'
 Bundle 'vim-scripts/indentpython.vim'
 Bundle 'nvie/vim-flake8'
-Bundle 'Shougo/neocomplete.vim'
+"Bundle 'Shougo/neocomplete.vim'
 Bundle 'Rykka/riv.vim'
 Bundle 'jiangmiao/auto-pairs'
 call vundle#end()
@@ -63,15 +63,13 @@ let g:pymode_rope_lookup_project = 0
 let g:pymode_rope = 0
 
 " neocomplete
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-"inoremap <silent> <CR> <CR><c-o>:pclose<CR>
-"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+"let g:neocomplete#enable_at_startup = 1
+"let g:neocomplete#enable_smart_case = 1
+"let g:neocomplete#sources#syntax#min_keyword_length = 3
+"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+"autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 
 " NEOVIM
 if has('nvim')
