@@ -10,7 +10,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Bundle 'gmarik/Vundle.vim'
 Bundle 'tpope/vim-fugitive'
-Bundle 'davidhalter/jedi-vim'
+"Bundle 'davidhalter/jedi-vim'
 Bundle 'ervandew/supertab'
 Bundle 'klen/python-mode'
 Bundle 'scrooloose/syntastic'
@@ -25,7 +25,7 @@ Bundle 'junegunn/goyo.vim'
 Bundle 'reedes/vim-pencil'
 Bundle 'vim-scripts/indentpython.vim'
 Bundle 'nvie/vim-flake8'
-"Bundle 'Shougo/neocomplete.vim'
+Bundle 'Shougo/neocomplete.vim'
 Bundle 'Rykka/riv.vim'
 Bundle 'jiangmiao/auto-pairs'
 call vundle#end()
@@ -34,7 +34,7 @@ filetype plugin indent on
 set number
 set backspace=2
 set laststatus=2
-"set nofoldenable
+set nofoldenable
 set colorcolumn=79
 
 " syntax
@@ -63,13 +63,20 @@ let g:pymode_rope_lookup_project = 0
 let g:pymode_rope = 0
 
 " neocomplete
-"let g:neocomplete#enable_at_startup = 1
-"let g:neocomplete#enable_smart_case = 1
-"let g:neocomplete#sources#syntax#min_keyword_length = 3
-"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-"autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-"autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+let g:acp_enableAtStartup = 0
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 
 " NEOVIM
 if has('nvim')
