@@ -34,7 +34,7 @@ filetype plugin indent on
 set number
 set backspace=2
 set laststatus=2
-set nofoldenable
+"set nofoldenable
 set colorcolumn=79
 
 " syntax
@@ -96,3 +96,6 @@ augroup pencil
     au! BufRead,BufNewFile *.markdown,*.md set filetype=markdown
     autocmd FileType markdown,mkd,rst call pencil#init()
 augroup END
+
+" close preview scratch window after completion
+autocmd CompleteDone * pclose
