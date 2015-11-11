@@ -98,4 +98,6 @@ augroup pencil
 augroup END
 
 " close preview scratch window after completion
-autocmd CompleteDone * pclose
+if v:version >=704
+    autocmd CompleteDone * pclose
+endif
