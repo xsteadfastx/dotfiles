@@ -31,3 +31,4 @@
     name={{ ansible_env.USER }}
     shell=/usr/bin/zsh
   become: yes
+  when: ansible_os_family == 'Debian'
