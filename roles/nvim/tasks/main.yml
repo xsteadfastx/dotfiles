@@ -3,7 +3,7 @@
   apt_repository:
     repo=ppa:neovim-ppa/unstable
     state=present
-  sudo: yes
+  become: yes
 
 - name: install deps
   apt:
@@ -16,13 +16,13 @@
     - python3-dev
     - python3-pip
     - neovim
-  sudo: yes
+  become: yes
 
 - name: install neovim python package
   pip:
     name=neovim
     state=latest
-  sudo: yes
+  become: yes
 
 - name: create config directory
   file:

@@ -3,7 +3,15 @@
   apt:
     name=tmux
     state=present
-  sudo: yes
+  become: yes
+  when: ansible_os_family == 'Debian'
+
+- name: install deps
+  apk:
+    name=tmux
+    state=present
+  become: yes
+  when: ansible_os_family == 'Alpine'
 
 - name: copy tmux config
   copy:

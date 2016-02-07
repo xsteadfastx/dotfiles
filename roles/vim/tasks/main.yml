@@ -6,7 +6,17 @@
   with_items:
     - vim
     - vim-nox
-  sudo: yes
+  become: yes
+  when: ansible_os_family == 'Debian'
+
+- name: install deps
+  apk:
+    name={{ item }}
+    state=latest
+  with_items:
+    - vim
+  become: yes
+  when: ansible_os_family == 'Alpine'
 
 - name: needed dirs
   file:

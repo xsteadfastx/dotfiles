@@ -3,6 +3,15 @@
   apt:
     name=git
     state=present
+  become: yes
+  when: ansible_os_family == 'Debian'
+
+- name: install deps
+  apk:
+    name=git
+    state=present
+  become: yes
+  when: ansible_os_family == 'Alpine'
 
 - name: copy gitconfig
   copy:

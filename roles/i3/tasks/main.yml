@@ -2,7 +2,7 @@
 - name: add i3 repo
   apt_repository:
     repo='deb http://debian.sur5r.net/i3/ {{ ansible_distribution_release }} universe'
-  sudo: yes
+  become: yes
 
 - name: super-ugly hack to allow unauthenticated packages to install
   copy:
@@ -11,12 +11,12 @@
     owner=root
     group=root
     mode=0644
-  sudo: yes
+  become: yes
 
 - name: install i3 apt key
   apt:
     name=sur5r-keyring
-  sudo: yes
+  become: yes
 
 - name: install deps
   apt:
@@ -28,13 +28,13 @@
     - feh
     - scrot
     - xautolock
-  sudo: yes
+  become: yes
 
 - name: remove hack that allows unauthenticated packages to install
   file:
     path=/etc/apt/apt.conf.d/99temp
     state=absent
-  sudo: yes
+  become: yes
 
 - name: needed dirs
   file:

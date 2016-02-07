@@ -6,7 +6,7 @@
   with_items:
     - curl
     - python-virtualenv
-  sudo: yes
+  become: yes
 
 - name: needed dirs
   file:
