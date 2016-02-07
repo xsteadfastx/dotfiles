@@ -32,3 +32,11 @@
     shell=/usr/bin/zsh
   become: yes
   when: ansible_os_family == 'Debian'
+
+- name: set shell
+  replace:
+    dest=/etc/passwd
+    regexp='(^vagrant:.+:.+:.+:.+:.+:).+$'
+    replace='\1/usr/bin/zsh'
+  become: yes
+  when: ansible_os_family == 'Alpine' and ansible_user_id == 'vagrant' and ansible_user_shell != '/usr/bin/zsh'
