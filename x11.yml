@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: "{{ hosts }}"
   roles:
     - i3
     - screenlayout

@@ -1,13 +1,15 @@
 .PHONY: install deps update
 
 install:
-	ansible-playbook -i hosts base.yml -c local --ask-sudo-pass
+	ansible-playbook -i hosts base.yml -c local --ask-sudo-pass --extra-vars="hosts=localhost"
 
 x11: install
-	ansible-playbook -i hosts x11.yml -c local --ask-sudo-pass
+	ansible-playbook -i hosts x11.yml -c local --ask-sudo-pass --extra-vars="hosts=localhost"
+
 
 nvim:
-	ansible-playbook -i hosts nvim.yml -c local --ask-sudo-pass
+	ansible-playbook -i hosts nvim.yml -c local --ask-sudo-pass --extra-vars="hosts=localhost"
+
 
 all: x11 nvim
 
