@@ -10,7 +10,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Bundle 'gmarik/Vundle.vim'
 Bundle 'tpope/vim-fugitive'
-"Bundle 'davidhalter/jedi-vim'
+Bundle 'davidhalter/jedi-vim'
 Bundle 'ervandew/supertab'
 Bundle 'klen/python-mode'
 Bundle 'scrooloose/syntastic'
@@ -26,7 +26,7 @@ Bundle 'junegunn/goyo.vim'
 Bundle 'reedes/vim-pencil'
 Bundle 'vim-scripts/indentpython.vim'
 Bundle 'nvie/vim-flake8'
-Bundle 'Shougo/neocomplete.vim'
+"Bundle 'Shougo/neocomplete.vim'
 Bundle 'Rykka/riv.vim'
 Bundle 'jiangmiao/auto-pairs'
 call vundle#end()
