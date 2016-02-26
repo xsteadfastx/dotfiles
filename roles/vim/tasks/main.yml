@@ -40,3 +40,17 @@
   git:
     repo=https://github.com/gmarik/Vundle.vim.git
     dest=~/.vim/bundle/Vundle.vim
+
+- name: clone solarized repo
+  git:
+    repo=https://github.com/altercation/vim-colors-solarized.git
+    dest=~/.vim/bundle/vim-colors-solarized
+
+- name: clean plugins
+  command: vim +VundleClean +qall
+
+- name: update plugins
+  command: vim +VundleUpdate +qall
+
+- name: install plugins
+  command: vim +VundleInstall +qall
