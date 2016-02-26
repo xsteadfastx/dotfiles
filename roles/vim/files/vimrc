@@ -1,11 +1,6 @@
-set nocompatible
-filetype off
-
-set enc=utf-8
-set fenc=utf-8
-set fileencoding=utf-8
-
-" vundle
+" ---------------------------------------
+" PLUGINS
+" ---------------------------------------
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Bundle 'gmarik/Vundle.vim'
@@ -32,73 +27,71 @@ Bundle 'jiangmiao/auto-pairs'
 call vundle#end()
 filetype plugin indent on
 
+" ---------------------------------------
+" GENERAL
+" ---------------------------------------
+set nocompatible
+filetype off
+set enc=utf-8
+set fenc=utf-8
+set fileencoding=utf-8
+
+" ---------------------------------------
+" UI
+" ---------------------------------------
 set number
 set backspace=2
 set laststatus=2
 "set nofoldenable
 set colorcolumn=79
-
-" syntax
-let python_highlight_all=1
 syntax on
-
-" show whitespace
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
-
-" color and theme
 set background=dark
 colorscheme solarized
+let python_highlight_all=1
 
-" keymaps
+" ---------------------------------------
+" KEYMAPS
+" ---------------------------------------
 let mapleader = ","
 let maplocalleader = "\\"
-nnoremap <F9> to :!python %<CR> " run python
+"nnoremap <F9> to :!python %<CR> " run python
 map <C-n> :NERDTreeToggle<CR> " open nerdtree
-vnoremap <Leader>s :sort<CR> " sort marked text
+"vnoremap <Leader>s :sort<CR> " sort marked text
 vnoremap < <gv " better indentation
 vnoremap > >gv " better indentation
 
-" python-mode
+" ---------------------------------------
+" PYTHON-MODE
+" ---------------------------------------
 let g:pymode_rope_lookup_project = 0
 let g:pymode_rope = 0
 
-" neocomplete
-let g:acp_enableAtStartup = 0
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+" ---------------------------------------
+" PENCIL
+" ---------------------------------------
+let g:pencil#wrapModeDefault = 'soft'
 
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-
+" ---------------------------------------
 " NEOVIM
+" ---------------------------------------
 if has('nvim')
     runtime! plugin/python_setup.vim
 endif
 
-" custom commands
-"command Tox vsplit term://tox
+" ---------------------------------------
+" FILE TYPES
+" ---------------------------------------
 
-" tabstuff
-autocmd BufRead,BufNewFile *yml,*yaml set tabstop=2 expandtab shiftwidth=2 softtabstop=2
+augroup yaml
+  autocmd!
+  au BufRead,BufNewFile *yml,*yaml set filetype=yaml
+  au FileType yaml setl tabstop=2 expandtab shiftwidth=2 softtabstop=2
+augroup end
 
-" writing
-let g:pencil#wrapModeDefault = 'soft'
 augroup pencil
     autocmd!
-    au! BufRead,BufNewFile *.markdown,*.md set filetype=markdown
-    autocmd FileType markdown,mkd,rst call pencil#init()
-augroup END
-
-" close preview scratch window after completion
-if v:version >=704
-    autocmd CompleteDone * pclose
-endif
+    au BufRead,BufNewFile *.markdown,*.md set filetype=markdown
+    au FileType markdown,mkd,rst call pencil#init()
+augroup end
