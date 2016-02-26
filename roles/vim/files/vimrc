@@ -37,6 +37,7 @@ Bundle 'nvie/vim-flake8'
 "Bundle 'Shougo/neocomplete.vim'
 Bundle 'Rykka/riv.vim'
 Bundle 'jiangmiao/auto-pairs'
+Bundle 'ntpeters/vim-better-whitespace'
 call vundle#end()
 
 
@@ -50,7 +51,7 @@ set laststatus=2
 "set nofoldenable
 set colorcolumn=79
 syntax on
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+"autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
 set background=dark
 colorscheme solarized
