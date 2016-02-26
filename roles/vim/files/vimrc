@@ -1,6 +1,19 @@
 " ---------------------------------------
+" GENERAL
+" ---------------------------------------
+
+set nocompatible
+filetype off
+set enc=utf-8
+set fenc=utf-8
+set fileencoding=utf-8
+filetype plugin indent on
+
+
+" ---------------------------------------
 " PLUGINS
 " ---------------------------------------
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Bundle 'gmarik/Vundle.vim'
@@ -25,20 +38,12 @@ Bundle 'nvie/vim-flake8'
 Bundle 'Rykka/riv.vim'
 Bundle 'jiangmiao/auto-pairs'
 call vundle#end()
-filetype plugin indent on
 
-" ---------------------------------------
-" GENERAL
-" ---------------------------------------
-set nocompatible
-filetype off
-set enc=utf-8
-set fenc=utf-8
-set fileencoding=utf-8
 
 " ---------------------------------------
 " UI
 " ---------------------------------------
+
 set number
 set backspace=2
 set laststatus=2
@@ -51,9 +56,25 @@ set background=dark
 colorscheme solarized
 let python_highlight_all=1
 
+
+" ---------------------------------------
+" TEXT FORMAT
+" ---------------------------------------
+
+set autoindent
+set smartindent
+set nowrap
+set expandtab
+set nosmarttab
+
+" automatically remove trail. whitespace at write
+au BufWritePre <buffer> StripWhitespace
+
+
 " ---------------------------------------
 " KEYMAPS
 " ---------------------------------------
+
 let mapleader = ","
 let maplocalleader = "\\"
 "nnoremap <F9> to :!python %<CR> " run python
@@ -62,23 +83,30 @@ map <C-n> :NERDTreeToggle<CR> " open nerdtree
 vnoremap < <gv " better indentation
 vnoremap > >gv " better indentation
 
+
 " ---------------------------------------
 " PYTHON-MODE
 " ---------------------------------------
+
 let g:pymode_rope_lookup_project = 0
 let g:pymode_rope = 0
+
 
 " ---------------------------------------
 " PENCIL
 " ---------------------------------------
+
 let g:pencil#wrapModeDefault = 'soft'
+
 
 " ---------------------------------------
 " NEOVIM
 " ---------------------------------------
+
 if has('nvim')
     runtime! plugin/python_setup.vim
 endif
+
 
 " ---------------------------------------
 " FILE TYPES

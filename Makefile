@@ -1,4 +1,4 @@
-.PHONY: install deps update
+.PHONY: install deps update x11 tsm own
 
 install:
 	ansible-playbook -i hosts base.yml -c local --ask-sudo-pass --extra-vars="hosts=localhost"
@@ -6,12 +6,13 @@ install:
 x11: install
 	ansible-playbook -i hosts x11.yml -c local --ask-sudo-pass --extra-vars="hosts=localhost"
 
+tsm:
+	ansible-playbook base.yml --ask-sudo-pass --extra-vars="hosts=tsm"
 
-nvim:
-	ansible-playbook -i hosts nvim.yml -c local --ask-sudo-pass --extra-vars="hosts=localhost"
+own:
+	ansible-playbook base.yml --ask-sudo-pass --extra-vars="hosts=own"
 
-
-all: x11 nvim
+all: x11 tsm own
 
 deps:
 	export $PATH=$PATH:~/.local/bin && sudo apt-get install -y curl git python-virtualenv python-dev && curl https://raw.githubusercontent.com/mitsuhiko/pipsi/master/get-pipsi.py | python && pipsi install ansible
