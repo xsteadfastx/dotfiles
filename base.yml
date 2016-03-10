@@ -1,6 +1,7 @@
 ---
 - hosts: "{{ hosts }}"
   roles:
+    - batcave
     - git
     - tmux
     - vim

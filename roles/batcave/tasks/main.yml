@@ -1,0 +1,6 @@
+---
+- name: clone
+  git:
+    repo=https://github.com/xsteadfastx/batcave.git
+    dest=~/batcave
+  when: '"localhost" not in group_names'
