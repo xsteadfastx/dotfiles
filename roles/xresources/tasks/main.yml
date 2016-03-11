@@ -1,4 +1,11 @@
 ---
+- name: needed dirs
+  file:
+    path={{ item }}
+    state=directory
+  with_items:
+    - ~/.fonts
+
 - name: copy files
   copy:
     src={{ item.src }}
@@ -6,3 +13,4 @@
   with_items:
     - {'src': 'xresources', 'dest': '~/.Xresources'}
     - {'src': 'xprofile', 'dest': '~/.xprofile'}
+    - {'src': 'RobotoMono-Regular.ttf', 'dest': '~/.fonts/RobotoMono-Regular.ttf'}
