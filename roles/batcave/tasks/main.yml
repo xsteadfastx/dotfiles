@@ -4,3 +4,8 @@
     repo=https://github.com/xsteadfastx/batcave.git
     dest=~/.batcave
   when: '"localhost" not in group_names'
+
+- name: update apt cache
+  apt: update_cache=yes
+  become: yes
+  when: ansible_os_family == 'Debian'
