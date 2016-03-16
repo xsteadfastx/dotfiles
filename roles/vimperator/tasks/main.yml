@@ -1,0 +1,8 @@
+---
+- name: copy files
+  copy:
+    src={{ item.src }}
+    dest={{ item.dest }}
+  with_items:
+    - {'src': 'vimperatorrc', 'dest': '~/.vimperatorrc'}
+    - {'src': 'vimperatorrc.local', 'dest': '~/.vimperatorrc.local'}
