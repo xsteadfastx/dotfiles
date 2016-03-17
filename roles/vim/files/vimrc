@@ -38,6 +38,7 @@ Bundle 'nvie/vim-flake8'
 Bundle 'Rykka/riv.vim'
 Bundle 'jiangmiao/auto-pairs'
 Bundle 'ntpeters/vim-better-whitespace'
+Bundle 'alfredodeza/pytest.vim'
 call vundle#end()
 
 
