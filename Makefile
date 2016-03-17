@@ -12,7 +12,7 @@ tsm:
 own:
 	ansible-playbook base.yml --ask-sudo-pass --extra-vars="hosts=own"
 
-all: x11 tsm own
+all: install x11 tsm own
 
 deps:
 	export $PATH=$PATH:~/.local/bin && sudo apt-get install -y curl git python-virtualenv python-dev && curl https://raw.githubusercontent.com/mitsuhiko/pipsi/master/get-pipsi.py | python && pipsi install ansible
