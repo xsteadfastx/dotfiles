@@ -84,6 +84,9 @@ map <C-n> :NERDTreeToggle<CR> " open nerdtree
 "vnoremap <Leader>s :sort<CR> " sort marked text
 vnoremap < <gv " better indentation
 vnoremap > >gv " better indentation
+nmap <silent><Leader>f <Esc>:Pytest file<CR>
+nmap <silent><Leader>c <Esc>:Pytest class<CR>
+nmap <silent><Leader>m <Esc>:Pytest method<CR>
 
 
 " ---------------------------------------
