@@ -23,7 +23,7 @@
     state=directory
   with_items:
     - ~/.vim
-    - ~/.vim/bundle
+    - ~/.vim/plugged
     - ~/.vim/autoload
     - ~/.vim/autoload/ftplugin
 
@@ -36,18 +36,18 @@
     - {'src': 'html.vim', 'dest': '~/.vim/autoload/ftplugin/html.vim'}
     - {'src': 'python.vim', 'dest': '~/.vim/autoload/ftplugin/python.vim'}
 
-- name: clone Vundle repo
-  git:
-    repo=https://github.com/gmarik/Vundle.vim.git
-    dest=~/.vim/bundle/Vundle.vim
+- name: get vim-plug
+  get_url:
+    url=https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    dest=~/.vim/autoload/plug.vim
 
 - name: clone solarized repo
   git:
     repo=https://github.com/altercation/vim-colors-solarized.git
-    dest=~/.vim/bundle/vim-colors-solarized
+    dest=~/.vim/plugged/vim-colors-solarized
 
 - name: update plugins
-  command: vim +VundleUpdate +qall
+  command: vim +PlugUpdate +qall
 
 - name: install plugins
-  command: vim +VundleInstall +qall
+  command: vim +PlugInstall +qall

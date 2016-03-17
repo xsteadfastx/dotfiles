@@ -14,32 +14,31 @@ filetype plugin indent on
 " PLUGINS
 " ---------------------------------------
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Bundle 'gmarik/Vundle.vim'
-Bundle 'tpope/vim-fugitive'
-Bundle 'davidhalter/jedi-vim'
-Bundle 'ervandew/supertab'
-Bundle 'klen/python-mode'
-Bundle 'scrooloose/syntastic'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'vim-airline/vim-airline'
-Bundle 'vim-airline/vim-airline-themes'
-Bundle 'scrooloose/nerdtree'
-Bundle 'godlygeek/tabular'
-Bundle 'plasticboy/vim-markdown'
-"Bundle 'freitass/todo.txt-vim'
-Bundle 'tpope/vim-git'
-Bundle 'junegunn/goyo.vim'
-Bundle 'reedes/vim-pencil'
-Bundle 'vim-scripts/indentpython.vim'
-Bundle 'nvie/vim-flake8'
-"Bundle 'Shougo/neocomplete.vim'
-Bundle 'Rykka/riv.vim'
-Bundle 'jiangmiao/auto-pairs'
-Bundle 'ntpeters/vim-better-whitespace'
-Bundle 'alfredodeza/pytest.vim'
-call vundle#end()
+call plug#begin('~/.vim/plugged')
+Plug 'gmarik/Vundle.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'davidhalter/jedi-vim'
+Plug 'ervandew/supertab'
+Plug 'klen/python-mode'
+Plug 'scrooloose/syntastic'
+Plug 'altercation/vim-colors-solarized'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+"Plug 'freitass/todo.txt-vim'
+Plug 'tpope/vim-git'
+Plug 'junegunn/goyo.vim'
+Plug 'reedes/vim-pencil'
+Plug 'vim-scripts/indentpython.vim'
+Plug 'nvie/vim-flake8'
+"Plug 'Shougo/neocomplete.vim'
+Plug 'Rykka/riv.vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'alfredodeza/pytest.vim'
+call plug#end()
 
 
 " ---------------------------------------
@@ -84,9 +83,8 @@ map <C-n> :NERDTreeToggle<CR> " open nerdtree
 "vnoremap <Leader>s :sort<CR> " sort marked text
 vnoremap < <gv " better indentation
 vnoremap > >gv " better indentation
-nmap <silent><Leader>f <Esc>:Pytest file<CR>
-nmap <silent><Leader>c <Esc>:Pytest class<CR>
-nmap <silent><Leader>m <Esc>:Pytest method<CR>
+nmap <silent><Leader>p <Esc>:Pytest project<CR>
+nmap <silent><Leader>f <Esc>:Pytest function<CR>
 
 
 " ---------------------------------------
