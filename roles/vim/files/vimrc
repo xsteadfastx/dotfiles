@@ -38,6 +38,7 @@ Plug 'Rykka/riv.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'alfredodeza/pytest.vim'
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 
