@@ -26,7 +26,6 @@
   with_items:
     - { 'src': '~/.zprezto/runcoms/zlogin', 'dest': '~/.zlogin' }
     - { 'src': '~/.zprezto/runcoms/zlogout', 'dest': '~/.zlogout' }
-    - { 'src': '~/.zprezto/runcoms/zprofile', 'dest': '~/.zprofile' }
     - { 'src': '~/.zprezto/runcoms/zshenv', 'dest': '~/.zshenv' }
 
 - name: copy files
@@ -35,8 +34,8 @@
     dest={{ item.dest }}
   with_items:
     - {'src': 'zshrc', 'dest': '~/.zshrc'}
-    - {'src': 'bash_aliases', 'dest': '~/.bash_aliases'}
     - {'src': 'zpreztorc', 'dest': '~/.zpreztorc'}
+    - {'src': 'zprofile', 'dest': '~/.zprofile'}
 
 - name: set shell
   user:

@@ -11,10 +11,3 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
-source ~/.bash_aliases
-export PATH=$PATH:~/.local/bin:~/miniconda3/bin
-export EDITOR=vim
-
-# ignore history for jrnl
-setopt HIST_IGNORE_SPACE
-alias jrnl=" jrnl"
