@@ -13,6 +13,11 @@
   become: yes
   when: ansible_os_family == 'Alpine'
 
+- name: remove prezto dir for fresh clone
+  file:
+    path=~/.zprezto
+    state=absent
+
 - name: clone prezto
   git:
     repo=https://github.com/sorin-ionescu/prezto.git
