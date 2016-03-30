@@ -11,3 +11,5 @@ vim/.vim/bundle/*
 
 # ansible
 *.retry
+group_vars/*.yml
+host_vars/*.yml

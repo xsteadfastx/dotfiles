@@ -7,10 +7,10 @@ x11:
 	ansible-playbook -i hosts x11.yml -c local --ask-sudo-pass --extra-vars="hosts=localhost"
 
 tsm:
-	ansible-playbook base.yml --ask-sudo-pass --extra-vars="hosts=tsm"
+	ansible-playbook base.yml --ask-vault-pass --extra-vars="hosts=tsm"
 
 own:
-	ansible-playbook base.yml --ask-sudo-pass --extra-vars="hosts=own"
+	ansible-playbook base.yml --ask-vault-pass --extra-vars="hosts=own"
 
 all: install x11 tsm own
 
