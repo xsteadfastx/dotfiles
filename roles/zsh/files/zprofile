@@ -46,6 +46,7 @@ path=(
   /usr/local/{bin,sbin}
   $HOME/.local/bin
   $HOME/miniconda3/bin
+  $HOME/.linuxbrew/bin
   $path
 )
 
