@@ -127,4 +127,5 @@ augroup pencil
     autocmd!
     au BufRead,BufNewFile *.markdown,*.md set filetype=markdown
     au FileType markdown,mkd,rst call pencil#init()
+    au FileType markdown,mkd,rst setl spell spelllang=de
 augroup end
