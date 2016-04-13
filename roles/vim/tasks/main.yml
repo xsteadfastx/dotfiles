@@ -26,6 +26,7 @@
     - ~/.vim/plugged
     - ~/.vim/autoload
     - ~/.vim/autoload/ftplugin
+    - ~/.vim/spell
 
 - name: copy files
   copy:
@@ -45,6 +46,14 @@
   git:
     repo=https://github.com/altercation/vim-colors-solarized.git
     dest=~/.vim/plugged/vim-colors-solarized
+
+- name: get spell files
+  get_url:
+    url={{ item.src }}
+    dest={{ item.dest }}
+  with_items:
+    - {'src': 'http://ftp.vim.org/pub/vim/runtime/spell/en.utf-8.spl', 'dest': '~/.vim/spell/en.utf-8.spl'}
+    - {'src': 'http://ftp.vim.org/pub/vim/runtime/spell/de.utf-8.spl', 'dest': '~/.vim/spell/de.utf-8.spl'}
 
 - name: update plugins
   command: vim +PlugUpdate +qall
