@@ -24,9 +24,7 @@
     state=latest
   with_items:
     - i3
-    - imagemagick
     - feh
-    - scrot
     - xautolock
   become: yes
 
@@ -53,9 +51,3 @@
     - {'src': 'config', 'dest': '~/.i3/config'}
     - {'src': 'i3status.conf', 'dest': '~/.i3status.conf'}
     - {'src': 'wallpaper.png', 'dest': '~/.i3/wallpaper.png'}
-
-- name: copy lock script
-  copy:
-    src=lock.sh
-    dest=~/.local/bin/lock.sh
-    mode=755
