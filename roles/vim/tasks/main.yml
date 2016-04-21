@@ -37,16 +37,6 @@
     - {'src': 'html.vim', 'dest': '~/.vim/autoload/ftplugin/html.vim'}
     - {'src': 'python.vim', 'dest': '~/.vim/autoload/ftplugin/python.vim'}
 
-- name: get vim-plug
-  get_url:
-    url=https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    dest=~/.vim/autoload/plug.vim
-
-- name: clone solarized repo
-  git:
-    repo=https://github.com/altercation/vim-colors-solarized.git
-    dest=~/.vim/plugged/vim-colors-solarized
-
 - name: get spell files
   get_url:
     url={{ item.src }}
@@ -54,6 +44,19 @@
   with_items:
     - {'src': 'http://ftp.vim.org/pub/vim/runtime/spell/en.utf-8.spl', 'dest': '~/.vim/spell/en.utf-8.spl'}
     - {'src': 'http://ftp.vim.org/pub/vim/runtime/spell/de.utf-8.spl', 'dest': '~/.vim/spell/de.utf-8.spl'}
+
+- name: get vim-plug
+  get_url:
+    url=https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    dest=~/.vim/autoload/plug.vim
+
+- name: clone some plugins
+  git:
+    repo={{ item.repo }}
+    dest={{ item.dest }}
+  with_items:
+    - {'repo': 'https://github.com/altercation/vim-colors-solarized.git', 'dest': '~/.vim/plugged/vim-colors-solarized'}
+    - {'repo': 'https://github.com/blindFS/vim-taskwarrior.git', 'dest': '~/.vim/plugged/vim-taskwarrior'}
 
 - name: update plugins
   command: vim +PlugUpdate +qall
