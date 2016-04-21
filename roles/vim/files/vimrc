@@ -39,6 +39,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'alfredodeza/pytest.vim'
 Plug 'airblade/vim-gitgutter'
+Plug 'blindFS/vim-taskwarrior'
 call plug#end()
 
 
