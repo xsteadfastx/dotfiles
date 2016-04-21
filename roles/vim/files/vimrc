@@ -119,9 +119,9 @@ endif
 " ---------------------------------------
 
 augroup yaml
-  autocmd!
-  au BufRead,BufNewFile *yml,*yaml set filetype=yaml
-  au FileType yaml setl tabstop=2 expandtab shiftwidth=2 softtabstop=2
+    autocmd!
+    au BufRead,BufNewFile *yml,*yaml set filetype=yaml
+    au FileType yaml setl tabstop=2 expandtab shiftwidth=2 softtabstop=2
 augroup end
 
 augroup pencil
@@ -130,3 +130,15 @@ augroup pencil
     au FileType markdown,mkd,rst call pencil#init()
     au FileType markdown,mkd,rst setl spell spelllang=de
 augroup end
+
+
+" ---------------------------------------
+" TASKWARRIOR
+" ---------------------------------------
+
+autocmd CursorHold task* call Timer()
+function! Timer()
+    call taskwarrior#list()
+    set updatetime=5000
+    call feedkeys("f\e") "retrigger the CursorHold event without major side-effects
+endfunction
