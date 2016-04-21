@@ -56,7 +56,6 @@
     dest={{ item.dest }}
   with_items:
     - {'repo': 'https://github.com/altercation/vim-colors-solarized.git', 'dest': '~/.vim/plugged/vim-colors-solarized'}
-    - {'repo': 'https://github.com/blindFS/vim-taskwarrior.git', 'dest': '~/.vim/plugged/vim-taskwarrior'}
 
 - name: update plugins
   command: vim +PlugUpdate +qall
