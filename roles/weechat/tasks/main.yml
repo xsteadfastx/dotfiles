@@ -1,0 +1,38 @@
+---
+- name: install deps
+  apt:
+    name=weechat
+    state=latest
+  become: yes
+  when: ansible_os_family == 'Debian'
+
+- name: install deps
+  apt:
+    name=weechat
+    state=latest
+  become: yes
+  when: ansible_os_family == 'Alpine'
+
+- name: create config dir
+  file:
+    dest=~/.weechat
+    state=directory
+
+- name: copy files
+  copy:
+    src={{ role_path }}/files/
+    dest=~/.weechat/
+
+- name: create files
+  template:
+    src={{ item.src }}
+    dest={{ item.dest }}
+  with_items:
+    - { 'src': 'relay.conf.j2', 'dest': '~/.weechat/relay.conf' }
+    - { 'src': 'irc.conf.j2', 'dest': '~/.weechat/irc.conf' }
+
+- name: chmod dirs
+  command: find ~/.weechat -type d -exec chmod 0700 {} \;
+
+- name: chmod files
+  command: find ~/.weechat -type f -exec chmod 0600 {} \;

@@ -6,6 +6,9 @@ install:
 x11:
 	ansible-playbook -i hosts x11.yml -c local --ask-sudo-pass --extra-vars="hosts=localhost"
 
+weechat:
+	ansible-playbook -i hosts weechat.yml -c local --ask-sudo-pass --ask-vault-pass --extra-vars="hosts=localhost"
+
 tsm:
 	ansible-playbook base.yml --ask-vault-pass --extra-vars="hosts=tsm"
 
