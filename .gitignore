@@ -1,9 +1,7 @@
 # weechat
-weechat/.weechat/logs
-weechat/.weechat/sec.conf
-weechat/.weechat/ssl
-weechat/.weechat/weechat_crash*
-weechat/.weechat/weechat.log
+roles/weechat/files/weechat_crash*
+roles/weechat/files/weechat.log
+roles/weechat/files/relay.conf
 
 # vim
 .netrwhist

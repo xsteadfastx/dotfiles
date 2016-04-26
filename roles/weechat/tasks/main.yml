@@ -13,15 +13,11 @@
   become: yes
   when: ansible_os_family == 'Alpine'
 
-- name: create config dir
+- name: link files
   file:
+    src={{ role_path }}/files
     dest=~/.weechat
-    state=directory
-
-- name: copy files
-  copy:
-    src={{ role_path }}/files/
-    dest=~/.weechat/
+    state=link
 
 - name: create files
   template:
@@ -29,10 +25,11 @@
     dest={{ item.dest }}
   with_items:
     - { 'src': 'relay.conf.j2', 'dest': '~/.weechat/relay.conf' }
-    - { 'src': 'irc.conf.j2', 'dest': '~/.weechat/irc.conf' }
 
-- name: chmod dirs
-  command: find ~/.weechat -type d -exec chmod 0700 {} \;
-
-- name: chmod files
-  command: find ~/.weechat -type f -exec chmod 0600 {} \;
+- name: add relay passphrase file
+  lineinfile:
+    dest=~/.weechat-passphrase
+    line={{ weechat_passphrase }}
+    state=present
+    create=yes
+    mode=600
