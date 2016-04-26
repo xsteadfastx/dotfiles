@@ -13,7 +13,13 @@
   become: yes
   when: ansible_os_family == 'Alpine'
 
-- name: copy tmux config
-  copy:
-    src=tmux.conf
+- name: remove tmux config
+  file:
+    path=~/.tmux.conf
+    state=absent
+
+- name: link tmux config
+  file:
+    src={{ role_path }}/files/tmux.conf
     dest=~/.tmux.conf
+    state=link

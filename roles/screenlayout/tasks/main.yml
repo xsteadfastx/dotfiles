@@ -1,13 +1,11 @@
 ---
-- name: needed dirs
+- name: remove dir
   file:
     name=~/.screenlayout
-    state=directory
+    state=absent
 
-- name: copy layout files
-  copy:
-    src={{ item }}
-    dest=~/.screenlayout/{{ item | basename }}
-    mode=755
-  with_fileglob:
-    - ./*
+- name: link files
+  file:
+    src={{ role_path }}/files
+    dest=~/.screenlayout
+    state=link

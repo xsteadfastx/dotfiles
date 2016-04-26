@@ -28,10 +28,20 @@
     - ~/.vim/autoload/ftplugin
     - ~/.vim/spell
 
-- name: copy files
-  copy:
-    src={{ item.src }}
+- name: remove files
+  file:
+    path={{ item }}
+    state=absent
+  with_items:
+    - ~/.vimrc
+    - ~/.vim/autoload/ftplugin/html.vim
+    - ~/.vim/autoload/ftplugin/python.vim
+
+- name: link files
+  file:
+    src={{ role_path }}/files/{{ item.src }}
     dest={{ item.dest }}
+    state=link
   with_items:
     - {'src': 'vimrc', 'dest': '~/.vimrc'}
     - {'src': 'html.vim', 'dest': '~/.vim/autoload/ftplugin/html.vim'}

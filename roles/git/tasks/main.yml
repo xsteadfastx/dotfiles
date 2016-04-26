@@ -13,7 +13,13 @@
   become: yes
   when: ansible_os_family == 'Alpine'
 
-- name: copy gitconfig
-  copy:
-    src=gitconfig
+- name: remove gitconfig
+  file:
+    path=~/.gitconfig
+    state=absent
+
+- name: link gitconfig
+  file:
+    src={{ role_path }}/files/gitconfig
     dest=~/.gitconfig
+    state=link
