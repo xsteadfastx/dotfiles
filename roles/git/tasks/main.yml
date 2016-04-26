@@ -20,6 +20,6 @@
 
 - name: link gitconfig
   file:
-    src={{ role_path }}/files/gitconfig
+    src={{ batcave_path }}/roles/git/files/gitconfig
     dest=~/.gitconfig
     state=link

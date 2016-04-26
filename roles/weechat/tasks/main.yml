@@ -15,7 +15,7 @@
 
 - name: link files
   file:
-    src={{ role_path }}/files
+    src={{ batcave_path }}/roles/weechat/files
     dest=~/.weechat
     state=link
 

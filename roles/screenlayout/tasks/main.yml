@@ -6,6 +6,6 @@
 
 - name: link files
   file:
-    src={{ role_path }}/files
+    src={{ batcave_path }}/roles/screenlayout/files
     dest=~/.screenlayout
     state=link

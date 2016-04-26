@@ -44,7 +44,7 @@
 
 - name: link files
   file:
-    src={{ role_path }}/files/{{ item.src }}
+    src={{ batcave_path }}/roles/zsh/files/{{ item.src }}
     dest={{ item.dest }}
     state=link
   with_items:

@@ -20,6 +20,6 @@
 
 - name: link tmux config
   file:
-    src={{ role_path }}/files/tmux.conf
+    src={{ batcave_path }}/roles/tmux/files/tmux.conf
     dest=~/.tmux.conf
     state=link
