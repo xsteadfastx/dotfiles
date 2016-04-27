@@ -3,7 +3,7 @@
 install:
 	ansible-playbook -i hosts base.yml -c local --ask-sudo-pass --extra-vars="hosts=localhost"
 
-x11: install
+x11:
 	ansible-playbook -i hosts x11.yml -c local --ask-sudo-pass --extra-vars="hosts=localhost"
 
 weechat:
