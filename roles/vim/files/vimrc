@@ -50,7 +50,7 @@ call plug#end()
 set number
 set backspace=2
 set laststatus=2
-set nofoldenable
+set foldenable
 set colorcolumn=79
 syntax on
 "autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
