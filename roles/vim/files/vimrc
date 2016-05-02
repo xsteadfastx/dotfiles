@@ -15,31 +15,33 @@ filetype plugin indent on
 " ---------------------------------------
 
 call plug#begin('~/.vim/plugged')
-Plug 'gmarik/Vundle.vim'
-Plug 'tpope/vim-fugitive'
+"Plug 'godlygeek/tabular'
+"Plug 'klen/python-mode'
+"Plug 'nvie/vim-flake8'
+"Plug 'vim-scripts/indentpython.vim'
+Plug 'Rykka/riv.vim'
+Plug 'SirVer/ultisnips'
+Plug 'airblade/vim-gitgutter'
+Plug 'alfredodeza/pytest.vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'blindFS/vim-taskwarrior', { 'on': 'TW' }
 Plug 'davidhalter/jedi-vim'
 Plug 'ervandew/supertab'
-Plug 'klen/python-mode'
+Plug 'gmarik/Vundle.vim'
+Plug 'honza/vim-snippets'
+Plug 'hynek/vim-python-pep8-indent'
+Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/goyo.vim'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'plasticboy/vim-markdown'
+Plug 'reedes/vim-pencil'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/syntastic'
-Plug 'altercation/vim-colors-solarized'
+Plug 'tmhedberg/SimpylFold'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-git'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
-"Plug 'freitass/todo.txt-vim'
-Plug 'tpope/vim-git'
-Plug 'junegunn/goyo.vim'
-Plug 'reedes/vim-pencil'
-Plug 'vim-scripts/indentpython.vim'
-Plug 'nvie/vim-flake8'
-"Plug 'Shougo/neocomplete.vim'
-Plug 'Rykka/riv.vim'
-Plug 'jiangmiao/auto-pairs'
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'alfredodeza/pytest.vim'
-Plug 'airblade/vim-gitgutter'
-Plug 'blindFS/vim-taskwarrior', { 'on': 'TW' }
 call plug#end()
 
 
@@ -93,9 +95,9 @@ nmap <silent><Leader>f <Esc>:Pytest function<CR>
 " PYTHON-MODE
 " ---------------------------------------
 
-let g:pymode_rope_lookup_project = 0
-let g:pymode_rope = 0
-let g:pymode_lint_ignore = "C901"
+"let g:pymode_rope_lookup_project = 0
+"let g:pymode_rope = 0
+"let g:pymode_lint_ignore = "C901"
 
 
 " ---------------------------------------
@@ -142,3 +144,24 @@ function! Timer()
     set updatetime=5000
     call feedkeys("f\e") "retrigger the CursorHold event without major side-effects
 endfunction
+
+
+" ---------------------------------------
+" SYNTASTIC
+" ---------------------------------------
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+
+" ---------------------------------------
+" SIMPLYFOLD
+" ---------------------------------------
+
+let g:SimpylFold_docstring_preview=1
