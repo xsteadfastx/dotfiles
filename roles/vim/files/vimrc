@@ -114,6 +114,18 @@ augroup end
 
 
 " ---------------------------------------
+" CSS
+" ---------------------------------------
+
+augroup css
+    autocmd!
+    let g:neocomplete#enable_at_startup = 1
+    au FileType css setl omnifunc=csscomplete#Complete
+                \ | setl tabstop=4 expandtab shiftwidth=4 softtabstop=4
+augroup end
+
+
+" ---------------------------------------
 " PENCIL
 " ---------------------------------------
 
@@ -130,7 +142,7 @@ endif
 
 
 " ---------------------------------------
-" FILE TYPES
+" YAML
 " ---------------------------------------
 
 augroup yaml
@@ -139,11 +151,16 @@ augroup yaml
     au FileType yaml setl tabstop=2 expandtab shiftwidth=2 softtabstop=2
 augroup end
 
+
+" ---------------------------------------
+" MARKDOWN / RST
+" ---------------------------------------
+
 augroup pencil
     autocmd!
     au BufRead,BufNewFile *.markdown,*.md set filetype=markdown
     au FileType markdown,mkd,rst call pencil#init()
-    au FileType markdown,mkd,rst setl spell spelllang=de
+                             \ | setl spell spelllang=de
 augroup end
 
 
