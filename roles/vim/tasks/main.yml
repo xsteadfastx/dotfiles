@@ -25,7 +25,6 @@
     - ~/.vim
     - ~/.vim/plugged
     - ~/.vim/autoload
-    - ~/.vim/autoload/ftplugin
     - ~/.vim/spell
 
 - name: remove files
@@ -44,8 +43,6 @@
     state=link
   with_items:
     - {'src': 'vimrc', 'dest': '~/.vimrc'}
-    - {'src': 'html.vim', 'dest': '~/.vim/autoload/ftplugin/html.vim'}
-    - {'src': 'python.vim', 'dest': '~/.vim/autoload/ftplugin/python.vim'}
 
 - name: get spell files
   get_url:
