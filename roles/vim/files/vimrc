@@ -15,14 +15,15 @@ filetype plugin indent on
 " ---------------------------------------
 
 call plug#begin('~/.vim/plugged')
+"Plug 'SirVer/ultisnips'
 "Plug 'godlygeek/tabular'
+"Plug 'honza/vim-snippets'
 "Plug 'klen/python-mode'
 "Plug 'nvie/vim-flake8'
 "Plug 'tmhedberg/SimpylFold'
 "Plug 'vim-scripts/indentpython.vim'
 Plug 'Rykka/riv.vim'
 Plug 'Shougo/neocomplete'
-Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
 Plug 'alfredodeza/pytest.vim'
 Plug 'altercation/vim-colors-solarized'
@@ -30,7 +31,6 @@ Plug 'blindFS/vim-taskwarrior', { 'on': 'TW' }
 Plug 'davidhalter/jedi-vim'
 Plug 'ervandew/supertab'
 Plug 'gmarik/Vundle.vim'
-Plug 'honza/vim-snippets'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/goyo.vim'

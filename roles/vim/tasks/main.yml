@@ -17,6 +17,14 @@
   become: yes
   when: ansible_os_family == 'Alpine'
 
+- name: remove files
+  file:
+    path={{ item }}
+    state=absent
+  with_items:
+    - ~/.vimrc
+    - ~/.vim
+
 - name: needed dirs
   file:
     path={{ item }}
@@ -26,15 +34,6 @@
     - ~/.vim/plugged
     - ~/.vim/autoload
     - ~/.vim/spell
-
-- name: remove files
-  file:
-    path={{ item }}
-    state=absent
-  with_items:
-    - ~/.vimrc
-    - ~/.vim/autoload/ftplugin/html.vim
-    - ~/.vim/autoload/ftplugin/python.vim
 
 - name: link files
   file:
@@ -63,9 +62,6 @@
     dest={{ item.dest }}
   with_items:
     - {'repo': 'https://github.com/altercation/vim-colors-solarized.git', 'dest': '~/.vim/plugged/vim-colors-solarized'}
-
-- name: update plugins
-  command: vim +PlugUpdate +qall
 
 - name: install plugins
   command: vim +PlugInstall +qall
