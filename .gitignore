@@ -2,6 +2,7 @@
 roles/weechat/files/weechat_crash*
 roles/weechat/files/weechat.log
 roles/weechat/files/relay.conf
+roles/weechat/files/script/plugins.xml.gz
 
 # vim
 .netrwhist
