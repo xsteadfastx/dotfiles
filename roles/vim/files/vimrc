@@ -86,11 +86,18 @@ au BufWritePre <buffer> StripWhitespace
 
 let mapleader = ","
 let maplocalleader = "\\"
-"nnoremap <F9> to :!python %<CR> " run python
+
+" fixes some strange arrow errors in insert mode
+imap ^[OA <ESC>kli
+imap ^[OB <ESC>jli
+imap ^[OC <ESC>lli
+imap ^[OD <ESC>hli
+
 map <C-n> :NERDTreeToggle<CR> " open nerdtree
-"vnoremap <Leader>s :sort<CR> " sort marked text
+
 vnoremap < <gv " better indentation
 vnoremap > >gv " better indentation
+
 nmap <silent><Leader>p <Esc>:Pytest project<CR>
 nmap <silent><Leader>f <Esc>:Pytest function<CR>
 
