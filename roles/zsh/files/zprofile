@@ -47,6 +47,7 @@ path=(
   $HOME/.local/bin
   $HOME/miniconda3/bin
   $HOME/.linuxbrew/bin
+  $HOME/.node_modules_global/bin
   $path
 )
 
