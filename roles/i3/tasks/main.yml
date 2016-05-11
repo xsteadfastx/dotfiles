@@ -26,6 +26,7 @@
     - i3
     - feh
     - xautolock
+    - rxvt-unicode
   become: yes
 
 - name: remove hack that allows unauthenticated packages to install
