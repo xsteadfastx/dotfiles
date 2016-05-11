@@ -15,27 +15,28 @@ filetype plugin indent on
 " ---------------------------------------
 
 call plug#begin('~/.vim/plugged')
+"Plug 'Shougo/neocomplete'
 "Plug 'SirVer/ultisnips'
 "Plug 'godlygeek/tabular'
 "Plug 'honza/vim-snippets'
+"Plug 'jiangmiao/auto-pairs'
 "Plug 'klen/python-mode'
 "Plug 'nvie/vim-flake8'
 "Plug 'vim-scripts/indentpython.vim'
+Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'Konfekt/FastFold'
 Plug 'Rykka/riv.vim'
-Plug 'Shougo/neocomplete'
 Plug 'airblade/vim-gitgutter'
-Plug 'alfredodeza/pytest.vim'
+Plug 'alfredodeza/pytest.vim', { 'for': 'python' }
 Plug 'altercation/vim-colors-solarized'
 Plug 'blindFS/vim-taskwarrior', { 'on': 'TW' }
-Plug 'davidhalter/jedi-vim'
+Plug 'cohama/lexima.vim'
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'ervandew/supertab'
-Plug 'gmarik/Vundle.vim'
-Plug 'hynek/vim-python-pep8-indent'
-Plug 'jiangmiao/auto-pairs'
+Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
 Plug 'junegunn/goyo.vim'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'plasticboy/vim-markdown'
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'reedes/vim-pencil'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/syntastic'
@@ -99,18 +100,6 @@ nmap <silent><Leader>f <Esc>:Pytest function<CR>
 
 augroup python
     autocmd!
-    let g:neocomplete#enable_at_startup = 1
-    if !exists('g:neocomplete#force_omni_input_patterns')
-        let g:neocomplete#force_omni_input_patterns = {}
-    endif
-    au FileType python setlocal omnifunc=pythoncomplete#Complete
-    let g:jedi#completions_enabled = 0
-    let g:jedi#auto_vim_configuration = 0
-    let g:jedi#popup_on_dot = 0
-    let g:jedi#smart_auto_mappings = 0
-    let g:jedi#popup_select_first = 0
-    let g:neocomplete#force_omni_input_patterns.python = '[^. \t]\.\w*'
-    set completeopt-=preview
 augroup end
 
 
@@ -130,9 +119,7 @@ augroup end
 
 augroup css
     autocmd!
-    let g:neocomplete#enable_at_startup = 1
-    au FileType css setl omnifunc=csscomplete#Complete
-                \ | setl tabstop=4 expandtab shiftwidth=4 softtabstop=4
+    au FileType css setl tabstop=4 expandtab shiftwidth=4 softtabstop=4
 augroup end
 
 
