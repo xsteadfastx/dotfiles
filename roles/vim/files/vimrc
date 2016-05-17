@@ -36,6 +36,7 @@ Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
 Plug 'ervandew/supertab'
 Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
 Plug 'junegunn/goyo.vim'
+Plug 'mattn/emmet-vim', { 'for': 'html' }
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'reedes/vim-pencil'
