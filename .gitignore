@@ -14,3 +14,6 @@ vim/.vim/bundle/*
 group_vars/*.yml
 !group_vars/all.yml
 host_vars/*.yml
+
+# python
+__pycache__
