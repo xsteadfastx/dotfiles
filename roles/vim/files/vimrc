@@ -64,7 +64,7 @@ syntax on
 au InsertLeave * match ExtraWhitespace /\s\+$/
 set background=dark
 colorscheme solarized
-hi Normal ctermbg=none
+"hi Normal ctermbg=none " transparent background
 let python_highlight_all=1
 
 
