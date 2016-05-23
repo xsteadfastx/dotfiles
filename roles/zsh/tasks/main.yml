@@ -1,17 +1,9 @@
 ---
 - name: install deps
-  apt:
+  package:
     name=zsh
     state=present
   become: yes
-  when: ansible_os_family == 'Debian'
-
-- name: install deps
-  apk:
-    name=zsh
-    state=present
-  become: yes
-  when: ansible_os_family == 'Alpine'
 
 - name: remove prezto dir for fresh clone
   file:

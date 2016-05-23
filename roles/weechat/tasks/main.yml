@@ -1,17 +1,9 @@
 ---
 - name: install deps
-  apt:
+  package:
     name=weechat
     state=latest
   become: yes
-  when: ansible_os_family == 'Debian'
-
-- name: install deps
-  apt:
-    name=weechat
-    state=latest
-  become: yes
-  when: ansible_os_family == 'Alpine'
 
 - name: link files
   file:

@@ -1,17 +1,10 @@
 ---
 - name: install deps
-  apt:
+  package:
     name=tmux
     state=present
   become: yes
   when: ansible_os_family == 'Debian'
-
-- name: install deps
-  apk:
-    name=tmux
-    state=present
-  become: yes
-  when: ansible_os_family == 'Alpine'
 
 - name: remove tmux config
   file:
