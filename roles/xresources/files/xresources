@@ -73,10 +73,10 @@
 
 URxvt.saveLines: 1000
 URxvt.scrollBar: false
-URxvt.foreground: white
-URxvt.background: black
+URxvt.foreground: S_base0
+URxvt.background: S_base03
 URxvt.secondaryScroll: true
-URxvt.transparent: true
+URxvt.transparent: false
 URxvt.shading: 15
 URxvt.url-launcher: /usr/bin/firefox
 URxvt.matcher.button: 1
