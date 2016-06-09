@@ -169,8 +169,8 @@ exec --no-startup-id owncloud &
 #exec --no-startup-id seafile-applet &
 #exec --no-startup-id kupfer &
 exec --no-startup-id xfce4-power-manager &
-bindsym Control+mod1+l exec i3lock -i ~/.i3/wallpaper.png -t
-exec xautolock -time 10 -locker 'i3lock -i ~/.i3/wallpaper.png' &
+bindsym Control+mod1+l exec i3lock -c "#586e75"
+exec xautolock -time 10 -locker 'i3lock -c "#586e75"' &
 
 # JOSM (found class with xprop)
 
