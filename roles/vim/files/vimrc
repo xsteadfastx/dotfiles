@@ -59,7 +59,6 @@ set nonumber
 set backspace=2
 set laststatus=2
 set foldenable
-set colorcolumn=79
 syntax on
 "autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
@@ -111,6 +110,7 @@ nmap <silent><Leader>f <Esc>:Pytest function<CR>
 
 augroup python
     autocmd!
+    au FileType python set colorcolumn=79
 augroup end
 
 
