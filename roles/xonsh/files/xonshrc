@@ -1,0 +1,30 @@
+import shutil
+
+
+# XONSH ENVIRONMENT VARIABLES ############
+$SHELL_TYPE = 'best'
+$XONSH_COLOR_STYLE = 'monokai'
+$SUPPRESS_BRANCH_TIMEOUT_MESSAGE = True
+$CASE_SENSITIVE_COMPLETIONS = False
+$VC_BRANCH_TIMEOUT = 5
+
+# OTHER ENVIRONMENT VARIABLES ############
+$EDITOR = 'vim'
+
+# ALIASES ################################
+aliases['ll'] = 'ls -la'
+
+# PATH ###################################
+$PATH.extend(
+    [
+        $HOME + '/.local/bin',
+        $HOME + '/miniconda3/bin',
+        $HOME + '/node_modules_global/bin'
+    ]
+)
+
+# XONTRIB ################################
+xontrib vox_tabcomplete autoxsh
+
+if shutil.which('apt-get'):
+    xontrib apt_tabcomplete

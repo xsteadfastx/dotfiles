@@ -1,0 +1,55 @@
+---
+- include_vars : "{{ item }}"
+  with_first_found:
+    - "../vars/{{ ansible_os_family }}.yml"
+
+- name: install deps
+  package:
+    name={{ item }}
+    state=present
+  become: yes
+  with_items:
+    - "{{ python3_package_name }}"
+    - "{{ pip3_package_name }}"
+
+- name: install python packages
+  pip:
+    name={{ item }}
+    executable=pip3
+  become: yes
+  with_items:
+    - prompt_toolkit
+    - xonsh
+    - xonsh-apt_tabcomplete
+    - xonsh-autoxsh
+    - xonsh-vox_tabcomplete
+
+- name: link files
+  file:
+    src={{ batcave_path }}/roles/xonsh/files/{{ item.src }}
+    dest={{ item.dest }}
+    state=link
+  with_items:
+    - { 'src': 'xonshrc', 'dest': '~/.xonshrc' }
+
+- name: add xonsh to /etc/shells
+  lineinfile:
+    dest=/etc/shells
+    line="/usr/local/bin/xonsh"
+    state=present
+  become: yes
+
+- name: set shell
+  user:
+    name={{ ansible_env.USER }}
+    shell=/usr/local/bin/xonsh
+  become: yes
+  when: ansible_os_family == 'Debian'
+
+- name: set shell
+  replace:
+    dest=/etc/passwd
+    regexp='(^vagrant:.+:.+:.+:.+:.+:).+$'
+    replace='\1/usr/local/bin/xonsh'
+  become: yes
+  when: ansible_os_family == 'Alpine' and ansible_user_id == 'vagrant' and ansible_user_shell != '/usr/local/bin/xonsh'

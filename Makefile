@@ -12,6 +12,9 @@ x11: ## Install base and x11 on localhost
 weechat: ## Install weechat
 	ansible-playbook -i hosts weechat.yml -c local --ask-sudo-pass --ask-vault-pass --extra-vars="hosts=localhost"
 
+xonsh: ## Install xonsh
+	ansible-playbook -i hosts xonsh.yml -c local --ask-sudo-pass --ask-vault-pass --extra-vars="hosts=localhost"
+
 tsm: ## Install base on tsm servers
 	ansible-playbook base.yml --ask-vault-pass --extra-vars="hosts=tsm"
 
