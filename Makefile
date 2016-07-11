@@ -15,7 +15,7 @@ weechat: ## Install weechat
 xonsh: ## Install xonsh
 	ansible-playbook -i hosts xonsh.yml -c local --ask-sudo-pass --ask-vault-pass --extra-vars="hosts=localhost"
 
-xonsh: ## Install zsh
+zsh: ## Install zsh
 	ansible-playbook -i hosts zsh.yml -c local --ask-sudo-pass --ask-vault-pass --extra-vars="hosts=localhost"
 
 tsm: ## Install base on tsm servers
