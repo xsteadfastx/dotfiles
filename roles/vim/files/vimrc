@@ -2,6 +2,7 @@
 " GENERAL
 " ---------------------------------------
 
+set shell=/bin/bash
 set nocompatible
 filetype off
 set enc=utf-8
