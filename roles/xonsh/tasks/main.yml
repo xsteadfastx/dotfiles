@@ -19,6 +19,7 @@
   become: yes
   with_items:
     - prompt_toolkit
+    - pygments
     - xonsh
     - xonsh-apt_tabcomplete
     - xonsh-autoxsh
