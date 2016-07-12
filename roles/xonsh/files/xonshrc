@@ -1,18 +1,27 @@
 import shutil
 
+from xonsh.environ import git_dirty_working_directory
+
 
 # XONSH ENVIRONMENT VARIABLES ############
-$SHELL_TYPE = 'best'
-$XONSH_COLOR_STYLE = 'monokai'
-$SUPPRESS_BRANCH_TIMEOUT_MESSAGE = True
+$BASH_COMPLETIONS = ['/etc/bash_completion.d', '/usr/share/bash-completion/completions']
 $CASE_SENSITIVE_COMPLETIONS = False
+$SHELL_TYPE = 'best'
+$SUPPRESS_BRANCH_TIMEOUT_MESSAGE = True
 $VC_BRANCH_TIMEOUT = 5
+$XONSH_COLOR_STYLE = 'monokai'
 
 # OTHER ENVIRONMENT VARIABLES ############
 $EDITOR = 'vim'
 
 # ALIASES ################################
 aliases['ll'] = 'ls -la'
+aliases['exec'] = aliases['xexec']
+
+# GIT ####################################
+$FORMATTER_DICT['branch_color'] = lambda: ('{BOLD_INTENSE_RED}'
+                                           if git_dirty_working_directory(include_untracked=True)
+                                           else '{BOLD_INTENSE_GREEN}')
 
 # PATH ###################################
 $PATH.extend(
