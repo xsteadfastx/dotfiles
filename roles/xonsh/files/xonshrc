@@ -1,3 +1,4 @@
+import os
 import shutil
 
 from xonsh.environ import git_dirty_working_directory
@@ -15,8 +16,22 @@ $XONSH_COLOR_STYLE = 'monokai'
 $EDITOR = 'vim'
 
 # ALIASES ################################
-aliases['ll'] = 'ls -la'
 aliases['exec'] = aliases['xexec']
+aliases['ll'] = 'ls -la'
+aliases['tmux'] = 'tmux -2'
+
+def _alias_mosh(args, stdin=None):
+    """A function to use as alias to get mosh running.
+
+    There is a strange problem with mosh and xonsh. I have to set $SHELL to
+    /bin/bash before running it. It should work with this little hack.
+    """
+    os.environ['SHELL'] = '/bin/bash'
+    args.insert(0, 'mosh')
+    cmd = ' '.join(args)
+    os.system(cmd)
+
+aliases['mosh'] = _alias_mosh
 
 # GIT ####################################
 $FORMATTER_DICT['branch_color'] = lambda: ('{BOLD_INTENSE_RED}'
