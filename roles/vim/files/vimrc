@@ -111,6 +111,7 @@ nmap <silent><Leader>f <Esc>:Pytest function<CR>
 
 augroup python
     autocmd!
+    au BufRead,BufNewFile *.xsh set filetype=python
     au FileType python set colorcolumn=79
 augroup end
 
