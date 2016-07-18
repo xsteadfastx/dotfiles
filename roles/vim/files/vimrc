@@ -47,6 +47,7 @@ Plug 'scrooloose/syntastic'
 Plug 'tmhedberg/SimpylFold'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
+Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 call plug#end()
