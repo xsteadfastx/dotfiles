@@ -41,6 +41,7 @@ Plug 'mattn/emmet-vim', { 'for': 'html' }
 Plug 'mitsuhiko/vim-jinja', { 'for': 'html' }
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'reedes/vim-pencil'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/syntastic'
