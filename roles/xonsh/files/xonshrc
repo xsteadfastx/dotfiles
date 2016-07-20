@@ -48,7 +48,10 @@ $PATH.extend(
 )
 
 # XONTRIB ################################
-xontrib vox_tabcomplete autoxsh
+xontrib autoxsh vox_tabcomplete
 
 if shutil.which('apt-get'):
     xontrib apt_tabcomplete
+
+if shutil.which('docker'):
+    xontrib docker_tabcomplete

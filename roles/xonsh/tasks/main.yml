@@ -23,6 +23,7 @@
     - xonsh
     - xonsh-apt_tabcomplete
     - xonsh-autoxsh
+    - xonsh-docker_tabcomplete
     - xonsh-vox_tabcomplete
 
 - name: link files
