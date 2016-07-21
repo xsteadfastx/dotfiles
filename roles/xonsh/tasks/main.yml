@@ -16,6 +16,7 @@
   pip:
     name={{ item }}
     executable=pip3
+    state=latest
   become: yes
   with_items:
     - prompt_toolkit
