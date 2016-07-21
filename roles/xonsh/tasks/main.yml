@@ -38,7 +38,7 @@
 - name: add xonsh to /etc/shells
   lineinfile:
     dest=/etc/shells
-    line="/usr/local/bin/xonsh"
+    line="{{ xonsh_location }}"
     state=present
   become: yes
 
@@ -53,6 +53,6 @@
   replace:
     dest=/etc/passwd
     regexp='(^vagrant:.+:.+:.+:.+:.+:).+$'
-    replace='\1/usr/local/bin/xonsh'
+    replace='\1/usr/bin/xonsh'
   become: yes
-  when: ansible_os_family == 'Alpine' and ansible_user_id == 'vagrant' and ansible_user_shell != '/usr/local/bin/xonsh'
+  when: ansible_os_family == 'Alpine' and ansible_user_shell != '/usr/bin/xonsh'
