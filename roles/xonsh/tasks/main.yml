@@ -63,7 +63,7 @@
 - name: set shell
   replace:
     dest=/etc/passwd
-    regexp='(^vagrant:.+:.+:.+:.+:.+:).+$'
+    regexp='(^{{ ansible_user_id }}:.+:.+:.+:.+:.+:).+$'
     replace='\1/usr/bin/xonsh'
   become: yes
-  when: ansible_os_family == 'Alpine' and ansible_user_id == 'vagrant' and ansible_user_shell != '/usr/bin/xonsh' and python3_compatible
+  when: ansible_os_family == 'Alpine' and ansible_user_shell != '/usr/bin/xonsh' and python3_compatible
