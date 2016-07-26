@@ -12,6 +12,13 @@
     - "{{ python3_package_name }}"
     - "{{ pip3_package_name }}"
 
+- name: get installed python3 version
+  shell: python3 --version
+  register: python3_version
+
+- set_fact:
+    python3_compatible: "{% if '3.4' in python3_version.stdout or '3.5' in python3_version.stdout %}yes{% else %}no{% endif %}"
+
 - name: install python packages
   pip:
     name={{ item }}
@@ -26,6 +33,7 @@
     - xonsh-autoxsh
     - xonsh-docker_tabcomplete
     - xonsh-vox_tabcomplete
+  when: python3_compatible
 
 - name: link files
   file:
@@ -34,6 +42,7 @@
     state=link
   with_items:
     - { 'src': 'xonshrc', 'dest': '~/.xonshrc' }
+  when: python3_compatible
 
 - name: add xonsh to /etc/shells
   lineinfile:
@@ -41,13 +50,15 @@
     line="{{ xonsh_location }}"
     state=present
   become: yes
+  when: python3_compatible
+
 
 - name: set shell
   user:
     name={{ ansible_env.USER }}
     shell=/usr/local/bin/xonsh
   become: yes
-  when: ansible_os_family == 'Debian'
+  when: ansible_os_family == 'Debian' and python3_compatible
 
 - name: set shell
   replace:
@@ -55,4 +66,4 @@
     regexp='(^vagrant:.+:.+:.+:.+:.+:).+$'
     replace='\1/usr/bin/xonsh'
   become: yes
-  when: ansible_os_family == 'Alpine' and ansible_user_shell != '/usr/bin/xonsh'
+  when: ansible_os_family == 'Alpine' and ansible_user_id == 'vagrant' and ansible_user_shell != '/usr/bin/xonsh' and python3_compatible
