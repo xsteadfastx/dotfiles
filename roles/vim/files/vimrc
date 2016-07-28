@@ -175,6 +175,7 @@ augroup pencil
     au BufRead,BufNewFile *.markdown,*.md set filetype=markdown
     au FileType markdown,mkd,rst call pencil#init()
                              \ | setl spell spelllang=de
+                             \ | setl tabstop=4 expandtab shiftwidth=4 softtabstop=4
 augroup end
 
 
