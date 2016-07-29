@@ -44,26 +44,13 @@
     - { 'src': 'xonshrc', 'dest': '~/.xonshrc' }
   when: python3_compatible
 
-- name: add xonsh to /etc/shells
+- name: add lines to .profile
   lineinfile:
-    dest=/etc/shells
-    line="{{ xonsh_location }}"
+    dest=~/.profile
     state=present
-  become: yes
+    create=yes
+    line={{ item }}
+  with_items:
+    - '[ -f /usr/local/bin/xonsh ] && exec /usr/local/bin/xonsh'
+    - '[ -f /usr/bin/xonsh ] && exec /usr/bin/xonsh'
   when: python3_compatible
-
-
-- name: set shell
-  user:
-    name={{ ansible_env.USER }}
-    shell=/usr/local/bin/xonsh
-  become: yes
-  when: ansible_os_family == 'Debian' and python3_compatible
-
-- name: set shell
-  replace:
-    dest=/etc/passwd
-    regexp='(^{{ ansible_user_id }}:.+:.+:.+:.+:.+:).+$'
-    replace='\1/usr/bin/xonsh'
-  become: yes
-  when: ansible_os_family == 'Alpine' and ansible_user_shell != '/usr/bin/xonsh' and python3_compatible
