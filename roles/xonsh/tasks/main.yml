@@ -9,8 +9,24 @@
     state=present
   become: yes
   with_items:
+    - bash
     - "{{ python3_package_name }}"
     - "{{ pip3_package_name }}"
+
+- name: set bash as default shell
+  user:
+    name={{ ansible_env.USER }}
+    shell=/bin/bash
+  become: yes
+  when: ansible_os_family == 'Debian'
+
+- name: set bash as default shell
+  replace:
+    dest=/etc/passwd
+    regexp='(^{{ ansible_user_id }}:.+:.+:.+:.+:.+:).+$'
+    replace='\1/bin/bash'
+  become: yes
+  when: ansible_os_family == 'Alpine' and ansible_user_shell != '/bin/bash'
 
 - name: get installed python3 version
   shell: python3 --version

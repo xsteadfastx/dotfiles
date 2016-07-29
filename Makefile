@@ -19,10 +19,10 @@ zsh: ## Install zsh
 	ansible-playbook -i hosts zsh.yml -c local --ask-sudo-pass --ask-vault-pass --extra-vars="hosts=localhost"
 
 tsm: ## Install base on tsm servers
-	ansible-playbook base.yml --ask-vault-pass --extra-vars="hosts=tsm"
+	ansible-playbook xonsh.yml --ask-vault-pass --extra-vars="hosts=tsm"
 
 own: ## Install base on own servers
-	ansible-playbook base.yml --ask-vault-pass --extra-vars="hosts=own"
+	ansible-playbook xonsh.yml --ask-vault-pass --extra-vars="hosts=own"
 
 all: x11 tsm own
 
