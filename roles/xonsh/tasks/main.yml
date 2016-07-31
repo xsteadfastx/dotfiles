@@ -70,9 +70,9 @@
     - '[ -f /usr/bin/xonsh ] && exec /usr/bin/xonsh'
   when: python3_compatible
 
-- name: add lines to .bash_profile
+- name: add lines to .bashrc
   lineinfile:
-    dest=~/.bash_profile
+    dest=~/.bashrc
     state=present
     create=yes
     line={{ item }}
@@ -80,15 +80,4 @@
     - '# activate xonsh'
     - '[ -f /usr/local/bin/xonsh ] && exec /usr/local/bin/xonsh -l'
     - '[ -f /usr/bin/xonsh ] && exec /usr/bin/xonsh -l'
-  when: python3_compatible
-
-- name: source bash_profile in bashrc
-  lineinfile:
-    dest=~/.bashrc
-    state=present
-    create=yes
-    line={{ item }}
-  with_items:
-    - '# source bash_profile for ssh and xonsh and stuff'
-    - '[ -f ~/.bash_profile ] && . ~/.bash_profile'
   when: python3_compatible
