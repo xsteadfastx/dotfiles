@@ -60,13 +60,35 @@
     - { 'src': 'xonshrc', 'dest': '~/.xonshrc' }
   when: python3_compatible
 
-- name: add lines to .profile
+- name: remove lines from .profile
   lineinfile:
     dest=~/.profile
-    state=present
-    create=yes
+    state=absent
     line={{ item }}
   with_items:
     - '[ -f /usr/local/bin/xonsh ] && exec /usr/local/bin/xonsh'
     - '[ -f /usr/bin/xonsh ] && exec /usr/bin/xonsh'
+  when: python3_compatible
+
+- name: add lines to .bash_profile
+  lineinfile:
+    dest=~/.bash_profile
+    state=present
+    create=yes
+    line={{ item }}
+  with_items:
+    - '# activate xonsh'
+    - '[ -f /usr/local/bin/xonsh ] && exec /usr/local/bin/xonsh -l'
+    - '[ -f /usr/bin/xonsh ] && exec /usr/bin/xonsh -l'
+  when: python3_compatible
+
+- name: source bash_profile in bashrc
+  lineinfile:
+    dest=~/.bashrc
+    state=present
+    create=yes
+    line={{ item }}
+  with_items:
+    - '# source bash_profile for ssh and xonsh and stuff'
+    - '[ -f ~/.bash_profile ] && . ~/.bash_profile'
   when: python3_compatible
