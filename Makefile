@@ -3,20 +3,20 @@
 help: ## Show this help
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 
-install: ## Install base on localhost
-	ansible-playbook -i hosts base.yml -c local --ask-sudo-pass --extra-vars="hosts=localhost"
+install: ## Install base on 127.0.0.1
+	ansible-playbook -i hosts base.yml -c local --ask-sudo-pass --extra-vars="hosts=127.0.0.1"
 
-x11: ## Install base and x11 on localhost
-	ansible-playbook -i hosts x11.yml -c local --ask-sudo-pass --extra-vars="hosts=localhost"
+x11: ## Install base and x11 on 127.0.0.1
+	ansible-playbook -i hosts x11.yml -c local --ask-sudo-pass --extra-vars="hosts=127.0.0.1"
 
 weechat: ## Install weechat
-	ansible-playbook -i hosts weechat.yml -c local --ask-sudo-pass --ask-vault-pass --extra-vars="hosts=localhost"
+	ansible-playbook -i hosts weechat.yml -c local --ask-sudo-pass --ask-vault-pass --extra-vars="hosts=127.0.0.1"
 
 xonsh: ## Install xonsh
-	ansible-playbook -i hosts xonsh.yml -c local --ask-sudo-pass --ask-vault-pass --extra-vars="hosts=localhost"
+	ansible-playbook -i hosts xonsh.yml -c local --ask-sudo-pass --ask-vault-pass --extra-vars="hosts=127.0.0.1"
 
 zsh: ## Install zsh
-	ansible-playbook -i hosts zsh.yml -c local --ask-sudo-pass --ask-vault-pass --extra-vars="hosts=localhost"
+	ansible-playbook -i hosts zsh.yml -c local --ask-sudo-pass --ask-vault-pass --extra-vars="hosts=127.0.0.1"
 
 tsm: ## Install base on tsm servers
 	ansible-playbook xonsh.yml --ask-vault-pass --extra-vars="hosts=tsm"
