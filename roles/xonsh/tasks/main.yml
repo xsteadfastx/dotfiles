@@ -70,6 +70,18 @@
     - '[ -f /usr/bin/xonsh ] && exec /usr/bin/xonsh'
   when: python3_compatible
 
+- name: source bashrc in profile
+  lineinfile:
+    dest=~/.bash_profile
+    state=present
+    create=yes
+    line={{ item }}
+  with_items:
+    - 'if [ -f ~/.bashrc ]; then'
+    - '  . ~/.bashrc'
+    - 'fi'
+  when: python3_compatible
+
 - name: add lines to .bashrc
   lineinfile:
     dest=~/.bashrc
