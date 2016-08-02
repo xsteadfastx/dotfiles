@@ -11,6 +11,7 @@ $SHELL_TYPE = 'best'
 $SUPPRESS_BRANCH_TIMEOUT_MESSAGE = True
 $VC_BRANCH_TIMEOUT = 5
 $XONSH_COLOR_STYLE = 'monokai'
+$MULTILINE_PROMPT = '`·.,¸,.·*¯`·.,¸,.·*¯'
 
 # OTHER ENVIRONMENT VARIABLES ############
 $EDITOR = 'vim'
