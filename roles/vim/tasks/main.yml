@@ -56,7 +56,7 @@
     repo={{ item.repo }}
     dest={{ item.dest }}
   with_items:
-    - {'repo': 'https://github.com/altercation/vim-colors-solarized.git', 'dest': '~/.vim/plugged/vim-colors-solarized'}
+    - {'repo': 'https://github.com/crusoexia/vim-monokai.git', 'dest': '~/.vim/plugged/vim-monokai'}
 
 - name: install plugins
   command: vim +PlugInstall +qall
