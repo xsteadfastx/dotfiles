@@ -1,8 +1,7 @@
 !! source: https://github.com/spazzpp2/dotfiles/blob/29819a5ac5e451bfa39bc324378aa508ef75cae8/Molokai.xrdb
 
 ! Molokai theme
-!URxvt*background: #101010
-URxvt*background: #272822
+URxvt*background: #101010
 URxvt*foreground: #d0d0d0
 URxvt*color0: #101010
 URxvt*color1: #960050

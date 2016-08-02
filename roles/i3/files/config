@@ -181,7 +181,7 @@ bar {
 }
 
 # OWN STUFF
-exec --no-startup-id xsetroot -solid "#272822"
+exec --no-startup-id xsetroot -solid "#101010"
 #exec --no-startup-id feh --no-xinerama --bg-tile ~/.i3/wallpaper.png
 exec --no-startup-id nm-applet &
 exec --no-startup-id volumeicon &
@@ -190,7 +190,7 @@ exec --no-startup-id owncloud &
 #exec --no-startup-id seafile-applet &
 #exec --no-startup-id kupfer &
 exec --no-startup-id xfce4-power-manager &
-bindsym Control+mod1+l exec i3lock -c "#272822"
+bindsym Control+mod1+l exec i3lock -c "#101010"
 exec xautolock -time 10 -locker 'i3lock -c "#586e75"' &
 
 # JOSM (found class with xprop)
