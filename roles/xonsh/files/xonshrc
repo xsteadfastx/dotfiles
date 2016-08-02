@@ -4,6 +4,26 @@ import shutil
 from xonsh.environ import git_dirty_working_directory
 
 
+# PROMPT #################################
+def _prompt():
+    prompt = []
+    prompt.append('{env_name:{} }')
+
+    if 'SSH_CONNECTION' in os.environ:
+        prompt.append('{GREEN}{user}@{INTENSE_WHITE}{hostname} ')
+
+    prompt.append('{WHITE}{short_cwd}{branch_color}{curr_branch: {}}{NO_COLOR} ')
+    prompt.append('{BOLD_GREEN}{prompt_end}{NO_COLOR} ')
+
+    return ''.join(prompt)
+
+
+# GIT ####################################
+$FORMATTER_DICT['branch_color'] = lambda: ('{BOLD_INTENSE_RED}'
+                                           if git_dirty_working_directory(include_untracked=True)
+                                           else '{BOLD_INTENSE_GREEN}')
+
+
 # XONSH ENVIRONMENT VARIABLES ############
 $BASH_COMPLETIONS = ['/etc/bash_completion.d', '/usr/share/bash-completion/completions']
 $CASE_SENSITIVE_COMPLETIONS = False
@@ -12,9 +32,12 @@ $SUPPRESS_BRANCH_TIMEOUT_MESSAGE = True
 $VC_BRANCH_TIMEOUT = 5
 $XONSH_COLOR_STYLE = 'monokai'
 $MULTILINE_PROMPT = '`·.,¸,.·*¯`·.,¸,.·*¯'
+$PROMPT = _prompt
+
 
 # OTHER ENVIRONMENT VARIABLES ############
 $EDITOR = 'vim'
+
 
 # ALIASES ################################
 aliases['exec'] = aliases['xexec']
@@ -34,10 +57,6 @@ def _alias_mosh(args, stdin=None):
 
 aliases['mosh'] = _alias_mosh
 
-# GIT ####################################
-$FORMATTER_DICT['branch_color'] = lambda: ('{BOLD_INTENSE_RED}'
-                                           if git_dirty_working_directory(include_untracked=True)
-                                           else '{BOLD_INTENSE_GREEN}')
 
 # PATH ###################################
 $PATH.extend(
@@ -47,6 +66,7 @@ $PATH.extend(
         $HOME + '/node_modules_global/bin'
     ]
 )
+
 
 # XONTRIB ################################
 xontrib autoxsh vox vox_tabcomplete
