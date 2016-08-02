@@ -26,8 +26,9 @@
     state=directory
   with_items:
     - ~/.vim
-    - ~/.vim/plugged
     - ~/.vim/autoload
+    - ~/.vim/colors
+    - ~/.vim/plugged
     - ~/.vim/spell
 
 - name: link files
@@ -38,25 +39,15 @@
   with_items:
     - {'src': 'vimrc', 'dest': '~/.vimrc'}
 
-- name: get spell files
+- name: get some files
   get_url:
     url={{ item.src }}
     dest={{ item.dest }}
   with_items:
-    - {'src': 'http://ftp.vim.org/pub/vim/runtime/spell/en.utf-8.spl', 'dest': '~/.vim/spell/en.utf-8.spl'}
     - {'src': 'http://ftp.vim.org/pub/vim/runtime/spell/de.utf-8.spl', 'dest': '~/.vim/spell/de.utf-8.spl'}
-
-- name: get vim-plug
-  get_url:
-    url=https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    dest=~/.vim/autoload/plug.vim
-
-- name: clone some plugins
-  git:
-    repo={{ item.repo }}
-    dest={{ item.dest }}
-  with_items:
-    - {'repo': 'https://github.com/crusoexia/vim-monokai.git', 'dest': '~/.vim/plugged/vim-monokai'}
+    - {'src': 'http://ftp.vim.org/pub/vim/runtime/spell/en.utf-8.spl', 'dest': '~/.vim/spell/en.utf-8.spl'}
+    - {'src': 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim', 'dest': '~/.vim/autoload/plug.vim'}
+    - {'src': 'https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim', 'dest': '~/.vim/colors/molokai.vim'}
 
 - name: install plugins
   command: vim +PlugInstall +qall

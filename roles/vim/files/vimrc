@@ -29,7 +29,6 @@ Plug 'Konfekt/FastFold'
 Plug 'Rykka/riv.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'alfredodeza/pytest.vim', { 'for': 'python' }
-Plug 'crusoexia/vim-monokai'
 Plug 'blindFS/vim-taskwarrior', { 'on': 'TW' }
 Plug 'cohama/lexima.vim'
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
@@ -66,7 +65,8 @@ syntax on
 "autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
 set background=dark
-colorscheme monokai
+set t_Co=256
+colorscheme molokai
 "hi Normal ctermbg=none " transparent background
 let python_highlight_all=1
 
