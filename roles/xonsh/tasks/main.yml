@@ -32,8 +32,6 @@
   shell: python3 --version 2>&1
   register: python3_version
 
-- debug: var=python3_version
-
 - set_fact:
     python3_compatible: "{% if '3.4' in python3_version.stdout or '3.5' in python3_version.stdout %}yes{% else %}no{% endif %}"
 

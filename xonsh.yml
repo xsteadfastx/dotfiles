@@ -1,5 +1,5 @@
 ---
-#- include: base.yml
+- include: base.yml
 
 - hosts: "{{ hosts }}"
   roles:
