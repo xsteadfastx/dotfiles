@@ -41,6 +41,7 @@ URxvt*color15: #d0d0d0
 *xterm*color15: #d0d0d0
 
 ! My URXVT Stuff
+! reload with xrdb ~/.Xresources
 URxvt.saveLines: 1000
 URxvt.scrollBar: false
 URxvt.secondaryScroll: true
@@ -51,6 +52,7 @@ URxvt.matcher.button: 1
 !URxvt.perl-ext-common: matcher,readline
 URxvt.perl-ext-common: default,matcher
 URxvt*urgentOnBell: true
+! check font name with fc-list
 URxvt*font: xft:RobotoMono:pixelsize=12,style=regular
 URxvt*boldItalicFont: xft:RobotoMono:pixelsize=12,style=regular
 Xft.autohint: 0
