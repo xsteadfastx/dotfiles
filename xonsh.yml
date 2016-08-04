@@ -1,6 +1,0 @@
----
-- include: base.yml
-
-- hosts: "{{ hosts }}"
-  roles:
-    - xonsh

@@ -1,5 +1,0 @@
----
-- hosts: "{{ hosts }}"
-  roles:
-    - vim
-    - nvim
