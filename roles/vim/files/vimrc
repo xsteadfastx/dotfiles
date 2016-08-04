@@ -30,9 +30,11 @@ Plug 'Rykka/riv.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'alfredodeza/pytest.vim', { 'for': 'python' }
 Plug 'blindFS/vim-taskwarrior', { 'on': 'TW' }
+Plug 'chrisbra/Colorizer'
 Plug 'cohama/lexima.vim'
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
+Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'ervandew/supertab'
 Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
 Plug 'junegunn/goyo.vim'
@@ -40,7 +42,6 @@ Plug 'mattn/emmet-vim', { 'for': 'html' }
 Plug 'mitsuhiko/vim-jinja', { 'for': 'html' }
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'reedes/vim-pencil'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/syntastic'
@@ -136,6 +137,7 @@ augroup end
 augroup css
     autocmd!
     au FileType css setl tabstop=4 expandtab shiftwidth=4 softtabstop=4
+                \ | ColorHighlight
 augroup end
 
 
