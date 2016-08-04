@@ -10,8 +10,10 @@
   become: yes
   with_items:
     - bash
-    - "{{ python3_package_name }}"
+    - grep
+    - sed
     - "{{ pip3_package_name }}"
+    - "{{ python3_package_name }}"
 
 - name: set bash as default shell
   user:
@@ -26,7 +28,7 @@
     regexp='(^{{ ansible_user_id }}:.+:.+:.+:.+:.+:).+$'
     replace='\1/bin/bash'
   become: yes
-  when: ansible_os_family == 'Alpine' and ansible_user_shell != '/bin/bash'
+  when: ansible_os_family == 'Alpine'
 
 - name: get installed python3 version
   shell: python3 --version 2>&1
@@ -60,34 +62,41 @@
     - { 'src': 'xonshrc', 'dest': '~/.xonshrc' }
   when: python3_compatible
 
-- name: remove lines from .profile
-  lineinfile:
-    dest=~/.profile
-    state=absent
-    line={{ item }}
-  with_items:
-    - '[ -f /usr/local/bin/xonsh ] && exec /usr/local/bin/xonsh'
-    - '[ -f /usr/bin/xonsh ] && exec /usr/bin/xonsh'
+- name: set xonsh as default shell
+  user:
+    name={{ ansible_env.USER }}
+    shell=/usr/local/bin/xonsh
+  become: yes
+  when: (ansible_os_family == 'Debian') and (python3_compatible)
+
+- name: set xonsh as default shell
+  replace:
+    dest=/etc/passwd
+    regexp='(^{{ ansible_user_id }}:.+:.+:.+:.+:.+:).+$'
+    replace='\1/usr/bin/xonsh'
+  become: yes
+  when: (ansible_os_family == 'Alpine') and (python3_compatible)
+
+- name: get passwd body
+  shell: cat /etc/passwd | grep {{ ansible_user_id }} | sed "s/.*:\(.*:.*:.*:.*:.*\):.*/\1/"
+  register: passwd_body
   when: python3_compatible
 
-- name: source bashrc in profile
+- name: create passwd backup alias
   lineinfile:
-    dest=~/.bash_profile
+    dest=/etc/passwd
+    line='{{ ansible_user_id }}bash:{{ passwd_body.stdout_lines[0] }}:/bin/bash'
+    insertafter='^{{ ansible_user_id }}'
     state=present
-    create=yes
-    line={{ item }}
-  with_items:
-    - 'if [ -f ~/.bashrc ]; then'
-    - '  . ~/.bashrc'
-    - 'fi'
-  when: python3_compatible
+    backup=yes
+  become: yes
+  when: (python3_compatible) and ('bash' not in ansible_user_id)
 
-- name: add lines to .bashrc
+- name: clean bashrc
   lineinfile:
     dest=~/.bashrc
-    state=present
-    create=yes
     line={{ item }}
+    state=absent
   with_items:
     - '# activate xonsh'
     - '[ -f /usr/local/bin/xonsh ] && exec /usr/local/bin/xonsh -l'
