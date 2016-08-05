@@ -10,10 +10,8 @@
   become: yes
   with_items:
     - bash
-    - grep
-    - sed
-    - "{{ pip3_package_name }}"
     - "{{ python3_package_name }}"
+    - "{{ pip3_package_name }}"
 
 - name: set bash as default shell
   user:
@@ -28,7 +26,7 @@
     regexp='(^{{ ansible_user_id }}:.+:.+:.+:.+:.+:).+$'
     replace='\1/bin/bash'
   become: yes
-  when: ansible_os_family == 'Alpine'
+  when: ansible_os_family == 'Alpine' and ansible_user_shell != '/bin/bash'
 
 - name: get installed python3 version
   shell: python3 --version 2>&1
@@ -62,41 +60,34 @@
     - { 'src': 'xonshrc', 'dest': '~/.xonshrc' }
   when: python3_compatible
 
-- name: set xonsh as default shell
-  user:
-    name={{ ansible_env.USER }}
-    shell=/usr/local/bin/xonsh
-  become: yes
-  when: (ansible_os_family == 'Debian') and (python3_compatible)
-
-- name: set xonsh as default shell
-  replace:
-    dest=/etc/passwd
-    regexp='(^{{ ansible_user_id }}:.+:.+:.+:.+:.+:).+$'
-    replace='\1/usr/bin/xonsh'
-  become: yes
-  when: (ansible_os_family == 'Alpine') and (python3_compatible)
-
-- name: get passwd body
-  shell: cat /etc/passwd | grep {{ ansible_user_id }} | sed "s/.*:\(.*:.*:.*:.*:.*\):.*/\1/"
-  register: passwd_body
+- name: remove lines from .profile
+  lineinfile:
+    dest=~/.profile
+    state=absent
+    line={{ item }}
+  with_items:
+    - '[ -f /usr/local/bin/xonsh ] && exec /usr/local/bin/xonsh'
+    - '[ -f /usr/bin/xonsh ] && exec /usr/bin/xonsh'
   when: python3_compatible
 
-- name: create passwd backup alias
+- name: source bashrc in profile
   lineinfile:
-    dest=/etc/passwd
-    line='{{ ansible_user_id }}bash:{{ passwd_body.stdout_lines[0] }}:/bin/bash'
-    insertafter='^{{ ansible_user_id }}'
+    dest=~/.bash_profile
     state=present
-    backup=yes
-  become: yes
-  when: (python3_compatible) and ('bash' not in ansible_user_id)
+    create=yes
+    line={{ item }}
+  with_items:
+    - 'if [ -f ~/.bashrc ]; then'
+    - '  . ~/.bashrc'
+    - 'fi'
+  when: python3_compatible
 
-- name: clean bashrc
+- name: add lines to .bashrc
   lineinfile:
     dest=~/.bashrc
+    state=present
+    create=yes
     line={{ item }}
-    state=absent
   with_items:
     - '# activate xonsh'
     - '[ -f /usr/local/bin/xonsh ] && exec /usr/local/bin/xonsh -l'
