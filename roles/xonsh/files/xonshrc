@@ -13,7 +13,7 @@ def _prompt():
     if 'SSH_CONNECTION' in os.environ:
         prompt.append('{GREEN}{user}@{INTENSE_WHITE}{hostname} ')
 
-    prompt.append('{WHITE}{short_cwd}{branch_color}{curr_branch: {}}{NO_COLOR} ')
+    prompt.append('{GREEN}{short_cwd}{branch_color}{curr_branch: {}}{NO_COLOR} ')
     prompt.append('{BOLD_GREEN}{prompt_end}{NO_COLOR} ')
 
     return ''.join(prompt)
