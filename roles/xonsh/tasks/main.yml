@@ -44,6 +44,7 @@
     name={{ ansible_env.USER }}
     shell=/bin/bash
   become: yes
+  when: ansible_os_family != 'Alpine'
 
 - name: set bash as default shell
   replace:
