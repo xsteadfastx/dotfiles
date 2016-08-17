@@ -1,4 +1,2 @@
 ---
 python3_package_name: python3
-pip3_package_name: py-pip
-xonsh_location: /usr/bin/xonsh

@@ -3,6 +3,14 @@
   with_first_found:
     - "../vars/{{ ansible_os_family }}.yml"
 
+- name: add deadsnakes ppa
+  apt_repository:
+    repo='ppa:fkrull/deadsnakes'
+    state=present
+  become: yes
+  when:
+    ansible_distribution == 'Ubuntu'
+
 - name: install deps
   package:
     name={{ item }}
@@ -11,14 +19,31 @@
   with_items:
     - bash
     - "{{ python3_package_name }}"
-    - "{{ pip3_package_name }}"
+
+- stat: path=~/.local/bin/pip
+  register: pip
+
+- name: download pip
+  get_url:
+    url=https://bootstrap.pypa.io/get-pip.py
+    dest=/tmp
+  when: pip.stat.exists == False
+
+- name: install pip
+  command: 'python3.5 /tmp/get-pip.py --user --force-reinstall'
+  when: pip.stat.exists == False
+
+- name: delete get-pip.py
+  file:
+    state=absent
+    path=/tmp/get-pip.py
+  when: pip.stat.exists == False
 
 - name: set bash as default shell
   user:
     name={{ ansible_env.USER }}
     shell=/bin/bash
   become: yes
-  when: ansible_os_family == 'Debian'
 
 - name: set bash as default shell
   replace:
@@ -28,19 +53,20 @@
   become: yes
   when: ansible_os_family == 'Alpine' and ansible_user_shell != '/bin/bash'
 
-- name: get installed python3 version
-  shell: python3 --version 2>&1
-  register: python3_version
-
-- set_fact:
-    python3_compatible: "{% if '3.4' in python3_version.stdout or '3.5' in python3_version.stdout %}yes{% else %}no{% endif %}"
+- name: set bash path
+  lineinfile:
+    dest=~/.profile
+    line='export PATH=$PATH:$HOME/.local/bin'
+    state=present
+    backup=yes
+    create=yes
 
 - name: install python packages
   pip:
     name={{ item }}
-    executable=pip3
+    executable=~/.local/bin/pip
+    extra_args='--user'
     state=latest
-  become: yes
   with_items:
     - prompt_toolkit
     - pygments
@@ -49,7 +75,6 @@
     - xonsh-autoxsh
     - xonsh-docker_tabcomplete
     - xonsh-vox_tabcomplete
-  when: python3_compatible
 
 - name: link files
   file:
@@ -58,4 +83,3 @@
     state=link
   with_items:
     - { 'src': 'xonshrc', 'dest': '~/.xonshrc' }
-  when: python3_compatible
