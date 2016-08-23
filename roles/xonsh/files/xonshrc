@@ -1,4 +1,5 @@
 import os
+import re
 import shutil
 
 from xonsh.environ import git_dirty_working_directory
@@ -40,6 +41,7 @@ $VC_BRANCH_TIMEOUT = 5
 # OTHER ENVIRONMENT VARIABLES ############
 
 $EDITOR = 'vim'
+$LC_UID = re.findall(r'\d{4}', $(id).split(' ')[0])[0]
 
 
 # ALIASES ################################
