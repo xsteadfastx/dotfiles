@@ -19,6 +19,7 @@
   with_items:
     - ~/.vimrc
     - ~/.vim
+  become: yes
 
 - name: needed dirs
   file:
