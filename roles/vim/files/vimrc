@@ -16,6 +16,7 @@ filetype plugin indent on
 " ---------------------------------------
 
 call plug#begin('~/.vim/plugged')
+"Plug 'Rykka/riv.vim'
 "Plug 'Shougo/neocomplete'
 "Plug 'SirVer/ultisnips'
 "Plug 'godlygeek/tabular'
@@ -26,7 +27,7 @@ call plug#begin('~/.vim/plugged')
 "Plug 'vim-scripts/indentpython.vim'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'Konfekt/FastFold'
-Plug 'Rykka/riv.vim'
+Plug 'MicahElliott/Rocannon', { 'for': 'yaml' }
 Plug 'airblade/vim-gitgutter'
 Plug 'alfredodeza/pytest.vim', { 'for': 'python' }
 Plug 'blindFS/vim-taskwarrior', { 'on': 'TW' }
@@ -37,10 +38,13 @@ Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
 Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'ervandew/supertab'
 Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
+Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
 Plug 'junegunn/goyo.vim'
 Plug 'mattn/emmet-vim', { 'for': 'html' }
 Plug 'mitsuhiko/vim-jinja', { 'for': 'html' }
+Plug 'nathanaelkane/vim-indent-guides', { 'for': 'javascript' }
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'reedes/vim-pencil'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
