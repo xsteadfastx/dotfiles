@@ -140,8 +140,18 @@ augroup end
 
 augroup css
     autocmd!
-    au FileType css setl tabstop=4 expandtab shiftwidth=4 softtabstop=4
+    au FileType css setl tabstop=2 expandtab shiftwidth=2 softtabstop=2
                 \ | ColorHighlight
+augroup end
+
+
+" ---------------------------------------
+" JAVASCRIPT
+" ---------------------------------------
+
+augroup javascript
+    autocmd!
+    au FileType javascript setl tabstop=2 expandtab shiftwidth=2 softtabstop=2
 augroup end
 
 
