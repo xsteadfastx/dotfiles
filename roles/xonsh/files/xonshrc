@@ -2,7 +2,7 @@ import os
 import re
 import shutil
 
-from xonsh.environ import git_dirty_working_directory
+from xonsh.prompt.vc_branch import git_dirty_working_directory
 
 
 # PROMPT #################################
