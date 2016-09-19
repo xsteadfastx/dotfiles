@@ -140,6 +140,7 @@ augroup end
 
 augroup css
     autocmd!
+    au BufRead,BufNewFile *scss set filetype=css
     au FileType css setl tabstop=2 expandtab shiftwidth=2 softtabstop=2
                 \ | ColorHighlight
 augroup end
