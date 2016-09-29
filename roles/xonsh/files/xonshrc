@@ -21,7 +21,7 @@ def _prompt():
 
 
 $FORMATTER_DICT['branch_color'] = lambda: ('{BOLD_INTENSE_RED}'
-                                           if git_dirty_working_directory(include_untracked=True)
+                                           if git_dirty_working_directory()
                                            else '{BOLD_INTENSE_GREEN}')
 
 $PROMPT = _prompt
