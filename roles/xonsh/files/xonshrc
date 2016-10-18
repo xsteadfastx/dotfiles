@@ -89,6 +89,3 @@ xontrib autoxsh vox vox_tabcomplete
 
 if shutil.which('apt-get'):
     xontrib apt_tabcomplete
-
-if shutil.which('docker'):
-    xontrib docker_tabcomplete
