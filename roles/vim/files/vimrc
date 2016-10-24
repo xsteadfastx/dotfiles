@@ -231,3 +231,10 @@ let g:syntastic_loc_list_height = 5
 " ---------------------------------------
 
 let g:SimpylFold_docstring_preview=1
+
+
+" ---------------------------------------
+" GIST
+" ---------------------------------------
+
+let g:gist_post_private = 1
