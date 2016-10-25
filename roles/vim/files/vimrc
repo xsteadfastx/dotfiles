@@ -238,3 +238,13 @@ let g:SimpylFold_docstring_preview=1
 " ---------------------------------------
 
 let g:gist_post_private = 1
+
+
+" ---------------------------------------
+" JSON
+" ---------------------------------------
+"
+augroup json
+    autocmd!
+    au FileType json setl tabstop=2 expandtab shiftwidth=2 softtabstop=2
+augroup end
