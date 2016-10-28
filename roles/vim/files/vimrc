@@ -248,3 +248,13 @@ augroup json
     autocmd!
     au FileType json setl tabstop=2 expandtab shiftwidth=2 softtabstop=2
 augroup end
+
+
+" ---------------------------------------
+" LEKTOR
+" ---------------------------------------
+
+augroup lektor
+    autocmd!
+    au BufRead,BufNewFile *.lr set filetype=markdown
+augroup end
