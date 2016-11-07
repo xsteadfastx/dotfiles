@@ -74,13 +74,11 @@ aliases['ssh'] = _alias_ssh
 
 # PATH ###################################
 
-$PATH.extend(
-    [
-        $HOME + '/.local/bin',
-        $HOME + '/miniconda3/bin',
-        $HOME + '/node_modules_global/bin'
-    ]
-)
+$PATH[0:0] = [
+    $HOME + '/.local/bin',
+    $HOME + '/miniconda3/bin',
+    $HOME + '/node_modules_global/bin'
+]
 
 
 # XONTRIB ################################
