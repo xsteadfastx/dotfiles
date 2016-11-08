@@ -1,0 +1,8 @@
+---
+- name: link files
+  file:
+    src=/lib/terminfo
+    dest=~/.terminfo
+    state=link
+  when:
+    ansible_distribution == 'Ubuntu'
