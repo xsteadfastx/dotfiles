@@ -41,7 +41,7 @@ $VC_BRANCH_TIMEOUT = 5
 # OTHER ENVIRONMENT VARIABLES ############
 
 $EDITOR = 'vim'
-$LC_UID = re.findall(r'\d{4}', $(id).split(' ')[0])[0]
+$LC_UID = re.findall(r'\d{1,4}', $(id).split(' ')[0])[0]
 
 
 # ALIASES ################################
@@ -54,9 +54,9 @@ def _alias_mosh(args, stdin=None):
     """A function to use as alias to get mosh running.
 
     There is a strange problem with mosh and xonsh. I have to set $SHELL to
-    /bin/bash before running it. It should work with this little hack.
+    /bin/dash before running it. It should work with this little hack.
     """
-    os.environ['SHELL'] = '/bin/bash'
+    os.environ['SHELL'] = '/bin/dash'
     args.insert(0, 'mosh')
     cmd = ' '.join(args)
     os.system(cmd)

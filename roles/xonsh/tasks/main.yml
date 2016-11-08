@@ -11,14 +11,29 @@
   when:
     ansible_distribution == 'Ubuntu'
 
+- name: add testing repo
+  lineinfile:
+    dest=/etc/apk/repositories
+    line='@testing http://nl.alpinelinux.org/alpine/edge/testing'
+    state=present
+  when:
+    ansible_distribution == 'Alpine'
+
+- name: update cache
+  apk:
+    update_cache=yes
+  when:
+    ansible_distribution == 'Alpine'
+
 - name: install deps
   package:
     name={{ item }}
     state=present
   become: yes
   with_items:
+    - '{{ python3_package_name }}'
+    - '{{ shell_package_name }}'
     - bash
-    - "{{ python3_package_name }}"
 
 - stat: path=~/.local/bin/pip
   register: pip
@@ -39,22 +54,22 @@
     path=/tmp/get-pip.py
   when: pip.stat.exists == False
 
-- name: set bash as default shell
+- name: set dash as default shell
   user:
     name={{ ansible_env.USER }}
-    shell=/bin/bash
+    shell=/bin/dash
   become: yes
   when: ansible_os_family != 'Alpine'
 
-- name: set bash as default shell
+- name: set dash as default shell
   replace:
     dest=/etc/passwd
     regexp='(^{{ ansible_user_id }}:.+:.+:.+:.+:.+:).+$'
-    replace='\1/bin/bash'
+    replace='\1/bin/dash'
   become: yes
-  when: ansible_os_family == 'Alpine' and ansible_user_shell != '/bin/bash'
+  when: ansible_os_family == 'Alpine' and ansible_user_shell != '/bin/dash'
 
-- name: set bash path
+- name: set path
   lineinfile:
     dest=~/.profile
     line='export PATH=$PATH:$HOME/.local/bin'
