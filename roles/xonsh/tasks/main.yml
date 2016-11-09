@@ -11,22 +11,6 @@
   when:
     ansible_distribution == 'Ubuntu'
 
-- name: add testing repo
-  lineinfile:
-    dest=/etc/apk/repositories
-    line='@testing http://nl.alpinelinux.org/alpine/edge/testing'
-    state=present
-  become: yes
-  when:
-    ansible_distribution == 'Alpine'
-
-- name: update cache
-  apk:
-    update_cache=yes
-  become: yes
-  when:
-    ansible_distribution == 'Alpine'
-
 - name: install deps
   package:
     name={{ item }}
@@ -62,14 +46,6 @@
     shell=/bin/dash
   become: yes
   when: ansible_os_family != 'Alpine'
-
-- name: set dash as default shell
-  replace:
-    dest=/etc/passwd
-    regexp='(^{{ ansible_user_id }}:.+:.+:.+:.+:.+:).+$'
-    replace='\1/bin/dash'
-  become: yes
-  when: ansible_os_family == 'Alpine' and ansible_user_shell != '/bin/dash'
 
 - name: set path
   lineinfile:
