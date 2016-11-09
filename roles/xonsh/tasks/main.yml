@@ -16,12 +16,14 @@
     dest=/etc/apk/repositories
     line='@testing http://nl.alpinelinux.org/alpine/edge/testing'
     state=present
+  become: yes
   when:
     ansible_distribution == 'Alpine'
 
 - name: update cache
   apk:
     update_cache=yes
+  become: yes
   when:
     ansible_distribution == 'Alpine'
 
