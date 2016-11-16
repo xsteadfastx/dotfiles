@@ -199,3 +199,6 @@ exec xautolock -time 10 -locker 'i3lock -c "#101010"' &
 #floating_maximum_size 500 x 500
 for_window [class="org-openstreetmap-josm-Main"] floating disable
 for_window [class="org-openstreetmap-josm-Main"] layout splitv
+
+# border size
+new_window pixel 5
