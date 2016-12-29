@@ -17,8 +17,8 @@
     path={{ item }}
     state=absent
   with_items:
-    - ~/.vimrc
-    - ~/.vim
+    - /home/{{ ansible_user_id }}/.vimrc
+    - /home/{{ ansible_user_id }}/.vim
   become: yes
 
 - name: needed dirs
