@@ -5,34 +5,10 @@
     state=present
   become: yes
 
-- name: remove prezto dir for fresh clone
-  file:
-    path=~/.zprezto
-    state=absent
-
-- name: clone prezto
+- name: clone antigen
   git:
-    repo=https://github.com/sorin-ionescu/prezto.git
-    dest=~/.zprezto
-
-- name: link prezto files
-  file:
-    src={{ item.src }}
-    dest={{ item.dest }}
-    state=link
-  with_items:
-    - { 'src': '~/.zprezto/runcoms/zlogin', 'dest': '~/.zlogin' }
-    - { 'src': '~/.zprezto/runcoms/zlogout', 'dest': '~/.zlogout' }
-    - { 'src': '~/.zprezto/runcoms/zshenv', 'dest': '~/.zshenv' }
-
-- name: remove files
-  file:
-    path={{ item }}
-    state=absent
-  with_items:
-    - ~/.zshrc
-    - ~/.zpreztorc
-    - ~/.zprofile
+    repo=https://github.com/zsh-users/antigen.git
+    dest=~/.antigen
 
 - name: link files
   file:
@@ -41,8 +17,6 @@
     state=link
   with_items:
     - {'src': 'zshrc', 'dest': '~/.zshrc'}
-    - {'src': 'zpreztorc', 'dest': '~/.zpreztorc'}
-    - {'src': 'zprofile', 'dest': '~/.zprofile'}
 
 - name: set shell
   user:
