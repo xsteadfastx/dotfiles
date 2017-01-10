@@ -22,4 +22,4 @@ antigen theme ys
 antigen apply
 
 ### path
-export PATH="~/.local/bin:$PATH"
+export PATH=~/.local/bin:$PATH
