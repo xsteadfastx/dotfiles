@@ -1,3 +1,4 @@
+### antigen
 source ~/.antigen/antigen.zsh
 
 antigen use oh-my-zsh
@@ -12,9 +13,13 @@ antigen bundles <<EOBUNDLES
     python
     sudo
     zsh-users/zsh-autosuggestions
+    zsh-users/zsh-completions
     zsh-users/zsh-syntax-highlighting
 EOBUNDLES
 
 antigen theme ys
 
 antigen apply
+
+### path
+export PATH="~/.local/bin:$PATH"
