@@ -21,5 +21,7 @@ antigen theme ys
 
 antigen apply
 
-### path
-export PATH=~/.local/bin:$PATH
+### export stuff
+export EDITOR=/usr/bin/vim
+export PYENV_ROOT=$HOME/.pyenv
+export PATH=~/.pyenv/shims:$PYENV_ROOT/bin:~/.local/bin:$PATH
