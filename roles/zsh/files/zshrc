@@ -25,3 +25,6 @@ antigen apply
 export EDITOR=/usr/bin/vim
 export PYENV_ROOT=$HOME/.pyenv
 export PATH=~/.pyenv/shims:$PYENV_ROOT/bin:~/.local/bin:$PATH
+
+### pyenv
+which pyenv >/dev/null && { eval "$(pyenv init -)" }
