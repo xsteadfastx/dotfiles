@@ -201,4 +201,5 @@ for_window [class="org-openstreetmap-josm-Main"] floating disable
 for_window [class="org-openstreetmap-josm-Main"] layout splitv
 
 # border
-new_window 1pixel
+new_window pixel 1
+new_float pixel 1
