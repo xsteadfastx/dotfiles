@@ -55,6 +55,7 @@ Plug 'scrooloose/syntastic'
 Plug 'tmhedberg/SimpylFold'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -114,6 +115,9 @@ vnoremap > >gv " better indentation
 
 nmap <silent><Leader>p <Esc>:Pytest project<CR>
 nmap <silent><Leader>f <Esc>:Pytest function<CR>
+
+" vim-repeat
+silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
 
 
 " ---------------------------------------
