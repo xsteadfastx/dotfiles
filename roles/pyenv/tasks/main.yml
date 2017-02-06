@@ -22,5 +22,8 @@
 
 - name: install pyenv
   git:
-    repo=https://github.com/yyuu/pyenv.git
-    dest=~/.pyenv
+    repo={{item.repo}}
+    dest={{item.dest}}
+  with_items:
+    - {'repo': 'https://github.com/yyuu/pyenv.git', 'dest': '~/.pyenv'}
+    - {'repo': 'https://github.com/yyuu/pyenv-virtualenv.git', 'dest': '~/.pyenv/plugins/pyenv-virtualenv'}

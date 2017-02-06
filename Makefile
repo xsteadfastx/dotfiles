@@ -16,10 +16,10 @@ weechat: ## Install weechat
 	ansible-playbook -i hosts weechat.yml -c local --ask-sudo-pass --ask-vault-pass --extra-vars="hosts=127.0.0.1"
 
 pyenv: ## Install pyenv
-	ansible-playbook -i hosts pyenv.yml -c local --ask-sudo-pass --ask-vault-pass --extra-vars="hosts=127.0.0.1"
+	ansible-playbook -i hosts pyenv.yml -c local --ask-sudo-pass --extra-vars="hosts=127.0.0.1"
 
 tsm: ## Install base on tsm servers
-	ansible-playbook shell.yml --ask-vault-pass --extra-vars="hosts=tsm"
+	ansible-playbook shell.yml --ask-vault-pass --extra-vars="hosts=tsm-server"
 
 own: ## Install base on own servers
 	ansible-playbook shell.yml --ask-vault-pass --extra-vars="hosts=own"
