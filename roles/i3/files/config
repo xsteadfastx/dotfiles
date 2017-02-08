@@ -164,7 +164,7 @@ client.unfocused        #002b36 #073642 #839496 #073642
 client.urgent           #002b36 #dc322f #fdf6e3 #002b36
 
 # OWN STUFF
-exec --no-startup-id xsetroot -solid "#101010"
+exec --no-startup-id xsetroot -solid "#002b36"
 #exec --no-startup-id feh --no-xinerama --bg-tile ~/.i3/wallpaper.png
 exec --no-startup-id nm-applet &
 exec --no-startup-id volumeicon &
