@@ -45,7 +45,7 @@ Plug 'mattn/emmet-vim', { 'for': 'html' }
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
 Plug 'mhinz/vim-grepper'
-Plug 'mitsuhiko/vim-jinja', { 'for': 'html' }
+Plug 'lepture/vim-jinja'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
