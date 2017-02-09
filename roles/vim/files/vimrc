@@ -72,13 +72,15 @@ set backspace=2
 set laststatus=2
 set foldenable
 syntax on
-"autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
 set background=dark
 set t_Co=256
 colorscheme solarized
 "hi Normal ctermbg=none " transparent background
 let python_highlight_all=1
+set listchars=trail:·,precedes:«,extends:»,nbsp:~,tab:▸\ 
+set list
 
 
 " ---------------------------------------
@@ -92,7 +94,7 @@ set expandtab
 set nosmarttab
 
 " automatically remove trail. whitespace at write
-au BufWritePre <buffer> StripWhitespace
+"au BufWritePre <buffer> StripWhitespace
 
 
 " ---------------------------------------

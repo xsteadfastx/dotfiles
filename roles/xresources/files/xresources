@@ -68,8 +68,9 @@ URxvt.matcher.button: 1
 URxvt.perl-ext-common: default,matcher
 URxvt*urgentOnBell: true
 ! check font name with fc-list
-URxvt*font: xft:RobotoMono:pixelsize=12,style=regular
-URxvt*boldItalicFont: xft:RobotoMono:pixelsize=12,style=regular
+URxvt*font: xft:Monoisome:pixelsize=12,style=regular
+URxvt*boldItalicFont: xft:Monoisome:pixelsize=12,style=regular
+URxvt.letterSpace: -2
 Xft.autohint: 0
 Xft.lcdfilter: lcddefault
 Xft.hintstyle: hintslight
