@@ -41,11 +41,11 @@ Plug 'ervandew/supertab'
 Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
 Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
 Plug 'junegunn/goyo.vim'
+Plug 'lepture/vim-jinja'
 Plug 'mattn/emmet-vim', { 'for': 'html' }
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
 Plug 'mhinz/vim-grepper'
-Plug 'lepture/vim-jinja'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
@@ -200,6 +200,7 @@ augroup pencil
     au BufRead,BufNewFile *.markdown,*.md set filetype=markdown
     au FileType markdown,mkd,rst call pencil#init()
                              \ | setl spell spelllang=de
+                             \ | setl thesaurus+=~/.vim/thesaurus/openthesaurus.txt
                              \ | setl tabstop=4 expandtab shiftwidth=4 softtabstop=4
 augroup end
 
