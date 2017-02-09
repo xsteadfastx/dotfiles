@@ -121,6 +121,9 @@ nmap <silent><Leader>f <Esc>:Pytest function<CR>
 " vim-repeat
 silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
 
+" force tab
+inoremap <S-Tab> <C-V><Tab>
+
 
 " ---------------------------------------
 " PYTHON
