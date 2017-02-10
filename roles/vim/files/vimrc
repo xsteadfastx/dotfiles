@@ -72,6 +72,7 @@ set backspace=2
 set laststatus=2
 set foldenable
 syntax on
+set synmaxcol=120
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
 set background=dark
