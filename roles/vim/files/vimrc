@@ -28,7 +28,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'Konfekt/FastFold'
 Plug 'MicahElliott/Rocannon', { 'for': 'yaml' }
-Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
 Plug 'alfredodeza/pytest.vim', { 'for': 'python' }
 Plug 'blindFS/vim-taskwarrior', { 'on': 'TW' }
@@ -38,6 +37,7 @@ Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
 Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'ervandew/supertab'
+Plug 'guns/xterm-color-table.vim'
 Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
 Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
 Plug 'junegunn/goyo.vim'
@@ -46,6 +46,7 @@ Plug 'mattn/emmet-vim', { 'for': 'html' }
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
 Plug 'mhinz/vim-grepper'
+Plug 'nathanaelkane/vim-indent-guides'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
@@ -254,9 +255,20 @@ let g:gist_post_private = 1
 
 
 " ---------------------------------------
+" VIM-INDENT-GUIDES
+" ---------------------------------------
+
+au VimEnter * :IndentGuidesEnable
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=8
+
+
+" ---------------------------------------
 " JSON
 " ---------------------------------------
 "
+
 augroup json
     autocmd!
     au FileType json setl tabstop=2 expandtab shiftwidth=2 softtabstop=2
