@@ -207,6 +207,7 @@ augroup pencil
                              \ | setl spell spelllang=de
                              \ | setl thesaurus+=~/.vim/thesaurus/openthesaurus.txt
                              \ | setl tabstop=4 expandtab shiftwidth=4 softtabstop=4
+                             \ | setl syntax=off
 augroup end
 
 
