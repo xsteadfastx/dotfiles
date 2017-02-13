@@ -179,7 +179,7 @@ exec --no-startup-id owncloud &
 #exec --no-startup-id seafile-applet &
 #exec --no-startup-id kupfer &
 exec --no-startup-id xfce4-power-manager &
-bindsym Control+mod1+l exec i3lock -c "#101010"
+bindsym Control+mod1+l exec i3lock -c "#002b36"
 exec xautolock -time 10 -locker 'i3lock -c "#101010"' &
 
 # JOSM (found class with xprop)
