@@ -47,9 +47,15 @@
     path={{ item }}
     state=absent
   with_items:
-    - ~/.i3/config
+    - ~/.i3
     - ~/.i3status.conf
-    - ~/.i3/wallpaper.png
+
+- name: needed dirs
+  file:
+    path={{ item }}
+    state=directory
+  with_items:
+    - ~/.i3
 
 - name: link files
   file:
@@ -58,5 +64,4 @@
     state=link
   with_items:
     - {'src': 'config', 'dest': '~/.i3/config'}
-    - {'src': 'i3status.conf', 'dest': '~/.i3status.conf'}
-    - {'src': 'wallpaper.png', 'dest': '~/.i3/wallpaper.png'}
+    - {'src': 'i3status.conf', 'dest': '~/.i3/i3status.conf'}

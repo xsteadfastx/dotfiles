@@ -3,5 +3,4 @@
   roles:
     - i3
     - screenlayout
-    - vimperator
     - xresources
