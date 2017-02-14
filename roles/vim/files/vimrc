@@ -259,9 +259,8 @@ let g:gist_post_private = 1
 " ---------------------------------------
 
 au VimEnter * :IndentGuidesEnable
-let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=8
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
 
 
 " ---------------------------------------
