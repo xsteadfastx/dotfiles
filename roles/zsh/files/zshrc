@@ -5,6 +5,7 @@ antigen use oh-my-zsh
 
 antigen bundles <<EOBUNDLES
     arialdomartini/oh-my-git
+    common-aliases
     command-not-found
     dircycle
     gitfast
