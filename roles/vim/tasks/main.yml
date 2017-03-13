@@ -1,3 +1,4 @@
+# vim:ft=ansible
 ---
 - include_vars: "{{ item }}"
   with_first_found:

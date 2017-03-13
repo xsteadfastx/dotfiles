@@ -1,3 +1,4 @@
+# vim:ft=ansible
 ---
 - name: add i3 repo
   apt_repository:

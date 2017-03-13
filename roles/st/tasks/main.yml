@@ -1,3 +1,5 @@
+# vim:ft=ansible
+---
 - name: install deps
   apt:
     name={{ item }}
@@ -52,7 +54,7 @@
     src: /tmp/st/st-0.7/config.def.h
     dest: /tmp/st/st-0.7/config.h
 
-- name: compile
+- name: compile st
   command: make
   args:
     chdir: /tmp/st/st-0.7
@@ -62,6 +64,11 @@
     src: /tmp/st/st-0.7/st
     dest: ~/.local/bin/st
     mode: 0775
+
+- name: compile terminfo
+  command: tic -sx st.info
+  args:
+    chdir: /tmp/st/st-0.7
 
 - name: remove tmp dir
   file:
