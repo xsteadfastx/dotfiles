@@ -1,0 +1,69 @@
+- name: install deps
+  apt:
+    name={{ item }}
+    state=latest
+  with_items:
+    - libx11-dev
+    - libxft-dev
+    - libxext-dev
+  become: yes
+
+- name: create dirs
+  file:
+    path={{ item }}
+    state=directory
+  with_items:
+    - /tmp/st
+    - ~/.local/bin
+
+- name: get st
+  unarchive:
+    src: 'http://dl.suckless.org/st/st-0.7.tar.gz'
+    dest: '/tmp/st'
+    remote_src: yes
+
+- name: get some files
+  get_url:
+    url: "{{ item.src }}"
+    dest: /tmp/st/st-0.7/{{ item.dest }}
+  with_items:
+    - { 'src': 'http://st.suckless.org/patches/st-no_bold_colors-20160727-308bfbf.diff', 'dest': 'no_bold_colors.diff' }
+    - { 'src': 'http://st.suckless.org/patches/st-solarized-dark-20160727-308bfbf.diff', 'dest': 'solarized.diff' }
+    - { 'src': 'http://st.suckless.org/patches/st-visualbell-20160727-308bfbf.diff', 'dest': 'visualbell.diff' }
+
+- name: patch st
+  patch:
+    src: /tmp/st/st-0.7/{{ item }}
+    basedir: /tmp/st/st-0.7
+    strip: 1
+  with_items:
+    - no_bold_colors.diff
+    - solarized.diff
+    - visualbell.diff
+
+- name: change font
+  replace:
+    dest: /tmp/st/st-0.7/config.def.h
+    regexp: '^(static char font\[\] = \").+(\";)$'
+    replace: '\1Fira Code:pixelsize=12:style=regular\2'
+
+- name: replace config
+  copy:
+    src: /tmp/st/st-0.7/config.def.h
+    dest: /tmp/st/st-0.7/config.h
+
+- name: compile
+  command: make
+  args:
+    chdir: /tmp/st/st-0.7
+
+- name: copy st
+  copy:
+    src: /tmp/st/st-0.7/st
+    dest: ~/.local/bin/st
+    mode: 0775
+
+- name: remove tmp dir
+  file:
+    path=/tmp/st
+    state=absent

@@ -3,4 +3,5 @@
   roles:
     - i3
     - screenlayout
+    - st
     - xresources
