@@ -1,0 +1,31 @@
+# vim:filetype=ansible
+---
+- name: install firefox
+  apt:
+    name=firefox
+  become: yes
+
+- name: download addons
+  get_url:
+    url: "{{ item.url }}"
+    dest: "{{ item.dest }}"
+  with_items:
+    - { 'url': 'https://addons.mozilla.org/firefox/downloads/latest/vimfx/addon-404785-latest.xpi', 'dest': '/tmp/vimfx.xpi' }
+    - { 'url': 'https://addons.mozilla.org/firefox/downloads/latest/microfox-for-firefox/addon-354-latest.xpi', 'dest': '/tmp/microfox.xpi' }
+    - { 'url': 'https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/addon-607454-latest.xpi', 'dest': '/tmp/ublock.xpi' }
+
+- name: install addons
+  command: firefox /tmp/{{ item }}
+  with_items:
+    - vimfx.xpi
+    - microfox.xpi
+    - ublock.xpi
+
+- name: remove downloaded addons
+  file:
+    path: /tmp/{{ item }}
+    state: absent
+  with_items:
+    - vimfx.xpi
+    - microfox.xpi
+    - ublock.xpi

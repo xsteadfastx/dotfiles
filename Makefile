@@ -18,6 +18,9 @@ weechat: ## Install weechat
 pyenv: ## Install pyenv
 	ansible-playbook -i hosts pyenv.yml -c local --ask-sudo-pass --extra-vars="hosts=127.0.0.1"
 
+firefox: ## Install firefox
+	ansible-playbook -i hosts firefox.yml -c local --ask-sudo-pass --extra-vars="hosts=127.0.0.1"
+
 tsm: ## Install base on tsm servers
 	ansible-playbook shell.yml --ask-vault-pass --ask-sudo-pass --extra-vars="hosts=tsm-server"
 
