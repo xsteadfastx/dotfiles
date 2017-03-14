@@ -3,7 +3,6 @@
   roles:
     - batcave
     - git
-    - terminfo
     - tmux
     - vim
     - zsh
