@@ -1,0 +1,18 @@
+# vim:ft=ansible
+---
+- name: uninstall owncloud
+  apt:
+    name=owncloud-client
+    state=absent
+  become: yes
+
+- name: add nextcloud ppa
+  apt_repository:
+    repo='ppa:nextcloud-devs/client'
+  become: yes
+
+- name: install nextcloud client
+  apt:
+    name=nextcloud-client
+    state=latest
+  become: yes

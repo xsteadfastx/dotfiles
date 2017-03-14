@@ -1,7 +1,9 @@
+# vim:filetype=ansible
 ---
 - hosts: "{{ hosts }}"
   roles:
     - i3
+    - nextcloud
     - screenlayout
     - st
     - xresources
