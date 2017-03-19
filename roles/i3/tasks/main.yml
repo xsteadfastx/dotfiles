@@ -25,6 +25,7 @@
     state=latest
   with_items:
     - i3
+    - i3status
     - feh
     - xautolock
     - rxvt-unicode-256color
