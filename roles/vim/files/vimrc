@@ -39,6 +39,7 @@ Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'ervandew/supertab'
 Plug 'guns/xterm-color-table.vim'
 Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
+Plug 'itchyny/lightline.vim'
 Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
 Plug 'junegunn/goyo.vim'
 Plug 'lepture/vim-jinja'
@@ -58,8 +59,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'vimwiki/vimwiki'
 call plug#end()
 
@@ -78,7 +77,7 @@ autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
 set background=dark
 set t_Co=256
-colorscheme badwolf
+colorscheme solarized
 "hi Normal ctermbg=none " transparent background
 let python_highlight_all=1
 set listchars=trail:·,precedes:«,extends:»,nbsp:~,tab:▸\ 
@@ -289,3 +288,10 @@ augroup end
 " ---------------------------------------
 
 let g:vimwiki_list = [{'path': '~/ownCloud/vimwiki/'}]
+
+
+" ---------------------------------------
+" LIGHTLINE
+" ---------------------------------------
+
+let g:lightline = {'colorscheme': 'solarized',}
