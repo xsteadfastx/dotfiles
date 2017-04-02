@@ -17,6 +17,7 @@
     - ~/.fonts/RobotoMono-Regular.ttf
     - ~/.fonts/Monoisome-Regular.ttf
     - ~/.fonts/FiraCode-Regular.ttf
+    - ~/.fonts/Hack-Regular.ttf
 
 - name: link files
   file:
@@ -26,7 +27,7 @@
   with_items:
     - {'src': 'xresources', 'dest': '~/.Xresources'}
     - {'src': 'xprofile', 'dest': '~/.xprofile'}
-    - {'src': 'FiraCode-Regular.ttf', 'dest': '~/.fonts/FiraCode-Regular.ttf'}
+    - {'src': 'Hack-Regular.ttf', 'dest': '~/.fonts/Hack-Regular.ttf'}
 
 - name: rebuild font cache
   command: fc-cache -r ~/.fonts

@@ -47,7 +47,7 @@
   replace:
     dest: /tmp/st/st-0.7/config.def.h
     regexp: '^(static char font\[\] = \").+(\";)$'
-    replace: '\1Fira Code:pixelsize=12:style=regular\2'
+    replace: '\1Hack:pixelsize=12\2'
 
 - name: replace config
   copy:
