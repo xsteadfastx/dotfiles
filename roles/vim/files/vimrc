@@ -42,6 +42,7 @@ Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
 Plug 'itchyny/lightline.vim'
 Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
 Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 Plug 'lepture/vim-jinja'
 Plug 'mattn/emmet-vim', { 'for': 'html' }
 Plug 'mattn/gist-vim'
@@ -209,6 +210,11 @@ augroup pencil
                              \ | setl thesaurus+=~/.vim/thesaurus/openthesaurus.txt
                              \ | setl tabstop=4 expandtab shiftwidth=4 softtabstop=4
                              \ | setl syntax=off
+    au User GoyoEnter Limelight
+    au User GoyoLeave Limelight!
+    let g:limelight_conceal_ctermfg = 'gray'
+    let g:limelight_conceal_ctermfg = 240
+    let g:limelight_default_coefficient = 0.7
 augroup end
 
 
