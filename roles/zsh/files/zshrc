@@ -32,3 +32,6 @@ which pyenv >/dev/null && { eval "$(pyenv init -)" }
 
 ### disable strange lock
 stty -ixon
+
+### aliases
+alias vim=nvim

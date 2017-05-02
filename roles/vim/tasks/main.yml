@@ -1,16 +1,17 @@
 # vim:ft=ansible
 ---
-- include_vars: "{{ item }}"
-  with_first_found:
-    - "../vars/{{ ansible_os_family }}.yml"
-  when: vim_package_name is not defined
+- name: add ppa
+  apt_repository:
+    repo: 'ppa:neovim-ppa/stable'
+  become: yes
+  when: ansible_distribution == 'Ubuntu'
 
 - name: install deps
   package:
     name={{ item }}
     state=latest
   with_items:
-    - "{{ vim_package_name }}"
+    - neovim
   become: yes
 
 - name: remove files
@@ -20,6 +21,7 @@
   with_items:
     - /home/{{ ansible_user_id }}/.vimrc
     - /home/{{ ansible_user_id }}/.vim
+    - /home/{{ ansible_user_id }}/.config/nvim
   become: yes
 
 - name: needed dirs
@@ -33,14 +35,17 @@
     - ~/.vim/plugged
     - ~/.vim/spell
     - ~/.vim/thesaurus
+    - ~/.config
 
 - name: link files
   file:
-    src={{ batcave_path }}/roles/vim/files/{{ item.src }}
+    src={{ item.src }}
     dest={{ item.dest }}
     state=link
   with_items:
-    - {'src': 'vimrc', 'dest': '~/.vimrc'}
+    - {'src': '{{ batcave_path }}/roles/vim/files/vimrc', 'dest': '~/.vimrc'}
+    - {'src': '~/.vim', 'dest': '~/.config/nvim'}
+    - {'src': '~/.vimrc', 'dest': '~/.config/nvim/init.vim'}
 
 - name: get some files
   get_url:
@@ -62,5 +67,5 @@
     remote_src: True
 
 - name: install plugins
-  command: vim +PlugInstall +qall
+  command: nvim +PlugInstall +qall
 

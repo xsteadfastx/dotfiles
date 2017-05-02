@@ -19,6 +19,7 @@ call plug#begin('~/.vim/plugged')
 "Plug 'Rykka/riv.vim'
 "Plug 'Shougo/neocomplete'
 "Plug 'SirVer/ultisnips'
+"Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 "Plug 'godlygeek/tabular'
 "Plug 'honza/vim-snippets'
 "Plug 'jiangmiao/auto-pairs'
@@ -33,7 +34,6 @@ Plug 'alfredodeza/pytest.vim', { 'for': 'python' }
 Plug 'blindFS/vim-taskwarrior', { 'on': 'TW' }
 Plug 'chrisbra/Colorizer'
 Plug 'cohama/lexima.vim'
-Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
 Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'ervandew/supertab'
@@ -54,13 +54,24 @@ Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'reedes/vim-pencil'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'scrooloose/syntastic'
 Plug 'tmhedberg/SimpylFold'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vimwiki/vimwiki'
+
+if has('nvim') || v:version >= 800
+    Plug 'w0rp/ale'
+    if has("python3")
+        Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+        Plug 'zchee/deoplete-jedi'
+        let g:deoplete#enable_at_startup = 1
+    endif
+else
+    Plug 'scrooloose/syntastic'
+endif
+
 call plug#end()
 
 
@@ -84,6 +95,8 @@ let python_highlight_all=1
 set listchars=trail:·,precedes:«,extends:»,nbsp:~,tab:▸\ 
 set list
 
+" needed for copy paste in neovim
+set clipboard+=unnamedplus
 
 " ---------------------------------------
 " TEXT FORMAT
@@ -135,6 +148,7 @@ augroup python
     autocmd!
     au BufRead,BufNewFile *.xsh set filetype=python
     au FileType python set colorcolumn=79
+    let g:ale_python_mypy_options = '--silent-imports'
 augroup end
 
 
