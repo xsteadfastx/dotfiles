@@ -29,6 +29,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'Konfekt/FastFold'
 Plug 'MicahElliott/Rocannon', { 'for': 'yaml' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'airblade/vim-gitgutter'
 Plug 'alfredodeza/pytest.vim', { 'for': 'python' }
 Plug 'blindFS/vim-taskwarrior', { 'on': 'TW' }
@@ -60,18 +61,8 @@ Plug 'tpope/vim-git'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vimwiki/vimwiki'
-
-if has('nvim') || v:version >= 800
-    Plug 'w0rp/ale'
-    if has("python3")
-        Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-        Plug 'zchee/deoplete-jedi'
-        let g:deoplete#enable_at_startup = 1
-    endif
-else
-    Plug 'scrooloose/syntastic'
-endif
-
+Plug 'w0rp/ale'
+Plug 'zchee/deoplete-jedi'
 call plug#end()
 
 
@@ -95,8 +86,9 @@ let python_highlight_all=1
 set listchars=trail:·,precedes:«,extends:»,nbsp:~,tab:▸\ 
 set list
 
-" needed for copy paste in neovim
-set clipboard+=unnamedplus
+" disabled preview window
+set completeopt-=preview
+
 
 " ---------------------------------------
 " TEXT FORMAT
@@ -197,7 +189,18 @@ let g:pencil#wrapModeDefault = 'soft'
 " ---------------------------------------
 
 if has('nvim')
-    runtime! plugin/python_setup.vim
+    " needed for copy paste in neovim
+    set clipboard+=unnamedplus
+
+    " using venvs for python support in neovim
+    let g:python_host_prog = '/opt/neovim2/bin/python'
+    let g:python3_host_prog = '/opt/neovim3/bin/python'
+
+    " somehow this is needed
+    "unlet g:loaded_python3_provider
+
+    " enable deoplete
+    let g:deoplete#enable_at_startup = 1
 endif
 
 

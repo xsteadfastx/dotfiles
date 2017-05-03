@@ -2,17 +2,37 @@
 ---
 - name: add ppa
   apt_repository:
-    repo: 'ppa:neovim-ppa/stable'
+    repo: 'ppa:neovim-ppa/unstable'
   become: yes
   when: ansible_distribution == 'Ubuntu'
 
-- name: install deps
+- name: install deps for debian
   package:
     name={{ item }}
     state=latest
   with_items:
     - neovim
+    - python
+    - python-virtualenv
+    - python3
   become: yes
+  when: ansible_os_family == 'Debian'
+
+- name: install deps for alpine
+  package:
+    name={{ item }}
+    state=latest
+  with_items:
+    - gcc
+    - musl-dev
+    - neovim
+    - py-virtualenv
+    - python
+    - python-dev
+    - python3
+    - python3-dev
+  become: yes
+  when: ansible_os_family == 'Alpine'
 
 - name: remove files
   file:
@@ -65,6 +85,28 @@
     src : https://www.openthesaurus.de/export/OpenThesaurus-Textversion.zip
     dest: ~/.vim/thesaurus/
     remote_src: True
+
+- name: create neovim virtualenv for python2
+  pip:
+    name: "{{ item }}"
+    virtualenv: /opt/neovim2
+  with_items:
+    - flake8
+    - flake8-import-order
+    - neovim
+  become: yes
+
+- name: create neovim virtualenv for python3
+  pip:
+    name: "{{ item }}"
+    virtualenv: /opt/neovim3
+    virtualenv_command: /usr/bin/python3 -m venv
+  with_items:
+    - flake8
+    - flake8-import-order
+    - mypy-lang
+    - neovim
+  become: yes
 
 - name: install plugins
   command: nvim +PlugInstall +qall
