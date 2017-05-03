@@ -39,6 +39,7 @@ Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
 Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'ervandew/supertab'
 Plug 'guns/xterm-color-table.vim'
+Plug 'hdima/python-syntax'
 Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
 Plug 'itchyny/lightline.vim'
 Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
