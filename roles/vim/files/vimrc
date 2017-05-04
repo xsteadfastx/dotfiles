@@ -2,7 +2,7 @@
 " GENERAL
 " ---------------------------------------
 
-set shell=/bin/bash
+set shell=/bin/sh
 set nocompatible
 filetype off
 set enc=utf-8
@@ -16,6 +16,7 @@ filetype plugin indent on
 " ---------------------------------------
 
 call plug#begin('~/.vim/plugged')
+
 "Plug 'Rykka/riv.vim'
 "Plug 'Shougo/neocomplete'
 "Plug 'SirVer/ultisnips'
@@ -26,44 +27,102 @@ call plug#begin('~/.vim/plugged')
 "Plug 'klen/python-mode'
 "Plug 'nvie/vim-flake8'
 "Plug 'vim-scripts/indentpython.vim'
+
 Plug 'ConradIrwin/vim-bracketed-paste'
+
 Plug 'Konfekt/FastFold'
+
 Plug 'MicahElliott/Rocannon', { 'for': 'yaml' }
+
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'airblade/vim-gitgutter'
-Plug 'alfredodeza/pytest.vim', { 'for': 'python' }
-Plug 'blindFS/vim-taskwarrior', { 'on': 'TW' }
-Plug 'chrisbra/Colorizer'
-Plug 'cohama/lexima.vim'
-Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
-Plug 'elzr/vim-json', { 'for': 'json' }
-Plug 'ervandew/supertab'
-Plug 'guns/xterm-color-table.vim'
-Plug 'hdima/python-syntax'
-Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
-Plug 'itchyny/lightline.vim'
-Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-Plug 'lepture/vim-jinja'
-Plug 'mattn/emmet-vim', { 'for': 'html' }
-Plug 'mattn/gist-vim'
-Plug 'mattn/webapi-vim'
-Plug 'mhinz/vim-grepper'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-Plug 'reedes/vim-pencil'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'tmhedberg/SimpylFold'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-git'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'vimwiki/vimwiki'
-Plug 'w0rp/ale'
+    let g:deoplete#enable_at_startup = 1
+    let g:deoplete#sources#jedi#show_docstring = 1
+
 Plug 'zchee/deoplete-jedi'
+
+Plug 'airblade/vim-gitgutter'
+
+Plug 'alfredodeza/pytest.vim', { 'for': 'python' }
+    nmap <silent><Leader>p <Esc>:Pytest project<CR>
+    nmap <silent><Leader>f <Esc>:Pytest function<CR>
+
+Plug 'blindFS/vim-taskwarrior', { 'on': 'TW' }
+
+Plug 'chrisbra/Colorizer'
+
+Plug 'cohama/lexima.vim'
+
+Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
+
+Plug 'elzr/vim-json', { 'for': 'json' }
+
+Plug 'ervandew/supertab'
+
+Plug 'guns/xterm-color-table.vim'
+
+Plug 'hdima/python-syntax'
+
+Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
+
+Plug 'itchyny/lightline.vim'
+    let g:lightline = {'colorscheme': 'solarized',}
+
+Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
+
+Plug 'junegunn/goyo.vim'
+
+Plug 'junegunn/limelight.vim'
+    let g:limelight_conceal_ctermfg = 'gray'
+    let g:limelight_conceal_ctermfg = 240
+    let g:limelight_default_coefficient = 0.7
+
+Plug 'lepture/vim-jinja'
+
+Plug 'mattn/emmet-vim', { 'for': 'html' }
+
+Plug 'mattn/gist-vim'
+    let g:gist_post_private = 1
+
+Plug 'mattn/webapi-vim'
+
+Plug 'mhinz/vim-grepper'
+
+Plug 'nathanaelkane/vim-indent-guides'
+    au VimEnter * :IndentGuidesEnable
+    let g:indent_guides_start_level = 2
+    let g:indent_guides_guide_size = 1
+
+Plug 'ntpeters/vim-better-whitespace'
+
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+
+Plug 'reedes/vim-pencil'
+    let g:pencil#wrapModeDefault = 'soft'
+
+
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+    map <C-n> :NERDTreeToggle<CR> " open nerdtree
+
+Plug 'tmhedberg/SimpylFold'
+    let g:SimpylFold_docstring_preview=1
+
+Plug 'tpope/vim-fugitive'
+
+Plug 'tpope/vim-git'
+
+Plug 'tpope/vim-repeat'
+    silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
+
+Plug 'tpope/vim-surround'
+
+Plug 'vimwiki/vimwiki'
+    let g:vimwiki_list = [{'path': '~/ownCloud/vimwiki/'}]
+
+Plug 'w0rp/ale'
+    let g:ale_python_mypy_options = '--silent-imports'
+
 call plug#end()
 
 
@@ -88,7 +147,7 @@ set listchars=trail:·,precedes:«,extends:»,nbsp:~,tab:▸\
 set list
 
 " disabled preview window
-set completeopt-=preview
+"set completeopt-=preview
 
 
 " ---------------------------------------
@@ -118,16 +177,8 @@ imap ^[OB <ESC>jli
 imap ^[OC <ESC>lli
 imap ^[OD <ESC>hli
 
-map <C-n> :NERDTreeToggle<CR> " open nerdtree
-
 vnoremap < <gv " better indentation
 vnoremap > >gv " better indentation
-
-nmap <silent><Leader>p <Esc>:Pytest project<CR>
-nmap <silent><Leader>f <Esc>:Pytest function<CR>
-
-" vim-repeat
-silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
 
 " force tab
 inoremap <S-Tab> <C-V><Tab>
@@ -141,7 +192,6 @@ augroup python
     autocmd!
     au BufRead,BufNewFile *.xsh set filetype=python
     au FileType python set colorcolumn=79
-    let g:ale_python_mypy_options = '--silent-imports'
 augroup end
 
 
@@ -179,13 +229,6 @@ augroup end
 
 
 " ---------------------------------------
-" PENCIL
-" ---------------------------------------
-
-let g:pencil#wrapModeDefault = 'soft'
-
-
-" ---------------------------------------
 " NEOVIM
 " ---------------------------------------
 
@@ -199,9 +242,6 @@ if has('nvim')
 
     " somehow this is needed
     "unlet g:loaded_python3_provider
-
-    " enable deoplete
-    let g:deoplete#enable_at_startup = 1
 endif
 
 
@@ -230,9 +270,6 @@ augroup pencil
                              \ | setl syntax=off
     au User GoyoEnter Limelight
     au User GoyoLeave Limelight!
-    let g:limelight_conceal_ctermfg = 'gray'
-    let g:limelight_conceal_ctermfg = 240
-    let g:limelight_default_coefficient = 0.7
 augroup end
 
 
@@ -246,44 +283,6 @@ function! Timer()
     set updatetime=5000
     call feedkeys("f\e") "retrigger the CursorHold event without major side-effects
 endfunction
-
-
-" ---------------------------------------
-" SYNTASTIC
-" ---------------------------------------
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_loc_list_height = 5
-
-
-" ---------------------------------------
-" SIMPLYFOLD
-" ---------------------------------------
-
-let g:SimpylFold_docstring_preview=1
-
-
-" ---------------------------------------
-" GIST
-" ---------------------------------------
-
-let g:gist_post_private = 1
-
-
-" ---------------------------------------
-" VIM-INDENT-GUIDES
-" ---------------------------------------
-
-au VimEnter * :IndentGuidesEnable
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1
 
 
 " ---------------------------------------
@@ -305,17 +304,3 @@ augroup lektor
     autocmd!
     au BufRead,BufNewFile *.lr set filetype=markdown
 augroup end
-
-
-" ---------------------------------------
-" VIMWIKI
-" ---------------------------------------
-
-let g:vimwiki_list = [{'path': '~/ownCloud/vimwiki/'}]
-
-
-" ---------------------------------------
-" LIGHTLINE
-" ---------------------------------------
-
-let g:lightline = {'colorscheme': 'solarized',}
