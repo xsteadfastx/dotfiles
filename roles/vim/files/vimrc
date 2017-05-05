@@ -36,9 +36,9 @@ Plug 'MicahElliott/Rocannon', { 'for': 'yaml' }
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     let g:deoplete#enable_at_startup = 1
-    let g:deoplete#sources#jedi#show_docstring = 1
 
 Plug 'zchee/deoplete-jedi'
+    let g:deoplete#sources#jedi#show_docstring = 1
 
 Plug 'airblade/vim-gitgutter'
 
