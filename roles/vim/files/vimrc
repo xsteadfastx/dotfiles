@@ -123,6 +123,11 @@ Plug 'vimwiki/vimwiki'
 Plug 'w0rp/ale'
     let g:ale_python_mypy_options = '--silent-imports'
 
+" easy alignment
+Plug 'junegunn/vim-easy-align'
+    xmap ga <Plug>(EasyAlign)
+    nmap ga <Plug>(EasyAlign)
+
 call plug#end()
 
 
