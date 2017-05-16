@@ -35,4 +35,4 @@ stty -ixon
 
 ### aliases
 alias vim=nvim
-alias ll=ls -la
+alias ll="ls -la"
