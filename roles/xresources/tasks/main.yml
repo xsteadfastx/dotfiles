@@ -1,5 +1,12 @@
 # vim:ft=ansible
 ---
+- name: install deps
+  package:
+    name=fonts-symbola
+    state=latest
+  become: yes
+  when: ansible_os_family == 'Debian'
+
 - name: needed dirs
   file:
     path={{ item }}
