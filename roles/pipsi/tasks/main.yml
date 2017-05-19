@@ -19,5 +19,5 @@
 
 - name: install pipsi
   shell:
-    curl https://raw.githubusercontent.com/mitsuhiko/pipsi/master/get-pipsi.py | python
+    curl https://raw.githubusercontent.com/mitsuhiko/pipsi/master/get-pipsi.py | /usr/bin/python2.7
     creates=~/.local/bin/pipsi

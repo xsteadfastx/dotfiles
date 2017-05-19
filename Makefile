@@ -21,6 +21,9 @@ pyenv: ## Install pyenv
 firefox: ## Install firefox
 	ansible-playbook -i hosts firefox.yml -c local --ask-sudo-pass --extra-vars="hosts=127.0.0.1"
 
+pipsi: ## Install pipsi
+	ansible-playbook -i hosts pipsi.yml -c local --ask-sudo-pass --extra-vars="hosts=127.0.0.1"
+
 xresources: ## Install xresources
 	ansible-playbook -i hosts xresources.yml -c local --ask-sudo-pass --extra-vars="hosts=127.0.0.1"
 
