@@ -150,6 +150,7 @@ colorscheme solarized
 let python_highlight_all=1
 set listchars=trail:·,precedes:«,extends:»,nbsp:~,tab:▸\ 
 set list
+set cursorline
 
 " disabled preview window
 "set completeopt-=preview
