@@ -128,6 +128,9 @@ Plug 'junegunn/vim-easy-align'
     xmap ga <Plug>(EasyAlign)
     nmap ga <Plug>(EasyAlign)
 
+" scratchpad
+Plug 'metakirby5/codi.vim'
+
 call plug#end()
 
 
