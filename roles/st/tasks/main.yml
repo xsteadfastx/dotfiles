@@ -29,9 +29,9 @@
     url: "{{ item.src }}"
     dest: /tmp/st/st-0.7/{{ item.dest }}
   with_items:
-    - { 'src': 'http://st.suckless.org/patches/st-no_bold_colors-20160727-308bfbf.diff', 'dest': 'no_bold_colors.diff' }
-    - { 'src': 'http://st.suckless.org/patches/st-solarized-dark-20160727-308bfbf.diff', 'dest': 'solarized.diff' }
-    - { 'src': 'http://st.suckless.org/patches/st-scrollback-0.7.diff', 'dest': 'scrollback.diff' }
+    - { 'src': 'http://st.suckless.org/patches/solarized/st-no_bold_colors-0.7.diff', 'dest': 'no_bold_colors.diff' }
+    - { 'src': 'http://st.suckless.org/patches/solarized/st-solarized-dark-0.7.diff', 'dest': 'solarized.diff' }
+    - { 'src': 'http://st.suckless.org/patches/scrollback/st-scrollback-0.7.diff', 'dest': 'scrollback.diff' }
 
 - name: patch st
   patch:

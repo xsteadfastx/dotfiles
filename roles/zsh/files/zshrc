@@ -31,11 +31,9 @@ alias ll="ls -la"
 
 ### export stuff
 export EDITOR=/usr/bin/nvim
+export PIPENV_SHELL_COMPAT=1
 
 ### pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 which pyenv >/dev/null && { eval "$(pyenv init -)" }
-
-# export path
-export PATH="$HOME/.local/bin:$PATH"
