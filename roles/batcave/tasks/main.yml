@@ -10,3 +10,8 @@
   apt: update_cache=yes
   become: yes
   when: ansible_os_family == 'Debian'
+
+- name: update apk cache
+  apk: update_cache=yes
+  become: yes
+  when: ansible_os_family == 'Alpine'

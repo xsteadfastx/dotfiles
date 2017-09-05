@@ -1,4 +1,4 @@
-### antigen
+### antigen ###
 source ~/.antigen/antigen.zsh
 
 antigen use oh-my-zsh
@@ -22,18 +22,21 @@ antigen theme ys
 
 antigen apply
 
-### disable strange lock
+### disable strange lock ###
 stty -ixon
 
-### aliases
+### aliases ###
 alias vim=nvim
 alias ll="ls -la"
 
-### export stuff
+### export stuff ###
 export EDITOR=/usr/bin/nvim
 export PIPENV_SHELL_COMPAT=1
 
-### pyenv
+### path ###
+export PATH="$HOME/.local/bin:$PATH"
+
+### pyenv ###
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 which pyenv >/dev/null && { eval "$(pyenv init -)" }
