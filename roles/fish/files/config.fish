@@ -4,6 +4,9 @@
 # set default user
 set default_user mpreuss
 
+# disable welcome message
+set fish_greeting
+
 # aliases
 alias vim=nvim
 alias ll='ls -la'
