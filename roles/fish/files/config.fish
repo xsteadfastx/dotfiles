@@ -1,3 +1,9 @@
+# enabling vi mode
+#fish_vi_key_bindings
+
+# set default user
+set default_user marv
+
 # aliases
 alias vim=nvim
 alias ll='ls -la'
