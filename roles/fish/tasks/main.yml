@@ -53,7 +53,6 @@
   with_items:
     - {'src': 'https://get.oh-my.fish', 'dest': '/tmp/omf-install.fish'}
     - {'src': 'https://raw.githubusercontent.com/barnybug-archive/docker-fish-completion/master/docker-compose.fish', 'dest': '~/.config/fish/completions/docker-compose.fish'}
-    - {'src': 'https://raw.githubusercontent.com/fisherman/pipenv/master/conf.d/pipenv.fish', 'dest': '~/.config/fish/conf.d/pipenv.fish'}
 
 - name: install oh-my-fish
   shell: fish /tmp/omf-install.fish --noninteractive -y

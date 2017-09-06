@@ -15,5 +15,6 @@ end
 
 # pipenv
 if test -f ~/.local/bin/pipenv
+    set -gx PIPENV_SHELL_COMPAT 1
     eval (env _PIPENV_COMPLETE=source-fish pipenv)
 end
