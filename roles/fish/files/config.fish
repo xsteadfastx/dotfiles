@@ -2,7 +2,7 @@
 #fish_vi_key_bindings
 
 # set default user
-set default_user marv
+set default_user mpreuss
 
 # aliases
 alias vim=nvim
