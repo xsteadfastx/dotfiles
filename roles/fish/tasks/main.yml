@@ -1,0 +1,61 @@
+# vim:ft=ansible
+---
+- name: add ppa
+  apt_repository:
+    repo: 'ppa:fish-shell/release-2'
+  become: yes
+  when: ansible_distribution == 'Ubuntu'
+
+- name: install deps
+  package:
+    name={{ item }}
+    state=latest
+  with_items:
+    - fish
+    - git
+  become: yes
+
+- name: needed dirs
+  file:
+    path={{ item }}
+    state=directory
+  with_items:
+    - ~/.config
+    - ~/.config/fish
+    - ~/.config/omf
+
+- name: link files
+  file:
+    src={{ item.src }}
+    dest={{ item.dest }}
+    state=link
+  with_items:
+    - {'src': '{{ batcave_path }}/roles/fish/files/config.fish', 'dest': '~/.config/fish/config.fish'}
+    - {'src': '{{ batcave_path }}/roles/fish/files/bundle', 'dest': '~/.config/omf/bundle'}
+    - {'src': '{{ batcave_path }}/roles/fish/files/channel', 'dest': '~/.config/omf/channel'}
+    - {'src': '{{ batcave_path }}/roles/fish/files/theme', 'dest': '~/.config/omf/theme'}
+
+- name: get files
+  get_url:
+    url={{ item.src }}
+    dest={{ item.dest }}
+  with_items:
+    - {'src': 'https://get.oh-my.fish', 'dest': '/tmp/omf-install.fish'}
+
+- name: install oh-my-fish
+  shell: fish /tmp/omf-install.fish --noninteractive -y
+
+- name: remove files
+  file:
+    path=/tmp/omf-install.fish
+    state=absent
+
+- name: run oh-my-fish
+  shell: fish -c "omf install"
+
+- name: set shell
+  user:
+    name={{ ansible_env.USER }}
+    shell=/usr/bin/fish
+  become: yes
+  when: ansible_os_family == 'Debian'
