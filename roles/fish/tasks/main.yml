@@ -33,7 +33,8 @@
     - ~/.config/fish
     - ~/.config/fish/completions
     - ~/.config/fish/conf.d
-    - ~/.config/omf
+    - ~/.config/fish/functions
+    #- ~/.config/omf
 
 - name: link files
   file:
@@ -41,29 +42,36 @@
     dest={{ item.dest }}
     state=link
   with_items:
+    # config
     - {'src': '{{ batcave_path }}/roles/fish/files/config.fish', 'dest': '~/.config/fish/config.fish'}
-    - {'src': '{{ batcave_path }}/roles/fish/files/omf/bundle', 'dest': '~/.config/omf/bundle'}
-    - {'src': '{{ batcave_path }}/roles/fish/files/omf/channel', 'dest': '~/.config/omf/channel'}
-    - {'src': '{{ batcave_path }}/roles/fish/files/omf/theme', 'dest': '~/.config/omf/theme'}
+  # oh-my-fish
+    #- {'src': '{{ batcave_path }}/roles/fish/files/omf/bundle', 'dest': '~/.config/omf/bundle'}
+    #- {'src': '{{ batcave_path }}/roles/fish/files/omf/channel', 'dest': '~/.config/omf/channel'}
+    #- {'src': '{{ batcave_path }}/roles/fish/files/omf/theme', 'dest': '~/.config/omf/theme'}
 
 - name: get files
   get_url:
     url={{ item.src }}
     dest={{ item.dest }}
   with_items:
-    - {'src': 'https://get.oh-my.fish', 'dest': '/tmp/omf-install.fish'}
+    # theme
+    - {'src': 'https://raw.githubusercontent.com/xsteadfastx/theme-cmorrell.com/master/fish_prompt.fish', 'dest': '~/.config/fish/functions/fish_prompt.fish'}
+    - {'src': 'https://raw.githubusercontent.com/xsteadfastx/theme-cmorrell.com/master/fish_right_prompt.fish', 'dest': '~/.config/fish/functions/fish_right_prompt.fish'}
+    # oh-my-fish
+    #- {'src': 'https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install', 'dest': '/tmp/omf-install.fish'}
+    # completions
     - {'src': 'https://raw.githubusercontent.com/barnybug-archive/docker-fish-completion/master/docker-compose.fish', 'dest': '~/.config/fish/completions/docker-compose.fish'}
 
-- name: install oh-my-fish
-  shell: fish /tmp/omf-install.fish --noninteractive -y
+#- name: install oh-my-fish
+#  shell: fish /tmp/omf-install.fish --noninteractive -y
 
-- name: remove files
-  file:
-    path=/tmp/omf-install.fish
-    state=absent
+#- name: remove files
+#  file:
+#    path=/tmp/omf-install.fish
+#    state=absent
 
-- name: run oh-my-fish
-  shell: fish -c "omf install"
+#- name: run oh-my-fish
+#  shell: fish -c "omf install"
 
 - name: set shell
   user:

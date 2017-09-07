@@ -2,7 +2,7 @@
 #fish_vi_key_bindings
 
 # set default user
-set default_user mpreuss
+set default_user marv mpreuss
 
 # disable welcome message
 set fish_greeting

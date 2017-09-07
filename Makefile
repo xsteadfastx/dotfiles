@@ -27,6 +27,9 @@ pipsi: ## Install pipsi
 xresources: ## Install xresources
 	ansible-playbook -i hosts xresources.yml -c local --ask-sudo-pass --extra-vars="hosts=127.0.0.1"
 
+fish: ## Install fish
+	ansible-playbook -i hosts fish.yml -c local --ask-sudo-pass --extra-vars="hosts=127.0.0.1"
+
 tsm: ## Install base on tsm servers
 	ansible-playbook shell.yml --ask-vault-pass --ask-sudo-pass --extra-vars="hosts=tsm-server"
 
