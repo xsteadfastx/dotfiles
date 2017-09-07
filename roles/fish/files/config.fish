@@ -1,5 +1,5 @@
 # enabling vi mode
-#fish_vi_key_bindings
+fish_vi_key_bindings
 
 # set default user
 set default_user marv mpreuss
