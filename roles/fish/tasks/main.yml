@@ -13,6 +13,7 @@
   with_items:
     - fish
     - git
+    - ncurses
   become: yes
 
 - name: remove files
