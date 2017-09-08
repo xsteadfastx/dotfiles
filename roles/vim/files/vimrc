@@ -131,6 +131,9 @@ Plug 'junegunn/vim-easy-align'
 " scratchpad
 Plug 'metakirby5/codi.vim'
 
+" fish syntax
+Plug 'dag/vim-fish'
+
 call plug#end()
 
 
