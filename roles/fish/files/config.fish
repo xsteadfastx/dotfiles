@@ -13,17 +13,18 @@ alias ll='ls -la'
 
 # path
 if test -d ~/.local/bin
-    set PATH ~/.local/bin $PATH
+  set PATH ~/.local/bin $PATH
 end
 
 # pyenv
 if test -d ~/.pyenv/bin
-    set PATH ~/.pyenv/bin $PATH
-    status --is-interactive; and . (pyenv init -|psub)
+  set PATH ~/.pyenv/bin $PATH
+  status --is-interactive; and . (pyenv init -|psub)
 end
 
 # pipenv
 if test -f ~/.local/bin/pipenv
-    set -gx PIPENV_SHELL_COMPAT 1
-    eval (env _PIPENV_COMPLETE=source-fish pipenv)
+  set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
+  set -gx PIPENV_SHELL_COMPAT 1
+  eval (env _PIPENV_COMPLETE=source-fish pipenv)
 end
