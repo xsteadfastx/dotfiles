@@ -11,6 +11,9 @@ set fish_greeting
 alias vim=nvim
 alias ll='ls -la'
 
+# set default editor
+set -gx EDITOR nvim
+
 # path
 if test -d ~/.local/bin
   set PATH ~/.local/bin $PATH
