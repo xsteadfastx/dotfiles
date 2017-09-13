@@ -13,8 +13,25 @@
   with_items:
     - fish
     - git
+  become: yes
+
+- name: install deps debian
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - ncurses-base
+  become: yes
+  when: ansible_os_family == 'Debian'
+
+- name: install deps alpine
+  apk:
+    name: "{{ item }}"
+    state: latest
+  with_items:
     - ncurses
   become: yes
+  when: ansible_os_family == 'Alpine'
 
 - name: remove files
   file:
