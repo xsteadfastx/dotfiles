@@ -24,6 +24,7 @@
     - ~/.fonts/RobotoMono-Regular.ttf
     - ~/.fonts/Monoisome-Regular.ttf
     - ~/.fonts/FiraCode-Regular.ttf
+    - ~/.fonts/FiraMono-Regular.ttf
     - ~/.fonts/Hack-Regular.ttf
 
 - name: link files
@@ -32,9 +33,7 @@
     dest={{ item.dest }}
     state=link
   with_items:
-    - {'src': 'xresources', 'dest': '~/.Xresources'}
-    - {'src': 'xprofile', 'dest': '~/.xprofile'}
-    - {'src': 'Hack-Regular.ttf', 'dest': '~/.fonts/Hack-Regular.ttf'}
+    - {'src': 'FiraMono-Regular.ttf', 'dest': '~/.fonts/FiraMono-Regular.ttf'}
 
 - name: rebuild font cache
   command: fc-cache -r ~/.fonts
