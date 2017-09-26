@@ -1,5 +1,6 @@
+# vim:filetype=ansible
 ---
-- hosts: "{{ hosts }}"
+- hosts: "{{ host }}"
   roles:
     - batcave
     - git

@@ -1,5 +1,5 @@
 # vim:filetype=ansible
 ---
-- hosts: "{{ hosts }}"
+- hosts: "{{ host }}"
   roles:
     - pipsi

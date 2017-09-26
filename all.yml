@@ -1,3 +1,4 @@
+# vim:filetype=ansible
 ---
 - include: shell.yml
 - include: x11.yml
