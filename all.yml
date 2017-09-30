@@ -1,4 +1,4 @@
 # vim:filetype=ansible
 ---
-- include: shell.yml
-- include: x11.yml
+- import_playbook: shell.yml
+- import_playbook: x11.yml
