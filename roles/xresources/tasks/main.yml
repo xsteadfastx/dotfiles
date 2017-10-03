@@ -34,6 +34,7 @@
     state=link
   with_items:
     - {'src': 'FiraMono-Regular.ttf', 'dest': '~/.fonts/FiraMono-Regular.ttf'}
+    - {'src': 'Fura Mono Regular Nerd Font Complete Mono.otf', 'dest': '~/.fonts/Fura Mono Regular Nerd Font Complete Mono.otf'}
 
 - name: rebuild font cache
   command: fc-cache -r ~/.fonts

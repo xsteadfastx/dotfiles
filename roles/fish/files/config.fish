@@ -35,3 +35,4 @@ end
 # theme
 set -g theme_color_scheme solarized-dark
 set -g theme_powerline_fonts no
+set -g theme_nerd_fonts yes
