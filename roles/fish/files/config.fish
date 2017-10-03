@@ -31,3 +31,7 @@ if test -f ~/.local/bin/pipenv
   set -gx PIPENV_SHELL_COMPAT 1
   eval (env _PIPENV_COMPLETE=source-fish pipenv)
 end
+
+# theme
+set -g theme_color_scheme solarized-dark
+set -g theme_powerline_fonts no

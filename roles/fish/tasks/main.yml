@@ -73,23 +73,13 @@
     dest={{ item.dest }}
   with_items:
     # theme
-    - {'src': 'https://raw.githubusercontent.com/xsteadfastx/theme-cmorrell.com/master/fish_prompt.fish', 'dest': '~/.config/fish/functions/fish_prompt.fish'}
-    - {'src': 'https://raw.githubusercontent.com/xsteadfastx/theme-cmorrell.com/master/fish_right_prompt.fish', 'dest': '~/.config/fish/functions/fish_right_prompt.fish'}
-    # oh-my-fish
-    #- {'src': 'https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install', 'dest': '/tmp/omf-install.fish'}
+    - {'src': 'https://raw.githubusercontent.com/davewongillies/theme-bobthefish/master/fish_greeting.fish', 'dest': '~/.config/fish/functions/fish_greeting.fish'}
+    - {'src': 'https://raw.githubusercontent.com/davewongillies/theme-bobthefish/master/fish_mode_prompt.fish', 'dest': '~/.config/fish/functions/fish_mode_prompt.fish'}
+    - {'src': 'https://raw.githubusercontent.com/davewongillies/theme-bobthefish/master/fish_prompt.fish', 'dest': '~/.config/fish/functions/fish_prompt.fish'}
+    - {'src': 'https://raw.githubusercontent.com/davewongillies/theme-bobthefish/master/fish_right_prompt.fish', 'dest': '~/.config/fish/functions/fish_right_prompt.fish'}
+    - {'src': 'https://raw.githubusercontent.com/davewongillies/theme-bobthefish/master/fish_title.fish', 'dest': '~/.config/fish/functions/fish_title.fish'}
     # completions
     - {'src': 'https://raw.githubusercontent.com/barnybug-archive/docker-fish-completion/master/docker-compose.fish', 'dest': '~/.config/fish/completions/docker-compose.fish'}
-
-#- name: install oh-my-fish
-#  shell: fish /tmp/omf-install.fish --noninteractive -y
-
-#- name: remove files
-#  file:
-#    path=/tmp/omf-install.fish
-#    state=absent
-
-#- name: run oh-my-fish
-#  shell: fish -c "omf install"
 
 - name: set shell
   user:
