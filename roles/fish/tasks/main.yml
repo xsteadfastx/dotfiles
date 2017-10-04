@@ -29,6 +29,7 @@
     name: "{{ item }}"
     state: latest
   with_items:
+    - bc
     - ncurses
   become: yes
   when: ansible_os_family == 'Alpine'
