@@ -67,10 +67,14 @@ Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
 "Plug 'itchyny/lightline.vim'
 "    let g:lightline = {'colorscheme': 'solarized',}
 
+" powerline
 Plug 'vim-airline/vim-airline'
     let g:airline_powerline_fonts = 1
 Plug 'vim-airline/vim-airline-themes'
     let g:airline_theme='solarized'
+
+" nerd font in vim
+Plug 'ryanoasis/vim-devicons'
 
 Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
 
@@ -105,7 +109,6 @@ Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 
 Plug 'reedes/vim-pencil'
     let g:pencil#wrapModeDefault = 'soft'
-
 
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
     map <C-n> :NERDTreeToggle<CR> " open nerdtree
