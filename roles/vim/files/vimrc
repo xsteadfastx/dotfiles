@@ -64,8 +64,13 @@ Plug 'hdima/python-syntax'
 
 Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
 
-Plug 'itchyny/lightline.vim'
-    let g:lightline = {'colorscheme': 'solarized',}
+"Plug 'itchyny/lightline.vim'
+"    let g:lightline = {'colorscheme': 'solarized',}
+
+Plug 'vim-airline/vim-airline'
+    let g:airline_powerline_fonts = 1
+Plug 'vim-airline/vim-airline-themes'
+    let g:airline_theme='solarized'
 
 Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
 
