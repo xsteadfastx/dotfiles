@@ -7,3 +7,4 @@
         tool = vimdiff
 [alias]
         please = push --force-with-lease
+	graph = log --oneline --abbrev-commit --all --graph --decorate --color
