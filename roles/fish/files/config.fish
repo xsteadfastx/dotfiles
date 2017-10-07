@@ -4,9 +4,6 @@ fish_vi_key_bindings
 # set default user
 set default_user marv mpreuss
 
-# disable welcome message
-set fish_greeting
-
 # aliases
 alias vim=nvim
 alias ll='ls -la'
@@ -21,7 +18,8 @@ end
 
 # pyenv
 if test -d ~/.pyenv/bin
-  set PATH ~/.pyenv/bin $PATH
+  set -gx PYENV_ROOT ~/.pyenv
+  set PATH $PYENV_ROOT/bin $PATH
   status --is-interactive; and . (pyenv init -|psub)
 end
 
@@ -33,6 +31,7 @@ if test -f ~/.local/bin/pipenv
 end
 
 # theme
+function fish_greeting; end
 set -g theme_color_scheme solarized-dark
 set -g theme_powerline_fonts yes
 set -g theme_nerd_fonts yes
