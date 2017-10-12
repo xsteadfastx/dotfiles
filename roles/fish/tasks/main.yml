@@ -75,7 +75,7 @@
   command: /usr/bin/fish -c 'fisher {{ item }}'
   with_items:
     - brgmnn/fish-docker-compose
-    - omf/bobthefish
+    - omf/theme-bobthefish
     - z
 
 - name: set shell
