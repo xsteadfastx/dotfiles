@@ -40,6 +40,7 @@
     state=absent
   with_items:
     - ~/.config/fish
+    - ~/.config/fisherman
     - ~/.config/omf
     - ~/.local/share/omf
 
@@ -53,7 +54,6 @@
     - ~/.config/fish/completions
     - ~/.config/fish/conf.d
     - ~/.config/fish/functions
-    #- ~/.config/omf
 
 - name: link files
   file:
@@ -61,26 +61,20 @@
     dest={{ item.dest }}
     state=link
   with_items:
-    # config
     - {'src': '{{ batcave_path }}/roles/fish/files/config.fish', 'dest': '~/.config/fish/config.fish'}
-  # oh-my-fish
-    #- {'src': '{{ batcave_path }}/roles/fish/files/omf/bundle', 'dest': '~/.config/omf/bundle'}
-    #- {'src': '{{ batcave_path }}/roles/fish/files/omf/channel', 'dest': '~/.config/omf/channel'}
-    #- {'src': '{{ batcave_path }}/roles/fish/files/omf/theme', 'dest': '~/.config/omf/theme'}
 
 - name: get files
   get_url:
     url={{ item.src }}
     dest={{ item.dest }}
   with_items:
-    # theme
-    - {'src': 'https://raw.githubusercontent.com/xsteadfastx/theme-bobthefish/master/fish_greeting.fish', 'dest': '~/.config/fish/functions/fish_greeting.fish'}
-    - {'src': 'https://raw.githubusercontent.com/xsteadfastx/theme-bobthefish/master/fish_mode_prompt.fish', 'dest': '~/.config/fish/functions/fish_mode_prompt.fish'}
-    - {'src': 'https://raw.githubusercontent.com/xsteadfastx/theme-bobthefish/master/fish_prompt.fish', 'dest': '~/.config/fish/functions/fish_prompt.fish'}
-    - {'src': 'https://raw.githubusercontent.com/xsteadfastx/theme-bobthefish/master/fish_right_prompt.fish', 'dest': '~/.config/fish/functions/fish_right_prompt.fish'}
-    - {'src': 'https://raw.githubusercontent.com/xsteadfastx/theme-bobthefish/master/fish_title.fish', 'dest': '~/.config/fish/functions/fish_title.fish'}
-    # completions
-    - {'src': 'https://raw.githubusercontent.com/barnybug-archive/docker-fish-completion/master/docker-compose.fish', 'dest': '~/.config/fish/completions/docker-compose.fish'}
+    - {'src': 'https://raw.githubusercontent.com/fisherman/fisherman/master/fisher.fish', 'dest': '~/.config/fish/functions/fisher.fish'}
+
+- name: install addons
+  command: /usr/bin/fish -c 'fisher {{ item }}'
+  with_items:
+    - omf/bobthefish
+    - z
 
 - name: set shell
   user:
