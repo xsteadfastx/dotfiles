@@ -130,6 +130,8 @@ Plug 'vimwiki/vimwiki'
 
 Plug 'w0rp/ale'
     let g:ale_python_mypy_options = '--silent-imports'
+    let g:ale_fixers = {'python': ['isort'],}
+
 
 " easy alignment
 Plug 'junegunn/vim-easy-align'
