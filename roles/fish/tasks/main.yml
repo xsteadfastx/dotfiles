@@ -31,6 +31,7 @@
   with_items:
     - bc
     - ncurses
+    - util-linux
   become: yes
   when: ansible_os_family == 'Alpine'
 
