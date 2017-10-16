@@ -1,4 +1,4 @@
-.PHONY: help shell x11 weechat tsm own all deps update
+.PHONY: help shell x11 all weechat pyenv firefox pipsi xresources fish nix tsm own deps update
 
 help: ## Show this help
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
@@ -29,6 +29,9 @@ xresources: ## Install xresources
 
 fish: ## Install fish
 	ansible-playbook -i hosts fish.yml -c local --ask-become-pass --extra-vars="host=127.0.0.1"
+
+nix: ## Install nix
+	ansible-playbook -i hosts nix.yml -c local --ask-become-pass --extra-vars="host=127.0.0.1"
 
 tsm: ## Install base on tsm servers
 	ansible-playbook shell.yml --ask-vault-pass --ask-become-pass --extra-vars="host=tsm-server"

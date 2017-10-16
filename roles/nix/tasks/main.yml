@@ -1,0 +1,48 @@
+# vim:ft=ansible
+---
+- name: "test whether nix binary exists"
+  stat: path="{{ ansible_env.HOME }}/.nix-profile/bin/nix-env"
+  become: no
+  register: nix_env_binary
+
+- name: create nix dir
+  file:
+    path=/nix
+    state=directory
+    owner={{ ansible_env.USER }}
+  become: yes
+  when: nix_env_binary.stat.exists == False
+
+- name: install deps
+  apt:
+    pkg={{ item }}
+    state=installed
+  with_items:
+    - curl
+    - bzip2
+    - ca-certificates
+    - libdigest-sha-perl
+  become: yes
+  when: nix_env_binary.stat.exists == False
+
+- name: download nix installer
+  get_url:
+    url: https://nixos.org/nix/install
+    dest: /tmp/nix_install.sh
+  become: no
+  when: nix_env_binary.stat.exists == False
+
+- name: running installer
+  shell: sh /tmp/nix_install.sh
+  args:
+    creates: "{{ ansible_env.HOME }}/.nix-profile/bin/nix-env"
+  environment:
+    USER: "{{ ansible_env.USER }}"
+    ALLOW_PREEXISTING_INSTALLATION: "x"
+  become: no
+
+- name: remove installer
+  file:
+    path=/tmp/nix_install.sh
+    state=absent
+  become: no
