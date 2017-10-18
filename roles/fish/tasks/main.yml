@@ -20,6 +20,7 @@
     name: "{{ item }}"
     state: latest
   with_items:
+    - grc
     - ncurses-base
   become: yes
   when: ansible_os_family == 'Debian'
@@ -77,6 +78,12 @@
     - brgmnn/fish-docker-compose
     - omf/theme-bobthefish
     - z
+
+- name: install addons for debian
+  command: /usr/bin/fish -c 'fisher {{ item }}'
+  with_items:
+    - grc
+  when: ansible_os_family == 'Debian'
 
 - name: set shell
   user:
