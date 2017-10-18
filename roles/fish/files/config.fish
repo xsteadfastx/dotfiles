@@ -27,7 +27,7 @@ end
 if test -f ~/.local/bin/pipenv
   set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
   set -gx PIPENV_SHELL_COMPAT 1
-  eval (env _PIPENV_COMPLETE=source-fish pipenv)
+  eval (pipenv --completion)
 end
 
 # theme
