@@ -6,7 +6,7 @@
     state=present
   with_items:
     - curl
-    - python-virtualenv
+    - python3-venv
   become: yes
 
 - name: needed dirs
@@ -19,5 +19,6 @@
 
 - name: install pipsi
   shell:
-    curl https://raw.githubusercontent.com/mitsuhiko/pipsi/master/get-pipsi.py | /usr/bin/python2.7
-    creates=~/.local/bin/pipsi
+    curl https://raw.githubusercontent.com/mitsuhiko/pipsi/master/get-pipsi.py | /usr/bin/python3
+    args:
+      creates: ~/.local/venvs/pipsi/bin/pipsi

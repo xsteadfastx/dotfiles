@@ -5,15 +5,38 @@
     name=tmux
     state=present
   become: yes
-  when: ansible_os_family == 'Debian'
 
-- name: remove tmux config
+- name: remove files
   file:
     path=~/.tmux.conf
     state=absent
+  with_items:
+    - ~/.tmux.conf
+    - ~/.tmuxp
 
-- name: link tmux config
+- name: needed dirs
   file:
-    src={{ batcave_path }}/roles/tmux/files/tmux.conf
-    dest=~/.tmux.conf
+    path={{ item }}
+    state=directory
+  with_items:
+    - ~/.tmuxp
+
+- name: check if pipsi installed
+  stat:
+    path: ~/.local/bin/pipsi
+  register: pipsi_result
+
+- name: install tmuxp
+  command: ~/.local/bin/pipsi install tmuxp
+  args:
+    creates: ~/.local/venvs/tmuxp/bin/tmuxp
+  when: pipsi_result.stat.exists == True
+
+- name: link files
+  file:
+    src={{ batcave_path }}/roles/tmux/files/{{ item.src }}
+    dest={{ item.dest }}
     state=link
+  with_items:
+    - { 'src': 'tmux.conf', 'dest': '~/.tmux.conf' }
+    - { 'src': 'communications.yml', 'dest': '~/.tmuxp/communications.yml' }
