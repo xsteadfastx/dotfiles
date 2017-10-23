@@ -31,7 +31,7 @@
   with_items:
     - { 'src': 'http://st.suckless.org/patches/solarized/st-no_bold_colors-0.7.diff', 'dest': 'no_bold_colors.diff' }
     - { 'src': 'http://st.suckless.org/patches/solarized/st-solarized-dark-0.7.diff', 'dest': 'solarized.diff' }
-    - { 'src': 'http://st.suckless.org/patches/scrollback/st-scrollback-0.7.diff', 'dest': 'scrollback.diff' }
+    #- { 'src': 'http://st.suckless.org/patches/scrollback/st-scrollback-0.7.diff', 'dest': 'scrollback.diff' }
 
 - name: patch st
   patch:

@@ -25,7 +25,7 @@ font pango:FuraMono Nerd Font Mono 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec ~/.local/bin/st
+bindsym $mod+Return exec ~/.local/bin/st -e tmux
 
 # kill focused window
 bindsym $mod+Shift+q kill
