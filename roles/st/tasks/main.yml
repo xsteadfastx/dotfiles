@@ -41,7 +41,7 @@
   with_items:
     - no_bold_colors.diff
     - solarized.diff
-    - scrollback.diff
+    #- scrollback.diff
 
 - name: change font
   replace:
