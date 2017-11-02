@@ -1,4 +1,4 @@
-.PHONY: help shell x11 all weechat pyenv firefox pipsi xresources fish nix tsm own deps update
+.PHONY: help shell x11 all weechat pyenv firefox pipsi xresources fish nix tsm own update
 
 help: ## Show this help
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
@@ -38,9 +38,6 @@ tsm: ## Install base on tsm servers
 
 own: ## Install base on own servers
 	ansible-playbook shell.yml --ask-vault-pass --extra-vars="host=own"
-
-deps:
-	export $PATH=$PATH:~/.local/bin && sudo apt-get install -y curl git python-virtualenv python-dev && curl https://raw.githubusercontent.com/mitsuhiko/pipsi/master/get-pipsi.py | python && pipsi install ansible
 
 update: ## Fetch updates from github
 	git pull origin master

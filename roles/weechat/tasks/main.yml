@@ -1,16 +1,37 @@
 # vim:ft=ansible
 ---
+- name: needed dirs
+  file:
+    path={{ item }}
+    state=directory
+  with_items:
+    - ~/.local
+    - ~/.local/bin
+
 - name: install deps
-  package:
-    name=weechat
-    state=latest
+  apt:
+    name: python-docker
+    state: latest
   become: yes
+
+- name: clone dockerfiles
+  git:
+    repo: https://github.com/xsteadfastx/dockerfiles.git
+    dest: ~/.dockerfiles
+
+- name: build image
+  docker_image:
+    name: weechat
+    path: ~/.dockerfiles/weechat
 
 - name: link files
   file:
-    src={{ batcave_path }}/roles/weechat/files
-    dest=~/.weechat
+    src={{ item.src }}
+    dest={{ item.dest }}
     state=link
+  with_items:
+    - { 'src': '{{ batcave_path }}/roles/weechat/files/config', 'dest': '~/.weechat' }
+    - { 'src': '{{ batcave_path }}/roles/weechat/files/weechat', 'dest': '~/.local/bin/weechat' }
 
 - name: create files
   template:

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec docker run --rm -ti -v "$HOME/.weechat:/home/weechat/.weechat" -v "$HOME/.weechat-passphrase:/home/weechat/.weechat-passphrase" weechat

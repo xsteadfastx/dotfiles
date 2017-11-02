@@ -19,6 +19,6 @@
 
 - name: install pipsi
   shell:
-    curl https://raw.githubusercontent.com/mitsuhiko/pipsi/master/get-pipsi.py | /usr/bin/python3
+    curl https://raw.githubusercontent.com/mitsuhiko/pipsi/master/get-pipsi.py | python3 - --src 'git+https://github.com/mitsuhiko/pipsi.git#egg=pipsi'
     args:
       creates: ~/.local/venvs/pipsi/bin/pipsi

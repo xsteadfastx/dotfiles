@@ -1,9 +1,9 @@
 # weechat
-roles/weechat/files/weechat_crash*
-roles/weechat/files/weechat.log
-roles/weechat/files/relay.conf
-roles/weechat/files/urlserver_list.txt
-roles/weechat/files/script/plugins.xml.gz
+roles/weechat/files/config/weechat_crash*
+roles/weechat/files/config/weechat.log
+roles/weechat/files/config/relay.conf
+roles/weechat/files/config/urlserver_list.txt
+roles/weechat/files/config/plugins.xml.gz
 
 # vim
 .netrwhist
