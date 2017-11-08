@@ -7,6 +7,7 @@ set default_user marv mpreuss
 # aliases
 alias vim=nvim
 alias ll='ls -la'
+alias tmux-gc='tmux list-sessions | grep -v attached | cut -d: -f1 |  xargs -t -n1 tmux kill-session -t'
 
 # set default editor
 set -gx EDITOR nvim
