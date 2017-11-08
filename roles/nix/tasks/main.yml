@@ -46,3 +46,18 @@
     path=/tmp/nix_install.sh
     state=absent
   become: no
+
+- name: create dirs for nix.fish
+  file:
+    path={{ item }}
+    state=directory
+  with_items:
+    - ~/.config
+    - ~/.config/fish
+    - ~/.config/fish/conf.d
+
+- name: link nix.fish
+  file:
+    src={{ batcave_path }}/roles/nix/files/nix.fish
+    dest=~/.config/fish/conf.d/nix.fish
+    state=link
