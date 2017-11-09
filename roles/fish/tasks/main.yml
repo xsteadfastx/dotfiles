@@ -30,6 +30,7 @@
     state: latest
   with_items:
     - bc
+    - mdocml-apropos
     - ncurses
     - util-linux
   become: yes
