@@ -7,6 +7,7 @@
   with_items:
     - autoconf
     - automake
+    - compton
     - feh
     - libev-dev
     - libpango1.0-dev
@@ -80,3 +81,4 @@
     - {'src': 'config', 'dest': '~/.i3/config'}
     - {'src': 'i3status.conf', 'dest': '~/.i3/i3status.conf'}
     - {'src': 'wallpaper.png', 'dest': '~/.i3/wallpaper.png'}
+    - {'src': 'compton.conf', 'dest': '~/.i3/compton.conf'}
