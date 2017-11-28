@@ -80,5 +80,5 @@
   with_items:
     - {'src': 'config', 'dest': '~/.i3/config'}
     - {'src': 'i3status.conf', 'dest': '~/.i3/i3status.conf'}
-    - {'src': 'wallpaper.png', 'dest': '~/.i3/wallpaper.png'}
+    - {'src': 'wallpaper.jpg', 'dest': '~/.i3/wallpaper.jpg'}
     - {'src': 'compton.conf', 'dest': '~/.i3/compton.conf'}
