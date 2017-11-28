@@ -88,9 +88,9 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
+bindsym $mod+1 workspace 1 communication
+bindsym $mod+2 workspace 2 www
+bindsym $mod+3 workspace 3 code
 bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
@@ -182,10 +182,19 @@ for_window [class="org-openstreetmap-josm-Main"] floating disable
 for_window [class="org-openstreetmap-josm-Main"] layout splitv
 
 # AUTOSTART
-exec --no-startup-id xsetroot -solid "#002b36"
+#exec --no-startup-id xsetroot -solid "#002b36"
+exec --no-startup-id feh --bg-tile ~/.i3/wallpaper.png
 exec --no-startup-id nm-applet &
 #exec --no-startup-id dropbox start &
 #exec --no-startup-id owncloud &
 exec --no-startup-id nextcloud &
 exec --no-startup-id xfce4-power-manager &
 exec --no-startup-id xautolock -time 10 -locker 'i3lock -c "#002b36"' &
+
+# GAPS
+for_window [class="^.*"] border pixel 0
+#smart_gaps on
+gaps inner 10
+gaps outer 10
+workspace 2 gaps inner 0
+workspace 2 gaps outer 0

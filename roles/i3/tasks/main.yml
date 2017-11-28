@@ -1,47 +1,31 @@
 # vim:ft=ansible
 ---
-- name: add i3 repo
-  apt_repository:
-    repo='deb http://debian.sur5r.net/i3/ {{ ansible_distribution_release }} universe'
-  become: yes
-
-- name: super-ugly hack to allow unauthenticated packages to install
-  copy:
-    content='APT::Get::AllowUnauthenticated "true";'
-    dest=/etc/apt/apt.conf.d/99temp
-    owner=root
-    group=root
-    mode=0644
-  become: yes
-
-- name: install i3 apt key
-  apt:
-    name=sur5r-keyring
-  become: yes
-
 - name: install deps
   apt:
     name={{ item }}
     state=latest
   with_items:
-    - i3
-    - i3status
+    - autoconf
+    - automake
     - feh
+    - libev-dev
+    - libpango1.0-dev
+    - libstartup-notification0-dev
+    - libxcb-cursor-dev
+    - libxcb-icccm4-dev
+    - libxcb-keysyms1-dev
+    - libxcb-randr0-dev
+    - libxcb-util0-dev
+    - libxcb-xinerama0-dev
+    - libxcb-xkb-dev
+    - libxcb-xrm-dev
+    - libxcb-xrm0
+    - libxcb1-dev
+    - libxkbcommon-dev
+    - libxkbcommon-x11-dev
+    - libyajl-dev
     - xautolock
   become: yes
-
-- name: remove hack that allows unauthenticated packages to install
-  file:
-    path=/etc/apt/apt.conf.d/99temp
-    state=absent
-  become: yes
-
-- name: needed dirs
-  file:
-    path={{ item }}
-    state=directory
-  with_items:
-    - ~/.i3
 
 - name: remove files
   file:
@@ -57,6 +41,35 @@
     state=directory
   with_items:
     - ~/.i3
+    - ~/src
+
+- name: clone i3-gaps
+  git:
+    repo: https://github.com/Airblader/i3
+    dest: ~/src/i3-gaps
+
+- name: prepare build
+  command: "{{ item }}"
+  args:
+    chdir: ~/src/i3-gaps
+  with_items:
+    - autoreconf --force --install
+    - rm -rf build/
+    - mkdir -p build
+
+- name: build
+  command: "{{ item }}"
+  args:
+    chdir: ~/src/i3-gaps/build
+  with_items:
+    - ../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
+    - make
+
+- name: install
+  command: make install
+  args:
+    chdir: /home/{{ ansible_user_id }}/src/i3-gaps/build
+  become: yes
 
 - name: link files
   file:
@@ -66,3 +79,4 @@
   with_items:
     - {'src': 'config', 'dest': '~/.i3/config'}
     - {'src': 'i3status.conf', 'dest': '~/.i3/i3status.conf'}
+    - {'src': 'wallpaper.png', 'dest': '~/.i3/wallpaper.png'}
