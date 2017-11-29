@@ -46,6 +46,7 @@
     path={{ item }}
     state=absent
   with_items:
+    - ~/.config/rofi
     - ~/.i3
     - ~/.i3status.conf
     - ~/.local/rofi
@@ -55,6 +56,8 @@
     path={{ item }}
     state=directory
   with_items:
+    - ~/.config
+    - ~/.config/rofi
     - ~/.i3
     - ~/.local
     - ~/.local/rofi
@@ -98,4 +101,5 @@
     - {'src': 'i3status.conf', 'dest': '~/.i3/i3status.conf'}
     - {'src': 'wallpaper.png', 'dest': '~/.i3/wallpaper.png'}
     - {'src': 'compton.conf', 'dest': '~/.i3/compton.conf'}
-    - {'src': 'rofi.conf', 'dest': '~/.local/rofi/config'}
+    - {'src': 'rofi_local.conf', 'dest': '~/.local/rofi/config'}
+    - {'src': 'rofi_config.conf', 'dest': '~/.config/rofi/config'}
