@@ -37,6 +37,7 @@
     - libxkbcommon-dev
     - libxkbcommon-x11-dev
     - libyajl-dev
+    - rofi
     - xautolock
   become: yes
 
@@ -47,6 +48,7 @@
   with_items:
     - ~/.i3
     - ~/.i3status.conf
+    - ~/.local/rofi
 
 - name: needed dirs
   file:
@@ -54,6 +56,8 @@
     state=directory
   with_items:
     - ~/.i3
+    - ~/.local
+    - ~/.local/rofi
     - ~/src
 
 - name: clone i3-gaps
@@ -94,3 +98,4 @@
     - {'src': 'i3status.conf', 'dest': '~/.i3/i3status.conf'}
     - {'src': 'wallpaper.png', 'dest': '~/.i3/wallpaper.png'}
     - {'src': 'compton.conf', 'dest': '~/.i3/compton.conf'}
+    - {'src': 'rofi.conf', 'dest': '~/.local/rofi/config'}
