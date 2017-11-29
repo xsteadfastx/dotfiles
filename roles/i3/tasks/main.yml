@@ -1,14 +1,26 @@
 # vim:ft=ansible
 ---
+- name: remove i3
+  apt:
+    name: "{{ item }}"
+    state: absent
+    purge: yes
+  become: yes
+  with_items:
+    - i3
+    - i3-wm
+
 - name: install deps
   apt:
-    name={{ item }}
-    state=latest
+    name: "{{ item }}"
+    state: latest
   with_items:
     - autoconf
     - automake
     - compton
     - feh
+    - i3lock
+    - i3status
     - libev-dev
     - libpango1.0-dev
     - libstartup-notification0-dev
@@ -80,5 +92,5 @@
   with_items:
     - {'src': 'config', 'dest': '~/.i3/config'}
     - {'src': 'i3status.conf', 'dest': '~/.i3/i3status.conf'}
-    - {'src': 'wallpaper.jpg', 'dest': '~/.i3/wallpaper.jpg'}
+    - {'src': 'wallpaper.png', 'dest': '~/.i3/wallpaper.png'}
     - {'src': 'compton.conf', 'dest': '~/.i3/compton.conf'}
