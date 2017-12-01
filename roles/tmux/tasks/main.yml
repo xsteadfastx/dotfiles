@@ -40,3 +40,4 @@
   with_items:
     - { 'src': 'tmux.conf', 'dest': '~/.tmux.conf' }
     - { 'src': 'communications.yml', 'dest': '~/.tmuxp/communications.yml' }
+    - { 'src': 'code.yml', 'dest': '~/.tmuxp/code.yml' }

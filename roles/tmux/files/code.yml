@@ -1,0 +1,11 @@
+session_name: code
+start_directory: '~/src'
+windows:
+- window_name: coding
+  layout: even-horizontal
+  panes:
+    - null
+    - null
+- window_name: testing
+  panes:
+    - null
