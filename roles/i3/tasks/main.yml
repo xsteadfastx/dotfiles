@@ -39,6 +39,7 @@
     - libxkbcommon-x11-dev
     - libyajl-dev
     - rofi
+    - unclutter
     - xautolock
   become: yes
 
