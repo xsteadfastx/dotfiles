@@ -18,6 +18,7 @@
     - autoconf
     - automake
     - compton
+    - dunst
     - feh
     - i3lock
     - i3status
@@ -46,6 +47,7 @@
     path={{ item }}
     state=absent
   with_items:
+    - ~/.config/dunst
     - ~/.config/rofi
     - ~/.i3
     - ~/.i3status.conf
@@ -57,6 +59,7 @@
     state=directory
   with_items:
     - ~/.config
+    - ~/.config/dunst
     - ~/.config/rofi
     - ~/.i3
     - ~/.local
@@ -97,9 +100,10 @@
     dest={{ item.dest }}
     state=link
   with_items:
-    - {'src': 'config', 'dest': '~/.i3/config'}
-    - {'src': 'i3status.conf', 'dest': '~/.i3/i3status.conf'}
-    - {'src': 'wallpaper.png', 'dest': '~/.i3/wallpaper.png'}
     - {'src': 'compton.conf', 'dest': '~/.i3/compton.conf'}
-    - {'src': 'rofi_local.conf', 'dest': '~/.local/rofi/config'}
+    - {'src': 'config', 'dest': '~/.i3/config'}
+    - {'src': 'dunstrc', 'dest': '~/.config/dunst/dunstrc'}
+    - {'src': 'i3status.conf', 'dest': '~/.i3/i3status.conf'}
     - {'src': 'rofi_config.conf', 'dest': '~/.config/rofi/config'}
+    - {'src': 'rofi_local.conf', 'dest': '~/.local/rofi/config'}
+    - {'src': 'wallpaper.png', 'dest': '~/.i3/wallpaper.png'}
