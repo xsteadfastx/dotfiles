@@ -177,7 +177,7 @@
 [urgency_low]
     background = "#586e75"
     foreground = "#eee8d5"
-    timeout = 10
+    timeout = 5
 
 [urgency_normal]
     background = "#073642"
@@ -187,7 +187,7 @@
 [urgency_critical]
     background = "#dc322f"
     foreground = "#eee8d5"
-    timeout = 0
+    timeout = 5
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.
