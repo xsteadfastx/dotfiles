@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec docker run --name weechat --rm -ti -v "$HOME/.weechat:/home/weechat/.weechat" -v "$HOME/.weechat-passphrase:/home/weechat/.weechat-passphrase" --network communication_backend -p 0.0.0.0:8002:8002 weechat
+exec docker run --name weechat --rm -ti -v "$HOME/.weechat:/home/weechat/.weechat" -v "$HOME/.weechat-passphrase:/home/weechat/.weechat-passphrase" -v "$HOME/.ssh:/home/weechat/.ssh" --network communication_backend -p 0.0.0.0:8002:8002 weechat

@@ -23,6 +23,7 @@
     - i3lock
     - i3status
     - libev-dev
+    - libnotify-bin
     - libpango1.0-dev
     - libstartup-notification0-dev
     - libxcb-cursor-dev
