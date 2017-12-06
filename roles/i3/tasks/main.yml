@@ -35,6 +35,7 @@
     - libxcb-xkb-dev
     - libxcb-xrm-dev
     - libxcb-xrm0
+    - python3
     - libxcb1-dev
     - libxkbcommon-dev
     - libxkbcommon-x11-dev
@@ -96,6 +97,19 @@
     chdir: /home/{{ ansible_user_id }}/src/i3-gaps/build
   become: yes
 
+- name: create virtualenv
+  pip:
+    name: "{{ item }}"
+    virtualenv: /opt/i3
+    virtualenv_command: /usr/bin/python3 -m venv
+  become: yes
+  with_items:
+    - basiciw
+    - colour
+    - i3pystatus
+    - netifaces
+    - psutil
+
 - name: link files
   file:
     src={{ batcave_path }}/roles/i3/files/{{ item.src }}
@@ -106,6 +120,7 @@
     - {'src': 'config', 'dest': '~/.i3/config'}
     - {'src': 'dunstrc', 'dest': '~/.config/dunst/dunstrc'}
     - {'src': 'i3status.conf', 'dest': '~/.i3/i3status.conf'}
+    - {'src': 'i3status.py', 'dest': '~/.i3/i3status.py'}
     - {'src': 'rofi_config.conf', 'dest': '~/.config/rofi/config'}
     - {'src': 'rofi_local.conf', 'dest': '~/.local/rofi/config'}
     - {'src': 'wallpaper.png', 'dest': '~/.i3/wallpaper.png'}

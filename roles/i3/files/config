@@ -156,7 +156,8 @@ bindsym Control+mod1+l exec i3lock -i "$HOME/.i3/wallpaper.png" -t
 # solarized
 bar {
         position top
-        status_command i3status -c ~/.i3/i3status.conf
+        #status_command i3status -c ~/.i3/i3status.conf
+        status_command /opt/i3/bin/python ~/.i3/i3status.py
         colors {
                 background #002b36
                 statusline #839496
