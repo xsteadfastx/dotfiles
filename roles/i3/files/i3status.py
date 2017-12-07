@@ -36,7 +36,10 @@ STATUS.register('load')
 
 STATUS.register(
     'cpu_usage',
-    format=' {usage}%'
+    format=' {usage}%',
+    hints = {
+        'separator': False
+    },
 )
 
 STATUS.register(
@@ -65,7 +68,7 @@ STATUS.register(
     color_up=COL_GREEN,
     color_down=COL_RED,
     dynamic_color=False,
-    format_up='{interface} {v4cidr} {kbs} kbs',
+    format_up='🖧 {interface}  {bytes_recv}KB/s',
     format_down='',
 )
 
@@ -75,7 +78,7 @@ STATUS.register(
     color_up=COL_GREEN,
     color_down=COL_RED,
     dynamic_color=False,
-    format_up=' {essid} {quality:03.0f}% {v4cidr} {kbs} kbs',
+    format_up=' {essid} {quality:03.0f}%  {bytes_recv}KB/s',
     format_down='',
 )
 
