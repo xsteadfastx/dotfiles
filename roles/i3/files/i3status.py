@@ -36,7 +36,7 @@ STATUS.register('load')
 
 STATUS.register(
     'cpu_usage',
-    format=' {usage}%',
+    format=' {usage:03.0f}%',
     hints = {
         'separator': False
     },
@@ -44,13 +44,13 @@ STATUS.register(
 
 STATUS.register(
     'temp',
-    format='🌡 {temp:.0f}°C',
+    format='🌡 {temp:03.0f}°C',
     alert_color=COL_RED,
 )
 
 STATUS.register(
     'battery',
-    format='{status} {percentage:.0f}% {remaining:%E%hh:%Mm}',
+    format='{status} {percentage:03.0f}% {remaining:%E%hh:%Mm}',
     critical_color=COL_RED,
     charging_color=COL_YELLOW,
     full_color=COL_GREEN,
@@ -68,7 +68,7 @@ STATUS.register(
     color_up=COL_GREEN,
     color_down=COL_RED,
     dynamic_color=False,
-    format_up='🖧 {interface}  {bytes_recv}KB/s',
+    format_up='🖧 {interface}  {bytes_recv:03.0f}KB/s',
     format_down='',
 )
 
@@ -78,7 +78,7 @@ STATUS.register(
     color_up=COL_GREEN,
     color_down=COL_RED,
     dynamic_color=False,
-    format_up=' {essid} {quality:03.0f}%  {bytes_recv}KB/s',
+    format_up=' {essid} {quality:03.0f}%  {bytes_recv:03.0f}KB/s',
     format_down='',
 )
 
