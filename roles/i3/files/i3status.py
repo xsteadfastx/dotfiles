@@ -16,7 +16,7 @@ STATUS.register(
 
 STATUS.register(
     'weather',
-    format='[ {icon}] {current_temp}{temp_unit}[ {update_error}]',
+    format='{icon} {current_temp}{temp_unit}[ {update_error}]',
     colorize=True,
     interval=900,
     backend=weathercom.Weathercom(
@@ -44,7 +44,7 @@ STATUS.register(
 
 STATUS.register(
     'temp',
-    format='{temp:.0f}°C',
+    format='🌡 {temp:.0f}°C',
     alert_color=COL_RED,
 )
 
