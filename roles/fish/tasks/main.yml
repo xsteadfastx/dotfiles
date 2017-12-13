@@ -64,6 +64,7 @@
     state=link
   with_items:
     - {'src': '{{ batcave_path }}/roles/fish/files/config.fish', 'dest': '~/.config/fish/config.fish'}
+    - {'src': '{{ batcave_path }}/roles/fish/files/sudo.fish', 'dest': '~/.config/fish/functions/sudo.fish'}
 
 - name: get files
   get_url:
