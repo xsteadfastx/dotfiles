@@ -1,15 +1,8 @@
+# vim:ft=ansible
 ---
 - include_vars : "{{ item }}"
   with_first_found:
     - "../vars/{{ ansible_os_family }}.yml"
-
-- name: add deadsnakes ppa
-  apt_repository:
-    repo='ppa:fkrull/deadsnakes'
-    state=present
-  become: yes
-  when:
-    ansible_distribution == 'Ubuntu'
 
 - name: install deps
   package:
@@ -19,56 +12,33 @@
   with_items:
     - '{{ python3_package_name }}'
     - '{{ shell_package_name }}'
-    - bash
 
 - stat: path=~/.local/bin/pip
   register: pip
 
-- name: download pip
-  get_url:
-    url=https://bootstrap.pypa.io/get-pip.py
-    dest=/tmp
-  when: pip.stat.exists == False
-
-- name: install pip
-  command: 'python3.5 /tmp/get-pip.py --user --force-reinstall'
-  when: pip.stat.exists == False
-
-- name: delete get-pip.py
-  file:
-    state=absent
-    path=/tmp/get-pip.py
-  when: pip.stat.exists == False
-
 - name: set dash as default shell
   user:
     name={{ ansible_env.USER }}
-    shell=/bin/dash
+    shell=/bin/sh
   become: yes
-  when: ansible_os_family != 'Alpine'
-
-- name: set path
-  lineinfile:
-    dest=~/.profile
-    line='export PATH=$PATH:$HOME/.local/bin'
-    state=present
-    backup=yes
-    create=yes
+  when: ansible_os_family == 'Debian'
 
 - name: install python packages
   pip:
-    name={{ item }}
-    executable=~/.local/bin/pip
-    extra_args='--user'
-    state=latest
+    name: "{{ item }}"
+    virtualenv: /opt/xonsh
+    virtualenv_command: /usr/bin/python3 -m venv
+    state: latest
+  become: yes
   with_items:
-    - prompt_toolkit
+    - distro
+    - prompt-toolkit
     - pygments
+    - pygments-style-solarized
     - xonsh
     - xonsh-apt_tabcomplete
-    - xonsh-autoxsh
-    - xonsh-docker_tabcomplete
     - xonsh-vox_tabcomplete
+    - xontrib-powerline
 
 - name: link files
   file:

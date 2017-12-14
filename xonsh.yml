@@ -2,8 +2,4 @@
 ---
 - hosts: "{{ host }}"
   roles:
-    - batcave
-    - git
-    - tmux
-    - vim
     - xonsh

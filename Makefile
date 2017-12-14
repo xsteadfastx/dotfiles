@@ -1,4 +1,4 @@
-.PHONY: help shell x11 all weechat pyenv firefox pipsi xresources fish nix st i3 tsm own update
+.PHONY: help shell x11 all weechat pyenv firefox pipsi xresources fish xonsh nix st i3 tsm own update
 
 help: ## Show this help
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
@@ -29,6 +29,9 @@ xresources: ## Install xresources
 
 fish: ## Install fish
 	ansible-playbook -i hosts fish.yml -c local --ask-become-pass --extra-vars="host=127.0.0.1"
+
+xonsh: ## Install xonsh
+	ansible-playbook -i hosts xonsh.yml -c local --ask-become-pass --extra-vars="host=127.0.0.1"
 
 nix: ## Install nix
 	ansible-playbook -i hosts nix.yml -c local --ask-become-pass --extra-vars="host=127.0.0.1"

@@ -1,41 +1,17 @@
+# vim: set ft=python:
+
 import os
 import re
 import shutil
 
-from xonsh.prompt.vc import git_dirty_working_directory
-
-
-# PROMPT #################################
-
-def _prompt():
-    prompt = []
-    prompt.append('{env_name:{} }')
-
-    if 'SSH_CONNECTION' in os.environ:
-        prompt.append('{GREEN}{user}@{INTENSE_WHITE}{hostname} ')
-
-    prompt.append('{GREEN}{short_cwd}{branch_color}{curr_branch: {}}{NO_COLOR} ')
-    prompt.append('{BOLD_GREEN}{prompt_end}{NO_COLOR} ')
-
-    return ''.join(prompt)
-
-
-$PROMPT_FIELDS['branch_color'] = lambda: ('{BOLD_INTENSE_RED}'
-                                           if git_dirty_working_directory(include_untracked=True)
-                                           else '{BOLD_INTENSE_GREEN}')
-
-$PROMPT = _prompt
-$XONSH_COLOR_STYLE = 'monokai'
-$MULTILINE_PROMPT = '`·.,¸,.·*¯`·.,¸,.·*¯'
-
 
 # XONSH ENVIRONMENT VARIABLES ############
 
-$BASH_COMPLETIONS = ['/etc/bash_completion.d', '/usr/share/bash-completion/completions']
 $CASE_SENSITIVE_COMPLETIONS = False
 $SHELL_TYPE = 'best'
 $SUPPRESS_BRANCH_TIMEOUT_MESSAGE = True
 $VC_BRANCH_TIMEOUT = 5
+$XONSH_COLOR_STYLE = 'solarizeddark'
 
 
 # OTHER ENVIRONMENT VARIABLES ############
@@ -49,6 +25,14 @@ $LC_UID = re.findall(r'\d{1,4}', $(id).split(' ')[0])[0]
 aliases['exec'] = aliases['xexec']
 aliases['ll'] = 'ls -la'
 aliases['tmux'] = 'tmux -2'
+
+def _alias_tmux_gc(args, stdin=None):
+    tmux list-sessions | grep -v attached | cut -d: -f1 |  xargs -t -n1 tmux kill-session -t
+
+aliases['tmux-gc'] = _alias_tmux_gc
+
+
+aliases['vim'] = 'nvim'
 
 def _alias_mosh(args, stdin=None):
     """A function to use as alias to get mosh running.
@@ -76,14 +60,17 @@ aliases['ssh'] = _alias_ssh
 
 $PATH[0:0] = [
     $HOME + '/.local/bin',
-    $HOME + '/miniconda3/bin',
-    $HOME + '/node_modules_global/bin'
+    $HOME + '/.pyenv/shims',
+    $HOME + '/.nix-profile/bin',
+    $HOME + '/.nix-profile/sbin',
 ]
 
 
 # XONTRIB ################################
 
-xontrib autoxsh vox vox_tabcomplete
+xontrib load vox
+xontrib load vox_tabcomplete
+xontrib load powerline
 
 if shutil.which('apt-get'):
-    xontrib apt_tabcomplete
+    xontrib load apt_tabcomplete
