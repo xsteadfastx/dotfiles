@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec docker run --name qutebrowser --rm -ti -e USER_ID=$UID -e DISPLAY=$DISPLAY -e XAUTHORITY=$HOME/.Xauthority -v /tmp/.X11-unix:/tmp/.X11-unix -v /run/user/$UID/pulse:/run/pulse -v $HOME/.config/pulse/cookie:/tmp/pulse_cookie -v $HOME/.config/qutebrowser:/home/qutebrowser/.config/qutebrowser -v $HOME/.local/share/qutebrowser:/home/qutebrowser/.local/share/qutebrowser qutebrowser

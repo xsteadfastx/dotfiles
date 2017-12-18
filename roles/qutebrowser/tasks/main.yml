@@ -1,0 +1,38 @@
+# vim:filetype=ansible
+---
+- name: needed dirs
+  file:
+    path={{ item }}
+    state=directory
+  with_items:
+    - ~/.config
+    - ~/.config/qutebrowser
+    - ~/.local
+    - ~/.local/bin
+    - ~/.local/share
+    - ~/.local/share/qutebrowser
+
+- name: install deps
+  apt:
+    name: python-docker
+    state: latest
+  become: yes
+
+- name: clone dockerfiles
+  git:
+    repo: https://github.com/xsteadfastx/dockerfiles.git
+    dest: ~/.dockerfiles
+
+- name: build image
+  docker_image:
+    name: qutebrowser
+    path: ~/.dockerfiles/qutebrowser
+
+- name: link files
+  file:
+    src={{ item.src }}
+    dest={{ item.dest }}
+    state=link
+  with_items:
+    - { 'src': '{{ batcave_path }}/roles/qutebrowser/files/qutebrowser', 'dest': '~/.local/bin/qutebrowser' }
+
