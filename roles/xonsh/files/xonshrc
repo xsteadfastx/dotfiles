@@ -1,38 +1,28 @@
 # vim: set ft=python:
 
+import base64
+import hashlib
 import os
 import re
 import shutil
 
-
-# XONSH ENVIRONMENT VARIABLES ############
+# ENVIRONMENT VARIABLES ############
 
 $CASE_SENSITIVE_COMPLETIONS = False
+$EDITOR = 'vim'
+$LC_UID = re.findall(r'\d{1,4}', $(id).split(' ')[0])[0]
 $SHELL_TYPE = 'best'
 $SUPPRESS_BRANCH_TIMEOUT_MESSAGE = True
 $VC_BRANCH_TIMEOUT = 5
+$VIRTUALENV_HOME = os.path.join(os.path.expanduser('~'), '.local/share/virtualenvs')
 $XONSH_COLOR_STYLE = 'solarizeddark'
 
 
-# OTHER ENVIRONMENT VARIABLES ############
-
-$EDITOR = 'vim'
-$LC_UID = re.findall(r'\d{1,4}', $(id).split(' ')[0])[0]
-
-
-# ALIASES ################################
-
-aliases['exec'] = aliases['xexec']
-aliases['ll'] = 'ls -la'
-aliases['tmux'] = 'tmux -2'
+# FUNCTIONS ##############################
 
 def _alias_tmux_gc(args, stdin=None):
     tmux list-sessions | grep -v attached | cut -d: -f1 |  xargs -t -n1 tmux kill-session -t
 
-aliases['tmux-gc'] = _alias_tmux_gc
-
-
-aliases['vim'] = 'nvim'
 
 def _alias_mosh(args, stdin=None):
     """A function to use as alias to get mosh running.
@@ -45,7 +35,6 @@ def _alias_mosh(args, stdin=None):
     cmd = ' '.join(args)
     os.system(cmd)
 
-aliases['mosh'] = _alias_mosh
 
 def _alias_ssh(args, stdin=None):
     os.environ['TERM'] = 'xterm'
@@ -53,7 +42,32 @@ def _alias_ssh(args, stdin=None):
     cmd = ' '.join(args)
     os.system(cmd)
 
+
+def _pipenv_shell(args, stdin=None):
+    if args[0] == 'shell':
+        print('WARNING: using own xonsh alias function instead of pipenv shell')
+        name = $PWD.split(os.sep)[-1]
+        sanitized = re.sub(r'[ $`!*@"\\\r\n\t]', '_', name)[0:42]
+        hash = hashlib.sha256(os.path.join($PWD, 'Pipfile').encode()).digest()[:6]
+        encoded_hash = base64.urlsafe_b64encode(hash).decode()
+        venv_name = sanitized + '-' + encoded_hash
+        for venv in $(ls $VIRTUALENV_HOME).splitlines():
+            if venv == venv_name:
+                vox activate @(venv)
+    else:
+        ~/.local/bin/pipenv @(args)
+
+
+# ALIASES ################################
+
+aliases['exec'] = aliases['xexec']
+aliases['ll'] = 'ls -la'
+aliases['tmux'] = 'tmux -2'
+aliases['tmux-gc'] = _alias_tmux_gc
+aliases['vim'] = 'nvim'
+aliases['mosh'] = _alias_mosh
 aliases['ssh'] = _alias_ssh
+aliases['pipenv'] = _pipenv_shell
 
 
 # PATH ###################################
