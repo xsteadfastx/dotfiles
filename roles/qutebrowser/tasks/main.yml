@@ -35,4 +35,4 @@
     state=link
   with_items:
     - { 'src': '{{ batcave_path }}/roles/qutebrowser/files/qutebrowser', 'dest': '~/.local/bin/qutebrowser' }
-
+    - { 'src': '{{ batcave_path }}/roles/qutebrowser/files/config.py', 'dest': '~/.config/qutebrowser/config.py' }
