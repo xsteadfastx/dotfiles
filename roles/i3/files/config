@@ -199,7 +199,7 @@ exec --no-startup-id exec compton --config ~/.i3/compton.conf &
 exec --no-startup-id exec unclutter &
 
 # GAPS
-for_window [class="^.*"] border pixel 0
+#for_window [class="^.*"] border pixel 0
 #smart_gaps on
 gaps inner 10
 #gaps outer 10
