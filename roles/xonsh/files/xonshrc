@@ -74,6 +74,7 @@ aliases['pipenv'] = _pipenv_shell
 
 $PATH[0:0] = [
     $HOME + '/.local/bin',
+    $HOME + '/.pyenv/bin',
     $HOME + '/.pyenv/shims',
     $HOME + '/.nix-profile/bin',
     $HOME + '/.nix-profile/sbin',
