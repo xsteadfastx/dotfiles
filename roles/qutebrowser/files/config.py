@@ -2,6 +2,7 @@
 c.auto_save.session = True
 c.url.searchengines = {
     'DEFAULT': 'https://www.google.com/search?hl=de&q={}',
+    'r': 'https://reddit.com/r/{}',
 }
 c.qt.force_software_rendering = True
 
