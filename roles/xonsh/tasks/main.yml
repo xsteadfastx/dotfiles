@@ -16,7 +16,15 @@
 - stat: path=~/.local/bin/pip
   register: pip
 
-- name: set dash as default shell
+- name: needed dirs
+  file:
+    path={{ item }}
+    state=directory
+  with_items:
+    - ~/.local
+    - ~/.local/bin
+
+- name: set sh as default shell
   user:
     name={{ ansible_env.USER }}
     shell=/bin/sh
@@ -47,3 +55,11 @@
     state=link
   with_items:
     - { 'src': 'xonshrc', 'dest': '~/.xonshrc' }
+    - { 'src': 'xonsh', 'dest': '~/.local/bin/xonsh' }
+
+- name: export PATH
+  lineinfile:
+    path: ~/.profile
+    line: 'export PATH="{{ item }}:$PATH"'
+  with_items:
+    - $HOME/.local/bin

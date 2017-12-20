@@ -126,8 +126,3 @@
     - {'src': 'rofi_config.conf', 'dest': '~/.config/rofi/config'}
     - {'src': 'rofi_local.conf', 'dest': '~/.local/rofi/config'}
     - {'src': 'wallpaper.png', 'dest': '~/.i3/wallpaper.png'}
-
-- name: export PATH
-  lineinfile:
-    path: ~/.profile
-    line: 'export PATH="$HOME/.local/bin:$PATH"'
