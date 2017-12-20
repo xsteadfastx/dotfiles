@@ -189,7 +189,7 @@ for_window [class="org-openstreetmap-josm-Main"] floating disable
 for_window [class="org-openstreetmap-josm-Main"] layout splitv
 
 # AUTOSTART
-exec --no-startup-id exec feh --bg-tile ~/.i3/wallpaper.png
+exec --no-startup-id exec feh --bg-fill ~/.i3/wallpaper.png
 exec --no-startup-id exec dunst &
 exec --no-startup-id exec nm-applet &
 exec --no-startup-id exec nextcloud &
