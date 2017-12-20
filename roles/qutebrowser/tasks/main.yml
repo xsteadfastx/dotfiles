@@ -12,6 +12,10 @@
     - ~/.local/share
     - ~/.local/share/qutebrowser
 
+- name: check if newer ubuntu version
+  set_fact:
+    fallback: "{% if ansible_distribution_version|float < 17.04 %}true{% else %}false{% endif %}"
+
 - name: get files
   get_url:
     url: "{{ item.src }}"
@@ -19,6 +23,7 @@
   with_items:
     - {'src': 'https://qutebrowser.org/python3-pypeg2_2.15.2-1_all.deb', 'dest': '/tmp/pypeg2.deb'}
     - {'src': 'https://github.com/qutebrowser/qutebrowser/releases/download/v1.0.4/qutebrowser_1.0.4-1_all.deb', 'dest': '/tmp/qutebrowser.deb'}
+  when: fallback == false
 
 - name: install deps
   apt:
@@ -27,15 +32,7 @@
   with_items:
     - /tmp/pypeg2.deb
     - /tmp/qutebrowser.deb
-
-- name: link files
-  file:
-    src={{ item.src }}
-    dest={{ item.dest }}
-    state=link
-  with_items:
-    - { 'src': '{{ batcave_path }}/roles/qutebrowser/files/qutebrowser', 'dest': '~/.local/bin/qutebrowser' }
-    - { 'src': '{{ batcave_path }}/roles/qutebrowser/files/config.py', 'dest': '~/.config/qutebrowser/config.py' }
+  when: fallback == false
 
 - name: remove files
   file:
@@ -44,3 +41,32 @@
   with_items:
     - /tmp/pypeg2.deb
     - /tmp/qutebrowser.deb
+  when: fallback == false
+
+- name: clone qutebrowser repo
+  git:
+    repo: https://github.com/qutebrowser/qutebrowser.git
+    dest: ~/src/qutebrowser
+  when: fallback == true
+
+- name: install
+  command: tox -e mkvenv-pypi
+  args:
+    chdir: ~/src/qutebrowser
+  when: fallback == true
+
+- name: link start script
+  file:
+    src={{ batcave_path }}/roles/qutebrowser/files/qutebrowser
+    dest=~/.local/bin/qutebrowser
+    state=link
+  when: fallback == true
+
+- name: link config
+  file:
+    src={{ item.src }}
+    dest={{ item.dest }}
+    state=link
+  with_items:
+    - { 'src': '{{ batcave_path }}/roles/qutebrowser/files/config.py', 'dest': '~/.config/qutebrowser/config.py' }
+

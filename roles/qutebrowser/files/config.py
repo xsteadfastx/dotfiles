@@ -3,6 +3,7 @@ c.auto_save.session = True
 c.url.searchengines = {
     'DEFAULT': 'https://www.google.com/search?hl=de&q={}',
 }
+c.qt.force_software_rendering = True
 
 ### SOLARIZED ###########################
 solarized = {
