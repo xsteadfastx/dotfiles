@@ -72,29 +72,24 @@ STATUS.register(
     format_down='',
 )
 
-STATUS.register(
-    'network',
-    interface='wlp3s0',
-    color_up=COL_GREEN,
-    color_down=COL_RED,
-    dynamic_color=False,
-    format_up=' {essid} {quality:03.0f}%  {bytes_recv:03.0f}KB/s',
-    format_down='',
-)
+for wifi in ['wlan0', 'wlp3s0']:
+    STATUS.register(
+        'network',
+        interface=wifi,
+        color_up=COL_GREEN,
+        color_down=COL_RED,
+        dynamic_color=False,
+        format_up=' {essid} {quality:03.0f}%  {bytes_recv:03.0f}KB/s',
+        format_down='',
+    )
 
-STATUS.register(
-    'openvpn',
-    vpn_name='z10n',
-    color_up=COL_GREEN,
-    color_down=COL_RED,
-)
-
-STATUS.register(
-    'openvpn',
-    vpn_name='TSM',
-    color_up=COL_GREEN,
-    color_down=COL_RED,
-)
+for vpn in ['z10n', 'TSM']:
+    STATUS.register(
+        'openvpn',
+        vpn_name=vpn,
+        color_up=COL_GREEN,
+        color_down=COL_RED,
+    )
 
 STATUS.register(
     'mpd',
