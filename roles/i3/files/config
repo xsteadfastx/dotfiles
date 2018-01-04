@@ -196,7 +196,6 @@ exec --no-startup-id exec nextcloud &
 exec --no-startup-id exec xfce4-power-manager &
 exec --no-startup-id exec xautolock -time 10 -locker 'i3lock -i "$HOME/.i3/wallpaper.png" -t' &
 exec --no-startup-id exec compton --config ~/.i3/compton.conf &
-exec --no-startup-id exec unclutter &
 
 # GAPS
 #for_window [class="^.*"] border pixel 0
