@@ -1,10 +1,21 @@
+def uses_nouveau() -> bool:
+    import re
+    with open('/proc/modules', 'r') as f:
+        modules = f.read()
+    if re.search(r'nouveau', modules):
+        return True
+    else:
+        return False
+
+
 # config.load_autoconfig()
 c.auto_save.session = True
 c.url.searchengines = {
     'DEFAULT': 'https://www.google.com/search?hl=de&q={}',
     'r': 'https://reddit.com/r/{}',
 }
-c.qt.force_software_rendering = True
+if uses_nouveau():
+    c.qt.force_software_rendering = True
 
 ### SOLARIZED ###########################
 solarized = {
