@@ -1,5 +1,17 @@
 # vim:ft=ansible
 ---
+- name: install deps
+  apt:
+    name: "{{ item }}"
+    state: latest
+  become: yes
+  with_items:
+    - build-essential
+    - curl
+    - file
+    - git
+    - python-setuptools
+
 - name: clone linuxbrew
   git:
     repo: https://github.com/Linuxbrew/brew.git

@@ -17,6 +17,9 @@ $VC_BRANCH_TIMEOUT = 5
 $VIRTUALENV_HOME = os.path.join(os.path.expanduser('~'), '.local/share/virtualenvs')
 $XONSH_COLOR_STYLE = 'solarizeddark'
 
+# add bash completions
+$BASH_COMPLETIONS.append($HOME + '/.linuxbrew/etc/bash_completion.d')
+
 
 # FUNCTIONS ##############################
 
