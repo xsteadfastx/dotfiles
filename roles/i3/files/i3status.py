@@ -1,3 +1,5 @@
+import os
+
 from i3pystatus import Status
 from i3pystatus.weather import weathercom
 
@@ -42,11 +44,12 @@ STATUS.register(
     },
 )
 
-STATUS.register(
-    'temp',
-    format='🌡 {temp:03.0f}°C',
-    alert_color=COL_RED,
-)
+if os.path.isdir('/sys/class/thermal/thermal_zone0'):
+    STATUS.register(
+        'temp',
+        format='🌡 {temp:03.0f}°C',
+        alert_color=COL_RED,
+    )
 
 STATUS.register(
     'battery',
@@ -62,15 +65,16 @@ STATUS.register(
     not_present_text='',
 )
 
-STATUS.register(
-    'network',
-    interface='eth0',
-    color_up=COL_GREEN,
-    color_down=COL_RED,
-    dynamic_color=False,
-    format_up='🖧 {interface}  {bytes_recv:03.0f}KB/s',
-    format_down='',
-)
+for eth in ['eth0', 'enp0s10']:
+    STATUS.register(
+        'network',
+        interface=eth,
+        color_up=COL_GREEN,
+        color_down=COL_RED,
+        dynamic_color=False,
+        format_up='🖧 {interface}  {bytes_recv:03.0f}KB/s',
+        format_down='',
+    )
 
 for wifi in ['wlan0', 'wlp3s0']:
     STATUS.register(
