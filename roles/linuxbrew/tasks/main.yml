@@ -1,0 +1,6 @@
+# vim:ft=ansible
+---
+- name: clone linuxbrew
+  git:
+    repo: https://github.com/Linuxbrew/brew.git
+    dest: ~/.linuxbrew

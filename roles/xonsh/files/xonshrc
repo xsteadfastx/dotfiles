@@ -78,6 +78,8 @@ $PATH[0:0] = [
     $HOME + '/.pyenv/shims',
     $HOME + '/.nix-profile/bin',
     $HOME + '/.nix-profile/sbin',
+    $HOME + '/.linuxbrew/sbin',
+    $HOME + '/.linuxbrew/bin',
 ]
 
 

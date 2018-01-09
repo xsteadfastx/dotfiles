@@ -1,4 +1,4 @@
-.PHONY: help shell x11 all weechat pyenv firefox pipsi xresources fish xonsh nix st i3 qutebrowser tsm own update
+.PHONY: help shell x11 all weechat pyenv firefox pipsi xresources fish xonsh nix st i3 qutebrowser linuxbrew tsm own update
 
 help: ## Show this help
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
@@ -44,6 +44,9 @@ i3: ## Install i3
 
 qutebrowser: ## Install qutebrowser
 	ansible-playbook -i hosts qutebrowser.yml -c local --ask-become-pass --extra-vars="host=127.0.0.1"
+
+linuxbrew: ## Install linuxbrew
+	ansible-playbook -i hosts linuxbrew.yml -c local --ask-become-pass --extra-vars="host=127.0.0.1"
 
 tsm: ## Install base on tsm servers
 	ansible-playbook shell.yml --ask-vault-pass --ask-become-pass --extra-vars="host=tsm-server"
