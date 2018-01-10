@@ -17,6 +17,9 @@ c.url.searchengines = {
 if uses_nouveau():
     c.qt.force_software_rendering = True
 
+# KEYBINDINGS
+config.bind('m', 'spawn mpv {url}')
+
 ### SOLARIZED ###########################
 solarized = {
     'base03': '#002b36',
