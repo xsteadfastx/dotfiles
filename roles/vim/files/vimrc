@@ -155,7 +155,8 @@ call plug#end()
 " UI
 " ---------------------------------------
 
-set nonumber
+set number
+set relativenumber
 set backspace=2
 set laststatus=2
 set foldenable
