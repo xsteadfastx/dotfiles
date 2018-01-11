@@ -200,7 +200,7 @@ exec --no-startup-id exec compton --config ~/.i3/compton.conf &
 # GAPS
 #for_window [class="^.*"] border pixel 0
 #smart_gaps on
-gaps inner 5
-gaps outer 5
+#gaps inner 5
+#gaps outer 5
 #workspace 2 gaps inner 0
 #workspace 2 gaps outer 0
