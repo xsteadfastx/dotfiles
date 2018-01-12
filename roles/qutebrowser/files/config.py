@@ -18,7 +18,8 @@ if uses_nouveau():
     c.qt.force_software_rendering = True
 
 # KEYBINDINGS
-config.bind('m', 'spawn mpv {url}')
+config.bind(',m', 'spawn mpv {url}')
+config.bind(',n', 'config-cycle content.user_stylesheets ~/src/solarized-everything-css/css/solarized-all-sites-dark.css "" ;; reload')
 
 ### SOLARIZED ###########################
 solarized = {

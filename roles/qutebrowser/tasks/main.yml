@@ -11,6 +11,7 @@
     - ~/.local/bin
     - ~/.local/share
     - ~/.local/share/qutebrowser
+    - ~/src
 
 - name: check if newer ubuntu version
   set_fact:
@@ -70,3 +71,13 @@
   with_items:
     - { 'src': '{{ batcave_path }}/roles/qutebrowser/files/config.py', 'dest': '~/.config/qutebrowser/config.py' }
 
+- name: get solarized-everything
+  git:
+    repo: https://github.com/alphapapa/solarized-everything-css.git
+    dest: ~/src/solarized-everything-css
+
+- name: install mpv
+  apt:
+    name: mpv
+    state: latest
+  become: yes
