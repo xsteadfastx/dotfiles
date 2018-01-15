@@ -5,6 +5,7 @@ import hashlib
 import os
 import re
 import shutil
+from contextlib import contextmanager
 
 # ENVIRONMENT VARIABLES ############
 
@@ -22,6 +23,14 @@ $BASH_COMPLETIONS.append($HOME + '/.linuxbrew/etc/bash_completion.d')
 
 
 # FUNCTIONS ##############################
+
+@contextmanager
+def _recover_path():
+    """Contextmanager to recover PATH after running alias."""
+    old_path = $PATH[:]
+    yield
+    $PATH = old_path
+
 
 def _alias_tmux_gc(args, stdin=None):
     tmux list-sessions | grep -v attached | cut -d: -f1 |  xargs -t -n1 tmux kill-session -t
@@ -46,7 +55,7 @@ def _alias_ssh(args, stdin=None):
     os.system(cmd)
 
 
-def _pipenv_shell(args, stdin=None):
+def _alias_pipenv_shell(args, stdin=None):
     if args[0] == 'shell':
         print('WARNING: using own xonsh alias function instead of pipenv shell')
         name = $PWD.split(os.sep)[-1]
@@ -61,6 +70,17 @@ def _pipenv_shell(args, stdin=None):
         ~/.local/bin/pipenv @(args)
 
 
+def _alias_brew(args, stdin=None):
+    with _recover_path():
+        pyenv_paths = ['~/.pyenv/bin', '~/.pyenv/shims']
+        for path in pyenv_paths:
+            $PATH.remove(os.path.expanduser(path))
+        cmd_list = [os.path.expanduser('~/.linuxbrew/bin/brew')]
+        cmd_list.extend(args)
+        cmd = ' '.join(cmd_list)
+        os.system(cmd)
+
+
 # ALIASES ################################
 
 aliases['exec'] = aliases['xexec']
@@ -70,7 +90,8 @@ aliases['tmux-gc'] = _alias_tmux_gc
 aliases['vim'] = 'nvim'
 aliases['mosh'] = _alias_mosh
 aliases['ssh'] = _alias_ssh
-aliases['pipenv'] = _pipenv_shell
+aliases['pipenv'] = _alias_pipenv_shell
+aliases['brew'] = _alias_brew
 
 
 # PATH ###################################
@@ -79,8 +100,6 @@ $PATH[0:0] = [
     $HOME + '/.local/bin',
     $HOME + '/.pyenv/bin',
     $HOME + '/.pyenv/shims',
-    $HOME + '/.nix-profile/bin',
-    $HOME + '/.nix-profile/sbin',
     $HOME + '/.linuxbrew/sbin',
     $HOME + '/.linuxbrew/bin',
 ]
