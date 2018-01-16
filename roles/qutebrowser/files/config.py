@@ -20,6 +20,7 @@ if uses_nouveau():
 # KEYBINDINGS
 config.bind(',m', 'spawn mpv {url}')
 config.bind(',n', 'config-cycle content.user_stylesheets ~/src/solarized-everything-css/css/solarized-all-sites-dark.css "" ;; reload')
+config.bind(',p', 'spawn pocket-cli add -u {url}')
 
 ### SOLARIZED ###########################
 solarized = {
