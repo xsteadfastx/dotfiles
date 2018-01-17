@@ -1,0 +1,40 @@
+# vim:ft=ansible
+---
+- name: uninstall unclutter
+  apt:
+    name: unclutter
+    state: absent
+  become: yes
+
+- name: install deps
+  apt:
+    name: "{{ item }}"
+    state: latest
+  become: yes
+  with_items:
+    - libxi-dev
+
+- name: needed dirs
+  file:
+    path={{ item }}
+    state=directory
+  with_items:
+    - ~/.local/
+    - ~/.local/bin
+    - ~/src
+
+- name: clone unclutter
+  git:
+    repo: https://github.com/Airblader/unclutter-xfixes.git
+    dest: ~/src/unclutter
+
+- name: compile
+  command: make unclutter
+  args:
+    chdir: ~/src/unclutter
+
+- name: link unclutter
+  file:
+    src=~/src/unclutter/unclutter
+    dest=~/.local/bin/unclutter
+    state=link
