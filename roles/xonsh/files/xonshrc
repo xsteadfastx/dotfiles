@@ -72,14 +72,13 @@ def _alias_pipenv_shell(args, stdin=None):
 
 def _alias_brew(args, stdin=None):
     with _recover_path():
-        pyenv_paths = ['~/.pyenv/bin', '~/.pyenv/shims']
-        for path in pyenv_paths:
-            $PATH.remove(os.path.expanduser(path))
-        cmd_list = [os.path.expanduser('~/.linuxbrew/bin/brew')]
-        cmd_list.extend(args)
-        cmd = ' '.join(cmd_list)
-        os.system(cmd)
+        paths = ['~/.pyenv/bin', '~/.pyenv/shims', '~/.local/bin']
+        for path in paths:
+            full_path = os.path.expanduser(path)
+            while full_path in $PATH:
+                $PATH.remove(full_path)
 
+        ~/.linuxbrew/bin/brew @(args)
 
 # ALIASES ################################
 
