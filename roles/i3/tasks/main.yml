@@ -1,9 +1,19 @@
 # vim:ft=ansible
 ---
+- name: add i3 repo
+  apt_repository:
+    repo='deb http://debian.sur5r.net/i3/ {{ ansible_distribution_release }} universe'
+  become: yes
+
+- name: install keyring
+  command: apt-get --allow-unauthenticated install sur5r-keyring
+  become: yes
+
 - name: install deps
   apt:
     name: "{{ item }}"
     state: latest
+    update_cache: yes
   with_items:
     - compton
     - dunst
