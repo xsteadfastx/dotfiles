@@ -84,7 +84,7 @@ def _alias_brew(args, stdin=None):
 
 aliases['exec'] = aliases['xexec']
 aliases['ll'] = 'ls -la'
-aliases['tmux'] = 'tmux -2'
+# aliases['tmux'] = 'tmux -2'
 aliases['tmux-gc'] = _alias_tmux_gc
 aliases['vim'] = 'nvim'
 aliases['mosh'] = _alias_mosh
