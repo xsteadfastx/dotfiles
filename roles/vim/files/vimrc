@@ -166,12 +166,13 @@ autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
 set background=dark
 set t_Co=256
-colorscheme solarized
+colorscheme solarized8
 "hi Normal ctermbg=none " transparent background
 let python_highlight_all=1
 set listchars=trail:·,precedes:«,extends:»,nbsp:~,tab:▸\ 
 set list
 set cursorline
+set termguicolors
 
 " disabled preview window
 "set completeopt-=preview

@@ -78,6 +78,9 @@
     - {'src': 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim', 'dest': '~/.vim/autoload/plug.vim'}
     - {'src': 'https://raw.githubusercontent.com/sjl/badwolf/master/colors/badwolf.vim', 'dest': '~/.vim/colors/badwolf.vim'}
     - {'src': 'https://raw.githubusercontent.com/tlhr/anderson.vim/master/colors/anderson.vim', 'dest': '~/.vim/colors/anderson.vim'}
+    - {'src': 'https://raw.githubusercontent.com/lifepillar/vim-solarized8/master/colors/solarized8_dark_flat.vim', 'dest': '~/.vim/colors/solarized8_dark_flat.vim'}
+    - {'src': 'https://raw.githubusercontent.com/lifepillar/vim-solarized8/master/colors/solarized8_flat.vim', 'dest': '~/.vim/colors/solarized8_flat.vim'}
+    - {'src': 'https://raw.githubusercontent.com/lifepillar/vim-solarized8/master/colors/solarized8.vim', 'dest': '~/.vim/colors/solarized8.vim'}
 
 - name: create neovim virtualenv for python2
   pip:
