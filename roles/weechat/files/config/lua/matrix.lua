@@ -413,12 +413,16 @@ function matrix_away_command_run_cb(data, buffer, args)
 end
 
 function configuration_changed_cb(data, option, value)
-    if value == 'on' then
-        DEBUG = true
-        w.print('', SCRIPT_NAME..': debugging messages enabled')
-    else
-        DEBUG = false
-        w.print('', SCRIPT_NAME..': debugging messages disabled')
+    if option == 'plugins.var.lua.matrix.timeout' then
+        timeout = tonumber(value)*1000
+    elseif option == 'plugins.var.lua.matrix.debug' then 
+        if value == 'on' then
+            DEBUG = true
+            w.print('', SCRIPT_NAME..': debugging messages enabled')
+        else
+            DEBUG = false
+            w.print('', SCRIPT_NAME..': debugging messages disabled')
+        end
     end
 end
 
@@ -503,6 +507,10 @@ function real_http_cb(extra, command, rc, stdout, stderr)
         local httpversion, status_code, reason_phrase = parse_http_statusline(stdout)
         if not httpversion then
             perr(('Invalid http request: %s'):format(stdout))
+            return w.WEECHAT_RC_OK
+        end
+        if status_code == 504 and command:find'/sync' then -- keep hammering to try to get in as the server will keep slowly generating the response
+            SERVER:initial_sync()
             return w.WEECHAT_RC_OK
         end
         if status_code >= 500 then
@@ -1312,7 +1320,11 @@ function MatrixServer:SendReadMarker(room_id, event_id)
         postfields = {}
     }
     data.postfields['m.fully_read'] = event_id
-    data.postfields['m.read'] = event_id
+
+    if w.config_get_plugin('read_receipts') == 'on' then
+        data.postfields['m.read'] = event_id
+    end
+
     data.postfields = json.encode(data.postfields)
     http(url,
       data,
@@ -1750,7 +1762,7 @@ function Room:SetName(name)
         end
     elseif self.aliases then
         local alias = self.aliases[1]
-        if name then
+        if name and alias then
             local _
             name, _ = alias:match('(.+):(.+)')
         end
@@ -3326,6 +3338,7 @@ if w.register(SCRIPT_NAME, SCRIPT_AUTHOR, SCRIPT_VERSION, SCRIPT_LICENSE, SCRIPT
         encrypted_message_color = {'lightgreen', 'Print encrypted mesages with this color'},
         --olm_secret = {'', 'Password used to secure olm stores'},
         timeout = {'5', 'Time in seconds until a connection is assumed to be timed out'},
+        read_receipts = {'on', 'Send read receipts. Note that not sending them will prevent a room to be marked as read in Riot clients.'}
     }
     -- set default settings
     for option, value in pairs(settings) do
@@ -3360,6 +3373,7 @@ if w.register(SCRIPT_NAME, SCRIPT_AUTHOR, SCRIPT_VERSION, SCRIPT_LICENSE, SCRIPT
     end
 
     w.hook_config('plugins.var.lua.matrix.debug', 'configuration_changed_cb', '')
+    w.hook_config('plugins.var.lua.matrix.timeout', 'configuration_changed_cb', '')
 
     local cmds = {'help', 'connect', 'debug', 'msg'}
     w.hook_command(SCRIPT_COMMAND, 'Plugin for matrix.org chat protocol',
