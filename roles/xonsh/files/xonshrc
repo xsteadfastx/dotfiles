@@ -87,8 +87,8 @@ aliases['ll'] = 'ls -la'
 # aliases['tmux'] = 'tmux -2'
 aliases['tmux-gc'] = _alias_tmux_gc
 aliases['vim'] = 'nvim'
-aliases['mosh'] = _alias_mosh
-aliases['ssh'] = _alias_ssh
+# aliases['mosh'] = _alias_mosh
+# aliases['ssh'] = _alias_ssh
 aliases['pipenv'] = _alias_pipenv_shell
 aliases['brew'] = _alias_brew
 
