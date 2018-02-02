@@ -1,0 +1,41 @@
+# vim:ft=ansible
+---
+- name: install apt deps
+  apt:
+    name: "{{ item }}"
+    state: latest
+  become: yes
+  with_items:
+    - w3m
+    - w3m-img
+
+- name: install brew deps
+  homebrew:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - ranger
+
+- name: remove dirs
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - ~/.config/ranger
+
+- name: needes dirs
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - ~/.config
+    - ~/.config/ranger
+
+- name: link files
+  file:
+    src={{ item.src }}
+    dest={{ item.dest }}
+    state=link
+  with_items:
+    - {'src': '{{ batcave_path }}/roles/ranger/files/rc.conf', 'dest': '~/.config/ranger/rc.conf'}
+    - {'src': '{{ batcave_path }}/roles/ranger/files/scope.sh', 'dest': '~/.config/ranger/scope.sh'}
