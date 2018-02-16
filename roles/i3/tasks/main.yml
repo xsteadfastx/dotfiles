@@ -1,12 +1,25 @@
 # vim:ft=ansible
 ---
-- name: add i3 repo
-  apt_repository:
-    repo='deb http://debian.sur5r.net/i3/ {{ ansible_distribution_release }} universe'
+- name: create temp dir
+  file:
+    path: /tmp/i3
+    state: directory
+
+- name: get keyring
+  command: /usr/lib/apt/apt-helper download-file http://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2018.01.30_all.deb keyring.deb SHA256:baa43dbbd7232ea2b5444cae238d53bebb9d34601cc000e82f11111b1889078a
+  args:
+    chdir: /tmp/i3
+    creates: /tmp/i3/keyring.deb
   become: yes
 
 - name: install keyring
-  command: apt-get --allow-unauthenticated install sur5r-keyring
+  apt:
+    deb: /tmp/i3/keyring.deb
+  become: yes
+
+- name: add repo
+  apt_repository:
+    repo='deb http://debian.sur5r.net/i3/ {{ ansible_distribution_release }} universe'
   become: yes
 
 - name: install deps
@@ -57,11 +70,12 @@
     name: "{{ item }}"
     virtualenv: /opt/i3
     virtualenv_command: /usr/bin/python3 -m venv
+    state: latest
   become: yes
   with_items:
     - basiciw
     - colour
-    - i3pystatus
+    - git+https://github.com/enkore/i3pystatus.git
     - netifaces
     - psutil
 
@@ -79,3 +93,8 @@
     - {'src': 'rofi_config.conf', 'dest': '~/.config/rofi/config'}
     - {'src': 'rofi_local.conf', 'dest': '~/.local/rofi/config'}
     - {'src': 'wallpaper.png', 'dest': '~/.i3/wallpaper.png'}
+
+- name: remove temp dir
+  file:
+    path: /tmp/i3
+    state: absent

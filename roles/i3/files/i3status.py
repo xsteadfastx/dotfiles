@@ -72,7 +72,7 @@ for eth in ['eth0', 'enp0s10']:
         color_up=COL_GREEN,
         color_down=COL_RED,
         dynamic_color=False,
-        format_up='🖧 {interface}  {bytes_recv:03.0f}KB/s',
+        format_up='🖧 {interface} ➡️ {v4cidr}',
         format_down='',
     )
 
@@ -83,7 +83,7 @@ for wifi in ['wlan0', 'wlp3s0']:
         color_up=COL_GREEN,
         color_down=COL_RED,
         dynamic_color=False,
-        format_up=' {essid} {quality:03.0f}%  {bytes_recv:03.0f}KB/s',
+        format_up=' {essid} {quality:03.0f}% ➡️ {v4cidr}',
         format_down='',
     )
 
