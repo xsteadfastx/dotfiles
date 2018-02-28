@@ -6,6 +6,8 @@ windows:
   panes:
     - null
     - null
+  options_after:
+    synchronize-panes: on
 - window_name: testing
   panes:
     - null
