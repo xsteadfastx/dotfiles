@@ -47,7 +47,7 @@
   replace:
     dest: /tmp/st/st-0.7/config.def.h
     regexp: '^(static char font\[\] = \").+(\";)$'
-    replace: '\1FuraMono Nerd Font Mono:pixelsize=12\2'
+    replace: '\1IBMPlexMono Nerd Font Mono:pixelsize=12\2'
 
 - name: replace config
   copy:
