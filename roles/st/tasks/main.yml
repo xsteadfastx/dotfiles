@@ -6,8 +6,8 @@
     state=latest
   with_items:
     - libx11-dev
-    - libxft-dev
     - libxext-dev
+    - libxft-dev
   become: yes
 
 - name: create dirs
@@ -17,6 +17,8 @@
   with_items:
     - /tmp/st
     - ~/.local/bin
+    - ~/.terminfo
+    - ~/.terminfo/s
 
 - name: get st
   unarchive:
@@ -65,10 +67,16 @@
     dest: ~/.local/bin/st
     mode: 0775
 
-- name: compile terminfo
-  command: tic -sx st.info
-  args:
-    chdir: /tmp/st/st-0.7
+#- name: compile terminfo
+#  command: tic -sx st.info
+#  args:
+#    chdir: /tmp/st/st-0.7
+
+- name: link terminfo
+  file:
+    src={{ batcave_path }}/roles/st/files/st-256color
+    dest=~/.terminfo/s/st-256color
+    state=link
 
 - name: remove tmp dir
   file:

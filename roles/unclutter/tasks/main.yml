@@ -12,6 +12,7 @@
     state: latest
   become: yes
   with_items:
+    - libev-dev
     - libxi-dev
 
 - name: needed dirs
