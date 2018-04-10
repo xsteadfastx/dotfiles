@@ -65,7 +65,7 @@ STATUS.register(
     not_present_text='',
 )
 
-for eth in ['eth0', 'enp0s10']:
+for eth in ['eth0', 'enp0s10', 'enx10653089536b']:
     STATUS.register(
         'network',
         interface=eth,
