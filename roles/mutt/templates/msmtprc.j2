@@ -1,0 +1,13 @@
+defaults
+logfile ~/.msmtp.log
+
+account gmail
+tls on
+tls_starttls on
+tls_certcheck off
+auth on
+host smtp.gmail.com
+from marvin@xsteadfastx.org
+user {{ gmail_user }}
+port 587
+password {{ gmail_password }}

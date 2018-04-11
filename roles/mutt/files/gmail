@@ -1,0 +1,15 @@
+set folder = ~/.mail/gmail
+set spoolfile = +INBOX
+set record=/dev/null
+set postponed="+drafts"
+set trash="+trash"
+set from="Marvin Preuss <marvin@xsteadfastx.org>"
+set hostname=xsteadfastx.org
+
+bind editor <space> noop
+macro index,pager y "<save-message>=all<enter>" "Archive"
+macro index,pager d "<save-message>=trash<enter>" "Trash"
+macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
+macro index ga "<change-folder>=all<enter>" "Go to all mail"
+macro index gs "<change-folder>=starred<enter>" "Go to starred messages"
+macro index gd "<change-folder>=drafts<enter>" "Go to drafts"
