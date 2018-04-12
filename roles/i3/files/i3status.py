@@ -76,7 +76,7 @@ for eth in ['eth0', 'enp0s10', 'enx10653089536b']:
         format_down='',
     )
 
-for wifi in ['wlan0', 'wlp3s0']:
+for wifi in ['wlan0', 'wlp3s0', 'wlp2s0']:
     STATUS.register(
         'network',
         interface=wifi,
