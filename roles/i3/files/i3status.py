@@ -87,7 +87,7 @@ for wifi in ['wlan0', 'wlp3s0', 'wlp2s0']:
         format_down='',
     )
 
-for vpn in ['z10n', 'TSM']:
+for vpn in ['z10n']:
     STATUS.register(
         'openvpn',
         vpn_name=vpn,
