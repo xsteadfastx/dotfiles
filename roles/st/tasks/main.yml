@@ -1,5 +1,8 @@
 # vim:ft=ansible
 ---
+- name: set st version
+  set_fact: st_version="0.7"
+
 - name: install deps
   apt:
     name={{ item }}
@@ -22,48 +25,47 @@
 
 - name: get st
   unarchive:
-    src: 'http://dl.suckless.org/st/st-0.7.tar.gz'
+    src: 'http://dl.suckless.org/st/st-{{ st_version }}.tar.gz'
     dest: '/tmp/st'
     remote_src: yes
 
 - name: get some files
   get_url:
     url: "{{ item.src }}"
-    dest: /tmp/st/st-0.7/{{ item.dest }}
+    dest: /tmp/st/st-{{ st_version }}/{{ item.dest }}
   with_items:
-    - { 'src': 'http://st.suckless.org/patches/solarized/st-no_bold_colors-0.7.diff', 'dest': 'no_bold_colors.diff' }
-    - { 'src': 'http://st.suckless.org/patches/solarized/st-solarized-dark-0.7.diff', 'dest': 'solarized.diff' }
+    - { 'src': 'http://st.suckless.org/patches/solarized/st-no_bold_colors-{{ st_version }}.diff', 'dest': 'no_bold_colors.diff' }
+    - { 'src': 'http://st.suckless.org/patches/solarized/st-solarized-dark-{{ st_version }}.diff', 'dest': 'solarized.diff' }
     #- { 'src': 'http://st.suckless.org/patches/scrollback/st-scrollback-0.7.diff', 'dest': 'scrollback.diff' }
 
 - name: patch st
   patch:
-    src: /tmp/st/st-0.7/{{ item }}
-    basedir: /tmp/st/st-0.7
+    src: /tmp/st/st-{{ st_version }}/{{ item }}
+    basedir: /tmp/st/st-{{ st_version }}
     strip: 1
   with_items:
     - no_bold_colors.diff
     - solarized.diff
-    #- scrollback.diff
 
 - name: change font
   replace:
-    dest: /tmp/st/st-0.7/config.def.h
+    dest: /tmp/st/st-{{ st_version }}/config.def.h
     regexp: '^(static char font\[\] = \").+(\";)$'
     replace: '\1IBMPlexMono Nerd Font Mono:pixelsize=14\2'
 
 - name: replace config
   copy:
-    src: /tmp/st/st-0.7/config.def.h
-    dest: /tmp/st/st-0.7/config.h
+    src: /tmp/st/st-{{ st_version }}/config.def.h
+    dest: /tmp/st/st-{{ st_version }}/config.h
 
 - name: compile st
   command: make
   args:
-    chdir: /tmp/st/st-0.7
+    chdir: /tmp/st/st-{{ st_version }}
 
 - name: copy st
   copy:
-    src: /tmp/st/st-0.7/st
+    src: /tmp/st/st-{{ st_version }}/st
     dest: ~/.local/bin/st
     mode: 0775
 

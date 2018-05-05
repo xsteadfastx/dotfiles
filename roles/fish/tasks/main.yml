@@ -76,13 +76,13 @@
 - name: install addons
   command: /usr/bin/fish -c 'fisher {{ item }}'
   with_items:
-    - brgmnn/fish-docker-compose
+    #- brgmnn/fish-docker-compose
     - omf/theme-bobthefish
-    - z
+    #- z
 
-- name: set shell
-  user:
-    name={{ ansible_env.USER }}
-    shell=/usr/bin/fish
-  become: yes
-  when: ansible_os_family == 'Debian'
+#- name: set shell
+#  user:
+#    name={{ ansible_env.USER }}
+#    shell=/usr/bin/fish
+#  become: yes
+#  when: ansible_os_family == 'Debian'
