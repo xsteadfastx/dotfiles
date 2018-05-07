@@ -1,7 +1,7 @@
 # vim:ft=ansible
 ---
 - name: set st version
-  set_fact: st_version="0.7"
+  set_fact: st_version="0.8.1"
 
 - name: install deps
   apt:
@@ -20,8 +20,6 @@
   with_items:
     - /tmp/st
     - ~/.local/bin
-    - ~/.terminfo
-    - ~/.terminfo/s
 
 - name: get st
   unarchive:
@@ -35,8 +33,6 @@
     dest: /tmp/st/st-{{ st_version }}/{{ item.dest }}
   with_items:
     - { 'src': 'http://st.suckless.org/patches/solarized/st-no_bold_colors-{{ st_version }}.diff', 'dest': 'no_bold_colors.diff' }
-    - { 'src': 'http://st.suckless.org/patches/solarized/st-solarized-dark-{{ st_version }}.diff', 'dest': 'solarized.diff' }
-    #- { 'src': 'http://st.suckless.org/patches/scrollback/st-scrollback-0.7.diff', 'dest': 'scrollback.diff' }
 
 - name: patch st
   patch:
@@ -45,17 +41,10 @@
     strip: 1
   with_items:
     - no_bold_colors.diff
-    - solarized.diff
 
-- name: change font
-  replace:
-    dest: /tmp/st/st-{{ st_version }}/config.def.h
-    regexp: '^(static char font\[\] = \").+(\";)$'
-    replace: '\1IBMPlexMono Nerd Font Mono:pixelsize=14\2'
-
-- name: replace config
+- name: copy config
   copy:
-    src: /tmp/st/st-{{ st_version }}/config.def.h
+    src: config.def.h
     dest: /tmp/st/st-{{ st_version }}/config.h
 
 - name: compile st
@@ -68,17 +57,6 @@
     src: /tmp/st/st-{{ st_version }}/st
     dest: ~/.local/bin/st
     mode: 0775
-
-#- name: compile terminfo
-#  command: tic -sx st.info
-#  args:
-#    chdir: /tmp/st/st-0.7
-
-- name: link terminfo
-  file:
-    src={{ batcave_path }}/roles/st/files/st-256color
-    dest=~/.terminfo/s/st-256color
-    state=link
 
 - name: remove tmp dir
   file:
