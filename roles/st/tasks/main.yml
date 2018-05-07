@@ -58,6 +58,17 @@
     dest: ~/.local/bin/st
     mode: 0775
 
+- name: remove old terminfo
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_fileglob: ~/.terminfo/s/st*
+
+- name: install new terminfo
+  command: /usr/bin/tic -sx st.info
+  args:
+    chdir: /tmp/st/st-{{ st_version }}
+
 - name: remove tmp dir
   file:
     path=/tmp/st
