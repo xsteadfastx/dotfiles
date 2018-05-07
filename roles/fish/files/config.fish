@@ -31,6 +31,11 @@ if test -f ~/.local/bin/pipenv
   eval (pipenv --completion)
 end
 
+# linuxbrew
+if test -d ~/.linuxbrew
+  set PATH ~/.linuxbrew/bin $PATH
+end
+
 # theme
 function fish_greeting; end
 set -g theme_color_scheme solarized-dark
