@@ -89,9 +89,9 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # workspaces
-set $tag1 "1: communication"
-set $tag2 "2: www"
-set $tag3 "3: code"
+set $tag1 "1: "
+set $tag2 "2: "
+set $tag3 "3: "
 
 # switch to workspace
 bindsym $mod+1 workspace $tag1
