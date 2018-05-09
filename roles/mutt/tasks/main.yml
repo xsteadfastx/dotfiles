@@ -30,7 +30,7 @@
     - {'src': '{{ batcave_path }}/roles/mutt/files/muttrc', 'dest': '~/.mutt/muttrc'}
     - {'src': '{{ batcave_path }}/roles/mutt/files/notmuch-config', 'dest': '~/.notmuch-config'}
     - {'src': '{{ batcave_path }}/roles/mutt/files/smime', 'dest': '~/.mutt/smime'}
-    - {'src': '{{ batcave_path }}/roles/mutt/files/solarized', 'dest': '~/.mutt/solarized'}
+    - {'src': '{{ batcave_path }}/roles/mutt/files/dracula', 'dest': '~/.mutt/dracula'}
 
 - name: create files
   template:

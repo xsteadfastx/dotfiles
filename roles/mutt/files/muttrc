@@ -5,7 +5,7 @@ set timeout = 15
 source ~/.mutt/gmail
 #source ~/.mutt/gpg
 #source ~/.mutt/smime
-source ~/.mutt/solarized
+source ~/.mutt/dracula
 
 # mailboxes
 mailboxes ~/.mail/gmail/INBOX
