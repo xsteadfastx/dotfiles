@@ -27,21 +27,6 @@
     dest: '/tmp/st'
     remote_src: yes
 
-- name: get some files
-  get_url:
-    url: "{{ item.src }}"
-    dest: /tmp/st/st-{{ st_version }}/{{ item.dest }}
-  with_items:
-    - { 'src': 'http://st.suckless.org/patches/solarized/st-no_bold_colors-{{ st_version }}.diff', 'dest': 'no_bold_colors.diff' }
-
-- name: patch st
-  patch:
-    src: /tmp/st/st-{{ st_version }}/{{ item }}
-    basedir: /tmp/st/st-{{ st_version }}
-    strip: 1
-  with_items:
-    - no_bold_colors.diff
-
 - name: copy config
   copy:
     src: config.def.h

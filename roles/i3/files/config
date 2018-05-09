@@ -158,26 +158,26 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle && pactl
 # i3lock
 bindsym Control+mod1+l exec i3lock -c 000000 -t
 
-# solarized
+# dracula
 bar {
         position top
         #status_command i3status -c ~/.i3/i3status.conf
         status_command /opt/i3/bin/python ~/.i3/i3status.py
         colors {
-                background #002b36
-                statusline #839496
-                separator  #586e75
-                focused_workspace  #b58900 #b58900 #002b36
-                active_workspace   #586e75 #586e75 #002b36
-                inactive_workspace #073642 #002b36 #839496
-                urgent_workspace   #dc322f #dc322f #fdf6e3
+                background #282a36
+                statusline #DCDCDC
+                focused_workspace  #bd93f9 #44475a #DCDCDC
+                active_workspace   #bd93f9 #002b36 #282a36
+                inactive_workspace #282a36 #021215 #586e75
+                urgent_workspace   #cb4b16 #dc322f #fdf6e
         }
 }
 
-client.focused          #002b36 #586e75 #fdf6e3 #268bd2
-client.focused_inactive #002b36 #073642 #839496 #073642
-client.unfocused        #002b36 #073642 #839496 #073642
-client.urgent           #002b36 #dc322f #fdf6e3 #002b36
+# class                 border  backgr. text    indicator
+client.focused          #bd93f9 #bd93f9 #bd93f9 #BD93F9
+client.unfocused        #44475a #44475a #44475a #44475a
+client.focused_inactive #323232 #333333 #ebdbb2 #323232
+client.urgent           #383a3b #383a3b #ee0000 #383a3b
 
 # border
 new_window pixel 1
@@ -189,13 +189,13 @@ for_window [class="org-openstreetmap-josm-Main"] floating disable
 for_window [class="org-openstreetmap-josm-Main"] layout splitv
 
 # AUTOSTART
-exec --no-startup-id exec feh --bg-fill ~/.i3/wallpaper.png
+#exec --no-startup-id exec feh --bg-fill ~/.i3/wallpaper.png
+exec --no-startup-id exec xsetroot -solid "#282a36"
 exec --no-startup-id exec dunst &
 exec --no-startup-id exec nm-applet &
 exec --no-startup-id exec nextcloud &
 exec --no-startup-id exec xfce4-power-manager &
 exec --no-startup-id exec xautolock -time 10 -locker 'i3lock -c 000000 -t' &
-exec --no-startup-id exec compton --config ~/.i3/compton.conf &
 exec --no-startup-id exec unclutter &
 
 # GAPS

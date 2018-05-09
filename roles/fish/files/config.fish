@@ -38,6 +38,6 @@ end
 
 # theme
 function fish_greeting; end
-set -g theme_color_scheme solarized-dark
+set -g theme_color_scheme base16-dark
 set -g theme_powerline_fonts yes
 set -g theme_nerd_fonts yes

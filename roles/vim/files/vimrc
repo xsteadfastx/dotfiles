@@ -72,7 +72,7 @@ Plug 'vim-airline/vim-airline'
     let g:airline_powerline_fonts = 1
     let g:airline#extensions#tabline#enabled = 1
 Plug 'vim-airline/vim-airline-themes'
-    let g:airline_theme='solarized'
+    let g:airline_theme='dracula'
 
 " nerd font in vim
 Plug 'ryanoasis/vim-devicons'
@@ -166,13 +166,13 @@ autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
 set background=dark
 set t_Co=256
-colorscheme solarized
+colorscheme dracula
 "hi Normal ctermbg=none " transparent background
 let python_highlight_all=1
 set listchars=trail:·,precedes:«,extends:»,nbsp:~,tab:▸\ 
 set list
 set cursorline
-"set termguicolors
+set termguicolors
 
 " disabled preview window
 "set completeopt-=preview
