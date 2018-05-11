@@ -28,7 +28,6 @@
     state: latest
     update_cache: yes
   with_items:
-    - compton
     - dunst
     - feh
     - i3
@@ -86,7 +85,6 @@
     dest={{ item.dest }}
     state=link
   with_items:
-    - {'src': 'compton.conf', 'dest': '~/.i3/compton.conf'}
     - {'src': 'config', 'dest': '~/.i3/config'}
     - {'src': 'dunstrc', 'dest': '~/.config/dunst/dunstrc'}
     - {'src': 'i3status.conf', 'dest': '~/.i3/i3status.conf'}
