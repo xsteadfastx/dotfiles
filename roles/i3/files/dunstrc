@@ -175,18 +175,18 @@
     #context = ctrl+shift+period
 
 [urgency_low]
-    background = "#586e75"
-    foreground = "#eee8d5"
+    background = "#282a36"
+    foreground = "#f8f8f2"
     timeout = 5
 
 [urgency_normal]
-    background = "#073642"
-    foreground = "#eee8d5"
+    background = "#6272a4"
+    foreground = "#f8f8f2"
     timeout = 5
 
 [urgency_critical]
-    background = "#dc322f"
-    foreground = "#eee8d5"
+    background = "#ff5555"
+    foreground = "#f8f8f2"
     timeout = 5
 
 # Every section that isn't one of the above is interpreted as a rules to
