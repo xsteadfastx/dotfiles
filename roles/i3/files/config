@@ -165,9 +165,10 @@ bar {
         status_command /opt/i3/bin/python ~/.i3/i3status.py
         colors {
                 background #282a36
-                statusline #DCDCDC
+                statusline #dcdcdc
+
                 focused_workspace  #bd93f9 #44475a #DCDCDC
-                active_workspace   #bd93f9 #002b36 #282a36
+                active_workspace   #282a36 #44475a #DCDCDC
                 inactive_workspace #282a36 #021215 #586e75
                 urgent_workspace   #cb4b16 #dc322f #fdf6e
         }
