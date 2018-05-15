@@ -76,9 +76,7 @@
 - name: install addons
   command: /usr/bin/fish -c 'fisher {{ item }}'
   with_items:
-    #- brgmnn/fish-docker-compose
-    - omf/theme-bobthefish
-    #- z
+    - omf/theme-bobthefish:master
 
 #- name: set shell
 #  user:
