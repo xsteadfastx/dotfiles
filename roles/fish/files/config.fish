@@ -14,13 +14,13 @@ set -gx EDITOR nvim
 
 # path
 if test -d ~/.local/bin
-  set PATH ~/.local/bin $PATH
+  set fish_user_paths ~/.local/bin $fish_user_paths
 end
 
 # pyenv
 if test -d ~/.pyenv/bin
   set -gx PYENV_ROOT ~/.pyenv
-  set PATH $PYENV_ROOT/bin $PATH
+  set fish_user_paths $PYENV_ROOT/bin $fish_user_paths
   status --is-interactive; and . (pyenv init -|psub)
 end
 
@@ -34,6 +34,7 @@ end
 # linuxbrew
 if test -d ~/.linuxbrew
   set PATH ~/.linuxbrew/bin $PATH
+  set fish_user_paths ~/.linuxbrew/bin $fish_user_paths
 end
 
 # theme
