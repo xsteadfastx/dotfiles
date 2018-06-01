@@ -8,6 +8,8 @@
   with_items:
     - w3m
     - w3m-img
+  tags:
+    - skip_ansible_lint
 
 - name: install brew deps
   homebrew:
@@ -15,6 +17,8 @@
     state: latest
   with_items:
     - ranger
+  tags:
+    - skip_ansible_lint
 
 - name: remove dirs
   file:

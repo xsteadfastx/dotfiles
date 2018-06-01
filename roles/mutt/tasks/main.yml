@@ -11,6 +11,8 @@
     - mutt
     - notmuch
     - notmuch-mutt
+  tags:
+    - skip_ansible_lint
 
 - name: needed dirs
   file:

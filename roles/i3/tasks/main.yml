@@ -40,6 +40,8 @@
     - rofi
     - xautolock
   become: yes
+  tags:
+    - skip_ansible_lint
 
 - name: remove files
   file:
@@ -78,6 +80,8 @@
     - git+https://github.com/enkore/i3pystatus.git
     - netifaces
     - psutil
+  tags:
+    - skip_ansible_lint
 
 - name: link files
   file:

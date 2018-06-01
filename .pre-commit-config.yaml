@@ -1,0 +1,13 @@
+repos:
+  - repo: https://github.com/willthames/ansible-lint.git
+    rev: v3.5.0rc1
+    hooks:
+      - id: ansible-lint
+  - repo: https://github.com/IamTheFij/ansible-pre-commit.git
+    rev: v0.1.2
+    hooks:
+      - id: encryption-check
+  - repo: https://github.com/pre-commit/pre-commit-hooks.git
+    rev: v1.3.0
+    hooks:
+      - id: check-yaml

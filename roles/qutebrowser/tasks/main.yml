@@ -49,6 +49,8 @@
     repo: https://github.com/qutebrowser/qutebrowser.git
     dest: ~/src/qutebrowser
   when: fallback == true
+  tags:
+    - skip_ansible_lint
 
 - name: install
   command: tox -e mkvenv-pypi
@@ -75,9 +77,13 @@
   git:
     repo: https://github.com/alphapapa/solarized-everything-css.git
     dest: ~/src/solarized-everything-css
+  tags:
+    - skip_ansible_lint
 
 - name: install mpv
   apt:
     name: mpv
     state: latest
   become: yes
+  tags:
+    - skip_ansible_lint

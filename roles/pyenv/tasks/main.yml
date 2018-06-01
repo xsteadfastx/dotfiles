@@ -27,3 +27,5 @@
   with_items:
     - {'repo': 'https://github.com/yyuu/pyenv.git', 'dest': '~/.pyenv'}
     - {'repo': 'https://github.com/yyuu/pyenv-virtualenv.git', 'dest': '~/.pyenv/plugins/pyenv-virtualenv'}
+  tags:
+    - skip_ansible_lint

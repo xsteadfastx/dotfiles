@@ -18,7 +18,8 @@
     - ~/.local/bin
 
 - name: install pipsi
-  shell:
-    curl https://raw.githubusercontent.com/mitsuhiko/pipsi/master/get-pipsi.py | python3 - --src 'git+https://github.com/mitsuhiko/pipsi.git#egg=pipsi'
-    args:
-      creates: ~/.local/venvs/pipsi/bin/pipsi
+  shell: curl https://raw.githubusercontent.com/mitsuhiko/pipsi/master/get-pipsi.py | python3 - --src 'git+https://github.com/mitsuhiko/pipsi.git#egg=pipsi'
+  args:
+    creates: ~/.local/venvs/pipsi/bin/pipsi
+  tags:
+    - skip_ansible_lint

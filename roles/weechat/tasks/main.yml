@@ -13,11 +13,15 @@
     name: python-docker
     state: latest
   become: yes
+  tags:
+    - skip_ansible_lint
 
 - name: clone dockerfiles
   git:
     repo: https://github.com/xsteadfastx/dockerfiles.git
     dest: ~/.dockerfiles
+  tags:
+    - skip_ansible_lint
 
 - name: build image
   docker_image:
@@ -46,4 +50,4 @@
     line={{ weechat_passphrase }}
     state=present
     create=yes
-    mode=600
+    mode=0600

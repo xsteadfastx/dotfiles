@@ -1,6 +1,7 @@
 # vim:ft=ansible
 ---
-- include_vars : "{{ item }}"
+- name: include vars
+  include_vars : "{{ item }}"
   with_first_found:
     - "../vars/{{ ansible_os_family }}.yml"
 
@@ -13,7 +14,8 @@
     - '{{ python3_package_name }}'
     - '{{ shell_package_name }}'
 
-- stat: path=~/.local/bin/pip
+- name: check local pip path
+  stat: path=~/.local/bin/pip
   register: pip
 
 - name: needed dirs
@@ -47,6 +49,8 @@
     - xonsh-apt_tabcomplete
     - xonsh-vox_tabcomplete
     - xontrib-powerline
+  tags:
+    - skip_ansible_lint
 
 - name: link files
   file:

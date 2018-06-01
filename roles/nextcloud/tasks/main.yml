@@ -16,3 +16,5 @@
     name=nextcloud-client
     state=latest
   become: yes
+  tags:
+    - skip_ansible_lint

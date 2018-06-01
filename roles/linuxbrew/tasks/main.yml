@@ -11,8 +11,12 @@
     - file
     - git
     - python-setuptools
+  tags:
+    - skip_ansible_lint
 
 - name: clone linuxbrew
   git:
     repo: https://github.com/Linuxbrew/brew.git
     dest: ~/.linuxbrew
+  tags:
+    - skip_ansible_lint

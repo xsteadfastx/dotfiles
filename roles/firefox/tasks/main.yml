@@ -5,6 +5,8 @@
     name=firefox
     state=latest
   become: yes
+  tags:
+    - skip_ansible_lint
 
 - name: open addon install pages
   command: firefox {{ item }}
@@ -12,3 +14,5 @@
     - https://addons.mozilla.org/de/firefox/addon/dracula-theme/
     - https://addons.mozilla.org/de/firefox/addon/ublock-origin/
     - https://addons.mozilla.org/en-US/firefox/addon/vimium-ff/
+  tags:
+    - skip_ansible_lint

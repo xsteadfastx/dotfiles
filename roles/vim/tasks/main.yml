@@ -12,12 +12,16 @@
     - shellcheck
   become: yes
   when: ansible_os_family == 'Debian'
+  tags:
+    - skip_ansible_lint
 
 - name: install neovim through brew
   homebrew:
     name: neovim
     state: latest
   when: ansible_os_family == 'Debian'
+  tags:
+    - skip_ansible_lint
 
 - name: install deps for alpine
   package:
@@ -34,6 +38,8 @@
     - python3-dev
   become: yes
   when: ansible_os_family == 'Alpine'
+  tags:
+    - skip_ansible_lint
 
 - name: remove files
   file:
@@ -98,6 +104,8 @@
 
 - name: install plugins
   command: nvim +PlugInstall +qall
+  tags:
+    - skip_ansible_lint
 
 - name: get dracula airline theme
   get_url:

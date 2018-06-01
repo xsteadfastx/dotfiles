@@ -5,6 +5,8 @@
     repo=https://github.com/xsteadfastx/batcave.git
     dest=~/.batcave
   when: '"localhost" not in group_names'
+  tags:
+    - skip_ansible_lint
 
 - name: update apt cache
   apt: update_cache=yes

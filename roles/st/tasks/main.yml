@@ -12,6 +12,8 @@
     - libxext-dev
     - libxft-dev
   become: yes
+  tags:
+    - skip_ansible_lint
 
 - name: create dirs
   file:
@@ -36,6 +38,8 @@
   command: make
   args:
     chdir: /tmp/st/st-{{ st_version }}
+  tags:
+    - skip_ansible_lint
 
 - name: copy st
   copy:
@@ -53,6 +57,8 @@
   command: /usr/bin/tic -sx st.info
   args:
     chdir: /tmp/st/st-{{ st_version }}
+  tags:
+    - skip_ansible_lint
 
 - name: remove tmp dir
   file:

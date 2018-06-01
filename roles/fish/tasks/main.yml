@@ -14,6 +14,8 @@
     - fish
     - git
   become: yes
+  tags:
+    - skip_ansible_lint
 
 - name: install deps debian
   apt:
@@ -23,6 +25,8 @@
     - ncurses-base
   become: yes
   when: ansible_os_family == 'Debian'
+  tags:
+    - skip_ansible_lint
 
 - name: install deps alpine
   apk:
@@ -78,6 +82,8 @@
   command: /usr/bin/fish -c 'fisher {{ item }}'
   with_items:
     - omf/theme-bobthefish:master
+  tags:
+    - skip_ansible_lint
 
 #- name: set shell
 #  user:
