@@ -17,13 +17,6 @@ if test -d ~/.local/bin
   set fish_user_paths ~/.local/bin $fish_user_paths
 end
 
-# pyenv
-if test -d ~/.pyenv/bin
-  set -gx PYENV_ROOT ~/.pyenv
-  set fish_user_paths $PYENV_ROOT/bin $fish_user_paths
-  status --is-interactive; and . (pyenv init -|psub)
-end
-
 # pipenv
 if test -f ~/.local/bin/pipenv
   set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
@@ -35,6 +28,13 @@ end
 if test -d ~/.linuxbrew
   set PATH ~/.linuxbrew/bin $PATH
   set fish_user_paths ~/.linuxbrew/bin $fish_user_paths
+end
+
+# pyenv
+if test -d ~/.pyenv/bin
+  set -gx PYENV_ROOT ~/.pyenv
+  set fish_user_paths $PYENV_ROOT/bin $fish_user_paths
+  status --is-interactive; and . (pyenv init -|psub)
 end
 
 # theme
