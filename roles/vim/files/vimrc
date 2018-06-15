@@ -233,7 +233,7 @@ inoremap <S-Tab> <C-V><Tab>
 augroup python
     autocmd!
     au BufRead,BufNewFile *.xsh set filetype=python
-    au FileType python set colorcolumn=79
+    au FileType python set colorcolumn=88
 augroup end
 
 
