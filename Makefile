@@ -1,4 +1,4 @@
-.PHONY: help shell x11 all weechat pyenv firefox pipsi xresources fish xonsh nix st i3 qutebrowser linuxbrew ranger mutt tsm own update
+.PHONY: clean test all help shell x11 weechat pyenv firefox pipsi xresources fish xonsh nix st i3 qutebrowser linuxbrew ranger mutt tsm own
 
 help: ## Show this help
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
@@ -59,6 +59,3 @@ tsm: ## Install base on tsm servers
 
 own: ## Install base on own servers
 	ansible-playbook shell.yml --ask-vault-pass --extra-vars="host=own"
-
-update: ## Fetch updates from github
-	git pull origin master
