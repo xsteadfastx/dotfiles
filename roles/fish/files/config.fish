@@ -21,6 +21,7 @@ end
 if test -f ~/.local/bin/pipenv
   set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
   set -gx PIPENV_SHELL_COMPAT 1
+  set -gx PIPENV_VENV_IN_PROJECT 1
   eval (pipenv --completion)
 end
 
