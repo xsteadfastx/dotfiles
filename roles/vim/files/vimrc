@@ -17,22 +17,9 @@ filetype plugin indent on
 
 call plug#begin('~/.vim/plugged')
 
-"Plug 'Rykka/riv.vim'
-"Plug 'Shougo/neocomplete'
-"Plug 'SirVer/ultisnips'
-"Plug 'davidhalter/jedi-vim', { 'for': 'python' }
-"Plug 'godlygeek/tabular'
-"Plug 'honza/vim-snippets'
-"Plug 'jiangmiao/auto-pairs'
-"Plug 'klen/python-mode'
-"Plug 'nvie/vim-flake8'
-"Plug 'vim-scripts/indentpython.vim'
-
 Plug 'ConradIrwin/vim-bracketed-paste'
 
 Plug 'Konfekt/FastFold'
-
-Plug 'MicahElliott/Rocannon', { 'for': 'yaml' }
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     let g:deoplete#enable_at_startup = 1
@@ -58,8 +45,6 @@ Plug 'elzr/vim-json', { 'for': 'json' }
 
 Plug 'ervandew/supertab'
 
-Plug 'guns/xterm-color-table.vim'
-
 Plug 'hdima/python-syntax'
 
 Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
@@ -76,8 +61,6 @@ Plug 'vim-airline/vim-airline-themes'
 
 " nerd font in vim
 Plug 'ryanoasis/vim-devicons'
-
-Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
 
 Plug 'junegunn/goyo.vim'
 
@@ -103,10 +86,6 @@ Plug 'nathanaelkane/vim-indent-guides'
     let g:indent_guides_guide_size = 1
 
 Plug 'ntpeters/vim-better-whitespace'
-
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 
 Plug 'reedes/vim-pencil'
     let g:pencil#wrapModeDefault = 'soft'
@@ -142,11 +121,11 @@ Plug 'junegunn/vim-easy-align'
 " scratchpad
 Plug 'metakirby5/codi.vim'
 
-" fish syntax
-Plug 'dag/vim-fish'
-
 " tmux and vim navigator
 Plug 'christoomey/vim-tmux-navigator'
+
+" a collection of language packs
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
@@ -156,7 +135,7 @@ call plug#end()
 " ---------------------------------------
 
 set number
-set relativenumber
+"set relativenumber
 set backspace=2
 set laststatus=2
 set foldenable
