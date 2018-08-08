@@ -39,7 +39,11 @@ if test -d ~/.pyenv/bin
 end
 
 # theme
-function fish_greeting; end
+function fish_greeting
+  if test -f ~/.local/bin/fortlit
+    fortlit
+  end
+end
 set -g theme_powerline_fonts yes
 set -g theme_nerd_fonts yes
 set -g theme_color_scheme dracula

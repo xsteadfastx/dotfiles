@@ -60,6 +60,8 @@
     - ~/.config/fish/completions
     - ~/.config/fish/conf.d
     - ~/.config/fish/functions
+    - ~/.local
+    - ~/.local/bin
 
 - name: link files
   file:
@@ -86,9 +88,15 @@
   tags:
     - skip_ansible_lint
 
-#- name: set shell
-#  user:
-#    name={{ ansible_env.USER }}
-#    shell=/usr/bin/fish
-#  become: yes
-#  when: ansible_os_family == 'Debian'
+- name: set shell
+  user:
+    name={{ ansible_env.USER }}
+    shell=/usr/bin/fish
+  become: yes
+  when: ansible_os_family == 'Debian'
+
+- name: download fortlit
+  get_url:
+    url: https://github.com/xsteadfastx/fortlit/releases/download/v0.0.1/fortlit-Linux-x86_64.pex
+    dest: ~/.local/bin/fortlit
+    mode: 0755
