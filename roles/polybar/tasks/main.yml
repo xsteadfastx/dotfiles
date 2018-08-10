@@ -1,0 +1,72 @@
+# vim:ft=ansible
+---
+- name: install deps
+  apt:
+    name: "{{ item }}"
+  become: true
+  with_items:
+    - cmake
+    - cmake-data
+    - i3-wm
+    - libasound2-dev
+    - libcairo2-dev
+    - libcurl4-openssl-dev
+    - libiw-dev
+    - libjsoncpp-dev
+    - libmpdclient-dev
+    - libnl-3-dev
+    - libpulse-dev
+    - libxcb-cursor-dev
+    - libxcb-ewmh-dev
+    - libxcb-icccm4-dev
+    - libxcb-image0-dev
+    - libxcb-randr0-dev
+    - libxcb-util0-dev
+    - libxcb-xkb-dev
+    - libxcb-xrm-dev
+    - libxcb1-dev
+    - pkg-config
+    - python-xcbgen
+    - xcb-proto
+    - xcb-proto
+
+- name: needed dirs
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - ~/src
+    - ~/.config
+    - ~/.config/polybar
+
+- name: get code
+  git:
+    repo: https://github.com/jaagr/polybar
+    dest: ~/src/polybar
+    recursive: true
+  tags:
+    - skip_ansible_lint
+
+- name: create build dir
+  file:
+    path: ~/src/polybar/build
+    state: directory
+
+- name: compile
+  command: cmake ..
+  args:
+    chdir: ~/src/polybar/build
+    creates: ~/src/polybar/build/Makefile
+
+- name: install
+  command: make install
+  become: true
+  args:
+    chdir: /home/{{ ansible_user_id }}/src/polybar/build
+    creates: /usr/local/bin/polybar
+
+- name: link config
+  file:
+    src: "{{ batcave_path }}/roles/polybar/files/config"
+    dest: "~/.config/polybar/config"
+    state: link

@@ -11,11 +11,12 @@ repos:
     rev: v1.3.0
     hooks:
       - id: check-yaml
-#  - repo: https://github.com/jorisroovers/gitlint
-#    rev: v0.10.0
-#    hooks:
-#      - id: gitlint
   - repo: https://github.com/Lucas-C/pre-commit-hooks-go
     rev: v1.0.0
     hooks:
       - id: checkmake
+  - repo: https://github.com/jorisroovers/gitlint
+    rev: v0.10.0
+    hooks:
+      - id: gitlint
+        stages: [commit-msg]

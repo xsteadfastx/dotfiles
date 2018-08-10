@@ -34,9 +34,6 @@
     - i3-wm
     - i3lock
     - i3status
-    - libiw-dev
-    - python3
-    - python3-dev
     - rofi
     - xautolock
   become: yes
@@ -67,22 +64,6 @@
     - ~/.local/rofi
     - ~/src
 
-- name: create virtualenv
-  pip:
-    name: "{{ item }}"
-    virtualenv: /opt/i3
-    virtualenv_command: /usr/bin/python3 -m venv
-    state: latest
-  become: yes
-  with_items:
-    - basiciw
-    - colour
-    - git+https://github.com/enkore/i3pystatus.git
-    - netifaces
-    - psutil
-  tags:
-    - skip_ansible_lint
-
 - name: link files
   file:
     src={{ batcave_path }}/roles/i3/files/{{ item.src }}
@@ -92,7 +73,6 @@
     - {'src': 'config', 'dest': '~/.i3/config'}
     - {'src': 'dunstrc', 'dest': '~/.config/dunst/dunstrc'}
     - {'src': 'i3status.conf', 'dest': '~/.i3/i3status.conf'}
-    - {'src': 'i3status.py', 'dest': '~/.i3/i3status.py'}
     - {'src': 'rofi_config.conf', 'dest': '~/.config/rofi/config'}
     - {'src': 'rofi_local.conf', 'dest': '~/.local/rofi/config'}
     - {'src': 'wallpaper.png', 'dest': '~/.i3/wallpaper.png'}

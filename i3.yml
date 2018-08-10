@@ -2,4 +2,6 @@
 ---
 - hosts: "{{ host }}"
   roles:
+    - polybar
     - i3
+    - unclutter
