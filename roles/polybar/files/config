@@ -34,7 +34,7 @@ module-margin-right = 2
 
 font-0 = IBMPlexMono Nerd Font Mono:pixelsize=10;1
 
-modules-left = bspwm i3
+modules-left = i3
 modules-center =
 modules-right = mpd filesystem memory cpu wlan eth battery temperature pulseaudio date
 
@@ -239,7 +239,7 @@ format-disconnected =
 type = internal/date
 interval = 5
 
-date =
+date = " %Y-%m-%d"
 date-alt = " %Y-%m-%d"
 
 time = %H:%M
