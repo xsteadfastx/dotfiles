@@ -65,8 +65,11 @@
     chdir: /home/{{ ansible_user_id }}/src/polybar/build
     creates: /usr/local/bin/polybar
 
-- name: link config
+- name: link files
   file:
-    src: "{{ batcave_path }}/roles/polybar/files/config"
-    dest: "~/.config/polybar/config"
+    src: "{{ batcave_path }}/roles/polybar/files/{{ item }}"
+    dest: "~/.config/polybar/{{ item }}"
     state: link
+  with_items:
+    - config
+    - launch.sh

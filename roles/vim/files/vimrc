@@ -127,6 +127,9 @@ Plug 'christoomey/vim-tmux-navigator'
 " a collection of language packs
 Plug 'sheerun/vim-polyglot'
 
+" unicode handling
+Plug 'chrisbra/unicode.vim'
+
 call plug#end()
 
 
