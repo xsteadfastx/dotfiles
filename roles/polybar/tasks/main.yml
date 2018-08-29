@@ -35,9 +35,10 @@
     path: "{{ item }}"
     state: directory
   with_items:
-    - ~/src
     - ~/.config
     - ~/.config/polybar
+    - ~/.local
+    - ~/src
 
 - name: get code
   git:
@@ -53,17 +54,16 @@
     state: directory
 
 - name: compile
-  command: cmake ..
+  command: cmake -DCMAKE_INSTALL_PREFIX=~/.local ..
   args:
     chdir: ~/src/polybar/build
     creates: ~/src/polybar/build/Makefile
 
 - name: install
   command: make install
-  become: true
   args:
     chdir: /home/{{ ansible_user_id }}/src/polybar/build
-    creates: /usr/local/bin/polybar
+    creates: ~/.local/bin/polybar
 
 - name: link files
   file:
