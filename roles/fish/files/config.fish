@@ -17,6 +17,9 @@ if test -d ~/.local/bin
   set fish_user_paths ~/.local/bin $fish_user_paths
 end
 
+# python
+set -gx PIP_REQUIRE_VIRTUALENV 1
+
 # pipenv
 if test -f ~/.local/bin/pipenv
   set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
