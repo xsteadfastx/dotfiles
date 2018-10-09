@@ -82,9 +82,9 @@
     - {'src': 'https://raw.githubusercontent.com/fisherman/fisherman/master/fisher.fish', 'dest': '~/.config/fish/functions/fisher.fish'}
 
 - name: install addons
-  command: /usr/bin/fish -c 'fisher {{ item }}'
+  command: /usr/bin/fish -c 'fisher add {{ item }}'
   with_items:
-    - omf/theme-bobthefish:master
+    - oh-my-fish/theme-bobthefish
   tags:
     - skip_ansible_lint
 
