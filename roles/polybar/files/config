@@ -206,7 +206,7 @@ interface = wlp2s0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
-label-connected = %essid%
+label-connected = %essid% %local_ip%
 
 format-disconnected =
 ;format-disconnected = <label-disconnected>
@@ -381,12 +381,14 @@ interval = 60
 [module/gravityfalls]
 type = custom/script
 exec = if ping -i 0.2 -c 1 -w 1 10.9.0.5 > /dev/null; then echo "gravityfalls"; else echo ""; fi
+exec-if = ping -i 0.2 -c 1 -w 1 10.9.0.5
 interval = 10
 format-underline = #50fa7b
 
 [module/ckc]
 type = custom/script
 exec = if ping -i 0.2 -c 1 -w 1 192.168.254.40 > /dev/null; then echo "ckc"; else echo ""; fi
+exec-if = ping -i 0.2 -c 1 -w 1 192.168.254.40
 interval = 10
 format-underline = #50fa7b
 
