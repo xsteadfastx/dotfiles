@@ -99,8 +99,3 @@
   command: nvim +PlugInstall +qall
   tags:
     - skip_ansible_lint
-
-- name: get dracula airline theme
-  get_url:
-    url: https://raw.githubusercontent.com/dracula/vim/master/autoload/airline/themes/dracula.vim
-    dest: ~/.vim/plugged/vim-airline-themes/autoload/airline/themes/dracula.vim

@@ -1,4 +1,4 @@
-.PHONY: clean test all help shell x11 weechat pyenv firefox pipsi xresources fish xonsh nix st i3 qutebrowser linuxbrew ranger mutt tsm own
+.PHONY: clean test all help shell x11 weechat vim pyenv firefox pipsi xresources fish xonsh nix st i3 qutebrowser linuxbrew ranger mutt tsm own
 
 help: ## Show this help
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
@@ -14,6 +14,9 @@ all: ## Install shell and x11 on 127.0.0.1
 
 weechat: ## Install weechat
 	ansible-playbook -i hosts weechat.yml -c local --ask-become-pass --ask-vault-pass --extra-vars="host=127.0.0.1"
+
+vim: ## Install vim
+	ansible-playbook -i hosts vim.yml -c local --ask-become-pass --extra-vars="host=127.0.0.1"
 
 pyenv: ## Install pyenv
 	ansible-playbook -i hosts pyenv.yml -c local --ask-become-pass --extra-vars="host=127.0.0.1"

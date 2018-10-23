@@ -29,28 +29,13 @@ Plug 'zchee/deoplete-jedi'
 
 Plug 'airblade/vim-gitgutter'
 
-Plug 'alfredodeza/pytest.vim', { 'for': 'python' }
-    nmap <silent><Leader>p <Esc>:Pytest project<CR>
-    nmap <silent><Leader>f <Esc>:Pytest function<CR>
-
-Plug 'blindFS/vim-taskwarrior', { 'on': 'TW' }
+"Plug 'blindFS/vim-taskwarrior', { 'on': 'TW' }
 
 Plug 'chrisbra/Colorizer'
 
 Plug 'cohama/lexima.vim'
 
-Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
-
-Plug 'elzr/vim-json', { 'for': 'json' }
-
 Plug 'ervandew/supertab'
-
-Plug 'hdima/python-syntax'
-
-Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
-
-"Plug 'itchyny/lightline.vim'
-"    let g:lightline = {'colorscheme': 'solarized',}
 
 " powerline
 Plug 'vim-airline/vim-airline'
@@ -78,7 +63,7 @@ Plug 'mattn/gist-vim'
 
 Plug 'mattn/webapi-vim'
 
-Plug 'mhinz/vim-grepper'
+"Plug 'mhinz/vim-grepper'
 
 Plug 'nathanaelkane/vim-indent-guides'
     au VimEnter * :IndentGuidesEnable
@@ -119,19 +104,16 @@ Plug 'junegunn/vim-easy-align'
     nmap ga <Plug>(EasyAlign)
 
 " scratchpad
-Plug 'metakirby5/codi.vim'
+"Plug 'metakirby5/codi.vim'
 
 " tmux and vim navigator
-Plug 'christoomey/vim-tmux-navigator'
+"Plug 'christoomey/vim-tmux-navigator'
 
 " a collection of language packs
 Plug 'sheerun/vim-polyglot'
 
 " unicode handling
 Plug 'chrisbra/unicode.vim'
-
-" ansible syntax
-Plug 'pearofducks/ansible-vim'
 
 call plug#end()
 
@@ -195,20 +177,6 @@ vnoremap > >gv " better indentation
 
 " force tab
 inoremap <S-Tab> <C-V><Tab>
-
-" navigation
-"tnoremap <A-h> <C-\><C-N><C-w>h
-"tnoremap <A-j> <C-\><C-N><C-w>j
-"tnoremap <A-k> <C-\><C-N><C-w>k
-"tnoremap <A-l> <C-\><C-N><C-w>l
-"inoremap <A-h> <C-\><C-N><C-w>h
-"inoremap <A-j> <C-\><C-N><C-w>j
-"inoremap <A-k> <C-\><C-N><C-w>k
-"inoremap <A-l> <C-\><C-N><C-w>l
-"nnoremap <A-h> <C-w>h
-"nnoremap <A-j> <C-w>j
-"nnoremap <A-k> <C-w>k
-"nnoremap <A-l> <C-w>l
 
 
 " ---------------------------------------
