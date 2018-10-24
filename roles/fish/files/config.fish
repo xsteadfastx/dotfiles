@@ -41,6 +41,11 @@ if test -d ~/.pyenv/bin
   status --is-interactive; and . (pyenv init -|psub)
 end
 
+# git-annex
+if test -d ~/git-annex.linux
+  set fish_user_paths ~/git-annex.linux $fish_user_paths
+end
+
 # theme
 function fish_greeting
   if test -f ~/.local/bin/fortlit
