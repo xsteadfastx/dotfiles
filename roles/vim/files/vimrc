@@ -91,7 +91,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 
 Plug 'vimwiki/vimwiki'
-    let g:vimwiki_list = [{'path': '~/Nextcloud/vimwiki/'}]
+    let g:vimwiki_list = [{'path': '~/annex/vimwiki/'}]
 
 Plug 'w0rp/ale'
     let g:ale_python_mypy_options = '--silent-imports'
@@ -177,6 +177,10 @@ vnoremap > >gv " better indentation
 
 " force tab
 inoremap <S-Tab> <C-V><Tab>
+
+" date shortcut
+nnoremap <F5> "=strftime("%Y-%m-%d")<CR>P
+inoremap <F5> <C-R>=strftime("%Y-%m-%d")<CR>
 
 
 " ---------------------------------------
