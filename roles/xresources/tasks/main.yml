@@ -1,8 +1,11 @@
 ---
 - name: install deps
   package:
-    name=fonts-symbola
+    name={{ item }}
     state=latest
+  with_items:
+    - adwaita-qt
+    - fonts-symbola
   become: yes
   when: ansible_os_family == 'Debian'
   tags:
@@ -13,20 +16,10 @@
     path={{ item }}
     state=directory
   with_items:
+    - ~/.config
+    - ~/.config/fontconfig
+    - ~/.config/gtk-3.0
     - ~/.fonts
-
-- name: remove files
-  file:
-    path={{ item }}
-    state=absent
-  with_items:
-    - ~/.Xresources
-    - ~/.xprofile
-    - ~/.fonts/RobotoMono-Regular.ttf
-    - ~/.fonts/Monoisome-Regular.ttf
-    - ~/.fonts/FiraCode-Regular.ttf
-    - ~/.fonts/FiraMono-Regular.ttf
-    - ~/.fonts/Hack-Regular.ttf
 
 - name: link files
   file:
@@ -36,7 +29,15 @@
   with_items:
     - {'src': 'FiraMono-Regular.ttf', 'dest': '~/.fonts/FiraMono-Regular.ttf'}
     - {'src': 'Fura Mono Regular Nerd Font Complete Mono.otf', 'dest': '~/.fonts/Fura Mono Regular Nerd Font Complete Mono.otf'}
-    - {'src': 'IBM Plex Mono Nerd Font Complete Mono.otf', 'dest': '~/.fonts/IBM Plex Mono Nerd Font Complete Mono.otf'}
+    - {'src': 'settings.ini', 'dest': '~/.config/gtk-3.0/settings.ini'}
+    - {'src': 'gtkrc-2.0', 'dest': '~/.gtkrc-2.0'}
+    - {'src': 'fonts.conf', 'dest': '~/.config/fontconfig/fonts.conf'}
+
+- name: configure qt
+  lineinfile:
+    path: ~/.config/Trolltech.conf
+    insertafter: '^\[Qt\]'
+    line: 'style=adwaita'
 
 - name: rebuild font cache
   command: fc-cache -r ~/.fonts
