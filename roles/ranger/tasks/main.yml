@@ -6,17 +6,9 @@
     state: latest
   become: yes
   with_items:
+    - ranger
     - w3m
     - w3m-img
-  tags:
-    - skip_ansible_lint
-
-- name: install brew deps
-  homebrew:
-    name: "{{ item }}"
-    state: latest
-  with_items:
-    - ranger
   tags:
     - skip_ansible_lint
 
