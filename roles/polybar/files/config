@@ -206,6 +206,7 @@ interface = wlp2s0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
+format-connected-underline = #50fa7b
 label-connected = %essid% %local_ip%
 
 format-disconnected =
