@@ -49,7 +49,7 @@ local json = require 'cjson' -- apt-get install lua-cjson
 local olmstatus, olm = pcall(require, 'olm') -- LuaJIT olm FFI binding ln -s ~/olm/olm.lua /usr/local/share/lua/5.1
 local w = weechat
 
-local SCRIPT_NAME = "matrix"
+local SCRIPT_NAME = "matrix_ckc"
 local SCRIPT_AUTHOR = "xt <xt@xt.gg>"
 local SCRIPT_VERSION = "3"
 local SCRIPT_LICENSE = "MIT"
