@@ -1,0 +1,5 @@
+# vim:filetype=ansible
+---
+- hosts: "{{ host }}"
+  roles:
+    - git-annex

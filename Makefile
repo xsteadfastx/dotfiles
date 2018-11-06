@@ -1,4 +1,4 @@
-.PHONY: clean test all help shell x11 weechat vim pyenv firefox pipsi xresources fish xonsh nix st i3 qutebrowser linuxbrew ranger mutt tsm own
+.PHONY: clean test all help shell x11 weechat vim pyenv firefox pipsi xresources fish xonsh nix st i3 qutebrowser linuxbrew ranger mutt git-annex
 
 help: ## Show this help
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
@@ -57,8 +57,5 @@ ranger: ## Install ranger
 mutt: ## Install mutt
 	ansible-playbook -i hosts mutt.yml -c local --ask-become-pass --ask-vault-pass --extra-vars="host=127.0.0.1"
 
-tsm: ## Install base on tsm servers
-	ansible-playbook shell.yml --ask-vault-pass --ask-become-pass --extra-vars="host=tsm-server"
-
-own: ## Install base on own servers
-	ansible-playbook shell.yml --ask-vault-pass --extra-vars="host=own"
+git-annex: ## Install git-annex
+	ansible-playbook -i hosts git-annex.yml -c local --extra-vars="host=127.0.0.1"

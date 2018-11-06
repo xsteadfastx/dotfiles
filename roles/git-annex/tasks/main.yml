@@ -1,0 +1,6 @@
+---
+- name: get git annex
+  unarchive:
+    src: https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-amd64.tar.gz
+    dest: ~/
+    remote_src: true
