@@ -115,6 +115,9 @@ Plug 'sheerun/vim-polyglot'
 " unicode handling
 Plug 'chrisbra/unicode.vim'
 
+" CSV
+Plug 'chrisbra/csv.vim'
+
 call plug#end()
 
 
