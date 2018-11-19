@@ -46,6 +46,13 @@ if test -d ~/git-annex.linux
   set fish_user_paths ~/git-annex.linux $fish_user_paths
 end
 
+# gpg terminal agent
+if [ (pgrep -x -u $USER gpg-agent) ]
+else
+    gpg-connect-agent /bye >/dev/null 2>&1
+end
+set -x GPG_TTY (tty)
+
 # theme
 function fish_greeting
   if test -f ~/.local/bin/fortlit
