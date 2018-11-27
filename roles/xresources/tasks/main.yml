@@ -20,6 +20,7 @@
     - ~/.config/fontconfig
     - ~/.config/gtk-3.0
     - ~/.fonts
+    - ~/.themes
 
 - name: link files
   file:
@@ -32,11 +33,10 @@
     - {'src': 'gtkrc-2.0', 'dest': '~/.gtkrc-2.0'}
     # - {'src': 'fonts.conf', 'dest': '~/.config/fontconfig/fonts.conf'}
 
-- name: configure qt
-  lineinfile:
-    path: ~/.config/Trolltech.conf
-    insertafter: '^\[Qt\]'
-    line: 'style=adwaita'
+- name: install theme
+  unarchive:
+    src: "{{ batcave_path }}/roles/xresources/files/Ant-Dracula.tar"
+    dest: ~/.themes
 
 - name: rebuild font cache
   command: fc-cache -r ~/.fonts
