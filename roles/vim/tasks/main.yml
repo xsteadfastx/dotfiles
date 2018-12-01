@@ -1,5 +1,12 @@
 # vim:ft=ansible
 ---
+- name: add ppa
+  apt_repository:
+    repo: ppa:neovim-ppa/stable
+    state: present
+  become: yes
+  when: ansible_os_family == 'Debian'
+
 - name: install deps for debian
   package:
     name={{ item }}
