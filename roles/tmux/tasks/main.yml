@@ -19,6 +19,8 @@
     path={{ item }}
     state=directory
   with_items:
+    - ~/.local
+    - ~/.local/bin
     - ~/.tmuxp
 
 - name: check if pipsi installed
@@ -31,6 +33,12 @@
   args:
     creates: ~/.local/venvs/tmuxp/bin/tmuxp
   when: pipsi_result.stat.exists == True
+
+- name: install xpanes
+  get_url:
+    url: https://raw.githubusercontent.com/greymd/tmux-xpanes/master/bin/xpanes
+    dest: ~/.local/bin/tmux-xpanes
+    mode: 0755
 
 - name: link files
   file:
