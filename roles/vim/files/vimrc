@@ -1,7 +1,6 @@
 " ---------------------------------------
 " GENERAL
 " ---------------------------------------
-
 set shell=/bin/sh
 set nocompatible
 filetype off
@@ -10,11 +9,9 @@ set fenc=utf-8
 set fileencoding=utf-8
 filetype plugin indent on
 
-
 " ---------------------------------------
 " PLUGINS
 " ---------------------------------------
-
 call plug#begin('~/.vim/plugged')
 
 Plug 'ConradIrwin/vim-bracketed-paste'
@@ -97,7 +94,6 @@ Plug 'w0rp/ale'
     let g:ale_python_mypy_options = '--silent-imports'
     let g:ale_fixers = {'python': ['isort'],}
 
-
 " easy alignment
 Plug 'junegunn/vim-easy-align'
     xmap ga <Plug>(EasyAlign)
@@ -118,13 +114,14 @@ Plug 'chrisbra/unicode.vim'
 " CSV
 Plug 'chrisbra/csv.vim'
 
-call plug#end()
+" journal syntax highlighting
+"Plug 'junegunn/vim-journal'
 
+call plug#end()
 
 " ---------------------------------------
 " UI
 " ---------------------------------------
-
 set number
 "set relativenumber
 set backspace=2
@@ -147,11 +144,9 @@ set termguicolors
 " disabled preview window
 "set completeopt-=preview
 
-
 " ---------------------------------------
 " TEXT FORMAT
 " ---------------------------------------
-
 set autoindent
 set smartindent
 set nowrap
@@ -161,11 +156,9 @@ set nosmarttab
 " automatically remove trail. whitespace at write
 "au BufWritePre <buffer> StripWhitespace
 
-
 " ---------------------------------------
 " KEYMAPS
 " ---------------------------------------
-
 let mapleader = ","
 let maplocalleader = "\\"
 
@@ -185,33 +178,27 @@ inoremap <S-Tab> <C-V><Tab>
 nnoremap <F5> "=strftime("%Y-%m-%d")<CR>P
 inoremap <F5> <C-R>=strftime("%Y-%m-%d")<CR>
 
-
 " ---------------------------------------
 " PYTHON
 " ---------------------------------------
-
 augroup python
     autocmd!
     au BufRead,BufNewFile *.xsh set filetype=python
     au FileType python set colorcolumn=88
 augroup end
 
-
 " ---------------------------------------
 " HTML
 " ---------------------------------------
-
 augroup html
     autocmd!
     au FileType html setl sw=2 ts=2 sts=2
     au FileType htmldjango setl sw=2 ts=2 sts=2
 augroup end
 
-
 " ---------------------------------------
 " CSS
 " ---------------------------------------
-
 augroup css
     autocmd!
     au BufRead,BufNewFile *scss set filetype=css
@@ -219,21 +206,17 @@ augroup css
                 \ | ColorHighlight
 augroup end
 
-
 " ---------------------------------------
 " JAVASCRIPT
 " ---------------------------------------
-
 augroup javascript
     autocmd!
     au FileType javascript setl tabstop=2 expandtab shiftwidth=2 softtabstop=2
 augroup end
 
-
 " ---------------------------------------
 " NEOVIM
 " ---------------------------------------
-
 if has('nvim')
     " needed for copy paste in neovim
     set clipboard+=unnamedplus
@@ -246,22 +229,18 @@ if has('nvim')
     "unlet g:loaded_python3_provider
 endif
 
-
 " ---------------------------------------
 " YAML
 " ---------------------------------------
-
 augroup yaml
     autocmd!
     au BufRead,BufNewFile *yml,*yaml set filetype=yaml
     au FileType yaml setl tabstop=2 expandtab shiftwidth=2 softtabstop=2
 augroup end
 
-
 " ---------------------------------------
 " MARKDOWN / RST
 " ---------------------------------------
-
 augroup pencil
     autocmd!
     au BufRead,BufNewFile *.markdown,*.md set filetype=markdown
@@ -275,11 +254,18 @@ augroup pencil
     au User GoyoLeave nested set background=dark
 augroup end
 
+" ---------------------------------------
+" VIMWIKI
+" ---------------------------------------
+augroup wiki
+    autocmd!
+    au FileType vimwiki call pencil#init()
+                             \ | setl tabstop=4 expandtab shiftwidth=4 softtabstop=4
+augroup end
 
 " ---------------------------------------
 " TASKWARRIOR
 " ---------------------------------------
-
 autocmd CursorHold task* call Timer()
 function! Timer()
     call taskwarrior#list()
@@ -287,27 +273,22 @@ function! Timer()
     call feedkeys("f\e") "retrigger the CursorHold event without major side-effects
 endfunction
 
-
 " ---------------------------------------
 " JSON
 " ---------------------------------------
 "
-
 augroup json
     autocmd!
     au FileType json setl tabstop=2 expandtab shiftwidth=2 softtabstop=2
 augroup end
 
-
 " ---------------------------------------
 " LEKTOR
 " ---------------------------------------
-
 augroup lektor
     autocmd!
     au BufRead,BufNewFile *.lr set filetype=markdown
 augroup end
-
 
 " ---------------------------------------
 " ANSIBLE
