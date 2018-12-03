@@ -32,6 +32,7 @@
     - feh
     - i3
     - i3-wm
+    - i3blocks
     - i3lock
     - i3status
     - rofi
@@ -46,6 +47,7 @@
     state=absent
   with_items:
     - ~/.config/dunst
+    - ~/.config/i3blocks
     - ~/.config/rofi
     - ~/.i3
     - ~/.i3status.conf
@@ -58,6 +60,7 @@
   with_items:
     - ~/.config
     - ~/.config/dunst
+    - ~/.config/i3blocks
     - ~/.config/rofi
     - ~/.i3
     - ~/.local
@@ -72,10 +75,16 @@
   with_items:
     - {'src': 'config', 'dest': '~/.i3/config'}
     - {'src': 'dunstrc', 'dest': '~/.config/dunst/dunstrc'}
-    - {'src': 'i3status.conf', 'dest': '~/.i3/i3status.conf'}
+    - {'src': 'i3blocks.conf', 'dest': '~/.config/i3blocks/config'}
     - {'src': 'rofi_config.conf', 'dest': '~/.config/rofi/config'}
     - {'src': 'rofi_local.conf', 'dest': '~/.local/rofi/config'}
     - {'src': 'wallpaper.png', 'dest': '~/.i3/wallpaper.png'}
+    - {'src': 'check_vpn', 'dest': '~/.config/i3blocks/check_vpn'}
+    - {'src': 'battery', 'dest': '~/.config/i3blocks/battery'}
+    - {'src': 'time', 'dest': '~/.config/i3blocks/time'}
+    - {'src': 'load', 'dest': '~/.config/i3blocks/load'}
+    - {'src': 'volume', 'dest': '~/.config/i3blocks/volume'}
+    - {'src': 'disk', 'dest': '~/.config/i3blocks/disk'}
 
 - name: remove temp dir
   file:

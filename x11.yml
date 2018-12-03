@@ -4,7 +4,6 @@
   roles:
     - i3
     - nextcloud
-    - polybar
     - screenlayout
     - st
     - unclutter
