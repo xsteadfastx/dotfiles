@@ -6,7 +6,7 @@ import sys
 CRIT = 90.0
 MOUNT_BLACKLIST = [
     '/dev', '/efi', '/proc', '/run', '/sys', '/tmp',
-    '/snap', '/srv', '/home/preuss/mnt', '/boot'
+    '/snap', '/srv', '/home/preuss/mnt', '/boot', '/var/lib/docker'
 ]
 
 

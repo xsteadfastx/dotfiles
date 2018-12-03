@@ -4,8 +4,8 @@
 Checks VPN connection via ping on a list of hosts. If one host is available,
 it marks the vpn as green.
 """
+from os import environ
 from subprocess import PIPE, run
-from sys import argv
 from typing import List
 
 GREY = "#6272a4"
@@ -26,10 +26,10 @@ def run_ping(hosts: List[str]) -> bool:
     return False
 
 
-def main(arguments: List[str]) -> str:
+def main() -> str:
     """Entrypoint."""
-    vpn_name = arguments[0]
-    hosts = arguments[1:]
+    vpn_name = environ["BLOCK_NAME"]
+    hosts: List[str] = environ["BLOCK_INSTANCE"].split(" ")
     ping = run_ping(hosts)
     if ping is True:
         color = GREEN
@@ -39,4 +39,4 @@ def main(arguments: List[str]) -> str:
 
 
 if __name__ == "__main__":
-    main(argv[1:])
+    main()
