@@ -79,7 +79,7 @@
     - {'src': 'rofi_config.conf', 'dest': '~/.config/rofi/config'}
     - {'src': 'rofi_local.conf', 'dest': '~/.local/rofi/config'}
     - {'src': 'wallpaper.png', 'dest': '~/.i3/wallpaper.png'}
-    - {'src': 'check_vpn', 'dest': '~/.config/i3blocks/check_vpn'}
+    - {'src': 'check_conn', 'dest': '~/.config/i3blocks/check_conn'}
     - {'src': 'battery', 'dest': '~/.config/i3blocks/battery'}
     - {'src': 'time', 'dest': '~/.config/i3blocks/time'}
     - {'src': 'load', 'dest': '~/.config/i3blocks/load'}
