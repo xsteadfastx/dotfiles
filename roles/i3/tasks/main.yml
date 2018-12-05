@@ -83,7 +83,7 @@
     - {'src': 'battery', 'dest': '~/.config/i3blocks/battery'}
     - {'src': 'time', 'dest': '~/.config/i3blocks/time'}
     - {'src': 'load', 'dest': '~/.config/i3blocks/load'}
-    - {'src': 'volume', 'dest': '~/.config/i3blocks/volume'}
+    - {'src': 'volume-pulseaudio', 'dest': '~/.config/i3blocks/volume-pulseaudio'}
     - {'src': 'disk', 'dest': '~/.config/i3blocks/disk'}
 
 - name: remove temp dir
