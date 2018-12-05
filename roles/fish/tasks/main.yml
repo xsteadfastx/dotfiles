@@ -88,12 +88,12 @@
   tags:
     - skip_ansible_lint
 
-- name: set shell
-  user:
-    name={{ ansible_env.USER }}
-    shell=/usr/bin/fish
-  become: yes
-  when: ansible_os_family == 'Debian'
+#- name: set shell
+#  user:
+#    name={{ ansible_env.USER }}
+#    shell=/usr/bin/fish
+#  become: yes
+#  when: ansible_os_family == 'Debian'
 
 - name: download fortlit
   get_url:
