@@ -38,7 +38,10 @@ end
 if test -d ~/.pyenv/bin
   set -gx PYENV_ROOT ~/.pyenv
   set fish_user_paths $PYENV_ROOT/bin $fish_user_paths
-  status --is-interactive; and . (pyenv init -|psub)
+  if not set -q POETRY_ACTIVE
+    status --is-interactive; and . (pyenv init -|psub)
+    status --is-interactive; and . (pyenv virtualenv-init -|psub)
+  end
 end
 
 # git-annex
