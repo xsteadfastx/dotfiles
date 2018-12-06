@@ -200,7 +200,6 @@ exec --no-startup-id exec dunst &
 exec --no-startup-id exec nm-applet &
 exec --no-startup-id exec nextcloud &
 exec --no-startup-id exec xfce4-power-manager &
-exec --no-startup-id exec pnmixer &
 exec --no-startup-id exec xautolock -time 10 -locker 'i3lock -c 000000 -t' &
 exec --no-startup-id exec unclutter &
 exec --no-startup-id exec git annex assistant --autostart &
