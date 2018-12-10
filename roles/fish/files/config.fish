@@ -40,7 +40,7 @@ if test -d ~/.pyenv/bin
   set fish_user_paths $PYENV_ROOT/bin $fish_user_paths
   if not set -q POETRY_ACTIVE
     status --is-interactive; and . (pyenv init -|psub)
-    status --is-interactive; and . (pyenv virtualenv-init -|psub)
+    #status --is-interactive; and . (pyenv virtualenv-init -|psub)
   end
 end
 
