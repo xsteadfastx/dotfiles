@@ -22,6 +22,7 @@
     name: "{{ item }}"
     state: latest
   with_items:
+    - curl
     - ncurses-base
   become: yes
   when: ansible_os_family == 'Debian'
