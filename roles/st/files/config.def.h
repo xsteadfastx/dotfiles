@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "FantasqueSansMono Nerd Font Mono:pixelsize=17";
+static char *font = "RobotoMono Nerd Font:pixelsize=14";
 static int borderpx = 2;
 
 /*
