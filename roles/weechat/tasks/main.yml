@@ -27,6 +27,7 @@
   docker_image:
     name: weechat
     path: ~/.dockerfiles/weechat
+    force: true
 
 - name: link files
   file:
