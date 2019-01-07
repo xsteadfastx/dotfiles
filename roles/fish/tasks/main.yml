@@ -2,28 +2,26 @@
 ---
 - name: add ppa
   apt_repository:
-    repo: 'ppa:fish-shell/release-2'
+    repo: 'ppa:fish-shell/release-3'
   become: yes
   when: ansible_distribution == 'Ubuntu'
 
 - name: install deps
   package:
-    name={{ item }}
-    state=latest
-  with_items:
-    - fish
-    - git
+    state: latest
+    name:
+      - fish
+      - git
   become: yes
   tags:
     - skip_ansible_lint
 
 - name: install deps debian
   apt:
-    name: "{{ item }}"
     state: latest
-  with_items:
-    - curl
-    - ncurses-base
+    name:
+      - curl
+      - ncurses-base
   become: yes
   when: ansible_os_family == 'Debian'
   tags:
@@ -31,13 +29,12 @@
 
 - name: install deps alpine
   apk:
-    name: "{{ item }}"
     state: latest
-  with_items:
-    - bc
-    - mdocml-apropos
-    - ncurses
-    - util-linux
+    name:
+      - bc
+      - mdocml-apropos
+      - ncurses
+      - util-linux
   become: yes
   when: ansible_os_family == 'Alpine'
 
