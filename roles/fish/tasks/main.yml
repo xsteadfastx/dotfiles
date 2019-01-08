@@ -70,6 +70,7 @@
     - {'src': '{{ batcave_path }}/roles/fish/files/config.fish', 'dest': '~/.config/fish/config.fish'}
     - {'src': '{{ batcave_path }}/roles/fish/files/sudo.fish', 'dest': '~/.config/fish/functions/sudo.fish'}
     - {'src': '{{ batcave_path }}/roles/fish/files/bkp_christine.fish', 'dest': '~/.config/fish/functions/bkp_christine.fish'}
+    - {'src': '{{ batcave_path }}/roles/fish/files/dig_acme_xsfx.fish', 'dest': '~/.config/fish/functions/dig_acme_xsfx.fish'}
     - {'src': '{{ batcave_path }}/roles/fish/files/enter.fish', 'dest': '~/.config/fish/functions/enter.fish'}
 
 - name: get files
