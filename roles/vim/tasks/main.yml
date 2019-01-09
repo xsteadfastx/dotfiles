@@ -9,15 +9,14 @@
 
 - name: install deps for debian
   package:
-    name={{ item }}
-    state=latest
-  with_items:
-    - neovim
-    - python
-    - python-virtualenv
-    - python3
-    - python3-venv
-    - shellcheck
+    state: latest
+    name:
+      - neovim
+      - python
+      - python-virtualenv
+      - python3
+      - python3-venv
+      - shellcheck
   become: yes
   when: ansible_os_family == 'Debian'
   tags:
@@ -25,17 +24,16 @@
 
 - name: install deps for alpine
   package:
-    name={{ item }}
-    state=latest
-  with_items:
-    - gcc
-    - musl-dev
-    - neovim
-    - py2-virtualenv
-    - python2
-    - python2-dev
-    - python3
-    - python3-dev
+    state: latest
+    name:
+      - gcc
+      - musl-dev
+      - neovim
+      - py2-virtualenv
+      - python2
+      - python2-dev
+      - python3
+      - python3-dev
   become: yes
   when: ansible_os_family == 'Alpine'
   tags:
@@ -87,19 +85,17 @@
 
 - name: create neovim virtualenv for python2
   pip:
-    name: "{{ item }}"
+    name:
+      - neovim
     virtualenv: /opt/neovim2
-  with_items:
-    - neovim
   become: yes
 
 - name: create neovim virtualenv for python3
   pip:
-    name: "{{ item }}"
+    name:
+      - neovim
     virtualenv: /opt/neovim3
     virtualenv_command: /usr/bin/python3 -m venv
-  with_items:
-    - neovim
   become: yes
 
 - name: install plugins
