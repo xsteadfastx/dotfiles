@@ -24,19 +24,17 @@
 
 - name: install deps
   apt:
-    name: "{{ item }}"
     state: latest
-    update_cache: yes
-  with_items:
-    - dunst
-    - feh
-    - i3
-    - i3-wm
-    - i3blocks
-    - i3lock
-    - i3status
-    - rofi
-    - xautolock
+    name:
+      - dunst
+      - feh
+      - i3
+      - i3-wm
+      - i3blocks
+      - i3lock
+      - i3status
+      - rofi
+      - xautolock
   become: yes
   tags:
     - skip_ansible_lint

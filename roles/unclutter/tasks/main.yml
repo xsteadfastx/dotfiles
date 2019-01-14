@@ -8,12 +8,11 @@
 
 - name: install deps
   apt:
-    name: "{{ item }}"
     state: latest
-  become: yes
-  with_items:
-    - libev-dev
-    - libxi-dev
+    name:
+      - libev-dev
+      - libxi-dev
+  become: true
   tags:
     - skip_ansible_lint
 

@@ -5,12 +5,11 @@
 
 - name: install deps
   apt:
-    name={{ item }}
-    state=latest
-  with_items:
-    - libx11-dev
-    - libxext-dev
-    - libxft-dev
+    state: latest
+    name:
+      - libx11-dev
+      - libxext-dev
+      - libxft-dev
   become: yes
   tags:
     - skip_ansible_lint
