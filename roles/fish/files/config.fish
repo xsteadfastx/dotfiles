@@ -17,6 +17,10 @@ if test -d ~/.local/bin
   set fish_user_paths ~/.local/bin $fish_user_paths
 end
 
+if test -d /sbin
+  set fish_user_paths /sbin $fish_user_paths
+end
+
 # python
 set -gx PIP_REQUIRE_VIRTUALENV 1
 
