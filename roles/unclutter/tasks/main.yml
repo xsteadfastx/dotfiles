@@ -5,16 +5,23 @@
     name: unclutter
     state: absent
   become: yes
+  when: ansible_os_family == "Debian"
 
-- name: install deps
+- name: debian | install deps
   apt:
     state: latest
     name:
       - libev-dev
       - libxi-dev
   become: true
-  tags:
-    - skip_ansible_lint
+  when: ansible_os_family == "Debian"
+
+- name: alpine | install deps
+  apk:
+    name:
+      - unclutter-xfixes
+  become: true
+  when: ansible_os_family == "Alpine"
 
 - name: needed dirs
   file:
@@ -29,18 +36,24 @@
   git:
     repo: https://github.com/Airblader/unclutter-xfixes.git
     dest: ~/src/unclutter
-  tags:
-    - skip_ansible_lint
+  when: ansible_os_family == "Debian"
 
 - name: compile
   command: make unclutter
   args:
     chdir: ~/src/unclutter
-  tags:
-    - skip_ansible_lint
+  when: ansible_os_family == "Debian"
 
-- name: link unclutter
+- name: debian | link unclutter
   file:
     src=~/src/unclutter/unclutter
     dest=~/.local/bin/unclutter
     state=link
+  when: ansible_os_family == "Debian"
+
+- name: alpine | link unclutter
+  file:
+    src=/usr/bin/unclutter-xfixes
+    dest=~/.local/bin/unclutter
+    state=link
+  when: ansible_os_family == "Alpine"
