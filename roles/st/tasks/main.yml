@@ -4,7 +4,7 @@
   set_fact: st_version="0.8.1"
 
 - name: install deps
-  apt:
+  package:
     state: latest
     name:
       - libx11-dev
