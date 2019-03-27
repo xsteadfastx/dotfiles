@@ -4,6 +4,7 @@
   file:
     path: /tmp/i3
     state: directory
+  when: ansible_os_family == "Debian"
 
 - name: get keyring
   command: /usr/lib/apt/apt-helper download-file http://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2018.01.30_all.deb keyring.deb SHA256:baa43dbbd7232ea2b5444cae238d53bebb9d34601cc000e82f11111b1889078a
@@ -11,39 +12,55 @@
     chdir: /tmp/i3
     creates: /tmp/i3/keyring.deb
   become: yes
+  when: ansible_os_family == "Debian"
 
 - name: install keyring
   apt:
     deb: /tmp/i3/keyring.deb
   become: yes
+  when: ansible_os_family == "Debian"
 
 - name: add repo
   apt_repository:
     repo='deb http://debian.sur5r.net/i3/ {{ ansible_distribution_release }} universe'
   become: yes
+  when: ansible_os_family == "Debian"
 
 - name: install deps
-  apt:
+  package:
     state: latest
     name:
       - dunst
       - feh
-      - i3
-      - i3-wm
       - i3blocks
       - i3lock
       - i3status
       - rofi
       - xautolock
-  become: yes
-  tags:
-    - skip_ansible_lint
+  become: true
+
+- name: debian | install deps
+  apk:
+    name:
+      - i3-wm
+    state: latest
+  become: true
+  when: ansible_os_family == "Debian"
+
+- name: alpine | install deps
+  apk:
+    name:
+      - i3wm
+      - xsetroot
+    state: latest
+  become: true
+  when: ansible_os_family == "Alpine"
 
 - name: remove files
   file:
-    path={{ item }}
-    state=absent
-  with_items:
+    path: "{{ item }}"
+    state: absent
+  loop:
     - ~/.config/dunst
     - ~/.config/i3blocks
     - ~/.config/rofi
@@ -53,9 +70,9 @@
 
 - name: needed dirs
   file:
-    path={{ item }}
-    state=directory
-  with_items:
+    path: "{{ item }}"
+    state: directory
+  loop:
     - ~/.config
     - ~/.config/dunst
     - ~/.config/i3blocks
@@ -67,10 +84,10 @@
 
 - name: link files
   file:
-    src={{ batcave_path }}/roles/i3/files/{{ item.src }}
-    dest={{ item.dest }}
-    state=link
-  with_items:
+    src: "{{ batcave_path }}/roles/i3/files/{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: link
+  loop:
     - {'src': 'config', 'dest': '~/.i3/config'}
     - {'src': 'dunstrc', 'dest': '~/.config/dunst/dunstrc'}
     - {'src': 'i3blocks.conf', 'dest': '~/.config/i3blocks/config'}

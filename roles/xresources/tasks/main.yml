@@ -1,21 +1,30 @@
 ---
-- name: install deps
+- name: debian | install deps
   package:
-    name={{ item }}
-    state=latest
-  with_items:
+    name: "{{ item }}"
+    state: latest
+  loop:
     - adwaita-qt
+    - adwaita-icon-theme-full
     - fonts-symbola
-  become: yes
+  become: true
   when: ansible_os_family == 'Debian'
-  tags:
-    - skip_ansible_lint
+
+- name: alpine | install deps
+  package:
+    name: "{{ item }}"
+    state: latest
+  loop:
+    - adwaita-gtk2-them
+    - adwaita-icon-them
+  become: true
+  when: ansible_os_family == 'Alpine'
 
 - name: needed dirs
   file:
-    path={{ item }}
-    state=directory
-  with_items:
+    path: "{{ item }}"
+    state: directory
+  loop:
     - ~/.config
     - ~/.config/fontconfig
     - ~/.config/gtk-3.0
@@ -24,10 +33,10 @@
 
 - name: link files
   file:
-    src={{ batcave_path }}/roles/xresources/files/{{ item.src }}
-    dest={{ item.dest }}
-    state=link
-  with_items:
+    src: "{{ batcave_path }}/roles/xresources/files/{{ item.src }}"
+    dest: "{{ item.dest }}"
+    state: link
+  loop:
     - {'src': 'Fantasque Sans Mono Regular Nerd Font Complete.ttf', 'dest': '~/.fonts/Fantasque Sans Mono Regular Nerd Font Complete.ttf'}
     - {'src': 'settings.ini', 'dest': '~/.config/gtk-3.0/settings.ini'}
     - {'src': 'gtkrc-2.0', 'dest': '~/.gtkrc-2.0'}
@@ -40,5 +49,3 @@
 
 - name: rebuild font cache
   command: fc-cache -r ~/.fonts
-  tags:
-    - skip_ansible_lint
