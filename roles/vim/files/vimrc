@@ -117,6 +117,11 @@ Plug 'chrisbra/csv.vim'
 " journal syntax highlighting
 "Plug 'junegunn/vim-journal'
 
+" LaTeX
+Plug 'lervag/vimtex'
+Plug 'xuhdev/vim-latex-live-preview'
+    let g:livepreview_engine = 'xelatex'
+
 call plug#end()
 
 " ---------------------------------------
@@ -260,6 +265,15 @@ augroup end
 augroup wiki
     autocmd!
     au FileType vimwiki call pencil#init()
+                             \ | setl tabstop=4 expandtab shiftwidth=4 softtabstop=4
+augroup end
+
+" ---------------------------------------
+" LaTeX
+" ---------------------------------------
+augroup tex
+    autocmd!
+    au FileType tex call pencil#init()
                              \ | setl tabstop=4 expandtab shiftwidth=4 softtabstop=4
 augroup end
 
