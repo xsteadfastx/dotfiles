@@ -122,6 +122,10 @@ Plug 'lervag/vimtex'
 Plug 'xuhdev/vim-latex-live-preview'
     let g:livepreview_engine = 'xelatex'
 
+" black
+Plug 'python/black'
+    let g:black_linelength = 80
+
 call plug#end()
 
 " ---------------------------------------
@@ -189,6 +193,7 @@ inoremap <F5> <C-R>=strftime("%Y-%m-%d")<CR>
 augroup python
     autocmd!
     au BufRead,BufNewFile *.xsh set filetype=python
+    au BufWritePre *.py execute ':Black'
     au FileType python set colorcolumn=88
 augroup end
 
