@@ -7,11 +7,15 @@
   when: ansible_os_family == "Debian"
 
 - name: get keyring
-  command: /usr/lib/apt/apt-helper download-file http://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2018.01.30_all.deb keyring.deb SHA256:baa43dbbd7232ea2b5444cae238d53bebb9d34601cc000e82f11111b1889078a
+  command: >
+    /usr/lib/apt/apt-helper
+    download-file
+    http://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2019.02.01_all.deb
+    keyring.deb
+    SHA256:176af52de1a976f103f9809920d80d02411ac5e763f695327de9fa6aff23f416
   args:
     chdir: /tmp/i3
     creates: /tmp/i3/keyring.deb
-  become: yes
   when: ansible_os_family == "Debian"
 
 - name: install keyring
@@ -30,6 +34,7 @@
   package:
     state: latest
     name:
+      - compton
       - dunst
       - feh
       - i3blocks
@@ -40,7 +45,7 @@
   become: true
 
 - name: debian | install deps
-  apk:
+  apt:
     name:
       - i3-wm
     state: latest
@@ -89,6 +94,7 @@
     state: link
   loop:
     - {'src': 'config', 'dest': '~/.i3/config'}
+    - {'src': 'compton.conf', 'dest': '~/.i3/compton.conf'}
     - {'src': 'dunstrc', 'dest': '~/.config/dunst/dunstrc'}
     - {'src': 'i3blocks.conf', 'dest': '~/.config/i3blocks/config'}
     - {'src': 'rofi_config.conf', 'dest': '~/.config/rofi/config'}
