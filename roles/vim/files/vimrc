@@ -24,7 +24,8 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
     "let g:deoplete#sources#jedi#show_docstring = 1
 
-Plug 'airblade/vim-gitgutter'
+"Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-signify'
 
 "Plug 'blindFS/vim-taskwarrior', { 'on': 'TW' }
 
@@ -78,9 +79,9 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tmhedberg/SimpylFold'
     let g:SimpylFold_docstring_preview=1
 
-Plug 'tpope/vim-fugitive'
+"Plug 'tpope/vim-fugitive'
 
-Plug 'tpope/vim-git'
+"Plug 'tpope/vim-git'
 
 Plug 'tpope/vim-repeat'
     silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
