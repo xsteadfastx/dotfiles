@@ -99,7 +99,7 @@
     - {'src': 'i3blocks.conf', 'dest': '~/.config/i3blocks/config'}
     - {'src': 'rofi_config.conf', 'dest': '~/.config/rofi/config'}
     - {'src': 'rofi_local.conf', 'dest': '~/.local/rofi/config'}
-    - {'src': 'wallpaper.png', 'dest': '~/.i3/wallpaper.png'}
+    - {'src': 'wallpaper.jpg', 'dest': '~/.i3/wallpaper.jpg'}
     - {'src': 'check_conn', 'dest': '~/.config/i3blocks/check_conn'}
     - {'src': 'battery', 'dest': '~/.config/i3blocks/battery'}
     - {'src': 'time', 'dest': '~/.config/i3blocks/time'}
