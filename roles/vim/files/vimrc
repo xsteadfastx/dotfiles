@@ -70,8 +70,10 @@ Plug 'vimwiki/vimwiki'
     let g:vimwiki_list = [{'path': '~/annex/vimwiki/'}]
 
 Plug 'w0rp/ale'
+    let g:ale_fix_on_save = 1
     let g:ale_python_mypy_options = '--silent-imports'
-    let g:ale_fixers = {'python': ['isort'],}
+    let g:ale_python_black_options= '--line-length 79'
+    let g:ale_fixers = {'python': ['isort', 'black'],}
 
 " easy alignment
 Plug 'junegunn/vim-easy-align'
@@ -89,10 +91,6 @@ Plug 'chrisbra/csv.vim'
 
 " LaTeX
 Plug 'lervag/vimtex'
-
-" black
-Plug 'python/black'
-    let g:black_linelength = 79
 
 " NCM2
 Plug 'ncm2/ncm2'
@@ -175,7 +173,6 @@ inoremap <F5> <C-R>=strftime("%Y-%m-%d")<CR>
 augroup python
     autocmd!
     au BufRead,BufNewFile *.xsh set filetype=python
-    au BufWritePre *.py execute ':Black'
     au FileType python set colorcolumn=88
 augroup end
 
@@ -289,14 +286,6 @@ augroup end
 augroup lektor
     autocmd!
     au BufRead,BufNewFile *.lr set filetype=markdown
-augroup end
-
-" ---------------------------------------
-" ANSIBLE
-" ---------------------------------------
-augroup ansible
-    autocmd!
-    au BufRead,BufNewFile */roles/*.yml set filetype=yaml.ansible
 augroup end
 
 " ---------------------------------------
