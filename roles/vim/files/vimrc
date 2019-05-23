@@ -18,16 +18,7 @@ Plug 'ConradIrwin/vim-bracketed-paste'
 
 Plug 'Konfekt/FastFold'
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    let g:deoplete#enable_at_startup = 1
-
-Plug 'zchee/deoplete-jedi'
-    "let g:deoplete#sources#jedi#show_docstring = 1
-
-"Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-signify'
-
-"Plug 'blindFS/vim-taskwarrior', { 'on': 'TW' }
 
 Plug 'chrisbra/Colorizer'
 
@@ -59,15 +50,6 @@ Plug 'mattn/emmet-vim', { 'for': 'html' }
 Plug 'mattn/gist-vim'
     let g:gist_post_private = 1
 
-Plug 'mattn/webapi-vim'
-
-"Plug 'mhinz/vim-grepper'
-
-Plug 'nathanaelkane/vim-indent-guides'
-    au VimEnter * :IndentGuidesEnable
-    let g:indent_guides_start_level = 2
-    let g:indent_guides_guide_size = 1
-
 Plug 'ntpeters/vim-better-whitespace'
 
 Plug 'reedes/vim-pencil'
@@ -78,10 +60,6 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
 Plug 'tmhedberg/SimpylFold'
     let g:SimpylFold_docstring_preview=1
-
-"Plug 'tpope/vim-fugitive'
-
-"Plug 'tpope/vim-git'
 
 Plug 'tpope/vim-repeat'
     silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
@@ -100,12 +78,6 @@ Plug 'junegunn/vim-easy-align'
     xmap ga <Plug>(EasyAlign)
     nmap ga <Plug>(EasyAlign)
 
-" scratchpad
-"Plug 'metakirby5/codi.vim'
-
-" tmux and vim navigator
-"Plug 'christoomey/vim-tmux-navigator'
-
 " a collection of language packs
 Plug 'sheerun/vim-polyglot'
 
@@ -115,17 +87,26 @@ Plug 'chrisbra/unicode.vim'
 " CSV
 Plug 'chrisbra/csv.vim'
 
-" journal syntax highlighting
-"Plug 'junegunn/vim-journal'
-
 " LaTeX
 Plug 'lervag/vimtex'
-Plug 'xuhdev/vim-latex-live-preview'
-    let g:livepreview_engine = 'xelatex'
 
 " black
 Plug 'python/black'
-    let g:black_linelength = 80
+    let g:black_linelength = 79
+
+" NCM2
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-path'
+Plug 'ncm2/ncm2-jedi'
+Plug 'ncm2/float-preview.nvim'
+    let g:float_preview#docked=0
+Plug 'wellle/tmux-complete.vim'
+
+" visual ident levels
+Plug 'Yggdroot/indentLine'
+    let g:indentLine_char = '┆'
 
 call plug#end()
 
@@ -316,4 +297,13 @@ augroup end
 augroup ansible
     autocmd!
     au BufRead,BufNewFile */roles/*.yml set filetype=yaml.ansible
+augroup end
+
+" ---------------------------------------
+" NCM2
+" ---------------------------------------
+augroup ncm2
+    autocmd!
+    au BufEnter * call ncm2#enable_for_buffer()
+    set completeopt=noinsert,menuone,noselect
 augroup end

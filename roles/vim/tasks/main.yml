@@ -2,7 +2,7 @@
 ---
 - name: add ppa
   apt_repository:
-    repo: ppa:neovim-ppa/stable
+    repo: ppa:neovim-ppa/unstable
     state: present
   become: yes
   when: ansible_os_family == 'Debian'
@@ -93,7 +93,9 @@
 - name: create neovim virtualenv for python3
   pip:
     name:
+      - jedi
       - neovim
+      - pynvim
     virtualenv: /opt/neovim3
     virtualenv_command: /usr/bin/python3 -m venv
   become: yes
