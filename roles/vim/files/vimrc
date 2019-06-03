@@ -93,14 +93,16 @@ Plug 'chrisbra/csv.vim'
 Plug 'lervag/vimtex'
 
 " NCM2
-Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp'
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-path'
-Plug 'ncm2/ncm2-jedi'
-Plug 'ncm2/float-preview.nvim'
-    let g:float_preview#docked=0
-Plug 'wellle/tmux-complete.vim'
+if has('nvim')
+    Plug 'ncm2/ncm2'
+    Plug 'roxma/nvim-yarp'
+    Plug 'ncm2/ncm2-bufword'
+    Plug 'ncm2/ncm2-path'
+    Plug 'ncm2/ncm2-jedi'
+    Plug 'ncm2/float-preview.nvim'
+        let g:float_preview#docked=0
+    Plug 'wellle/tmux-complete.vim'
+endif
 
 " visual ident levels
 Plug 'Yggdroot/indentLine'
@@ -291,8 +293,10 @@ augroup end
 " ---------------------------------------
 " NCM2
 " ---------------------------------------
-augroup ncm2
-    autocmd!
-    au BufEnter * call ncm2#enable_for_buffer()
-    set completeopt=noinsert,menuone,noselect
-augroup end
+if has('nvim')
+    augroup ncm2
+        autocmd!
+        au BufEnter * call ncm2#enable_for_buffer()
+        set completeopt=noinsert,menuone,noselect
+    augroup end
+endif
