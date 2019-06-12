@@ -32,12 +32,6 @@ if test -f ~/.local/bin/pipenv
   eval (pipenv --completion)
 end
 
-# linuxbrew
-if test -d ~/.linuxbrew
-  set PATH ~/.linuxbrew/bin $PATH
-  set fish_user_paths ~/.linuxbrew/bin $fish_user_paths
-end
-
 # pyenv
 if test -d ~/.pyenv/bin
   set -gx PYENV_ROOT ~/.pyenv
@@ -48,17 +42,17 @@ if test -d ~/.pyenv/bin
   end
 end
 
-# git-annex
-if test -d ~/git-annex.linux
-  set fish_user_paths ~/git-annex.linux $fish_user_paths
-end
-
 # gpg terminal agent
 if [ (pgrep -x -u $USER gpg-agent) ]
 else
     gpg-connect-agent /bye >/dev/null 2>&1
 end
 set -x GPG_TTY (tty)
+
+# gopass
+if test -f /usr/local/bin/gopass
+  status --is-interactive; and . (gopass completion fish|psub)
+end
 
 # theme
 function fish_greeting
