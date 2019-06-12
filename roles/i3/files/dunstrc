@@ -1,5 +1,5 @@
 [global]
-    font = RobotoMono Nerd Font 10
+    font = FuraCode Nerd Font 10
     
     # Allow a small subset of html markup:
     #   <b>bold</b>
