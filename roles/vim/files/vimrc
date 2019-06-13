@@ -72,7 +72,6 @@ Plug 'vimwiki/vimwiki'
 Plug 'w0rp/ale'
     let g:ale_fix_on_save = 1
     let g:ale_python_mypy_options = '--silent-imports'
-    let g:ale_python_black_options= '--line-length 79'
     let g:ale_fixers = {'python': ['isort', 'black'],}
 
 " easy alignment
