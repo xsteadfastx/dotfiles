@@ -1,16 +1,4 @@
 ---
-- name: debian | needed dirs
-  file:
-    path: ~/src
-    state: directory
-  when: ansible_os_family == "Debian"
-
-- name: debian | clone i3-gaps
-  git:
-    repo: https://github.com/Airblader/i3.git
-    dest: ~/src/i3-gaps
-  when: ansible_os_family == "Debian"
-
 - name: install deps
   package:
     state: latest
@@ -25,114 +13,166 @@
       - xautolock
   become: true
 
-- name: debian | install deps
-  apt:
-    name:
-      - autoconf
-      - automake
-      - libev-dev
-      - libpango1.0-dev
-      - libstartup-notification0-dev
-      - libxcb-cursor-dev
-      - libxcb-icccm4-dev
-      - libxcb-keysyms1-dev
-      - libxcb-randr0-dev
-      - libxcb-shape0-dev
-      - libxcb-util0-dev
-      - libxcb-xinerama0-dev
-      - libxcb-xkb-dev
-      - libxcb-xrm-dev
-      - libxcb-xrm0
-      - libxcb1-dev
-      - libxkbcommon-dev
-      - libxkbcommon-x11-dev
-      - libyajl-dev
-    state: latest
+- name: compile and install gaps
+  block:
+    - name: debian | gaps | uninstall i3
+      apt:
+        name:
+          - i3
+          - i3-wm
+        state: absent
+      become: true
+    - name: debian | gaps | needed dirs
+      file:
+        path: ~/src
+        state: directory
+    - name: debian | clone i3-gaps
+      git:
+        repo: https://github.com/Airblader/i3.git
+        dest: ~/src/i3-gaps
+      become: true
+    - name: debian | gaps | install deps
+      apt:
+        name:
+          - autoconf
+          - automake
+          - libev-dev
+          - libpango1.0-dev
+          - libstartup-notification0-dev
+          - libxcb-cursor-dev
+          - libxcb-icccm4-dev
+          - libxcb-keysyms1-dev
+          - libxcb-randr0-dev
+          - libxcb-shape0-dev
+          - libxcb-util0-dev
+          - libxcb-xinerama0-dev
+          - libxcb-xkb-dev
+          - libxcb-xrm-dev
+          - libxcb-xrm0
+          - libxcb1-dev
+          - libxkbcommon-dev
+          - libxkbcommon-x11-dev
+          - libyajl-dev
+        state: latest
+      become: true
+    - name: debian | gaps | create build dir
+      file:
+        path: ~/src/i3-gaps/build
+        state: "{{ item }}"
+      loop:
+        - absent
+        - directory
+    - name: debian | gaps | prepare i3-gaps build
+      command: autoreconf --force --install
+      args:
+        chdir: ~/src/i3-gaps
+    - name: debian | gaps | compile
+      command: "{{ item }}"
+      args:
+        chdir: ~/src/i3-gaps/build
+      loop:
+        - ../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
+        - make
+    - name: debian | gaps | install i3-gaps
+      command: make install
+      args:
+        chdir: "{{ lookup('env', 'HOME') }}/src/i3-gaps/build"
+      become: true
+  tags: gaps
+  when: ansible_os_family == "Debian"
+
+- name: debian stuff
+  block:
+    - stat:
+        path: /usr/bin/i3
+      register: i3_binary
+    - name: debian | normal | check if gaps is installed
+      command: i3 --version
+      register: i3_version
+      when: i3_binary.stat.exists
+    - name: debian | normal | uninstall gaps
+      command: make uninstall
+      args:
+        chdir: "{{ lookup('env', 'HOME') }}/src/i3-gaps/build"
+      when:
+        - '"stdout" in i3_version'
+        - '"gaps-next" in i3_version.stdout'
+    - name: debian | normal | add ppa key
+      apt:
+        deb: http://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2019.02.01_all.deb
+    - name: debian | add ppa
+      apt_repository:
+        repo: >
+          deb http://debian.sur5r.net/i3/
+          {{ ansible_distribution_release }}
+          universe
+    - name: debian | normal | install
+      apt:
+        name:
+          - i3
+          - i3-wm
+          - x11-xserver-utils
   become: true
   when: ansible_os_family == "Debian"
+  tags: normal
 
-- name: debian | create build dir
-  file:
-    path: ~/src/i3-gaps/build
-    state: "{{ item }}"
-  when: ansible_os_family == "Debian"
-  loop:
-    - absent
-    - directory
-
-- name: debian | prepare i3-gaps build
-  command: autoreconf --force --install
-  args:
-    chdir: ~/src/i3-gaps
-  when: ansible_os_family == "Debian"
-
-- name: debian | compile i3-gaps
-  command: "{{ item }}"
-  args:
-    chdir: ~/src/i3-gaps/build
-  loop:
-    - ../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
-    - make
-  when: ansible_os_family == "Debian"
-
-- name: debian | install i3-gaps
-  command: make install
-  args:
-    chdir: "{{ lookup('env', 'HOME') }}/src/i3-gaps/build"
-  become: true
-  when: ansible_os_family == "Debian"
-
-- name: alpine | install deps
-  apk:
-    name:
-      - i3wm
-      - xsetroot
-    state: latest
+- name: alpine stuff
+  block:
+    - name: alpine | normal | install deps
+      apk:
+        name:
+          - i3wm
+          - xsetroot
+        state: latest
   become: true
   when: ansible_os_family == "Alpine"
+  tags: normal
 
-- name: remove files
-  file:
-    path: "{{ item }}"
-    state: absent
-  loop:
-    - ~/.config/dunst
-    - ~/.config/i3blocks
-    - ~/.config/rofi
-    - ~/.i3
-    - ~/.i3status.conf
-    - ~/.local/rofi
-
-- name: needed dirs
-  file:
-    path: "{{ item }}"
-    state: directory
-  loop:
-    - ~/.config
-    - ~/.config/dunst
-    - ~/.config/i3blocks
-    - ~/.config/rofi
-    - ~/.i3
-    - ~/.local
-    - ~/.local/rofi
-    - ~/src
-
-- name: link files
-  file:
-    src: "{{ batcave_path }}/roles/i3/files/{{ item.src }}"
-    dest: "{{ item.dest }}"
-    state: link
-  loop:
-    - {'src': 'config', 'dest': '~/.i3/config'}
-    - {'src': 'compton.conf', 'dest': '~/.i3/compton.conf'}
-    - {'src': 'dunstrc', 'dest': '~/.config/dunst/dunstrc'}
-    - {'src': 'i3blocks.conf', 'dest': '~/.config/i3blocks/config'}
-    - {'src': 'rofi_config.conf', 'dest': '~/.config/rofi/config'}
-    - {'src': 'rofi_local.conf', 'dest': '~/.local/rofi/config'}
-    - {'src': 'wallpaper.jpg', 'dest': '~/.i3/wallpaper.jpg'}
-    - {'src': 'check_conn', 'dest': '~/.config/i3blocks/check_conn'}
-    - {'src': 'battery', 'dest': '~/.config/i3blocks/battery'}
-    - {'src': 'time', 'dest': '~/.config/i3blocks/time'}
-    - {'src': 'load', 'dest': '~/.config/i3blocks/load'}
-    - {'src': 'volume-pulseaudio', 'dest': '~/.config/i3blocks/volume-pulseaudio'}
-    - {'src': 'disk', 'dest': '~/.config/i3blocks/disk'}
+- name: configs
+  block:
+    - name: remove files
+      file:
+        path: "{{ item }}"
+        state: absent
+      loop:
+        - ~/.config/dunst
+        - ~/.config/i3blocks
+        - ~/.config/rofi
+        - ~/.i3
+        - ~/.i3status.conf
+        - ~/.local/rofi
+    - name: needed dirs
+      file:
+        path: "{{ item }}"
+        state: directory
+      loop:
+        - ~/.config
+        - ~/.config/dunst
+        - ~/.config/i3blocks
+        - ~/.config/rofi
+        - ~/.i3
+        - ~/.local
+        - ~/.local/rofi
+        - ~/src
+    - name: link files
+      file:
+        src: "{{ batcave_path }}/roles/i3/files/{{ item.src }}"
+        dest: "{{ item.dest }}"
+        state: link
+      loop:
+        - {'src': 'config', 'dest': '~/.i3/config'}
+        - {'src': 'compton.conf', 'dest': '~/.i3/compton.conf'}
+        - {'src': 'dunstrc', 'dest': '~/.config/dunst/dunstrc'}
+        - {'src': 'i3blocks.conf', 'dest': '~/.config/i3blocks/config'}
+        - {'src': 'rofi_config.conf', 'dest': '~/.config/rofi/config'}
+        - {'src': 'rofi_local.conf', 'dest': '~/.local/rofi/config'}
+        - {'src': 'wallpaper.jpg', 'dest': '~/.i3/wallpaper.jpg'}
+        - {'src': 'check_conn', 'dest': '~/.config/i3blocks/check_conn'}
+        - {'src': 'battery', 'dest': '~/.config/i3blocks/battery'}
+        - {'src': 'time', 'dest': '~/.config/i3blocks/time'}
+        - {'src': 'load', 'dest': '~/.config/i3blocks/load'}
+        - {'src': 'volume-pulseaudio', 'dest': '~/.config/i3blocks/volume-pulseaudio'}
+        - {'src': 'disk', 'dest': '~/.config/i3blocks/disk'}
+  tags:
+    - gaps
+    - normal

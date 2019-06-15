@@ -1,4 +1,4 @@
-.PHONY: clean test all help shell x11 weechat vim pyenv firefox pipsi xresources fish xonsh nix st i3 qutebrowser linuxbrew ranger mutt git-annex
+.PHONY: clean test all help shell x11 weechat vim pyenv firefox pipsi xresources fish xonsh nix st i3 i3-gaps qutebrowser linuxbrew ranger mutt git-annex
 
 help: ## Show this help
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
@@ -7,7 +7,7 @@ shell: ## Install shell on 127.0.0.1
 	ansible-playbook -i hosts shell.yml -c local --ask-become-pass --extra-vars="host=127.0.0.1"
 
 x11: ## Install x11 on 127.0.0.1
-	ansible-playbook -i hosts x11.yml -c local --ask-become-pass --extra-vars="host=127.0.0.1"
+	ansible-playbook -i hosts x11.yml -c local --ask-become-pass --extra-vars="host=127.0.0.1" --skip-tags=gaps
 
 all: ## Install shell and x11 on 127.0.0.1
 	ansible-playbook -i hosts all.yml -c local --ask-become-pass --extra-vars="host=127.0.0.1"
@@ -43,7 +43,10 @@ st: ## Install st
 	ansible-playbook -i hosts st.yml -c local --ask-become-pass --extra-vars="host=127.0.0.1"
 
 i3: ## Install i3
-	ansible-playbook -i hosts i3.yml -c local --ask-become-pass --extra-vars="host=127.0.0.1"
+	ansible-playbook -i hosts i3.yml -c local --ask-become-pass --extra-vars="host=127.0.0.1" --skip-tags=gaps
+
+i3-gaps: ## Install i3
+	ansible-playbook -i hosts i3.yml -c local --ask-become-pass --extra-vars="host=127.0.0.1" --skip-tags=normal
 
 qutebrowser: ## Install qutebrowser
 	ansible-playbook -i hosts qutebrowser.yml -c local --ask-become-pass --extra-vars="host=127.0.0.1"

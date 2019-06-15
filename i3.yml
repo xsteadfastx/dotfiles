@@ -3,4 +3,3 @@
 - hosts: "{{ host }}"
   roles:
     - i3
-    - unclutter
