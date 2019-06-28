@@ -1,6 +1,7 @@
 [user]
         name = Marvin Steadfast
         email = marvin@xsteadfastx.org
+	signingkey = 81ADC3FB6D362E3775A1CCB7D87BCB6EF82A0017
 [github]
         user = xsteadfastx
 [merge]
