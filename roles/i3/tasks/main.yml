@@ -11,6 +11,7 @@
       - i3status
       - rofi
       - xautolock
+      - xdotool
   become: true
 
 - name: compile and install gaps
@@ -166,6 +167,7 @@
         - {'src': 'i3blocks.conf', 'dest': '~/.config/i3blocks/config'}
         - {'src': 'rofi_config.conf', 'dest': '~/.config/rofi/config'}
         - {'src': 'rofi_local.conf', 'dest': '~/.local/rofi/config'}
+        - {'src': 'rofi-pass', 'dest': '~/.local/bin/rofi-pass'}
         - {'src': 'wallpaper.jpg', 'dest': '~/.i3/wallpaper.jpg'}
         - {'src': 'check_conn', 'dest': '~/.config/i3blocks/check_conn'}
         - {'src': 'battery', 'dest': '~/.config/i3blocks/battery'}
@@ -173,6 +175,3 @@
         - {'src': 'load', 'dest': '~/.config/i3blocks/load'}
         - {'src': 'volume-pulseaudio', 'dest': '~/.config/i3blocks/volume-pulseaudio'}
         - {'src': 'disk', 'dest': '~/.config/i3blocks/disk'}
-  tags:
-    - gaps
-    - normal
