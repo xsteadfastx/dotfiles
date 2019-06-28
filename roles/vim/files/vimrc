@@ -107,6 +107,12 @@ endif
 Plug 'Yggdroot/indentLine'
     let g:indentLine_char = '┆'
 
+" git
+Plug 'tpope/vim-fugitive'
+
+" comments
+Plug 'tpope/vim-commentary'
+
 call plug#end()
 
 " ---------------------------------------
