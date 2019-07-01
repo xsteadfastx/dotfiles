@@ -1,18 +1,6 @@
 set $mod Mod4
 
-<<<<<<< HEAD
-font pango:FantasqueSansMono Nerd Font 11
-=======
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below. ISO 10646 = Unicode
-#font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, if you need a lot of unicode glyphs or
-# right-to-left text rendering, you should instead use pango for rendering and
-# chose a FreeType font, such as:
-# font pango:DejaVu Sans Mono 10
 font pango:FuraCode Nerd Font 10
->>>>>>> parent of ce1655f... fantasque mono
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -23,11 +11,6 @@ bindsym $mod+Return exec ~/.local/bin/st -e tmux
 # kill focused window
 bindsym $mod+Shift+q kill
 
-<<<<<<< HEAD
-=======
-# start dmenu (a program launcher)
-#bindsym $mod+d exec dmenu_run -fn "FuraCode Nerd Font Mono-8" -nb "#002b36"
->>>>>>> parent of ce1655f... fantasque mono
 bindsym $mod+d exec rofi -show combi -combi-modi window#run#ssh -modi combi -terminal ~/.local/bin/st
 
 # change focus
