@@ -22,8 +22,6 @@ if uses_nouveau():
 config.bind(",m", "spawn /usr/bin/mpv {url}")
 # config.bind(",p", "spawn pocket-cli add -u {url}")
 config.bind(",p", "spawn --userscript qute-pass")
-# rebind for passthrough not being paste
-config.bind("<Ctrl-g>", "leave-mode", mode="passthrough")
 
 ### DRACULA ###########################
 import dracula.draw
@@ -32,7 +30,7 @@ dracula.draw.blood(
     c,
     {
         "spacing": {"vertical": 6, "horizontal": 8},
-        "font": {"family": "FantasqueSansMono Nerd Font", "size": 10},
+        "font": {"family": "FuraCode Nerd Font", "size": 10},
     },
 )
 ### /DRACULA ##########################
