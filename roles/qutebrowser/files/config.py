@@ -30,7 +30,7 @@ dracula.draw.blood(
     c,
     {
         "spacing": {"vertical": 6, "horizontal": 8},
-        "font": {"family": "FuraCode Nerd Font", "size": 10},
+        "font": {"family": "Iosevka Term,Iosevka Nerd Font", "size": 10},
     },
 )
 ### /DRACULA ##########################

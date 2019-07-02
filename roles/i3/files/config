@@ -3,7 +3,7 @@ set $mod Mod4
 # alt key
 #set $mod Mod1
 
-font pango:FuraCode Nerd Font 10
+font pango:Iosevka Term,Iosevka Nerd Font 11
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
