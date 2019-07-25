@@ -1,6 +1,6 @@
 set $mod Mod4
 
-font pango:FuraCode Nerd Font 10
+font pango:UbuntuMono Nerd Font 12
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod

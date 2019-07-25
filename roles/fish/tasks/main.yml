@@ -83,7 +83,7 @@
 - name: install addons
   command: /usr/bin/fish -c 'fisher add {{ item }}'
   with_items:
-    - oh-my-fish/theme-bobthefish
+    - oh-my-fish/theme-gnuykeaj
   tags:
     - skip_ansible_lint
 
