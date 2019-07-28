@@ -1,4 +1,7 @@
-set $mod Mod4
+# windows key
+#set $mod Mod4
+# alt key
+set $mod Mod1
 
 font pango:UbuntuMono Nerd Font 12
 
