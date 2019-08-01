@@ -14,7 +14,7 @@ set pgp_list_pubring_command="gpg --no-verbose --batch --quiet --with-colons --l
 set pgp_list_secring_command="gpg --no-verbose --batch --quiet --with-colons --list-secret-keys %r" 
 set pgp_good_sign="^\\[GNUPG:\\] GOODSIG"
 
-set pgp_sign_as=0xAECDDDBC
+set pgp_sign_as=81ADC3FB6D362E3775A1CCB7D87BCB6EF82A0017
 set pgp_autosign         # autosign all outgoing mails
 set pgp_replyencrypt     # autocrypt replies to crypted
 set pgp_replysign        # autosign replies to signed

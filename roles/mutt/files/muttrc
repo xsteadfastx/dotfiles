@@ -3,7 +3,7 @@ set timeout = 15
 
 # source config parts
 source ~/.mutt/gmail
-#source ~/.mutt/gpg
+source ~/.mutt/gpg
 #source ~/.mutt/smime
 source ~/.mutt/dracula
 

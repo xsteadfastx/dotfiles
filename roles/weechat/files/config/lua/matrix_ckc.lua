@@ -65,7 +65,7 @@ local BUFFER
 local Room
 local MatrixServer
 local Olm
-local DEBUG = false
+local DEBUG = true
 -- How many seconds to timeout if nothing happened on the server. If something
 -- happens before it will return sooner.
 -- default Nginx proxy timeout is 60s, so we go slightly lower
@@ -471,9 +471,14 @@ local function http(url, post, cb, h_timeout, extra, api_ns)
 end
 
 local function parse_http_statusline(line)
+    -- Attempt to match HTTP/1.0 or HTTP/1.1
     local httpversion, status_code, reason_phrase = line:match("^HTTP/(1%.[01]) (%d%d%d) (.-)\r?\n")
     if not httpversion then
-        return
+        -- Attempt to match HTTP/1 or HTTP/2 if previous match fell through
+        httpversion, status_code, reason_phrase = line:match("^HTTP/([12]) (%d%d%d) (.-)\r?\n")
+        if not httpversion then
+            return
+        end
     end
     return httpversion, tonumber(status_code), reason_phrase
 end
@@ -523,8 +528,8 @@ function real_http_cb(extra, command, rc, stdout, stderr)
         end
         -- Skip to data
         stdout = (stdout:match('.-\r?\n\r?\n(.*)'))
-        -- Protected call in case of JSON errors
-        local success, js = pcall(json.decode, stdout)
+        -- Protected call in case of JSON errors. 'json.new()' ensures that locale is detected correctly (fixes bug #49)
+        local success, js = pcall(json.new().decode, stdout)
         if not success then
             mprint(('error\t%s during json load: %s'):format(js, stdout))
             return w.WEECHAT_RC_OK
