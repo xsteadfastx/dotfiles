@@ -1,8 +1,7 @@
-# vim:ft=ansible
 ---
 - name: add ppa
   apt_repository:
-    repo: ppa:neovim-ppa/unstable
+    repo: ppa:neovim-ppa/stable
     state: present
   become: yes
   when: ansible_os_family == 'Debian'
@@ -79,9 +78,12 @@
   with_items:
     - {'src': 'http://ftp.vim.org/pub/vim/runtime/spell/de.utf-8.spl', 'dest': '~/.vim/spell/de.utf-8.spl'}
     - {'src': 'http://ftp.vim.org/pub/vim/runtime/spell/en.utf-8.spl', 'dest': '~/.vim/spell/en.utf-8.spl'}
-    - {'src': 'https://raw.githubusercontent.com/altercation/vim-colors-solarized/master/colors/solarized.vim', 'dest': '~/.vim/colors/solarized.vim'}
-    - {'src': 'https://raw.githubusercontent.com/dracula/vim/master/colors/dracula.vim', 'dest': '~/.vim/colors/dracula.vim'}
     - {'src': 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim', 'dest': '~/.vim/autoload/plug.vim'}
+
+- name: install dracula
+  git:
+    repo: https://github.com/dracula/vim.git
+    dest: ~/.vim/plugged/dracula
 
 - name: create neovim virtualenv for python2
   pip:

@@ -14,6 +14,8 @@ filetype plugin indent on
 " ---------------------------------------
 call plug#begin('~/.vim/plugged')
 
+Plug 'dracula/vim', { 'as': 'dracula' }
+
 Plug 'ConradIrwin/vim-bracketed-paste'
 
 Plug 'Konfekt/FastFold'
@@ -30,8 +32,6 @@ Plug 'ervandew/supertab'
 Plug 'vim-airline/vim-airline'
     let g:airline_powerline_fonts = 1
     let g:airline#extensions#tabline#enabled = 1
-Plug 'vim-airline/vim-airline-themes'
-    let g:airline_theme='dracula'
 
 " nerd font in vim
 Plug 'ryanoasis/vim-devicons'
