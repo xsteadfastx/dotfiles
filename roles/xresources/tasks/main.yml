@@ -15,8 +15,8 @@
     name: "{{ item }}"
     state: latest
   loop:
-    - adwaita-gtk2-them
-    - adwaita-icon-them
+    - adwaita-gtk2-theme
+    - adwaita-icon-theme
   become: true
   when: ansible_os_family == 'Alpine'
 
