@@ -67,7 +67,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 
 Plug 'vimwiki/vimwiki'
-    let g:vimwiki_list = [{'path': '~/annex/vimwiki/'}]
+    let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}, {'path': '~/vimwiki-vwit/', 'syntax': 'markdown', 'ext': '.md', 'index': 'Home'}]
 
 Plug 'w0rp/ale'
     let g:ale_fix_on_save = 1
@@ -112,6 +112,9 @@ Plug 'tpope/vim-fugitive'
 
 " comments
 Plug 'tpope/vim-commentary'
+
+" dir settings
+Plug 'chazy/dirsettings'
 
 call plug#end()
 
