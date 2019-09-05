@@ -49,3 +49,4 @@
     - { 'src': 'tmux.conf', 'dest': '~/.tmux.conf' }
     - { 'src': 'communications.yml', 'dest': '~/.tmuxp/communications.yml' }
     - { 'src': 'code.yml', 'dest': '~/.tmuxp/code.yml' }
+    - { 'src': 'tmx', 'dest': '~/.local/bin/tmx' }
