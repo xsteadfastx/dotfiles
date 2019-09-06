@@ -116,6 +116,9 @@ Plug 'tpope/vim-commentary'
 " dir settings
 Plug 'chazy/dirsettings'
 
+" talk to apis
+Plug 'mattn/webapi-vim'
+
 call plug#end()
 
 " ---------------------------------------
