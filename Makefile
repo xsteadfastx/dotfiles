@@ -62,3 +62,6 @@ mutt: ## Install mutt
 
 git-annex: ## Install git-annex
 	ansible-playbook -i hosts git-annex.yml -c local --extra-vars="host=127.0.0.1"
+
+kvm: ## Install kvm and qemu
+	ansible-playbook -i hosts kvm.yml -c local --ask-become-pass --extra-vars="host=127.0.0.1"
