@@ -37,7 +37,7 @@
     dest: "{{ item.dest }}"
     state: link
   loop:
-    - {'src': 'Iosevka Term Nerd Font Complete.ttf', 'dest': '~/.fonts/Iosevka Term Nerd Font Complete.ttf'}
+    - {'src': 'Fura Code Regular Nerd Font Complete.ttf', 'dest': '~/.fonts/Fura Code Regular Nerd Font Complete.ttf'}
     - {'src': 'settings.ini', 'dest': '~/.config/gtk-3.0/settings.ini'}
     - {'src': 'gtkrc-2.0', 'dest': '~/.gtkrc-2.0'}
     # - {'src': 'fonts.conf', 'dest': '~/.config/fontconfig/fonts.conf'}
