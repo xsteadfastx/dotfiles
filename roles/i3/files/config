@@ -3,7 +3,7 @@ set $mod Mod4
 # alt key
 #set $mod Mod1
 
-font pango:UbuntuMono Nerd Font 12
+font pango:FuraCode Nerd Font 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -190,7 +190,7 @@ assign [class="Signal"] 4
 #new_window none
 
 # AUTOSTART
-#exec --no-startup-id exec feh --bg-fill ~/.i3/wallpaper.jpg
+#exec --no-startup-id exec feh --bg-fill ~/.i3/wallpaper.png
 exec --no-startup-id exec xsetroot -solid "#282a36"
 exec --no-startup-id exec dunst &
 exec --no-startup-id exec nm-applet &
