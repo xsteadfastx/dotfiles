@@ -42,6 +42,11 @@ if test -d ~/.pyenv/bin
   end
 end
 
+# poetry
+if test -d ~/.poetry
+  set fish_user_paths ~/.poetry/bin $fish_user_paths
+end
+
 # gpg terminal agent
 if [ (pgrep -x -u $USER gpg-agent) ]
 else
