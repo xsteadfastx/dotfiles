@@ -68,7 +68,7 @@ URxvt.matcher.button: 1
 URxvt.perl-ext-common: default,matcher
 URxvt*urgentOnBell: true
 ! check font name with fc-list
-URxvt*font: xft:Fira Code:pixelsize=14,style=regular
+URxvt*font: xft:Iosevka Nerd Font:pixelsize=14,style=regular
 URxvt*boldItalicFont: xft:Fira Code:pixelsize=14,style=regular
 URxvt.letterSpace: -2
 Xft.autohint: 0
