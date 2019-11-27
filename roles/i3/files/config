@@ -145,8 +145,14 @@ bindsym $mod+p exec rofi-pass
 # dracula
 bar {
         position top
-        status_command i3blocks
-        separator_symbol "〉"
+        output primary
+        status_command /opt/bumblee-status/env/bin/python /opt/bumblee-status/bumblebee-status \
+                -m cpu memory disk nic battery pasink datetime \
+                -p \
+                        nic.exclude="gravityfalls,enp0,veth,vir,docker,lxc,br,lo" \
+                        disk.format="{percent:05.02f}%" \
+                        memory.format="{percent:05.02f}%" \
+                -t onedark-powerline 2> ~/.bumblee.log
         colors {
 		background #282A36
 		statusline #F8F8F2
