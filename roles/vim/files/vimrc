@@ -9,117 +9,120 @@ set fenc=utf-8
 set fileencoding=utf-8
 filetype plugin indent on
 
+
 " ---------------------------------------
 " PLUGINS
 " ---------------------------------------
-call plug#begin('~/.vim/plugged')
-
-Plug 'dracula/vim', { 'as': 'dracula' }
-
-Plug 'ConradIrwin/vim-bracketed-paste'
-
-Plug 'Konfekt/FastFold'
-
-Plug 'mhinz/vim-signify'
-
-Plug 'chrisbra/Colorizer'
-
-Plug 'cohama/lexima.vim'
-
-Plug 'ervandew/supertab'
-
-" powerline
-Plug 'vim-airline/vim-airline'
-    let g:airline_powerline_fonts = 1
-    let g:airline#extensions#tabline#enabled = 1
-
-" nerd font in vim
-Plug 'ryanoasis/vim-devicons'
-
-Plug 'junegunn/goyo.vim'
-
-Plug 'junegunn/limelight.vim'
-    let g:limelight_conceal_ctermfg = 'gray'
-    let g:limelight_conceal_ctermfg = 240
-    let g:limelight_default_coefficient = 0.7
-
-Plug 'lepture/vim-jinja'
-
-Plug 'mattn/emmet-vim', { 'for': 'html' }
-
-Plug 'mattn/gist-vim'
-    let g:gist_post_private = 1
-
-Plug 'ntpeters/vim-better-whitespace'
-
-Plug 'reedes/vim-pencil'
-    let g:pencil#wrapModeDefault = 'soft'
-
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-    map <C-n> :NERDTreeToggle<CR> " open nerdtree
-
-Plug 'tmhedberg/SimpylFold'
-    let g:SimpylFold_docstring_preview=1
-
-Plug 'tpope/vim-repeat'
-    silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
-
-Plug 'tpope/vim-surround'
-
-Plug 'vimwiki/vimwiki'
-    let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md', 'index': 'Home'}, {'path': '~/vimwiki-vwit/', 'syntax': 'markdown', 'ext': '.md', 'index': 'Home'}]
-
-Plug 'w0rp/ale'
-    let g:ale_fix_on_save = 1
-    let g:ale_python_mypy_options = '--silent-imports'
-    let g:ale_fixers = {'python': ['isort', 'black'],}
-
-" easy alignment
-Plug 'junegunn/vim-easy-align'
-    xmap ga <Plug>(EasyAlign)
-    nmap ga <Plug>(EasyAlign)
-
-" a collection of language packs
-Plug 'sheerun/vim-polyglot'
-
-" unicode handling
-Plug 'chrisbra/unicode.vim'
-
-" CSV
-Plug 'chrisbra/csv.vim'
-
-" LaTeX
-Plug 'lervag/vimtex'
-
-" NCM2
 if has('nvim')
-    Plug 'ncm2/ncm2'
-    Plug 'roxma/nvim-yarp'
-    Plug 'ncm2/ncm2-bufword'
-    Plug 'ncm2/ncm2-path'
-    Plug 'ncm2/ncm2-jedi'
-    Plug 'ncm2/float-preview.nvim'
+
+        call plug#begin('~/.vim/plugged')
+
+        Plug 'dracula/vim', { 'as': 'dracula' }
+
+        Plug 'ConradIrwin/vim-bracketed-paste'
+
+        Plug 'Konfekt/FastFold'
+
+        Plug 'mhinz/vim-signify'
+
+        Plug 'chrisbra/Colorizer'
+
+        Plug 'cohama/lexima.vim'
+
+        Plug 'ervandew/supertab'
+
+        " powerline
+        Plug 'vim-airline/vim-airline'
+            let g:airline_powerline_fonts = 1
+            let g:airline#extensions#tabline#enabled = 1
+
+        " nerd font in vim
+        Plug 'ryanoasis/vim-devicons'
+
+        Plug 'junegunn/goyo.vim'
+
+        Plug 'junegunn/limelight.vim'
+            let g:limelight_conceal_ctermfg = 'gray'
+            let g:limelight_conceal_ctermfg = 240
+            let g:limelight_default_coefficient = 0.7
+
+        Plug 'lepture/vim-jinja'
+
+        Plug 'mattn/emmet-vim', { 'for': 'html' }
+
+        Plug 'mattn/gist-vim'
+            let g:gist_post_private = 1
+
+        Plug 'ntpeters/vim-better-whitespace'
+
+        Plug 'reedes/vim-pencil'
+            let g:pencil#wrapModeDefault = 'soft'
+
+        Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+            map <C-n> :NERDTreeToggle<CR> " open nerdtree
+
+        Plug 'tmhedberg/SimpylFold'
+            let g:SimpylFold_docstring_preview=1
+
+        Plug 'tpope/vim-repeat'
+            silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
+
+        Plug 'tpope/vim-surround'
+
+        Plug 'vimwiki/vimwiki'
+            let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md', 'index': 'Home'}, {'path': '~/vimwiki-vwit/', 'syntax': 'markdown', 'ext': '.md', 'index': 'Home'}]
+
+        Plug 'w0rp/ale'
+            let g:ale_fix_on_save = 1
+            let g:ale_python_mypy_options = '--silent-imports'
+            let g:ale_fixers = {'python': ['isort', 'black'],}
+
+        " easy alignment
+        Plug 'junegunn/vim-easy-align'
+            xmap ga <Plug>(EasyAlign)
+            nmap ga <Plug>(EasyAlign)
+
+        " a collection of language packs
+        Plug 'sheerun/vim-polyglot'
+
+        " unicode handling
+        Plug 'chrisbra/unicode.vim'
+
+        " CSV
+        Plug 'chrisbra/csv.vim'
+
+        " LaTeX
+        Plug 'lervag/vimtex'
+
+        " NCM2
+        Plug 'ncm2/ncm2'
+        Plug 'roxma/nvim-yarp'
+        Plug 'ncm2/ncm2-bufword'
+        Plug 'ncm2/ncm2-path'
+        Plug 'ncm2/ncm2-jedi'
+        Plug 'ncm2/float-preview.nvim'
         let g:float_preview#docked=0
-    Plug 'wellle/tmux-complete.vim'
+        Plug 'wellle/tmux-complete.vim'
+
+        " visual ident levels
+        Plug 'Yggdroot/indentLine'
+            let g:indentLine_char = '┆'
+
+        " git
+        Plug 'tpope/vim-fugitive'
+
+        " comments
+        Plug 'tpope/vim-commentary'
+
+        " dir settings
+        Plug 'chazy/dirsettings'
+
+        " talk to apis
+        Plug 'mattn/webapi-vim'
+
+        call plug#end()
+
 endif
-
-" visual ident levels
-Plug 'Yggdroot/indentLine'
-    let g:indentLine_char = '┆'
-
-" git
-Plug 'tpope/vim-fugitive'
-
-" comments
-Plug 'tpope/vim-commentary'
-
-" dir settings
-Plug 'chazy/dirsettings'
-
-" talk to apis
-Plug 'mattn/webapi-vim'
-
-call plug#end()
 
 " ---------------------------------------
 " UI
@@ -135,7 +138,9 @@ autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
 set background=dark
 set t_Co=256
-colorscheme dracula
+if has('nvim')
+        colorscheme dracula
+endif
 "hi Normal ctermbg=none " transparent background
 let python_highlight_all=1
 set listchars=trail:·,precedes:«,extends:»,nbsp:~,tab:▸\ 
