@@ -1,0 +1,32 @@
+---
+- name: check if bat is already installed
+  stat:
+    path: /usr/bin/bat
+  register: status_bat
+  when: ansible_os_family == "Debian"
+
+- name: get bat
+  get_url:
+    url: https://github.com/sharkdp/bat/releases/download/v0.12.1/bat_0.12.1_amd64.deb
+    dest: /tmp/bat.deb
+  become: true
+  when:
+    - ansible_os_family == "Debian"
+    - not status_bat.stat.exists
+
+- name: install bat
+  apt:
+    deb: /tmp/bat.deb
+  become: true
+  when:
+    - ansible_os_family == "Debian"
+    - not status_bat.stat.exists
+
+- name: remove pkg
+  file:
+    path: /tmp/bat.deb
+    state: absent
+  become: true
+  when:
+    - ansible_os_family == "Debian"
+    - not status_bat.stat.exists
