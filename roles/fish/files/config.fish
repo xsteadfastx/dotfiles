@@ -27,7 +27,7 @@ if test -d /sbin
 end
 
 # python
-set -gx PIP_REQUIRE_VIRTUALENV 1
+# set -gx PIP_REQUIRE_VIRTUALENV 1
 
 # pipenv
 if test -f ~/.local/bin/pipenv
