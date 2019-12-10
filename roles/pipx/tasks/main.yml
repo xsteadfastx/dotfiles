@@ -1,0 +1,15 @@
+---
+- name: needed dirs
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - ~/.local
+    - ~/.local/bin
+
+- name: install pipx
+  pip:
+    name:
+      - pipx
+    executable: pip3
+    extra_args: --user
