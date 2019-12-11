@@ -1,0 +1,5 @@
+---
+- name: install nnn
+  nix:
+    name: nnn
+    state: latest

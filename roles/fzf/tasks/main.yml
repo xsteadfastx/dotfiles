@@ -1,7 +1,5 @@
 ---
 - name: install
-  homebrew:
+  nix:
     name: fzf
     state: latest
-  tags:
-    - skip_ansible_lint

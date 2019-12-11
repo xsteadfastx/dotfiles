@@ -1,0 +1,5 @@
+---
+- name: install fd
+  nix:
+    name: fd
+    state: latest

@@ -12,6 +12,9 @@ alias coderadio='mpv http://coderadio-admin.freecodecamp.org/radio/8010/radio.mp
 if type -q bat
   alias cat='bat --theme=ansi-dark'
 end
+if type -q exa
+  alias ls="exa"
+end
 alias vimopen='vim (fzf --preview "bat --color=always {}")'
 
 # set default editor
@@ -62,6 +65,12 @@ set -x GPG_TTY (tty)
 # gopass
 if test -f /usr/local/bin/gopass
   status --is-interactive; and . (gopass completion fish|psub)
+end
+
+# nix
+if test -f ~/.nix-profile/bin/nix
+  set fish_user_paths ~/.nix-profile/bin $fish_user_paths
+  set -e LD_PRELOAD
 end
 
 # theme

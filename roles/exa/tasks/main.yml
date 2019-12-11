@@ -1,0 +1,5 @@
+---
+- name: install exa
+  nix:
+    name: exa
+    state: latest

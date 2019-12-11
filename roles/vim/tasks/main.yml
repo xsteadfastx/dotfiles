@@ -90,6 +90,7 @@
     name:
       - neovim
     virtualenv: /opt/neovim2
+    state: latest
   become: true
 
 - name: create neovim virtualenv for python3
@@ -100,6 +101,7 @@
       - pynvim
     virtualenv: /opt/neovim3
     virtualenv_command: /usr/bin/python3 -m venv
+    state: latest
   become: true
 
 - name: install plugins
@@ -112,5 +114,5 @@
     name: "{{ item }}"
   loop:
     - ansible-lint
-    - python-language-server[all]
+    - python-language-server
     - yamllint
