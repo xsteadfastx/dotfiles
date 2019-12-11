@@ -1,0 +1,75 @@
+#!/usr/bin/env python3
+# fork from https://github.com/lrnt/ansible-pipsi/blob/master/pipsi.py
+
+import re
+
+from ansible.module_utils.basic import AnsibleModule
+
+
+def is_package_installed(module, package_name):
+    cmd = ["nix-env", "--query"]
+    search = package_name
+    _, output, _ = module.run_command(cmd, check_rc=False)
+    return search in output
+
+
+def install_package(module, package_name):
+    if is_package_installed(module, package_name):
+        module.exit_json(changed=False, msg="package already installed")
+
+    cmd = ["nix-env", "-i", package_name]
+
+    module.run_command(cmd, check_rc=True)
+    module.exit_json(changed=True, msg="installed package")
+
+
+def update_package(module, package_name):
+    if not is_package_installed(module, package_name):
+        install_package(module, package_name)
+
+    else:
+        cmd = ["nix-env", "-i", package_name]
+        _, _, out = module.run_command(cmd)
+        version = re.search(r"'({}-[\d\.]+)'".format(package_name), out).group(1)
+        if out.count(version) > 1:
+            module.exit_json(changed=False, msg="Package up to date")
+        elif out.count(version) == 1:
+            module.exit_json(changed=True, msg="upgraded package")
+
+
+def remove_package(module, package_name):
+    if not is_package_installed(module, package_name):
+        module.exit_json(changed=False, msg="package not installed")
+
+    cmd = ["nix-env", "--uninstall", package_name]
+    module.run_command(cmd, check_rc=True)
+
+    module.exit_json(changed=True, msg="removed package")
+
+
+def run_module():
+    module = AnsibleModule(
+        argument_spec={
+            "name": {"required": True},
+            "state": {
+                "default": "present",
+                "choices": ["present", "absent", "latest"],
+            },
+        }
+    )
+    params = module.params
+
+    if params["state"] == "present":
+        install_package(module, params["name"])
+    elif params["state"] == "latest":
+        update_package(module, params["name"])
+    elif params["state"] == "absent":
+        remove_package(module, params["name"])
+
+
+def main():
+    run_module()
+
+
+if __name__ == "__main__":
+    main()
