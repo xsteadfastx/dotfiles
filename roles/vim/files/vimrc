@@ -25,8 +25,10 @@ if has('nvim')
 
         Plug 'mhinz/vim-signify'
 
+        " color hex codes and color names
         Plug 'chrisbra/Colorizer'
 
+        " auto close parentheses
         Plug 'cohama/lexima.vim'
 
         Plug 'ervandew/supertab'
@@ -47,8 +49,6 @@ if has('nvim')
             let g:limelight_default_coefficient = 0.7
 
         Plug 'lepture/vim-jinja'
-
-        Plug 'mattn/emmet-vim', { 'for': 'html' }
 
         Plug 'mattn/gist-vim'
             let g:gist_post_private = 1
@@ -71,11 +71,20 @@ if has('nvim')
 
         Plug 'vimwiki/vimwiki'
             let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md', 'index': 'Home'}, {'path': '~/vimwiki-vwit/', 'syntax': 'markdown', 'ext': '.md', 'index': 'Home'}]
+            let g:vimwiki_global_ext = 0
 
-        Plug 'w0rp/ale'
+        let g:ale_completion_enabled = 1
+        let g:ale_set_balloons = 1
+        Plug 'dense-analysis/ale'
             let g:ale_fix_on_save = 1
-            let g:ale_python_mypy_options = '--silent-imports'
             let g:ale_fixers = {'python': ['isort', 'black'],}
+            let g:ale_languagetool_options = '-l de-DE'
+            let g:ale_linters= {
+                \ 'python': ['bandit', 'mypy', 'prospector', 'pydocstyle', 'pyls', 'pyls'],
+                \ 'markdown': ['languagetool']
+                \ }
+            let g:ale_python_mypy_options = '--ignore-missing-imports --follow-imports=skip --strict-optional'
+            let g:ale_python_pylint_executable = 'python -m pylint'
 
         " easy alignment
         Plug 'junegunn/vim-easy-align'
@@ -94,16 +103,6 @@ if has('nvim')
         " LaTeX
         Plug 'lervag/vimtex'
 
-        " NCM2
-        Plug 'ncm2/ncm2'
-        Plug 'roxma/nvim-yarp'
-        Plug 'ncm2/ncm2-bufword'
-        Plug 'ncm2/ncm2-path'
-        Plug 'ncm2/ncm2-jedi'
-        Plug 'ncm2/float-preview.nvim'
-        let g:float_preview#docked=0
-        Plug 'wellle/tmux-complete.vim'
-
         " visual ident levels
         Plug 'Yggdroot/indentLine'
             let g:indentLine_char = '┆'
@@ -119,6 +118,26 @@ if has('nvim')
 
         " talk to apis
         Plug 'mattn/webapi-vim'
+
+        Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+        Plug 'junegunn/fzf.vim'
+            let g:fzf_colors = {
+                \ 'fg': ['fg', 'Normal'],
+                \ 'bg': ['bg', 'Normal'],
+                \ 'hl': ['fg', 'Search'],
+                \ 'fg+': ['fg', 'Normal'],
+                \ 'bg+': ['bg', 'Normal'],
+                \ 'hl+': ['fg', 'DraculaOrange'],
+                \ 'info': ['fg', 'DraculaPurple'],
+                \ 'border': ['fg', 'Ignore'],
+                \ 'prompt': ['fg', 'DraculaGreen'],
+                \ 'pointer': ['fg', 'Exception'],
+                \ 'marker': ['fg', 'Keyword'],
+                \ 'spinner': ['fg', 'Label'],
+                \ 'header': ['fg', 'Comment'] }
+
+        " ansible
+        Plug 'pearofducks/ansible-vim'
 
         call plug#end()
 
@@ -185,6 +204,16 @@ inoremap <S-Tab> <C-V><Tab>
 nnoremap <F5> "=strftime("%Y-%m-%d")<CR>P
 inoremap <F5> <C-R>=strftime("%Y-%m-%d")<CR>
 
+if has('nvim')
+    " circle through buffers
+    nnoremap <F6> :Buffer<CR>
+
+    " fzf
+    nnoremap <Leader>ff :FZF<CR>
+    nnoremap <Leader>bb :Buffers<CR>
+endif
+
+
 " ---------------------------------------
 " PYTHON
 " ---------------------------------------
@@ -241,7 +270,7 @@ endif
 " ---------------------------------------
 augroup yaml
     autocmd!
-    au BufRead,BufNewFile *yml,*yaml set filetype=yaml
+    " au BufRead,BufNewFile *yml,*yaml set filetype=yaml
     au FileType yaml setl tabstop=2 expandtab shiftwidth=2 softtabstop=2
 augroup end
 
@@ -252,8 +281,8 @@ augroup pencil
     autocmd!
     au BufRead,BufNewFile *.markdown,*.md set filetype=markdown
     au FileType markdown,mkd,rst call pencil#init()
-                             \ | setl spell spelllang=de
-                             \ | setl thesaurus+=~/.vim/thesaurus/openthesaurus.txt
+                             " \ | setl spell spelllang=de
+                             " \ | setl thesaurus+=~/.vim/thesaurus/openthesaurus.txt
                              \ | setl tabstop=4 expandtab shiftwidth=4 softtabstop=4
                              \ | setl syntax=off
     au User GoyoEnter Limelight
@@ -280,16 +309,6 @@ augroup tex
 augroup end
 
 " ---------------------------------------
-" TASKWARRIOR
-" ---------------------------------------
-autocmd CursorHold task* call Timer()
-function! Timer()
-    call taskwarrior#list()
-    set updatetime=5000
-    call feedkeys("f\e") "retrigger the CursorHold event without major side-effects
-endfunction
-
-" ---------------------------------------
 " JSON
 " ---------------------------------------
 "
@@ -305,14 +324,3 @@ augroup lektor
     autocmd!
     au BufRead,BufNewFile *.lr set filetype=markdown
 augroup end
-
-" ---------------------------------------
-" NCM2
-" ---------------------------------------
-if has('nvim')
-    augroup ncm2
-        autocmd!
-        au BufEnter * call ncm2#enable_for_buffer()
-        set completeopt=noinsert,menuone,noselect
-    augroup end
-endif
