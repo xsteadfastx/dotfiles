@@ -84,6 +84,7 @@
   command: /usr/bin/fish -c 'fisher add {{ item }}'
   with_items:
     - oh-my-fish/theme-bobthefish
+    - edc/bass
   tags:
     - skip_ansible_lint
 
