@@ -3,6 +3,7 @@
 - hosts: "{{ host }}"
   roles:
     - batcave
+    - pipx
     - git
     - tmux
     - vim
