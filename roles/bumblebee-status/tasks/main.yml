@@ -9,7 +9,7 @@
 - name: clone bumblebee
   git:
     repo: https://github.com/tobi-wan-kenobi/bumblebee-status.git
-    dest: /opt/bumblee-status
+    dest: /opt/bumblebee-status
   become: true
 
 - name: virtualenv
@@ -18,6 +18,6 @@
       - requests
       - psutil
       - netifaces
-    virtualenv: /opt/bumblee-status/env
+    virtualenv: /opt/bumblebee-status/env
     virtualenv_python: /usr/bin/python3
   become: true

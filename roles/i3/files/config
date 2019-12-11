@@ -132,7 +132,7 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # pulseaudio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% && pactl set-sink-volume 1 +5% #increase sound volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% && pactl set-sink-volume 1 -5% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle && pactl set-sink-mute 1 toggle # mute sound
 
@@ -146,13 +146,13 @@ bindsym $mod+p exec rofi-pass
 bar {
         position top
         output primary
-        status_command /opt/bumblee-status/env/bin/python /opt/bumblee-status/bumblebee-status \
+        status_command /opt/bumblebee-status/env/bin/python /opt/bumblebee-status/bumblebee-status \
                 -m cpu memory disk nic battery pasink datetime \
                 -p \
-                        nic.exclude="gravityfalls,enp0,veth,vir,docker,lxc,br,lo" \
+                        nic.exclude="enp0,veth,vir,docker,lxc,br,lo" \
                         disk.format="{percent:05.02f}%" \
                         memory.format="{percent:05.02f}%" \
-                -t onedark-powerline 2> ~/.bumblee.log
+                -t dracula-powerline
         colors {
 		background #282A36
 		statusline #F8F8F2
