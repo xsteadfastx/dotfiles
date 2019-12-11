@@ -3,7 +3,7 @@
   apt_repository:
     repo: ppa:neovim-ppa/stable
     state: present
-  become: yes
+  become: true
   when: ansible_os_family == 'Debian'
 
 - name: install deps for debian
@@ -16,7 +16,7 @@
       - python3
       - python3-venv
       - shellcheck
-  become: yes
+  become: true
   when: ansible_os_family == 'Debian'
   tags:
     - skip_ansible_lint
@@ -33,7 +33,7 @@
       - python2-dev
       - python3
       - python3-dev
-  become: yes
+  become: true
   when: ansible_os_family == 'Alpine'
   tags:
     - skip_ansible_lint
@@ -46,7 +46,7 @@
     - /home/{{ ansible_user_id }}/.vimrc
     - /home/{{ ansible_user_id }}/.vim
     - /home/{{ ansible_user_id }}/.config/nvim
-  become: yes
+  become: true
 
 - name: needed dirs
   file:
@@ -90,7 +90,7 @@
     name:
       - neovim
     virtualenv: /opt/neovim2
-  become: yes
+  become: true
 
 - name: create neovim virtualenv for python3
   pip:
@@ -100,9 +100,17 @@
       - pynvim
     virtualenv: /opt/neovim3
     virtualenv_command: /usr/bin/python3 -m venv
-  become: yes
+  become: true
 
 - name: install plugins
   command: nvim +PlugInstall +qall
   tags:
     - skip_ansible_lint
+
+- name: needed python packages
+  pipx:
+    name: "{{ item }}"
+  loop:
+    - ansible-lint
+    - python-language-server[all]
+    - yamllint
