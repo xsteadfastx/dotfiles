@@ -112,7 +112,15 @@
 - name: needed python packages
   pipx:
     name: "{{ item }}"
+    state: latest
   loop:
     - ansible-lint
     - python-language-server
     - yamllint
+
+- name: needed nix packages
+  nix:
+    name: "{{ item }}"
+    state: latest
+  loop:
+    - LanguageTool
