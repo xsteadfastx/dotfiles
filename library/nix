@@ -6,6 +6,19 @@ import re
 from ansible.module_utils.basic import AnsibleModule
 
 
+def update_cache(module, exit):
+    cmd = ["nix-channel", "--update"]
+    rc, stdout, stderr = module.run_command(cmd, check_rc=False)
+    if rc != 0:
+        module.fail_json(
+            msg="could not update package db", stdout=stdout, stderr=stderr
+        )
+    elif exit:
+        module.exit_json(changed=True, msg="updated channels")
+    else:
+        return True
+
+
 def is_package_installed(module, package_name):
     cmd = ["nix-env", "--query"]
     search = package_name
@@ -16,9 +29,7 @@ def is_package_installed(module, package_name):
 def install_package(module, package_name):
     if is_package_installed(module, package_name):
         module.exit_json(changed=False, msg="package already installed")
-
     cmd = ["nix-env", "-i", package_name]
-
     module.run_command(cmd, check_rc=True)
     module.exit_json(changed=True, msg="installed package")
 
@@ -49,16 +60,16 @@ def remove_package(module, package_name):
 
 def run_module():
     module = AnsibleModule(
-        argument_spec={
-            "name": {"required": True},
-            "state": {
-                "default": "present",
-                "choices": ["present", "absent", "latest"],
-            },
-        }
+        argument_spec=dict(
+            state=dict(default="present", choices=["present", "absent", "latest"]),
+            name=dict(type="str"),
+            update_cache=dict(default="no", type="bool"),
+        )
     )
     params = module.params
 
+    if params["update_cache"]:
+        update_cache(module, not params["name"])
     if params["state"] == "present":
         install_package(module, params["name"])
     elif params["state"] == "latest":

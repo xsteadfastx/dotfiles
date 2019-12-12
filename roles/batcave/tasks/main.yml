@@ -1,19 +1,27 @@
-# vim:ft=ansible
 ---
 - name: clone
   git:
-    repo=https://github.com/xsteadfastx/batcave.git
-    dest=~/.batcave
+    repo: https://github.com/xsteadfastx/batcave.git
+    dest: ~/.batcave
   when: '"localhost" not in group_names'
-  tags:
-    - skip_ansible_lint
 
 - name: debian | update apt cache
-  apt: update_cache=yes
-  become: yes
+  apt:
+    update_cached: true
+  become: true
   when: ansible_os_family == 'Debian'
 
 - name: alpine | update apk cache
-  apk: update_cache=yes
-  become: yes
+  apk:
+    update_cache: true
+  become: true
   when: ansible_os_family == 'Alpine'
+
+- stat:
+    path: ~/.nix-env/bin/nix
+    register: nix_stat
+
+- name: nix | update nix cache
+  nix:
+    update_cache: true
+  when: nix_stat.stat.exists
