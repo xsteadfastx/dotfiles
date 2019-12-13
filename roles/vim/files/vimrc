@@ -80,7 +80,7 @@ if has('nvim')
             let g:ale_fixers = {'python': ['isort', 'black'],}
             let g:ale_languagetool_options = '-l de-DE'
             let g:ale_linters= {
-                \ 'python': ['bandit', 'mypy', 'prospector', 'pydocstyle', 'pyls', 'pyls'],
+                \ 'python': ['bandit', 'mypy', 'prospector', 'pydocstyle', 'pyls'],
                 \ 'markdown': ['languagetool']
                 \ }
             let g:ale_python_mypy_options = '--ignore-missing-imports --follow-imports=skip --strict-optional'
@@ -211,6 +211,7 @@ if has('nvim')
     " fzf
     nnoremap <Leader>ff :FZF<CR>
     nnoremap <Leader>bb :Buffers<CR>
+    nnoremap <Leader>ll :Lines<CR>
 endif
 
 
