@@ -1,4 +1,12 @@
 ---
+- stat:
+    path: ~/.nix-profile/bin/nix
+  register: nix_stat
+
+- name: check if nix is installed
+  set_fact:
+    nix_installed: "{% if nix_stat.stat.exists %}True{% else %}False{% endif %}"
+
 - name: clone
   git:
     repo: https://github.com/xsteadfastx/batcave.git
@@ -17,11 +25,7 @@
   become: true
   when: ansible_os_family == 'Alpine'
 
-- stat:
-    path: ~/.nix-env/bin/nix
-    register: nix_stat
-
 - name: nix | update nix cache
   nix:
     update_cache: true
-  when: nix_stat.stat.exists
+  when: nix_installed

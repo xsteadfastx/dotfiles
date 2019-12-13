@@ -212,6 +212,7 @@ if has('nvim')
     nnoremap <Leader>ff :FZF<CR>
     nnoremap <Leader>bb :Buffers<CR>
     nnoremap <Leader>ll :Lines<CR>
+    nnoremap <Leader>rg :Rg<CR>
 endif
 
 
