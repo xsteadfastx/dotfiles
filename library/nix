@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # fork from https://github.com/lrnt/ansible-pipsi/blob/master/pipsi.py
 
+import os.path
 import re
 
 from ansible.module_utils.basic import AnsibleModule
@@ -66,6 +67,10 @@ def run_module():
             update_cache=dict(default="no", type="bool"),
         )
     )
+
+    if not os.path.exists("~/.nix-profile/bin/nix"):
+        module.fail_json(msg="nix is required for this module")
+
     params = module.params
 
     if params["update_cache"]:
