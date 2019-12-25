@@ -68,7 +68,7 @@ def run_module():
         )
     )
 
-    if not os.path.exists("~/.nix-profile/bin/nix"):
+    if not os.path.exists(os.path.expanduser("~/.nix-profile/bin/nix-env")):
         module.fail_json(msg="nix is required for this module")
 
     params = module.params
