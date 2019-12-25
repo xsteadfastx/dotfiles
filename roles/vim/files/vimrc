@@ -77,14 +77,18 @@ if has('nvim')
         let g:ale_set_balloons = 1
         Plug 'dense-analysis/ale'
             let g:ale_fix_on_save = 1
-            let g:ale_fixers = {'python': ['isort', 'black'],}
+            let g:ale_fixers = {'python': ['isort', 'black'], 'go': ['gofmt']}
+            let g:ale_languagetool_executable= 'languagetool-commandline'
             let g:ale_languagetool_options = '-l de-DE'
             let g:ale_linters= {
                 \ 'python': ['bandit', 'mypy', 'prospector', 'pydocstyle', 'pyls'],
-                \ 'markdown': ['languagetool']
+                \ 'markdown': ['languagetool'],
+                \ 'go': ['gofmt', 'golangci-lint', 'gopls']
                 \ }
             let g:ale_python_mypy_options = '--ignore-missing-imports --follow-imports=skip --strict-optional'
             let g:ale_python_pylint_executable = 'python -m pylint'
+            let g:ale_go_gopls_executable = expand($HOME).'/go/bin/gopls'
+            let g:ale_go_golangci_lint_executable = expand($HOME).'/go/bin/golangci-lint'
 
         " easy alignment
         Plug 'junegunn/vim-easy-align'
