@@ -96,7 +96,7 @@ if has('nvim')
             nmap ga <Plug>(EasyAlign)
 
         " a collection of language packs
-        Plug 'sheerun/vim-polyglot'
+        Plug 'sheerun/vim-polyglot', { 'tag': 'v4.1.2' }
 
         " unicode handling
         Plug 'chrisbra/unicode.vim'
