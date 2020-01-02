@@ -55,6 +55,11 @@ if test -d ~/.poetry
   set fish_user_paths ~/.poetry/bin $fish_user_paths
 end
 
+# go
+if test -d ~/go/bin
+  set fish_user_paths ~/go/bin $fish_user_paths
+end
+
 # gpg terminal agent
 if [ (pgrep -x -u $USER gpg-agent) ]
 else
