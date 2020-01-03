@@ -167,9 +167,11 @@ set list
 set cursorline
 set termguicolors
 
-if !empty(glob('~/.vim/plugged/dracula/colors/dracula.vim'))
-  colors dracula
-  syntax on
+if has('nvim')
+        if !empty(glob('~/.vim/plugged/dracula/colors/dracula.vim'))
+                colors dracula
+                syntax on
+        endif
 endif
 
 " ---------------------------------------
