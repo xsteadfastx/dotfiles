@@ -1,6 +1,0 @@
-#!/bin/bash
-set -euo pipefail
-
-printf '\uf5ec '
-
-date "+%Y-%m-%d %H:%M:%S"

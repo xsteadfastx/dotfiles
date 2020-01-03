@@ -31,21 +31,5 @@
     - ~/.fonts
     - ~/.themes
 
-- name: link files
-  file:
-    src: "{{ batcave_path }}/roles/xresources/files/{{ item.src }}"
-    dest: "{{ item.dest }}"
-    state: link
-  loop:
-    - {'src': 'Ubuntu Mono - Bront Nerd Font Complete.ttf', 'dest': '~/.fonts/Ubuntu Mono - Bront Nerd Font Complete.ttf'}
-    - {'src': 'settings.ini', 'dest': '~/.config/gtk-3.0/settings.ini'}
-    - {'src': 'gtkrc-2.0', 'dest': '~/.gtkrc-2.0'}
-    # - {'src': 'fonts.conf', 'dest': '~/.config/fontconfig/fonts.conf'}
-
-- name: install theme
-  unarchive:
-    src: "{{ batcave_path }}/roles/xresources/files/Ant-Dracula.tar"
-    dest: ~/.themes
-
 - name: rebuild font cache
   command: fc-cache -r ~/.fonts
