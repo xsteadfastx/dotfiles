@@ -20,11 +20,7 @@ alias vimopen='vim (fzf --preview "bat --color=always {}")'
 # set default editor
 set -gx EDITOR nvim
 
-# path
-if test -d ~/.local/bin
-  set fish_user_paths ~/.local/bin $fish_user_paths
-end
-
+# sbin
 if test -d /sbin
   set fish_user_paths /sbin $fish_user_paths
 end
@@ -61,7 +57,7 @@ if test -d ~/go/bin
 end
 
 # gpg terminal agent
-if test -f /usr/bin/gpg-agent
+if test -q gpg-agent
   if [ (pgrep -x -u $USER gpg-agent) ]
   else
       gpg-connect-agent /bye >/dev/null 2>&1
@@ -70,7 +66,7 @@ if test -f /usr/bin/gpg-agent
 end
 
 # gopass
-if test -f /usr/local/bin/gopass
+if test -q gopass
   status --is-interactive; and . (gopass completion fish|psub)
 end
 
@@ -84,9 +80,17 @@ if test -f ~/.nix-profile/bin/nix
   end
 end
 
+# home paths
+if test -d ~/.local/bin
+  set fish_user_paths ~/.local/bin $fish_user_paths
+end
+set fish_user_paths ~/bin/(hostname) $fish_user_paths
+set fish_user_paths ~/bin/(uname -m) $fish_user_paths
+set fish_user_paths ~/bin $fish_user_paths
+
 # theme
 function fish_greeting
-  if test -f ~/.local/bin/fortlit
+  if test -q fortlit
     fortlit
   end
 end
