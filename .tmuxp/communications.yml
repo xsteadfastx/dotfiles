@@ -1,0 +1,10 @@
+session_name: communications
+windows:
+  - window_name: weechat-mutt
+    layout: even-horizontal
+    panes:
+      - weechat
+      - mutt
+  - window_name: blog
+    panes:
+      - null
