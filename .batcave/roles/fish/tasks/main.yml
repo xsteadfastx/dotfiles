@@ -11,7 +11,6 @@
     state: latest
     name:
       - fish
-      - git
   become: yes
   tags:
     - skip_ansible_lint
@@ -22,10 +21,9 @@
     name:
       - curl
       - ncurses-base
+      - procps
   become: yes
   when: ansible_os_family == 'Debian'
-  tags:
-    - skip_ansible_lint
 
 - name: install deps alpine
   apk:
@@ -38,65 +36,8 @@
   become: yes
   when: ansible_os_family == 'Alpine'
 
-- name: remove files
-  file:
-    path={{ item }}
-    state=absent
-  with_items:
-    - ~/.config/fish
-    - ~/.config/fisherman
-    - ~/.config/omf
-    - ~/.local/share/omf
-
-- name: needed dirs
-  file:
-    path={{ item }}
-    state=directory
-  with_items:
-    - ~/.config
-    - ~/.config/fish
-    - ~/.config/fish/completions
-    - ~/.config/fish/conf.d
-    - ~/.config/fish/functions
-    - ~/.local
-    - ~/.local/bin
-
-- name: link files
-  file:
-    src={{ item.src }}
-    dest={{ item.dest }}
-    state=link
-  with_items:
-    - {'src': '{{ batcave_path }}/roles/fish/files/config.fish', 'dest': '~/.config/fish/config.fish'}
-    - {'src': '{{ batcave_path }}/roles/fish/files/sudo.fish', 'dest': '~/.config/fish/functions/sudo.fish'}
-    - {'src': '{{ batcave_path }}/roles/fish/files/bkp_christine.fish', 'dest': '~/.config/fish/functions/bkp_christine.fish'}
-    - {'src': '{{ batcave_path }}/roles/fish/files/dig_acme_xsfx.fish', 'dest': '~/.config/fish/functions/dig_acme_xsfx.fish'}
-    - {'src': '{{ batcave_path }}/roles/fish/files/enter.fish', 'dest': '~/.config/fish/functions/enter.fish'}
-
-- name: get files
-  get_url:
-    url={{ item.src }}
-    dest={{ item.dest }}
-  with_items:
-    - {'src': 'https://raw.githubusercontent.com/fisherman/fisherman/master/fisher.fish', 'dest': '~/.config/fish/functions/fisher.fish'}
-
 - name: install addons
   command: /usr/bin/fish -c 'fisher add {{ item }}'
   with_items:
     - oh-my-fish/theme-bobthefish
     - edc/bass
-  tags:
-    - skip_ansible_lint
-
-#- name: set shell
-#  user:
-#    name={{ ansible_env.USER }}
-#    shell=/usr/bin/fish
-#  become: yes
-#  when: ansible_os_family == 'Debian'
-
-- name: download fortlit
-  get_url:
-    url: https://github.com/xsteadfastx/fortlit/releases/download/v0.0.1/fortlit-Linux-x86_64.pex
-    dest: ~/.local/bin/fortlit
-    mode: 0755

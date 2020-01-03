@@ -20,6 +20,15 @@ alias vimopen='vim (fzf --preview "bat --color=always {}")'
 # set default editor
 set -gx EDITOR nvim
 
+# path
+if test -d ~/.local/bin
+  set fish_user_paths ~/.local/bin $fish_user_paths
+end
+
+if test -d /sbin
+  set fish_user_paths /sbin $fish_user_paths
+end
+
 # python
 # set -gx PIP_REQUIRE_VIRTUALENV 1
 
@@ -52,11 +61,13 @@ if test -d ~/go/bin
 end
 
 # gpg terminal agent
-if [ (pgrep -x -u $USER gpg-agent) ]
-else
-    gpg-connect-agent /bye >/dev/null 2>&1
+if test -f /usr/bin/gpg-agent
+  if [ (pgrep -x -u $USER gpg-agent) ]
+  else
+      gpg-connect-agent /bye >/dev/null 2>&1
+  end
+  set -x GPG_TTY (tty)
 end
-set -x GPG_TTY (tty)
 
 # gopass
 if test -f /usr/local/bin/gopass
@@ -72,18 +83,6 @@ if test -f ~/.nix-profile/bin/nix
     bass source ~/.nix-profile/etc/profile.d/nix.sh
   end
 end
-
-# path
-if test -d ~/.local/bin
-  set fish_user_paths ~/.local/bin $fish_user_paths
-end
-if test -d /sbin
-  set fish_user_paths /sbin $fish_user_paths
-end
-set fish_user_paths ~/bin/(hostname) $fish_user_paths
-set fish_user_paths ~/bin/(uname -m) $fish_user_paths
-set fish_user_paths ~/bin $fish_user_paths
-
 
 # theme
 function fish_greeting
