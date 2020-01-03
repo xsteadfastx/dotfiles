@@ -57,7 +57,7 @@ if test -d ~/go/bin
 end
 
 # gpg terminal agent
-if test -q gpg-agent
+if type -q gpg-agent
   if [ (pgrep -x -u $USER gpg-agent) ]
   else
       gpg-connect-agent /bye >/dev/null 2>&1
@@ -66,7 +66,7 @@ if test -q gpg-agent
 end
 
 # gopass
-if test -q gopass
+if type -q gopass
   status --is-interactive; and . (gopass completion fish|psub)
 end
 
@@ -90,7 +90,7 @@ set fish_user_paths ~/bin $fish_user_paths
 
 # theme
 function fish_greeting
-  if test -q fortlit
+  if type -q fortlit
     fortlit
   end
 end
