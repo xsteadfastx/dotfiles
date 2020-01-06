@@ -70,7 +70,7 @@ if has('nvim')
         Plug 'tpope/vim-surround'
 
         Plug 'vimwiki/vimwiki'
-            let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md', 'index': 'Home'}, {'path': '~/vimwiki-vwit/', 'syntax': 'markdown', 'ext': '.md', 'index': 'Home'}]
+            let g:vimwiki_list = [{'path': '~/permanent/vimwiki/', 'syntax': 'markdown', 'ext': '.md', 'index': 'Home'}, {'path': '~/permanent/vimwiki-vwit/', 'syntax': 'markdown', 'ext': '.md', 'index': 'Home'}]
             let g:vimwiki_global_ext = 0
 
         let g:ale_completion_enabled = 1
