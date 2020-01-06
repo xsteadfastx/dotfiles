@@ -52,8 +52,9 @@ if test -d ~/.poetry
 end
 
 # go
-if test -d ~/go/bin
-  set fish_user_paths ~/go/bin $fish_user_paths
+if type -q go
+  set -gx GOPATH ~/.local/share/go
+  set fish_user_paths ~/.local/share/go/bin $fish_user_paths
 end
 
 # gpg terminal agent
