@@ -7,6 +7,14 @@
   set_fact:
     nix_installed: "{% if nix_stat.stat.exists %}True{% else %}False{% endif %}"
 
+- stat:
+    path: ~/.local/bin/pipx
+  register: pipx_stat
+
+- name: check if nix is installed
+  set_fact:
+    pipx_installed: "{% if pipx_stat.stat.exists %}True{% else %}False{% endif %}"
+
 - name: debian | update apt cache
   apt:
     update_cache: true

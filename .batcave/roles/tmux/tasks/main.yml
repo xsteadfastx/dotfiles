@@ -10,3 +10,5 @@
   pipx:
     name: tmuxp
     state: latest
+  when:
+    - pipx_installed

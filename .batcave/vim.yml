@@ -2,4 +2,5 @@
 ---
 - hosts: "{{ host }}"
   roles:
+    - batcave
     - vim

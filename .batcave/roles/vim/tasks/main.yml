@@ -70,6 +70,7 @@
     - ansible-lint
     - python-language-server
     - yamllint
+  when: pipx_installed
 
 - name: needed nix packages
   nix:
