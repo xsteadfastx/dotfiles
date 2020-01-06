@@ -16,6 +16,7 @@ if type -q exa
   alias ls="exa"
 end
 alias vimopen='vim (fzf --preview "bat --color=always {}")'
+alias fd='fd -I'
 
 # set default editor
 set -gx EDITOR nvim
