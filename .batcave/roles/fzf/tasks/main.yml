@@ -3,3 +3,4 @@
   nix:
     name: fzf
     state: latest
+  when: nix_installed

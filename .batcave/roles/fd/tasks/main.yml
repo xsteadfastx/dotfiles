@@ -3,3 +3,4 @@
   nix:
     name: fd
     state: latest
+  when: nix_installed

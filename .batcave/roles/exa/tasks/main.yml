@@ -3,3 +3,4 @@
   nix:
     name: exa
     state: latest
+  when: nix_installed
