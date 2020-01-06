@@ -87,8 +87,8 @@ if has('nvim')
                 \ }
             let g:ale_python_mypy_options = '--ignore-missing-imports --follow-imports=skip --strict-optional'
             let g:ale_python_pylint_executable = 'python -m pylint'
-            let g:ale_go_gopls_executable = expand($HOME).'/go/bin/gopls'
-            let g:ale_go_golangci_lint_executable = expand($HOME).'/go/bin/golangci-lint'
+            let g:ale_go_gopls_executable = expand($HOME).'/.local/share/go/bin/gopls'
+            let g:ale_go_golangci_lint_executable = expand($HOME).'/.local/share/go/bin/golangci-lint'
 
         " easy alignment
         Plug 'junegunn/vim-easy-align'
