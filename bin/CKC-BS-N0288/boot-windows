@@ -11,7 +11,7 @@ qemu-system-x86_64 \
     -device virtserialport,chardev=spicechannel0,name=com.redhat.spice.0 \
     -chardev spicevmc,id=spicechannel0,name=vdagent \
     -spice port=${SPICE_PORT},disable-ticketing \
-    -drive file=/home/preuss/qemu-images/windows10.qcow2 \
+    -drive file=/home/preuss/permanent/qemu-images/windows10.qcow2 \
     -device ich9-usb-ehci1,id=usb \
     -device ich9-usb-uhci1,masterbus=usb.0,firstport=0,multifunction=on \
     -device ich9-usb-uhci2,masterbus=usb.0,firstport=2 \

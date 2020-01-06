@@ -8,7 +8,7 @@ sudo qemu-system-x86_64 \
     -m 4G \
     -vga qxl \
     -spice port=${SPICE_PORT},disable-ticketing \
-    -drive file=/home/preuss/qemu-images/alpine.qcow2,if=virtio \
+    -drive file=/home/preuss/permanent/qemu-images/alpine.qcow2,if=virtio \
     -device ich9-usb-ehci1,id=usb \
     -device ich9-usb-uhci1,masterbus=usb.0,firstport=0,multifunction=on \
     -device ich9-usb-uhci2,masterbus=usb.0,firstport=2 \
