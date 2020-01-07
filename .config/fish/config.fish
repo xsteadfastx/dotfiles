@@ -38,16 +38,6 @@ if test -f ~/.local/bin/pipenv
   eval (pipenv --completion)
 end
 
-# pyenv
-if test -d ~/.pyenv/bin
-  set -gx PYENV_ROOT ~/.pyenv
-  set fish_user_paths $PYENV_ROOT/bin $fish_user_paths
-  if not set -q POETRY_ACTIVE
-    status --is-interactive; and . (pyenv init -|psub)
-    #status --is-interactive; and . (pyenv virtualenv-init -|psub)
-  end
-end
-
 # poetry
 if test -d ~/.poetry
   set fish_user_paths ~/.poetry/bin $fish_user_paths
@@ -80,6 +70,15 @@ if test -f ~/.nix-profile/bin/nix
   if type -q bass
     set -e NIX_PATH
     bass source ~/.nix-profile/etc/profile.d/nix.sh
+  end
+end
+
+# pyenv
+if test -d ~/.pyenv/bin
+  set -gx PYENV_ROOT ~/.pyenv
+  set fish_user_paths $PYENV_ROOT/bin $fish_user_paths
+  if not set -q POETRY_ACTIVE
+    status --is-interactive; and . (pyenv init -|psub)
   end
 end
 
