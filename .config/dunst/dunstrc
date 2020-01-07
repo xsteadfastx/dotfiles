@@ -1,5 +1,5 @@
 [global]
-    font = CascadianCode NF 10
+    font = CascadiaMono Nerd Font 10
     
     # Allow a small subset of html markup:
     #   <b>bold</b>
