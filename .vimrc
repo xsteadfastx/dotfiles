@@ -277,7 +277,7 @@ endif
 augroup yaml
     autocmd!
     " au BufRead,BufNewFile *yml,*yaml set filetype=yaml
-    au FileType yaml setl tabstop=2 expandtab shiftwidth=2 softtabstop=2
+    " au FileType yaml setl tabstop=2 expandtab shiftwidth=2 softtabstop=2
 augroup end
 
 " ---------------------------------------
