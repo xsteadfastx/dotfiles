@@ -257,6 +257,15 @@ augroup javascript
 augroup end
 
 " ---------------------------------------
+" GOLANG
+" ---------------------------------------
+augroup go
+    autocmd!
+    au FileType go setl tabstop=4 shiftwidth=4
+augroup end
+
+
+" ---------------------------------------
 " NEOVIM
 " ---------------------------------------
 if has('nvim')
