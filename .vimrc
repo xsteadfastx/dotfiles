@@ -77,7 +77,7 @@ if has('nvim')
         let g:ale_set_balloons = 1
         Plug 'dense-analysis/ale'
             let g:ale_fix_on_save = 1
-            let g:ale_fixers = {'python': ['isort', 'black'], 'go': ['gofmt']}
+            let g:ale_fixers = {'python': ['isort', 'black'], 'go': ['gofmt', 'goimports']}
             let g:ale_languagetool_executable= 'languagetool-commandline'
             let g:ale_languagetool_options = '-l de-DE'
             let g:ale_linters= {
