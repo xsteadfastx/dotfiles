@@ -151,7 +151,7 @@ endif
 " UI
 " ---------------------------------------
 set number
-"set relativenumber
+set relativenumber
 set backspace=2
 set laststatus=2
 set foldenable
@@ -191,6 +191,22 @@ set nosmarttab
 " ---------------------------------------
 let mapleader = ","
 let maplocalleader = "\\"
+
+" hard mode
+nnoremap <Up> <Nop>
+nnoremap <Down> <Nop>
+nnoremap <Left> <Nop>
+nnoremap <Right> <Nop>
+
+vnoremap <Up> <Nop>
+vnoremap <Down> <Nop>
+vnoremap <Left> <Nop>
+vnoremap <Right> <Nop>
+
+inoremap <Up> <Nop>
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
 
 " fixes some strange arrow errors in insert mode
 imap ^[OA <ESC>kli
