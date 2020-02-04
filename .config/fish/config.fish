@@ -1,3 +1,5 @@
+# vim: tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+
 # enabling vi mode
 fish_vi_key_bindings
 
@@ -75,10 +77,8 @@ end
 
 # pyenv
 if test -d ~/.pyenv/bin
-  set -gx PYENV_ROOT ~/.pyenv
-  set fish_user_paths $PYENV_ROOT/bin $fish_user_paths
   if not set -q POETRY_ACTIVE
-    status --is-interactive; and . (pyenv init -|psub)
+    pyenv init - | source
   end
 end
 
