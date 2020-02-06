@@ -208,6 +208,10 @@ inoremap <Down> <Nop>
 inoremap <Left> <Nop>
 inoremap <Right> <Nop>
 
+" center line
+nnoremap j jzz
+nnoremap k kzz
+
 " fixes some strange arrow errors in insert mode
 imap ^[OA <ESC>kli
 imap ^[OB <ESC>jli
