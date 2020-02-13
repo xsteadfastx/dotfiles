@@ -76,6 +76,7 @@ if has('nvim')
         let g:ale_completion_enabled = 1
         let g:ale_set_balloons = 1
         Plug 'dense-analysis/ale'
+            let g:ale_open_list = 1
             let g:ale_fix_on_save = 1
             let g:ale_fixers = {'python': ['isort', 'black'], 'go': ['gofmt', 'goimports']}
             let g:ale_languagetool_executable= 'languagetool-commandline'
@@ -88,8 +89,7 @@ if has('nvim')
             let g:ale_python_mypy_options = '--ignore-missing-imports --follow-imports=skip --strict-optional'
             let g:ale_python_pylint_executable = 'python -m pylint'
             let g:ale_go_gopls_executable = expand($HOME).'/.local/share/go/bin/gopls'
-            let g:ale_go_golangci_lint_executable = expand($HOME).'/.local/share/go/bin/golangci-lint'
-            let g:ale_go_golangci_lint_options = '--enable-all --disable=gochecknoglobals'
+            let g:ale_go_golangci_lint_executable = expand($HOME).'/.local/bin/golangci-lint'
 
         " easy alignment
         Plug 'junegunn/vim-easy-align'
@@ -106,7 +106,7 @@ if has('nvim')
         Plug 'chrisbra/csv.vim'
 
         " LaTeX
-        Plug 'lervag/vimtex'
+        "Plug 'lervag/vimtex'
 
         " visual ident levels
         Plug 'Yggdroot/indentLine'
