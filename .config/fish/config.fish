@@ -11,6 +11,7 @@ alias vim=nvim
 alias ll='ls -la'
 alias tmux-gc='tmux list-sessions | grep -v attached | cut -d: -f1 |  xargs -t -n1 tmux kill-session -t'
 alias coderadio='mpv http://coderadio-admin.freecodecamp.org/radio/8010/radio.mp3'
+alias chillradio='streamlink "https://www.youtube.com/watch?v=5qap5aO4i9A" 720p -p "mpv --no-video"'
 if type -q bat
   alias cat='bat --theme=ansi-dark'
 end
