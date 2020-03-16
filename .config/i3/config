@@ -132,7 +132,7 @@ bindsym $mod+p exec ~/bin/rofi-pass
 # dracula
 bar {
         position top
-        output primary
+        # output primary
         status_command /opt/bumblebee-status/env/bin/python /opt/bumblebee-status/bumblebee-status \
                 -m cpu memory disk nic battery pasink datetime \
                 -p \
@@ -169,18 +169,6 @@ for_window [class="^.*"] border pixel 1
 # josm (found class with xprop)
 for_window [class="org-openstreetmap-josm-Main"] floating disable
 for_window [class="org-openstreetmap-josm-Main"] layout splitv
-
-# firefox
-assign [class="Firefox"] 2
-
-# signal
-assign [class="Signal"] 4
-
-# gaps
-#gaps inner 15
-#gaps outer 0
-#smart_borders on
-#new_window none
 
 # AUTOSTART
 exec --no-startup-id exec /bin/sh ~/bin/i3auto
