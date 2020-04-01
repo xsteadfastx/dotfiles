@@ -25,6 +25,9 @@ alias rg='rg --no-ignore-vcs --hidden'
 # set default editor
 set -gx EDITOR nvim
 
+# clean fish_user_paths
+set -e fish_user_paths
+
 # sbin
 if test -d /sbin
   set fish_user_paths /sbin $fish_user_paths
@@ -78,6 +81,7 @@ end
 
 # pyenv
 if test -d ~/.pyenv/bin
+  set fish_user_paths ~/.pyenv/bin $fish_user_paths
   if not set -q POETRY_ACTIVE
     pyenv init - | source
   end
