@@ -66,7 +66,7 @@ end
 
 # gopass
 if type -q gopass
-  status --is-interactive; and . (gopass completion fish|psub)
+  status --is-interactive; and gopass completion fish | source
 end
 
 # nix
