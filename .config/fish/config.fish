@@ -65,9 +65,9 @@ if type -q gpg-agent
 end
 
 # gopass
-if type -q gopass
-  status --is-interactive; and gopass completion fish | source
-end
+#if type -q gopass
+#  status --is-interactive; and gopass completion fish | source
+#end
 
 # nix
 if test -f ~/.nix-profile/bin/nix
