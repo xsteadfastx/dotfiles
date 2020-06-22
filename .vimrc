@@ -235,6 +235,7 @@ if has('nvim')
     nnoremap <F6> :Buffer<CR>
 
     " fzf
+    nnoremap ; :Buffers<CR>
     nnoremap <Leader>ff :FZF<CR>
     nnoremap <Leader>bb :Buffers<CR>
     nnoremap <Leader>ll :Lines<CR>
