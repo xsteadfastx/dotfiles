@@ -4,7 +4,6 @@
   roles:
     - i3
     - nextcloud
-    - screenlayout
     - st
     - unclutter
     - xresources
