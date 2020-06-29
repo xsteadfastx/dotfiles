@@ -91,9 +91,16 @@ end
 if test -d ~/.local/bin
   set fish_user_paths ~/.local/bin $fish_user_paths
 end
+
 set fish_user_paths ~/bin $fish_user_paths
-set fish_user_paths ~/bin/(uname -m) $fish_user_paths
-set fish_user_paths ~/bin/(hostname) $fish_user_paths
+
+if test -d ~/bin/(uname -m)
+  set fish_user_paths ~/bin/(uname -m) $fish_user_paths
+end
+
+if test -d ~/bin/(hostname)
+  set fish_user_paths ~/bin/(hostname) $fish_user_paths
+end
 
 # theme
 function fish_greeting
