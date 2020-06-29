@@ -30,23 +30,23 @@
   with_items:
     - ~/.local/
     - ~/.local/bin
-    - ~/src
+    - ~/tmp
 
 - name: clone unclutter
   git:
     repo: https://github.com/Airblader/unclutter-xfixes.git
-    dest: ~/src/unclutter
+    dest: ~/tmp/unclutter
   when: ansible_os_family == "Debian"
 
 - name: compile
   command: make unclutter
   args:
-    chdir: ~/src/unclutter
+    chdir: ~/tmp/unclutter
   when: ansible_os_family == "Debian"
 
 - name: debian | link unclutter
   file:
-    src=~/src/unclutter/unclutter
+    src=~/tmp/unclutter/unclutter
     dest=~/.local/bin/unclutter
     state=link
   when: ansible_os_family == "Debian"
