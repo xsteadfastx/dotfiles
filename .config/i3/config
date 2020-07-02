@@ -141,7 +141,7 @@ bar {
         status_command /opt/bumblebee-status/env/bin/python /opt/bumblebee-status/bumblebee-status \
                 -m cpu memory disk nic battery pasink datetime \
                 -p \
-                        nic.exclude="enp0,veth,vir,docker,lxc,br,lo" \
+                        nic.exclude="enp0,veth,vir,docker,lxc,br,lo,cni0,flannel.1" \
                         disk.format="{percent:05.02f}%" \
                         memory.format="{percent:05.02f}%" \
                 -t dracula-powerline
