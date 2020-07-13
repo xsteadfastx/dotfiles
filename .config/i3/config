@@ -144,6 +144,7 @@ bar {
                         nic.exclude="enp0,veth,vir,docker,lxc,br,lo,cni0,flannel.1" \
                         disk.format="{percent:05.02f}%" \
                         memory.format="{percent:05.02f}%" \
+                        datetime.format="%T %d/%m/%Y" \
                 -t dracula-powerline
         colors {
 		background #282A36
