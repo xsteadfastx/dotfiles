@@ -240,6 +240,9 @@ if has('nvim')
     nnoremap <Leader>bb :Buffers<CR>
     nnoremap <Leader>ll :Lines<CR>
     nnoremap <Leader>rg :Rg<CR>
+
+    " ALE
+    nnoremap <Leader>ho :ALEHover<CR>
 endif
 
 
