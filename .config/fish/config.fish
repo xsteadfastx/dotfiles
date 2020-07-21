@@ -13,14 +13,15 @@ alias tmux-gc='tmux list-sessions | grep -v attached | cut -d: -f1 |  xargs -t -
 alias coderadio='mpv http://coderadio-admin.freecodecamp.org/radio/8010/radio.mp3'
 alias chillradio='streamlink "https://www.youtube.com/watch?v=5qap5aO4i9A" 720p -p "mpv --no-video"'
 if type -q bat
-  alias cat='bat --theme=ansi-dark'
+  alias cat="bat"
 end
 if type -q exa
   alias ls="exa"
 end
-alias vimopen='vim (fzf --preview "bat --color=always {}")'
+alias vimopen='vim (fzf --preview "bat {}")'
 alias fd='fd -I'
 alias rg='rg --no-ignore-vcs --hidden'
+alias fzf='fzf --preview "bat --color=always {}"'
 
 # set default editor
 set -gx EDITOR nvim
@@ -111,3 +112,10 @@ end
 set -g theme_powerline_fonts yes
 set -g theme_nerd_fonts yes
 set -g theme_color_scheme dracula
+
+# bat
+set -gx BAT_THEME Dracula
+
+# fzf
+# set -gx FZF_DEFAULT_OPTS '--preview "bat --color=always {}" --color=dark --color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f --color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7'
+set -gx FZF_DEFAULT_OPTS '--color=dark --color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f --color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7'
