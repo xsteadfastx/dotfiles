@@ -21,7 +21,7 @@ end
 alias vimopen='vim (fzf --preview "bat {}")'
 alias fd='fd -I'
 alias rg='rg --no-ignore-vcs --hidden'
-alias fzf='fzf --preview "bat --color=always {}"'
+alias fzf="fzf --preview 'bat --style=numbers --color=always {}'"
 
 # set default editor
 set -gx EDITOR nvim
@@ -82,9 +82,10 @@ end
 
 # pyenv
 if test -d ~/.pyenv/bin
-  set fish_user_paths ~/.pyenv/bin $fish_user_paths
+  set -gx PYENV_ROOT ~/.pyenv
+  set fish_user_paths $PYENV_ROOT/bin $fish_user_paths
   if not set -q POETRY_ACTIVE
-    pyenv init - | source
+    status --is-interactive; and source (pyenv init -|psub)
   end
 end
 
@@ -118,4 +119,4 @@ set -gx BAT_THEME Dracula
 
 # fzf
 set -gx FZF_CTRL_T_COMMAND "fd --type f --hidden --follow --exclude .git"
-set -gx FZF_DEFAULT_OPTS '--color=dark --color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f --color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7'
+set -gx FZF_DEFAULT_OPTS '--layout=reverse --color=dark --color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f --color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7'

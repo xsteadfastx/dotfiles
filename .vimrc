@@ -133,6 +133,9 @@ if has('nvim')
         " ansible
         Plug 'pearofducks/ansible-vim'
 
+        " ascii tables
+        Plug 'dhruvasagar/vim-table-mode'
+
         call plug#end()
 
 endif
