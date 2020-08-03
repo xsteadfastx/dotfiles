@@ -78,7 +78,16 @@ if has('nvim')
         Plug 'dense-analysis/ale'
             let g:ale_open_list = 'on_save'
             let g:ale_fix_on_save = 1
-            let g:ale_fixers = {'python': ['isort', 'black'], 'go': ['gofmt', 'goimports']}
+            let g:ale_fixers = {
+                \ 'python': ['isort', 'black'],
+                \ 'go': ['gofmt', 'goimports'],
+                \ 'javascript': ['prettier'],
+                \ 'css': ['prettier'],
+                \ 'less': ['prettier'],
+                \ 'scss': ['prettier'],
+                \ 'html': ['prettier'],
+                \ 'markdown': ['prettier']
+                \ }
             let g:ale_languagetool_executable= 'languagetool-commandline'
             let g:ale_languagetool_options = '-l de-DE'
             let g:ale_linters= {
@@ -92,6 +101,7 @@ if has('nvim')
             let g:ale_go_gopls_executable = expand($HOME).'/.local/share/go/bin/gopls'
             let g:ale_go_langserver_executable = expand($HOME).'/.local/share/go/bin/gopls'
             let g:ale_go_golangci_lint_executable = expand($HOME).'/.local/share/go/bin/golangci-lint'
+            let g:ale_javascript_prettier_executable = expand($HOME).'/node_modules/.bin/prettier'
 
         " easy alignment
         Plug 'junegunn/vim-easy-align'
