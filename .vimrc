@@ -84,7 +84,8 @@ if has('nvim')
             let g:ale_linters= {
                 \ 'python': ['bandit', 'mypy', 'prospector', 'pydocstyle', 'pyls'],
                 \ 'markdown': ['languagetool'],
-                \ 'go': ['gofmt', 'golangci-lint', 'gopls']
+                \ 'go': ['gofmt', 'golangci-lint', 'gopls'],
+                \ 'javascript': ['jshint']
                 \ }
             let g:ale_python_mypy_options = '--ignore-missing-imports --follow-imports=skip --strict-optional'
             let g:ale_python_pylint_executable = 'python -m pylint'
