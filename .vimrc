@@ -234,6 +234,7 @@ if has('nvim')
 
     " ALE
     nnoremap <Leader>ho :ALEHover<CR>
+    nnoremap <Leader>gd :ALEGoToDefinition<CR>
 endif
 
 
