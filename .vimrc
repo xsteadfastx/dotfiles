@@ -87,6 +87,7 @@ if has('nvim')
                 \ 'scss': ['prettier'],
                 \ 'html': ['prettier'],
                 \ 'json': ['prettier'],
+                \ 'yaml': ['prettier'],
                 \ 'markdown': ['prettier']
                 \ }
             let g:ale_languagetool_executable= 'languagetool-commandline'
