@@ -81,13 +81,13 @@ if has('nvim')
             let g:ale_fixers = {
                 \ 'python': ['isort', 'black'],
                 \ 'go': ['gofmt', 'goimports'],
-                \ 'javascript': ['prettier'],
+                \ 'javascript': ['eslint'],
                 \ 'css': ['prettier'],
                 \ 'less': ['prettier'],
                 \ 'scss': ['prettier'],
                 \ 'html': ['prettier'],
                 \ 'json': ['prettier'],
-                \ 'yaml': ['prettier'],
+                \ 'yaml': ['prettier', 'remove_trailing_lines', 'trim_whitespace'],
                 \ 'markdown': ['prettier']
                 \ }
             let g:ale_languagetool_executable= 'languagetool-commandline'
@@ -96,7 +96,7 @@ if has('nvim')
                 \ 'python': ['bandit', 'mypy', 'prospector', 'pydocstyle', 'pyls'],
                 \ 'markdown': ['languagetool'],
                 \ 'go': ['gofmt', 'golangci-lint', 'gopls'],
-                \ 'javascript': ['jshint']
+                \ 'javascript': ['eslint']
                 \ }
             let g:ale_python_mypy_options = '--ignore-missing-imports --follow-imports=skip --strict-optional'
             let g:ale_python_pylint_executable = 'python -m pylint'
@@ -104,6 +104,7 @@ if has('nvim')
             let g:ale_go_langserver_executable = expand($HOME).'/.local/share/go/bin/gopls'
             let g:ale_go_golangci_lint_executable = expand($HOME).'/.local/share/go/bin/golangci-lint'
             let g:ale_javascript_prettier_executable = expand($HOME).'/node_modules/.bin/prettier'
+            let g:ale_javascript_eslint_executable = expand($HOME).'/node_modules/.bin/eslint'
 
         " easy alignment
         Plug 'junegunn/vim-easy-align'
