@@ -88,7 +88,8 @@ if has('nvim')
                 \ 'html': ['prettier'],
                 \ 'json': ['prettier'],
                 \ 'yaml': ['prettier', 'remove_trailing_lines', 'trim_whitespace'],
-                \ 'markdown': ['prettier']
+                \ 'markdown': ['prettier'],
+                \ 'sh': ['shfmt']
                 \ }
             let g:ale_languagetool_executable= 'languagetool-commandline'
             let g:ale_languagetool_options = '-l de-DE'
@@ -105,6 +106,7 @@ if has('nvim')
             let g:ale_go_golangci_lint_executable = expand($HOME).'/.local/share/go/bin/golangci-lint'
             let g:ale_javascript_prettier_executable = expand($HOME).'/node_modules/.bin/prettier'
             let g:ale_javascript_eslint_executable = expand($HOME).'/node_modules/.bin/eslint'
+            let g:ale_sh_shfmt_executable = expand($HOME).'/.local/share/go/bin/shfmt'
 
         " easy alignment
         Plug 'junegunn/vim-easy-align'
