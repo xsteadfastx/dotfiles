@@ -97,7 +97,8 @@ if has('nvim')
                 \ 'python': ['bandit', 'mypy', 'prospector', 'pydocstyle', 'pyls'],
                 \ 'markdown': ['languagetool'],
                 \ 'go': ['gofmt', 'golangci-lint', 'gopls'],
-                \ 'javascript': ['eslint']
+                \ 'javascript': ['eslint'],
+                \ 'sh': ['language_server']
                 \ }
             let g:ale_python_mypy_options = '--ignore-missing-imports --follow-imports=skip --strict-optional'
             let g:ale_python_pylint_executable = 'python -m pylint'
@@ -107,6 +108,7 @@ if has('nvim')
             let g:ale_javascript_prettier_executable = expand($HOME).'/node_modules/.bin/prettier'
             let g:ale_javascript_eslint_executable = expand($HOME).'/node_modules/.bin/eslint'
             let g:ale_sh_shfmt_executable = expand($HOME).'/.local/share/go/bin/shfmt'
+            let g:ale_sh_language_server_executable = expand($HOME).'/node_modules/.bin/bash-language-server'
 
         " easy alignment
         Plug 'junegunn/vim-easy-align'
