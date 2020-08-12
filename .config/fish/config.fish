@@ -1,7 +1,7 @@
 # vim: tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
 # enabling vi mode
-fish_vi_key_bindings
+# fish_vi_key_bindings
 
 # set default user
 set default_user preuss

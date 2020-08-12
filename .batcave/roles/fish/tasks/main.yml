@@ -35,9 +35,3 @@
       - util-linux
   become: yes
   when: ansible_os_family == 'Alpine'
-
-- name: install addons
-  command: /usr/bin/fish -c 'fisher add {{ item }}'
-  with_items:
-    - oh-my-fish/theme-bobthefish
-    - edc/bass
