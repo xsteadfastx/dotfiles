@@ -1,7 +1,7 @@
 # vim:ft=ansible
 ---
 - name: set st version
-  set_fact: st_version="0.8.2"
+  set_fact: st_version="0.8.4"
 
 - name: install deps
   package:
