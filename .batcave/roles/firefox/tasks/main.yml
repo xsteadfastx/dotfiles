@@ -11,7 +11,7 @@
 - name: open addon install pages
   command: firefox {{ item }}
   with_items:
-    - https://addons.mozilla.org/de/firefox/addon/dracula-theme/
+    - https://addons.mozilla.org/en-US/firefox/addon/dracula-dark-colorscheme/
     - https://addons.mozilla.org/de/firefox/addon/ublock-origin/
     - https://addons.mozilla.org/en-US/firefox/addon/vimium-ff/
   tags:
