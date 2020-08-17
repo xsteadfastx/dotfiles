@@ -91,11 +91,8 @@ if has('nvim')
                 \ 'markdown': ['prettier'],
                 \ 'sh': ['shfmt']
                 \ }
-            let g:ale_languagetool_executable= 'languagetool-commandline'
-            let g:ale_languagetool_options = '-l de-DE'
             let g:ale_linters= {
                 \ 'python': ['bandit', 'mypy', 'prospector', 'pydocstyle', 'pyls'],
-                \ 'markdown': ['languagetool'],
                 \ 'go': ['gofmt', 'golangci-lint', 'gopls'],
                 \ 'javascript': ['eslint'],
                 \ 'sh': ['language_server']
