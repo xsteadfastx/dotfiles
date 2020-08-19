@@ -250,6 +250,7 @@ if has('nvim')
     " ALE
     nnoremap <Leader>ho :ALEHover<CR>
     nnoremap <Leader>gd :ALEGoToDefinition<CR>
+    nnoremap <Leader>fr :ALEFindReferences<CR>
 endif
 
 
