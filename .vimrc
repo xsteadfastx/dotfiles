@@ -76,7 +76,7 @@ if has('nvim')
         let g:ale_completion_enabled = 1
         let g:ale_set_balloons = 1
         Plug 'dense-analysis/ale'
-            let g:ale_open_list = 'on_save'
+            let g:ale_open_list = 1
             let g:ale_fix_on_save = 1
             let g:ale_fixers = {
                 \ 'python': ['isort', 'black'],
