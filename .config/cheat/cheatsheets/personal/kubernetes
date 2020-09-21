@@ -1,0 +1,27 @@
+# Get json (with interactive filter)
+kubectl get nodes -o json | jid -q
+
+# Sort by json field
+kubectl get pv --sort-by=spec.claimRef.name
+
+# run cronjob now
+kubectl create job --from cronjob/crate-snapshots crate-snapshots-manual-001
+
+# view secrets (krew plugin view-secret required)
+kubectl view-secret grafana-tls tls.crt
+
+# import a new config (krew plugin konfig required)
+kubectl konfig import --save new-cfg
+
+# switch namespace real quick (krew plgin ns required)
+kubectl ns
+
+# switch context real quick (krew plugin ctx required)
+kubectl ctx
+
+# port-forward
+kubectl port-forward <container> <port>
+
+# get really all resources in namespaces
+kubectl api-resources --verbs=list --namespaced -o name \
+  | xargs -n 1 kubectl get --show-kind --ignore-not-found -n NS
