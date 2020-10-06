@@ -102,6 +102,8 @@ if has('nvim')
             let g:ale_go_gopls_executable = expand($HOME).'/.local/share/go/bin/gopls'
             let g:ale_go_langserver_executable = expand($HOME).'/.local/share/go/bin/gopls'
             let g:ale_go_golangci_lint_executable = expand($HOME).'/.local/share/go/bin/golangci-lint'
+            let g:ale_go_gofmt_executable = expand($HOME).'/.local/share/go/bin/gofumpt'
+            let g:ale_go_goimports_executable = expand($HOME).'/.local/share/go/bin/gofumports'
             let g:ale_javascript_prettier_executable = expand($HOME).'/node_modules/.bin/prettier'
             let g:ale_javascript_eslint_executable = expand($HOME).'/node_modules/.bin/eslint'
             let g:ale_sh_shfmt_executable = expand($HOME).'/.local/share/go/bin/shfmt'
