@@ -7,7 +7,7 @@
       - dunst
       - feh
       - i3blocks
-      - i3lock
+      - i3lock-fancy
       - i3status
       - rofi
       - xautolock
