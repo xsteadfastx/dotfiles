@@ -7,10 +7,8 @@ dunst &
 nm-applet &
 nextcloud &
 xfce4-power-manager &
-xautolock -time 10 -locker 'i3lock -c 000000 -t' &
+xautolock -time 10 -locker 'i3lock-fancy' &
 unclutter &
-# git annex assistant --autostart &
-# compton --config ~/.i3/compton.conf
 setxkbmap -option caps:super
 
 if [ -f "$HOME/bin/$(hostname)/i3auto" ]; then
