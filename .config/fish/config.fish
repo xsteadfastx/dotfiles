@@ -21,7 +21,7 @@ end
 alias vimopen='vim (fzf --preview "bat {}")'
 alias fd='fd -I'
 alias rg='rg --no-ignore-vcs --hidden'
-alias fzf="fzf --preview 'bat --style=numbers --color=always {}'"
+# alias fzf="fzf --preview 'bat --style=numbers --color=always {}'"
 
 # set default editor
 set -gx EDITOR nvim
