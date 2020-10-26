@@ -7,7 +7,7 @@ dunst &
 nm-applet &
 nextcloud &
 xfce4-power-manager &
-xautolock -time 10 -locker 'i3lock-fancy' &
+xautolock -time 10 -locker 'i3lock -c 000000 -t' &
 unclutter &
 setxkbmap -option caps:super
 
