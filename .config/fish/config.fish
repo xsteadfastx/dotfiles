@@ -80,6 +80,16 @@ if test -f ~/.nix-profile/bin/nix
   end
 end
 
+# brew
+if test -f /home/linuxbrew/.linuxbrew/bin/brew
+  set -gx HOMEBREW_PREFIX "/home/linuxbrew/.linuxbrew"
+  set -gx HOMEBREW_CELLAR "/home/linuxbrew/.linuxbrew/Cellar"
+  set -gx HOMEBREW_REPOSITORY "/home/linuxbrew/.linuxbrew/Homebrew"
+  set fish_user_paths /home/linuxbrew/.linuxbrew/bin $fish_user_paths
+  set fish_user_paths /home/linuxbrew/.linuxbrew/sbin $fish_user_paths
+end
+
+
 # pyenv
 if test -d ~/.pyenv/bin
   set -gx PYENV_ROOT ~/.pyenv
