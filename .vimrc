@@ -176,6 +176,7 @@ set listchars=trail:·,precedes:«,extends:»,nbsp:~,tab:▸\
 set list
 set cursorline
 set termguicolors
+set foldmethod=indent
 
 if has('nvim')
         if !empty(glob('~/.vim/plugged/dracula/colors/dracula.vim'))
