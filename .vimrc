@@ -104,9 +104,9 @@ if has('nvim')
             let g:ale_go_golangci_lint_executable = expand($HOME).'/.local/share/go/bin/golangci-lint'
             let g:ale_go_gofmt_executable = expand($HOME).'/.local/share/go/bin/gofumpt'
             let g:ale_go_goimports_executable = expand($HOME).'/.local/share/go/bin/gofumports'
-            let g:ale_javascript_prettier_executable = expand($HOME).'/node_modules/.bin/prettier'
-            let g:ale_javascript_eslint_executable = expand($HOME).'/node_modules/.bin/eslint'
-            let g:ale_sh_shfmt_executable = expand($HOME).'/.local/share/go/bin/shfmt'
+            let g:ale_javascript_prettier_executable = '/home/linuxbrew/.linuxbrew/bin/prettier'
+            let g:ale_javascript_eslint_executable = '/home/linuxbrew/.linuxbrew/bin/eslint'
+            let g:ale_sh_shfmt_executable = '/home/linuxbrew/.linuxbrew/bin/shfmt'
             let g:ale_sh_language_server_executable = expand($HOME).'/node_modules/.bin/bash-language-server'
 
         " easy alignment
