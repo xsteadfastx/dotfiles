@@ -16,7 +16,7 @@ if type -q bat
   alias cat="bat"
 end
 if type -q exa
-  alias ls="exa"
+  alias ls="exa --git"
 end
 alias vimopen='vim (fzf --preview "bat {}")'
 alias fd='fd -I'
