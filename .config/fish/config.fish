@@ -70,7 +70,7 @@ end
 
 # gopass
 if type -q gopass
-  status --is-interactive; and gopass completion fish | source
+  status --is-interactive; and /home/linuxbrew/.linuxbrew/bin/gopass completion fish | source
 end
 
 # nix
