@@ -4,27 +4,7 @@
 # fish_vi_key_bindings
 
 # set default user
-set default_user preuss
-
-# aliases
-alias vim=nvim
-alias ll='ls -la'
-alias tmux-gc='tmux list-sessions | grep -v attached | cut -d: -f1 |  xargs -t -n1 tmux kill-session -t'
-alias coderadio='mpv http://coderadio-admin.freecodecamp.org/radio/8010/radio.mp3'
-alias chillradio='streamlink "https://www.youtube.com/watch?v=5qap5aO4i9A" 720p -p "mpv --no-video"'
-if type -q bat
-  alias cat="bat"
-end
-if type -q exa
-  alias ls="exa --git"
-end
-alias vimopen='vim (fzf --preview "bat {}")'
-alias fd='fd -I'
-alias rg='rg --no-ignore-vcs --hidden'
-# alias fzf="fzf --preview 'bat --style=numbers --color=always {}'"
-if type -q gping
-  alias ping="gping"
-end
+set default_user marv
 
 # set default editor
 set -gx EDITOR nvim
@@ -92,7 +72,6 @@ if test -f /home/linuxbrew/.linuxbrew/bin/brew
   set fish_user_paths /home/linuxbrew/.linuxbrew/sbin $fish_user_paths
 end
 
-
 # pyenv
 if test -d ~/.pyenv/bin
   set -gx PYENV_ROOT ~/.pyenv
@@ -133,3 +112,27 @@ set -gx BAT_THEME Dracula
 # fzf
 set -gx FZF_CTRL_T_COMMAND "fd --type f --hidden --follow --exclude .git"
 set -gx FZF_DEFAULT_OPTS '--layout=reverse --color=dark --color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f --color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7'
+
+# aliases
+alias vim=nvim
+alias ll='ls -la'
+alias tmux-gc='tmux list-sessions | grep -v attached | cut -d: -f1 |  xargs -t -n1 tmux kill-session -t'
+alias coderadio='mpv http://coderadio-admin.freecodecamp.org/radio/8010/radio.mp3'
+alias chillradio='streamlink "https://www.youtube.com/watch?v=5qap5aO4i9A" 720p -p "mpv --no-video"'
+
+if type -q bat
+  alias cat="bat"
+end
+
+if type -q exa
+  alias ls="exa --git"
+end
+
+alias vimopen='vim (fzf --preview "bat {}")'
+alias fd='fd -I'
+alias rg='rg --no-ignore-vcs --hidden'
+# alias fzf="fzf --preview 'bat --style=numbers --color=always {}'"
+#
+if type -q gping
+  alias ping="gping"
+end
