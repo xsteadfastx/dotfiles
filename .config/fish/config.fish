@@ -136,3 +136,5 @@ alias prev="fzf --preview 'bat --style=numbers --color=always {}'"
 if type -q gping
   alias ping="gping"
 end
+
+alias kubesw="set -gx KUBECONFIG (fd -t f --exact-depth 1 . ~/.kube|fzf)"
