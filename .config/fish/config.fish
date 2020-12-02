@@ -17,17 +17,6 @@ if test -d /sbin
   set fish_user_paths /sbin $fish_user_paths
 end
 
-# python
-# set -gx PIP_REQUIRE_VIRTUALENV 1
-
-# pipenv
-# if test -f ~/.local/bin/pipenv
-#   set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
-#   set -gx PIPENV_SHELL_COMPAT 1
-#   set -gx PIPENV_VENV_IN_PROJECT 1
-#   eval (pipenv --completion)
-# end
-
 # poetry
 if test -d ~/.poetry
   set fish_user_paths ~/.poetry/bin $fish_user_paths
@@ -73,9 +62,7 @@ if test -f /home/linuxbrew/.linuxbrew/bin/brew
 end
 
 # pyenv
-if test -d ~/.pyenv/bin
-  set -gx PYENV_ROOT ~/.pyenv
-  set fish_user_paths $PYENV_ROOT/bin $fish_user_paths
+if type -q pyenv
   if not set -q POETRY_ACTIVE
     status --is-interactive; and source (pyenv init -|psub)
   end
