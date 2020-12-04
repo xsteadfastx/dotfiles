@@ -61,6 +61,11 @@ if test -f /home/linuxbrew/.linuxbrew/bin/brew
   set fish_user_paths /home/linuxbrew/.linuxbrew/sbin $fish_user_paths
 end
 
+# krew
+if test -d ~/.krew/bin
+  set fish_user_paths ~/.krew/bin $fish_user_paths
+end
+
 # pyenv
 if type -q pyenv
   if not set -q POETRY_ACTIVE
