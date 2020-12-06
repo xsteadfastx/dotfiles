@@ -105,28 +105,41 @@ set -gx BAT_THEME Dracula
 set -gx FZF_CTRL_T_COMMAND "fd --type f --hidden --follow --exclude .git"
 set -gx FZF_DEFAULT_OPTS '--layout=reverse --color=dark --color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f --color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7'
 
-# aliases
-alias vim=nvim
-alias ll='ls -la'
-alias tmux-gc='tmux list-sessions | grep -v attached | cut -d: -f1 |  xargs -t -n1 tmux kill-session -t'
-alias coderadio='mpv http://coderadio-admin.freecodecamp.org/radio/8010/radio.mp3'
-alias chillradio='streamlink "https://www.youtube.com/watch?v=5qap5aO4i9A" 720p -p "mpv --no-video"'
+# vim
+if type -q nvim
+  abbr vim nvim
+end
+
+# radio
+abbr coderadio 'mpv http://coderadio-admin.freecodecamp.org/radio/8010/radio.mp3'
+abbr chillradio 'streamlink "https://www.youtube.com/watch?v=5qap5aO4i9A" 720p -p "mpv --no-video"'
 
 if type -q bat
   alias cat="bat"
 end
 
+# ls
 if type -q exa
-  alias ls="exa --git"
+  abbr ll 'exa --git -la'
+else
+  abbr ll 'ls -la'
 end
 
-alias vimopen='vim (fzf --preview "bat {}")'
-alias fd='fd -I'
-alias rg='rg --no-ignore-vcs --hidden'
-alias prev="fzf --preview 'bat --style=numbers --color=always {}'"
+# search
+abbr fd 'fd -I'
+abbr rg 'rg --no-ignore-vcs --hidden'
+abbr prev "fzf --preview 'bat --style=numbers --color=always {}'"
 
 if type -q gping
-  alias ping="gping"
+  abbr ping 'gping'
 end
 
-alias kubesw="set -gx KUBECONFIG (fd -t f --exact-depth 1 . ~/.kube|fzf)"
+# kubernetes
+abbr k 'kubectl'
+abbr ks 'set -gx KUBECONFIG (fd -I -t f --exact-depth 1 . ~/.kube|fzf)'
+
+# git
+abbr g 'git'
+abbr gr 'git remote update'
+abbr gs 'git status'
+abbr gp 'git push --tags'
