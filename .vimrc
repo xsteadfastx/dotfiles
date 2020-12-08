@@ -21,8 +21,6 @@ if has('nvim')
 
         Plug 'ConradIrwin/vim-bracketed-paste'
 
-        Plug 'Konfekt/FastFold'
-
         Plug 'mhinz/vim-signify'
 
         " color hex codes and color names
@@ -60,9 +58,6 @@ if has('nvim')
 
         Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
             map <C-n> :NERDTreeToggle<CR> " open nerdtree
-
-        Plug 'tmhedberg/SimpylFold'
-            let g:SimpylFold_docstring_preview=1
 
         Plug 'tpope/vim-repeat'
             silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
@@ -164,7 +159,7 @@ set number
 set relativenumber
 set backspace=2
 set laststatus=2
-set foldenable
+" set foldenable
 set synmaxcol=120
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
@@ -176,7 +171,7 @@ set listchars=trail:·,precedes:«,extends:»,nbsp:~,tab:▸\
 set list
 set cursorline
 set termguicolors
-set foldmethod=indent
+" set foldmethod=indent
 
 if has('nvim')
         if !empty(glob('~/.vim/plugged/dracula/colors/dracula.vim'))
