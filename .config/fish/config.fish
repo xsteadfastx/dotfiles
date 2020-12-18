@@ -61,6 +61,11 @@ if test -f /home/linuxbrew/.linuxbrew/bin/brew
   set fish_user_paths /home/linuxbrew/.linuxbrew/sbin $fish_user_paths
 end
 
+# starship
+if type -q starship
+  starship init fish | source
+end
+
 # krew
 if test -d ~/.krew/bin
   set fish_user_paths ~/.krew/bin $fish_user_paths
@@ -94,9 +99,9 @@ function fish_greeting
     fortlit
   end
 end
-set -g theme_powerline_fonts yes
-set -g theme_nerd_fonts yes
-set -g theme_color_scheme dracula
+# set -g theme_powerline_fonts yes
+# set -g theme_nerd_fonts yes
+# set -g theme_color_scheme dracula
 
 # bat
 set -gx BAT_THEME Dracula
@@ -141,7 +146,7 @@ abbr ks 'set -gx KUBECONFIG (fd -I -t f --exact-depth 1 . ~/.kube|fzf)'
 # git
 abbr g 'git'
 abbr ga 'git add -A'
-abbr gc 'git checkout'
+abbr gc 'git commit'
 abbr gco 'git checkout'
 abbr gd 'git diff'
 abbr gu 'git remote update'
