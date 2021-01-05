@@ -148,7 +148,13 @@ abbr g 'git'
 abbr ga 'git add -A'
 abbr gc 'git commit'
 abbr gco 'git checkout'
-abbr gd 'git diff'
+
+if type -q icdiff
+  abbr gd 'git icdiff'
+else
+  abbr gd 'git diff'
+end
+
 abbr gu 'git remote update'
 abbr gs 'git status'
 abbr gp 'git push --tags'
