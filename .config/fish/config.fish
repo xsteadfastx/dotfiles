@@ -83,6 +83,25 @@ if type -q direnv
   direnv hook fish | source
 end
 
+# grc
+if type -q grc
+  set -l execs cat cvs df diff dig gcc g++ ls ifconfig \
+               make mount mtr netstat ping ps tail traceroute \
+               wdiff
+
+  if set -q grc_plugin_execs
+    set execs $grc_plugin_execs
+  end
+
+  for executable in $execs
+    if type -q $executable
+      function $executable --inherit-variable executable --wraps=$executable
+        grc.wrap $executable $argv
+      end
+    end
+  end
+end
+
 # home paths
 if test -d ~/.local/bin
   set fish_user_paths ~/.local/bin $fish_user_paths
@@ -104,12 +123,12 @@ function fish_greeting
     fortlit
   end
 end
-# set -g theme_powerline_fonts yes
-# set -g theme_nerd_fonts yes
-# set -g theme_color_scheme dracula
 
 # bat
-set -gx BAT_THEME Dracula
+if type -q bat
+  set -gx BAT_THEME Dracula
+  alias cat="bat"
+end
 
 # fzf
 set -gx FZF_CTRL_T_COMMAND "fd --type f --hidden --follow --exclude .git"
@@ -124,10 +143,6 @@ end
 abbr coderadio 'mpv http://coderadio-admin.freecodecamp.org/radio/8010/radio.mp3'
 abbr chillradio 'streamlink "https://www.youtube.com/watch?v=5qap5aO4i9A" 720p -p "mpv --no-video"'
 
-if type -q bat
-  alias cat="bat"
-end
-
 # ls
 if type -q exa
   abbr ll 'exa --git -la'
@@ -140,6 +155,7 @@ abbr fd 'fd -I'
 abbr rg 'rg --no-ignore-vcs --hidden'
 abbr prev "fzf --preview 'bat --style=numbers --color=always {}'"
 
+# gping
 if type -q gping
   abbr ping 'gping'
 end
