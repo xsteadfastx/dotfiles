@@ -78,6 +78,11 @@ if type -q pyenv
   end
 end
 
+# direnv
+if type -q direnv
+  direnv hook fish | source
+end
+
 # home paths
 if test -d ~/.local/bin
   set fish_user_paths ~/.local/bin $fish_user_paths
