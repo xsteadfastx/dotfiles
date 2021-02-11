@@ -1,0 +1,40 @@
+OPTIONS=role:valkyrie
+OPTIONS=race:dwarf
+OPTIONS=windowtype:curses
+OPTIONS=perm_invent
+OPTIONS=color
+OPTIONS=menucolors
+MENUCOLOR=" blessed "=green
+MENUCOLOR=" holy "=green
+MENUCOLOR=" uncursed "=yellow
+MENUCOLOR=" cursed "=red
+MENUCOLOR=" unholy "=red
+MENUCOLOR=" cursed .* (being worn)"=orange&underline
+MENUCOLOR="Amulet of Yendor named"=magenta
+MENUCOLOR="gold piece"=yellow
+OPTIONS=align_message:top,align_status:bottom
+OPTIONS=guicolor
+OPTIONS=windowborders:2
+OPTIONS=statushilites:10
+OPTIONS=hilite_status:gold/always/yellow
+OPTIONS=hilite_status:alignment/lawful/green&bold
+OPTIONS=hilite_status:alignment/lawful/lightgreen
+OPTIONS=hilite_status:experience-level/changed/white/cyan
+OPTIONS=hilite_status:experience-level/changed/white/always/cyan
+OPTIONS=hilite_status:characteristics/<5/red
+OPTIONS=hilite_status:characteristics/>6/orange
+OPTIONS=hilite_status:characteristics/>8/brown
+OPTIONS=hilite_status:characteristics/>11/yellow
+OPTIONS=hilite_status:characteristics/>13/green
+OPTIONS=hilite_status:characteristics/>16/cyan
+OPTIONS=hilite_status:characteristics/>18/lightblue
+OPTIONS=hilite_status:characteristics/<5/red/>6/orange/>8/brown/>11/yellow/>13/green/>16/cyan/>18/lightblue
+OPTIONS=hilite_status:carrying-capacity/burdened/yellow/stressed/orange
+OPTIONS=hilite_status:hitpoints/100%/brightgreen
+OPTIONS=hilite_status:hitpoints/<100%/green
+OPTIONS=hilite_status:hitpoints/<60%/yellow
+OPTIONS=hilite_status:hitpoints/<40%/red
+AUTOPICKUP_EXCEPTION=">stone"
+AUTOPICKUP_EXCEPTION=">statue"
+AUTOPICKUP_EXCEPTION=">figurine"
+AUTOPICKUP_EXCEPTION=">large box"
