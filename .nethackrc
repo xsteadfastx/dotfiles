@@ -35,6 +35,7 @@ OPTIONS=hilite_status:hitpoints/<100%/green
 OPTIONS=hilite_status:hitpoints/<60%/yellow
 OPTIONS=hilite_status:hitpoints/<40%/red
 AUTOPICKUP_EXCEPTION=">stone"
+AUTOPICKUP_EXCEPTION=">rocks"
 AUTOPICKUP_EXCEPTION=">statue"
 AUTOPICKUP_EXCEPTION=">figurine"
 AUTOPICKUP_EXCEPTION=">large box"
