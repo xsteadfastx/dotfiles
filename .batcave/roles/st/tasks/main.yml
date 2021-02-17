@@ -1,7 +1,7 @@
 # vim:ft=ansible
 ---
 - name: set st version
-  set_fact: st_version="0.8.4"
+  set_fact: st_version="0.8.3"
 
 - name: install deps
   package:
@@ -10,6 +10,8 @@
       - libx11-dev
       - libxext-dev
       - libxft-dev
+      - libharfbuzz-icu0
+      - libharfbuzz0b
   become: yes
   tags:
     - skip_ansible_lint
@@ -32,6 +34,11 @@
   copy:
     src: config.def.h
     dest: /tmp/st/st-{{ st_version }}/config.h
+
+- name: patch
+  shell: patch < {{ role_path }}/files/st-ligatures-20200430-0.8.3.diff
+  args:
+    chdir: /tmp/st/st-{{ st_version }}
 
 - name: compile st
   command: make
