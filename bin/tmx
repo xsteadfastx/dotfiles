@@ -1,4 +1,4 @@
 #!/bin/sh
 export TMUX_TMPDIR=$HOME/tmp
-/home/linuxbrew/.linuxbrew/bin/tmux list-sessions | grep -v attached | cut -d: -f1 | xargs -r -t -n1 /home/linuxbrew/.linuxbrew/bin/tmux kill-session -t
+# /home/linuxbrew/.linuxbrew/bin/tmux list-sessions | grep -v attached | cut -d: -f1 | xargs -r -t -n1 /home/linuxbrew/.linuxbrew/bin/tmux kill-session -t
 /home/linuxbrew/.linuxbrew/bin/tmux new-session -t local
