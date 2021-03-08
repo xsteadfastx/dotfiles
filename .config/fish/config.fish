@@ -59,6 +59,7 @@ if test -f /home/linuxbrew/.linuxbrew/bin/brew
   set -gx HOMEBREW_REPOSITORY "/home/linuxbrew/.linuxbrew/Homebrew"
   set fish_user_paths /home/linuxbrew/.linuxbrew/bin $fish_user_paths
   set fish_user_paths /home/linuxbrew/.linuxbrew/sbin $fish_user_paths
+  set fish_function_path /home/linuxbrew/.linuxbrew/share/fish/vendor_completions.d $fish_function_path
 end
 
 # starship
