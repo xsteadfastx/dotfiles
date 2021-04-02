@@ -94,13 +94,16 @@ if has('nvim')
                 \ }
             let g:ale_python_mypy_options = '--ignore-missing-imports --follow-imports=skip --strict-optional'
             let g:ale_python_pylint_executable = 'python -m pylint'
+
+            let g:ale_go_gofmt_executable = '/home/linuxbrew/.linuxbrew/bin/gofumpt'
+            let g:ale_go_golangci_lint_executable = '/home/linuxbrew/.linuxbrew/bin/golangci-lint'
+            let g:ale_go_golangci_lint_options = '--enable-all --fast'
             let g:ale_go_gopls_executable = '/home/linuxbrew/.linuxbrew/bin/gopls'
             let g:ale_go_langserver_executable = '/home/linuxbrew/.linuxbrew/bin/gopls'
-            let g:ale_go_golangci_lint_executable = '/home/linuxbrew/.linuxbrew/bin/golangci-lint'
-            let g:ale_go_gofmt_executable = '/home/linuxbrew/.linuxbrew/bin/gofumpt'
-            " let g:ale_go_goimports_executable = expand($HOME).'/.local/share/go/bin/gofumports'
+
             let g:ale_javascript_prettier_executable = '/home/linuxbrew/.linuxbrew/bin/prettier'
             let g:ale_javascript_eslint_executable = '/home/linuxbrew/.linuxbrew/bin/eslint'
+
             let g:ale_sh_shfmt_executable = '/home/linuxbrew/.linuxbrew/bin/shfmt'
             let g:ale_sh_language_server_executable = expand($HOME).'/node_modules/.bin/bash-language-server'
 
