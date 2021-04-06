@@ -182,3 +182,6 @@ end
 abbr gu 'git remote update'
 abbr gs 'git status'
 abbr gp 'git push --tags'
+
+# ssh
+abbr ssh 'TERM=xterm-256color ssh'
