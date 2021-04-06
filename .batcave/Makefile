@@ -1,4 +1,4 @@
-.PHONY: clean test all help shell x11 weechat vim pyenv firefox pipsi xresources fish xonsh nix st i3 i3-gaps qutebrowser linuxbrew ranger mutt git-annex
+.PHONY: clean test all help shell x11 weechat vim pyenv firefox pipsi xresources fish xonsh nix st i3 i3-gaps qutebrowser linuxbrew ranger mutt git-annex alacritty
 
 help: ## Show this help
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
@@ -65,3 +65,6 @@ git-annex: ## Install git-annex
 
 kvm: ## Install kvm and qemu
 	ansible-playbook -i hosts kvm.yml -c local --ask-become-pass --extra-vars="host=127.0.0.1"
+
+alacritty: ## Install alacritty
+	ansible-playbook -i hosts alacritty.yml -c local --ask-become-pass --extra-vars="host=127.0.0.1"

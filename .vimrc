@@ -180,6 +180,7 @@ if has('nvim')
         if !empty(glob('~/.vim/plugged/dracula/colors/dracula.vim'))
                 colors dracula
                 syntax on
+                highlight Comment cterm=italic gui=italic
         endif
 endif
 

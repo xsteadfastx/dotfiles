@@ -2,8 +2,4 @@
 ---
 - hosts: "{{ host }}"
   roles:
-    - i3
-    - nextcloud
     - alacritty
-    - unclutter
-    - xresources

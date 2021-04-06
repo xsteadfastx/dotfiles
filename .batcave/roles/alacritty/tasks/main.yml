@@ -1,0 +1,46 @@
+---
+- name: install deps
+  apt:
+    name:
+      - cmake
+      - pkg-config
+      - libfreetype6-dev
+      - libfontconfig1-dev
+      - libxcb-xfixes0-dev
+      - python3
+  become: true
+
+- name: needed dirs
+  file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - ~/.local
+    - ~/.local/bin
+    - ~/tmp
+
+- name: clone alacritty
+  git:
+    repo: https://github.com/alacritty/alacritty.git
+    dest: ~/tmp/alacritty
+    version: v0.7.2
+
+- name: build
+  command: cargo build --release
+  args:
+    chdir: ~/tmp/alacritty
+
+- name: copy alacritty
+  copy:
+    src: ~/tmp/alacritty/target/release/alacritty
+    dest: ~/.local/bin/alacritty
+    mode: 0775
+
+- name: terminfo
+  command: >
+    /usr/bin/tic
+    -o ~/.terminfo
+    -sxe alacritty,alacritty-direct
+    extra/alacritty.info
+  args:
+    chdir: ~/tmp/alacritty
