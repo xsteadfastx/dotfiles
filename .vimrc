@@ -90,7 +90,7 @@ if has('nvim')
                 \ 'python': ['bandit', 'mypy', 'prospector', 'pydocstyle', 'pyls'],
                 \ 'go': ['gofmt', 'golangci-lint', 'gopls'],
                 \ 'javascript': ['eslint'],
-                \ 'sh': ['language_server']
+                \ 'sh': ['language_server', 'shellcheck']
                 \ }
             let g:ale_python_mypy_options = '--ignore-missing-imports --follow-imports=skip --strict-optional'
             let g:ale_python_pylint_executable = 'python -m pylint'
@@ -109,6 +109,7 @@ if has('nvim')
 
             let g:ale_sh_shfmt_executable = '/home/linuxbrew/.linuxbrew/bin/shfmt'
             let g:ale_sh_language_server_executable = expand($HOME).'/node_modules/.bin/bash-language-server'
+            let g:ale_sh_shellcheck_executable = '/home/linuxbrew/.linuxbrew/bin/shellcheck'
 
         " easy alignment
         Plug 'junegunn/vim-easy-align'
