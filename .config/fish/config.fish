@@ -185,3 +185,6 @@ abbr gp 'git push --tags'
 
 # ssh
 abbr ssh 'TERM=xterm-256color ssh'
+
+# yaegi
+abbr yaegi 'rlwrap yaegi'
