@@ -5,7 +5,6 @@ set -e
 xsetroot -solid "#282a36"
 dunst &
 nm-applet &
-nextcloud &
 xfce4-power-manager &
 xautolock -time 10 -locker 'i3lock -c 000000 -t' &
 unclutter &
