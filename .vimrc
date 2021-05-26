@@ -84,6 +84,7 @@ if has('nvim')
                 \ 'json': ['prettier'],
                 \ 'yaml': ['prettier', 'remove_trailing_lines', 'trim_whitespace'],
                 \ 'markdown': ['prettier'],
+                \ 'fish': ['fish_indent', 'remove_trailing_lines', 'trim_whitespace'],
                 \ 'sh': ['shfmt']
                 \ }
             let g:ale_linters= {
