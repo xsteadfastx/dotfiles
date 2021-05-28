@@ -75,10 +75,9 @@ end
 # pyenv
 if type -q pyenv
     if not set -q POETRY_ACTIVE
-        set -gx PYENV_ROOT $HOME/.pyenv
-        set fish_user_paths $PYENV_ROOT/bin $fish_user_paths
-        status is-login; and pyenv init --path | source
-        pyenv init - | source
+        set -gx PYENV_ROOT ~/.pyenv
+        set fish_user_paths ~/PYENV_ROOT/bin $fish_user_paths
+        status --is-interactive; and source (pyenv init --path|psub)
     end
 end
 
