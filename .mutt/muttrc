@@ -1,0 +1,56 @@
+# checks all 15 seconds for new mail in maildir
+set timeout = 15
+
+# source config parts
+source ~/.mutt/gpg
+source ~/.mutt/dracula
+
+# interface
+set sort=threads
+set sort_aux=reverse-last-date-received
+set envelope_from=yes
+set edit_hdrs
+
+unset allow_8bit
+set date_format="%a, %d. %b %H:%M"
+set index_format="%4C %Z %D %-22.22F (%?l?%4l&%4c?) %s"
+set folder_format="%2C %8s %d %t %N %f"
+set pager_index_lines=10
+set editor="nvim +8"
+set move=no
+set beep_new
+unset markers
+
+# html mails
+alternative_order text/plain text text/html
+auto_view text/html
+
+# attachments
+set mailcap_path = "~/.mutt/mailcap"
+bind attach <return> view-mailcap
+
+# gmail
+set folder = imaps://imap.gmail.com
+set spoolfile = +INBOX
+set record = ""
+set postponed = "+[Gmail]/Drafts"
+set trash = "imaps://imap.gmail.com/[Gmail]/Trash"
+set from = "Marvin Preuss <marvin@xsteadfastx.org>"
+set hostname = xsteadfastx.org
+
+set smtp_url = "smtp://xsteadfastx@gmail.com@smtp.gmail.com:587/"
+set smtp_authenticators = 'gssapi:login'
+
+# auth
+set imap_user = "xsteadfastx@gmail.com"
+set imap_pass = `gopass show -o misc/mutt-gmail`
+set smtp_pass = `gopass show -o misc/mutt-gmail`
+
+bind editor <space> noop
+macro index,pager y "<save-message>=[Gmail]/All Mail<enter><enter>" "Archive"
+macro index,pager d "<save-message>=[Gmail]/Trash<enter><enter>" "Trash"
+macro index,pager D "<save-message>=[Gmail]/Trash<enter><enter>" "Trash"
+macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
+macro index ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
+macro index gs "<change-folder>=[Gmail]/Starred<enter>" "Go to starred messages"
+macro index gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"

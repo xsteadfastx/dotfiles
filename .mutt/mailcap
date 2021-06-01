@@ -1,0 +1,11 @@
+# .html
+text/html;                  w3m -I %{charset} -T text/html %s;
+text/html;                  w3m -dump -T text/html -I %{charset} -O utf-8 %s; copiousoutput;
+
+# .txt
+text/plain;                 cat %s; copiousoutput
+
+# .pdf
+# sudo aptitude install poppler-utils
+application/pdf;            pdftotext -q -raw %s -; copiousoutput
+application/vnd.fdf;        pdftotext -q -raw %s -; copiousoutput
