@@ -9,3 +9,11 @@ text/plain;                 cat %s; copiousoutput
 # sudo aptitude install poppler-utils
 application/pdf;            pdftotext -q -raw %s -; copiousoutput
 application/vnd.fdf;        pdftotext -q -raw %s -; copiousoutput
+
+# .jpg
+image/jpeg; feh %s;
+image/pjpeg; feh %s;
+
+# .bmp
+image/bmp; feh %s;
+
