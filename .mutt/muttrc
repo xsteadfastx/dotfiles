@@ -31,7 +31,7 @@ bind attach <return> view-mailcap
 
 # imap
 unset imap_passive
-set imap_check_subscribed
+# set imap_check_subscribed
 set net_inc=5
 
 # gmail
@@ -39,7 +39,7 @@ set folder=imaps://imap.gmail.com
 set spoolfile=+INBOX
 set record=""
 set postponed="+[Gmail]/Drafts"
-set trash="imaps://imap.gmail.com/[Gmail]/Trash"
+# set trash="imaps://imap.gmail.com/[Gmail]/Trash"
 set from="Marvin Preuss <marvin@xsteadfastx.org>"
 set hostname=xsteadfastx.org
 set mbox="imaps://imap.gmail.com/[Gmail]/All Mail"
@@ -52,6 +52,10 @@ set imap_user="xsteadfastx@gmail.com"
 set imap_pass=`gopass show -o misc/mutt-gmail`
 set smtp_pass=`gopass show -o misc/mutt-gmail`
 
+# mailboxes for lists
+mailboxes +alpine-lists
+
+# keybindings
 bind editor <space> noop
 macro index,pager y "<save-message>=[Gmail]/All Mail<enter><enter>" "Archive"
 macro index,pager d "<save-message>=[Gmail]/Trash<enter><enter>" "Trash"
