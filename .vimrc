@@ -29,7 +29,7 @@ if has('nvim')
         " auto close parentheses
         Plug 'cohama/lexima.vim'
 
-        Plug 'ervandew/supertab'
+        " Plug 'ervandew/supertab'
 
         " powerline
         Plug 'vim-airline/vim-airline'
@@ -195,8 +195,6 @@ endif
 set autoindent
 set smartindent
 set nowrap
-set expandtab
-set nosmarttab
 
 " automatically remove trail. whitespace at write
 "au BufWritePre <buffer> StripWhitespace
@@ -302,7 +300,7 @@ augroup end
 " ---------------------------------------
 augroup go
     autocmd!
-    au FileType go setl tabstop=4 shiftwidth=4
+    au FileType go setl tabstop=2 shiftwidth=2
 augroup end
 
 
