@@ -23,3 +23,16 @@
 	fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
 [init]
 	defaultBranch = main
+
+[pager]
+	diff = delta
+	log = delta
+	reflog = delta
+	show = delta
+
+[delta]
+	navigate = true
+	side-by-side = true
+
+[interactive]
+	diffFilter = delta --color-only
