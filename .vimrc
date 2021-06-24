@@ -156,6 +156,9 @@ if has('nvim')
         " ascii tables
         Plug 'dhruvasagar/vim-table-mode'
 
+	" gemini
+	Plug 'https://git.sr.ht/~torresjrjr/gemini.vim'
+
         call plug#end()
 
 endif
@@ -379,3 +382,13 @@ augroup lektor
     autocmd!
     au BufRead,BufNewFile *.lr set filetype=markdown
 augroup end
+
+" ---------------------------------------
+" JINJA.HTML
+" ---------------------------------------
+"
+augroup jinjahtml
+    autocmd!
+    au FileType jinja.html let g:ale_fix_on_save=0
+augroup end
+
