@@ -19,8 +19,8 @@
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
-[remote "origin"]
-	fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
+; [remote "origin"]
+; 	fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
 [init]
 	defaultBranch = main
 
