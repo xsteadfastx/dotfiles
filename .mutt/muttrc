@@ -52,7 +52,8 @@ set imap_user="xsteadfastx@gmail.com"
 set imap_pass=`gopass show -o misc/mutt-gmail`
 set smtp_pass=`gopass show -o misc/mutt-gmail`
 
-# mailboxes for lists
+# mailboxes
+mailboxes +INBOX
 mailboxes +alpine-lists
 
 # keybindings
