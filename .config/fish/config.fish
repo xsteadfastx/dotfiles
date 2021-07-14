@@ -185,3 +185,6 @@ abbr ssh 'TERM=xterm-256color ssh'
 
 # yaegi
 abbr yaegi 'rlwrap yaegi'
+
+# jellyfin-mpv-shim
+abbr jellyfin-mpv flatpak run com.github.iwalton3.jellyfin-mpv-shim/x86_64/stable
