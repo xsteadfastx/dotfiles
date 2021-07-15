@@ -98,7 +98,7 @@ if has('nvim')
 
             let g:ale_go_gofmt_executable = '/home/linuxbrew/.linuxbrew/bin/gofumpt'
             let g:ale_go_golangci_lint_executable = '/home/linuxbrew/.linuxbrew/bin/golangci-lint'
-            let g:ale_go_golangci_lint_options = '--enable-all --fast'
+            let g:ale_go_golangci_lint_options = '--enable-all --disable godox --fast'
             let g:ale_go_gopls_executable = '/home/linuxbrew/.linuxbrew/bin/gopls'
 
             let g:ale_go_gopls_init_options = {'buildFlags': ['-tags=integration,tools']}
