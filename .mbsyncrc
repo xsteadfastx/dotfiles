@@ -1,0 +1,86 @@
+################################
+####### Globals ################
+################################
+
+# keep statefiles in the local storage directories
+SyncState *
+
+#################################
+######## Account gmail ##########
+#################################
+
+IMAPAccount	gmail
+Host		imap.gmail.com
+User		xsteadfastx@gmail.com
+PassCmd		"gopass show -o misc/mutt-gmail"
+SSLType		IMAPS
+SSLVersions	TLSv1.3
+
+# remote storage
+IMAPStore	gmail-remote
+Account		gmail
+
+# local storage
+MaildirStore	gmail-local
+Path		~/.mail/gmail/
+Inbox		~/.mail/gmail/INBOX
+
+# INBOX channel
+Channel		gmail-inbox
+Far		:gmail-remote:"INBOX"
+Near		:gmail-local:INBOX
+Create		Both
+Expunge		Both
+
+# sent channel
+Channel		gmail-sent
+Far		:gmail-remote:"[Gmail]/Sent Mail"
+Near		:gmail-local:sent
+Create		Both
+Expunge		Both
+
+# all channel
+Channel		gmail-all
+Far		:gmail-remote:"[Gmail]/All Mail"
+Near		:gmail-local:all
+Create		Both
+Expunge		Near
+
+# starred channel
+Channel		gmail-starred
+Far		:gmail-remote:"[Gmail]/Starred"
+Near		:gmail-local:starred
+Create		Both
+Expunge		Both
+
+# trash channel
+Channel		gmail-trash
+Far		:gmail-remote:"[Gmail]/Trash"
+Near		:gmail-local:trash
+Create		Both
+Expunge		Both
+
+# drafts channel
+Channel		gmail-drafts
+Far		:gmail-remote:"[Gmail]/Drafts"
+Near		:gmail-local:drafts
+Create		Both
+Expunge		Both
+
+# alpine-lists channel
+Channel		alpine-lists
+Far		:gmail-remote:"alpine-lists"
+Near		:gmail-local:alpine-lists
+Create		Both
+Expunge		Both
+
+
+# group them
+Group 		gmail
+Channel		gmail-inbox
+Channel		gmail-sent
+Channel		gmail-all
+Channel		gmail-starred
+Channel		gmail-trash
+Channel		gmail-drafts
+Channel		alpine-lists

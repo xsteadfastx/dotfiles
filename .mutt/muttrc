@@ -29,21 +29,14 @@ auto_view text/html
 set mailcap_path="~/.mutt/mailcap"
 bind attach <return> view-mailcap
 
-# imap
-unset imap_passive
-# set imap_check_subscribed
-set net_inc=5
-
 # gmail
-set folder=imaps://imap.gmail.com
+set folder=~/.mail/gmail
 set spoolfile=+INBOX
-set record=""
-set postponed="+[Gmail]/Drafts"
-# set trash="imaps://imap.gmail.com/[Gmail]/Trash"
+set record=/dev/null
+set postponed="+drafts"
+set trash="+trash"
 set from="Marvin Preuss <marvin@xsteadfastx.org>"
 set hostname=xsteadfastx.org
-set mbox="imaps://imap.gmail.com/[Gmail]/All Mail"
-
 set smtp_url="smtp://xsteadfastx@gmail.com@smtp.gmail.com:587/"
 set smtp_authenticators='gssapi:login'
 
@@ -53,15 +46,15 @@ set imap_pass=`gopass show -o misc/mutt-gmail`
 set smtp_pass=`gopass show -o misc/mutt-gmail`
 
 # mailboxes
-mailboxes +INBOX
-mailboxes +alpine-lists
+mailboxes ~/.mail/gmail/INBOX
+mailboxes ~/.mail/gmail/alpine-lists
 
 # keybindings
 bind editor <space> noop
-macro index,pager y "<save-message>=[Gmail]/All Mail<enter><enter>" "Archive"
-macro index,pager d "<save-message>=[Gmail]/Trash<enter><enter>" "Trash"
-macro index,pager D "<save-message>=[Gmail]/Trash<enter><enter>" "Trash"
+macro index,pager y "<save-message>=all<enter><enter>" "Archive"
+macro index,pager d "<save-message>=trash<enter><enter>" "Trash"
+macro index,pager D "<save-message>=trash<enter><enter>" "Trash"
 macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
-macro index ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
-macro index gs "<change-folder>=[Gmail]/Starred<enter>" "Go to starred messages"
-macro index gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
+macro index ga "<change-folder>=all<enter>" "Go to all mail"
+macro index gs "<change-folder>=starred<enter>" "Go to starred messages"
+macro index gd "<change-folder>=drafts<enter>" "Go to drafts"
