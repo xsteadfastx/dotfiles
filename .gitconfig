@@ -19,8 +19,6 @@
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
-; [remote "origin"]
-; 	fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
 [init]
 	defaultBranch = main
 
@@ -36,3 +34,8 @@
 
 [interactive]
 	diffFilter = delta --color-only
+[sendemail]
+       smtpserver = smtp.gmail.com
+       smtpuser = xsteadfastx@gmail.com
+       smtpencryption = tls
+       smtpserverport = 587
