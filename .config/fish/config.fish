@@ -191,3 +191,8 @@ abbr jellyfin-mpv flatpak run com.github.iwalton3.jellyfin-mpv-shim/x86_64/stabl
 
 # checkmail
 abbr checkmail "while mbsync -a; sleep 2m; end"
+
+# neomutt
+if type -q neomutt
+    abbr mutt neomutt
+end

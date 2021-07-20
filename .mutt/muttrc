@@ -9,7 +9,10 @@ source ~/.mutt/dracula
 set sort=threads
 set sort_aux=reverse-last-date-received
 set envelope_from=yes
-set edit_hdrs
+# set edit_hdrs
+set sidebar_visible
+set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
+set mail_check_stats
 
 unset allow_8bit
 set date_format="%a, %d. %b %H:%M"
@@ -51,6 +54,7 @@ mailboxes ~/.mail/gmail/alpine-lists
 
 # keybindings
 bind editor <space> noop
+bind index g noop
 macro index,pager y "<save-message>=all<enter><enter>" "Archive"
 macro index,pager d "<save-message>=trash<enter><enter>" "Trash"
 macro index,pager D "<save-message>=trash<enter><enter>" "Trash"
@@ -58,3 +62,17 @@ macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
 macro index ga "<change-folder>=all<enter>" "Go to all mail"
 macro index gs "<change-folder>=starred<enter>" "Go to starred messages"
 macro index gd "<change-folder>=drafts<enter>" "Go to drafts"
+
+# sidebar
+bind index,pager \CP sidebar-prev
+bind index,pager \CN sidebar-next
+bind index,pager \CO sidebar-open
+color indicator cyan black
+color sidebar_indicator cyan black
+color sidebar_highlight black color8
+color sidebar_divider color8 black
+color sidebar_flagged red black
+color sidebar_new green black
+color sidebar_ordinary color245 default
+color sidebar_spoolfile color207 default
+color sidebar_unread color136 default
