@@ -1,0 +1,8 @@
+set folder=~/.mail/wobcom
+set spoolfile=+INBOX
+set record=/dev/null
+set postponed="+drafts"
+set trash="+trash"
+set from="Marvin Preuss <marvin.preuss@wobcom.de>"
+set hostname=wobcom.de
+set sendmail="msmtp -a wobcom"

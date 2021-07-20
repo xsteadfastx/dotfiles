@@ -1,0 +1,8 @@
+set folder=~/.mail/gmail
+set spoolfile=+INBOX
+set record=/dev/null
+set postponed="+drafts"
+set trash="+trash"
+set from="Marvin Preuss <marvin@xsteadfastx.org>"
+set hostname=xsteadfastx.org
+set sendmail="msmtp -a gmail"

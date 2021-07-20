@@ -1,18 +1,18 @@
-set timeout=15
-set mail_check=60
-
 # source config parts
 source ~/.mutt/gpg
 source ~/.mutt/dracula
+
+# source default profile
+source ~/.mutt/profile.gmail
 
 # interface
 set sort=threads
 set sort_aux=reverse-last-date-received
 set envelope_from=yes
-# set edit_hdrs
 set sidebar_visible
 set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
 set mail_check_stats
+set edit_headers
 
 unset allow_8bit
 set date_format="%a, %d. %b %H:%M"
@@ -31,26 +31,6 @@ auto_view text/html
 # attachments
 set mailcap_path="~/.mutt/mailcap"
 bind attach <return> view-mailcap
-
-# gmail
-set folder=~/.mail/gmail
-set spoolfile=+INBOX
-set record=/dev/null
-set postponed="+drafts"
-set trash="+trash"
-set from="Marvin Preuss <marvin@xsteadfastx.org>"
-set hostname=xsteadfastx.org
-set smtp_url="smtp://xsteadfastx@gmail.com@smtp.gmail.com:587/"
-set smtp_authenticators='gssapi:login'
-
-# auth
-set imap_user="xsteadfastx@gmail.com"
-set imap_pass=`gopass show -o misc/mutt-gmail`
-set smtp_pass=`gopass show -o misc/mutt-gmail`
-
-# mailboxes
-mailboxes ~/.mail/gmail/INBOX
-mailboxes ~/.mail/gmail/alpine-lists
 
 # keybindings
 bind editor <space> noop
@@ -76,3 +56,12 @@ color sidebar_new green black
 color sidebar_ordinary color245 default
 color sidebar_spoolfile color207 default
 color sidebar_unread color136 default
+
+# hooks
+folder-hook "~/.mail/gmail/INBOX" 'source ~/.mutt/profile.gmail'
+folder-hook "~/.mail/wobcom/INBOX" 'source ~/.mutt/profile.wobcom'
+
+# mailboxes
+mailboxes ~/.mail/gmail/INBOX
+mailboxes ~/.mail/gmail/alpine-lists
+mailboxes ~/.mail/wobcom/INBOX

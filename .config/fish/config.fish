@@ -189,9 +189,6 @@ abbr yaegi 'rlwrap yaegi'
 # jellyfin-mpv-shim
 abbr jellyfin-mpv flatpak run com.github.iwalton3.jellyfin-mpv-shim/x86_64/stable
 
-# checkmail
-abbr checkmail "while mbsync -a; sleep 2m; end"
-
 # neomutt
 if type -q neomutt
     abbr mutt neomutt

@@ -1,0 +1,9 @@
+#!/bin/sh
+set -eux
+
+davmail &
+
+while true; do
+	mbsync -aV || true
+	sleep 1m
+done
