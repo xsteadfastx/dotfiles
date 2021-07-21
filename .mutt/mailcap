@@ -17,3 +17,6 @@ image/pjpeg; feh %s;
 # .bmp
 image/bmp; feh %s;
 
+# .png
+image/png; feh %s;
+

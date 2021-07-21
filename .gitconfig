@@ -39,3 +39,4 @@
        smtpuser = xsteadfastx@gmail.com
        smtpencryption = tls
        smtpserverport = 587
+	annotate = yes
