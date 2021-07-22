@@ -100,7 +100,7 @@
         - '"gaps-next" in i3_version.stdout'
     - name: debian | normal | add ppa key
       apt:
-        deb: http://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2020.02.03_all.deb
+        deb: https://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2021.02.02_all.deb
     - name: debian | add ppa
       apt_repository:
         repo: >

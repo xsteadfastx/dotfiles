@@ -4,6 +4,5 @@
   roles:
     - xresources
     - unclutter
-    - st
     - i3
     - bumblebee-status
