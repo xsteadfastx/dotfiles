@@ -303,7 +303,7 @@ augroup end
 " ---------------------------------------
 augroup go
     autocmd!
-    au FileType go setl tabstop=2 shiftwidth=2
+    au FileType go setl tabstop=4 shiftwidth=4 softtabstop=4
 augroup end
 
 
