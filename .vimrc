@@ -178,7 +178,7 @@ set background=dark
 set t_Co=256
 "hi Normal ctermbg=none " transparent background
 let python_highlight_all=1
-set listchars=trail:·,precedes:«,extends:»,nbsp:~,tab:▸\ 
+set listchars=tab:\│\ ,trail:-,extends:>,precedes:<,nbsp:+
 set list
 set cursorline
 set termguicolors
@@ -303,7 +303,7 @@ augroup end
 " ---------------------------------------
 augroup go
     autocmd!
-    au FileType go setl tabstop=4 shiftwidth=4 softtabstop=4
+    au FileType go setlocal noexpandtab tabstop=8 softtabstop=8
 augroup end
 
 
