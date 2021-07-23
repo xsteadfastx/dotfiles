@@ -5,6 +5,10 @@ source ~/.mutt/dracula
 # source default profile
 source ~/.mutt/profile.gmail
 
+# aliases
+set alias_file=~/.mutt/aliases
+source ~/.mutt/aliases
+
 # interface
 set sort=threads
 set sort_aux=reverse-last-date-received
