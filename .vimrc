@@ -327,8 +327,8 @@ endif
 " ---------------------------------------
 augroup yaml
     autocmd!
-    " au BufRead,BufNewFile *yml,*yaml set filetype=yaml
-    " au FileType yaml setl tabstop=2 expandtab shiftwidth=2 softtabstop=2
+    au BufRead,BufNewFile *yml,*yaml set filetype=yaml
+    au FileType yaml setl tabstop=2 expandtab shiftwidth=2 softtabstop=2
 augroup end
 
 " ---------------------------------------
@@ -387,6 +387,12 @@ augroup end
 " JINJA.HTML
 " ---------------------------------------
 "
+augroup jinja2
+    autocmd!
+    au FileType jinja2 setl tabstop=2 expandtab shiftwidth=2 softtabstop=2
+    au FileType jinja2 let g:ale_fix_on_save=0
+augroup end
+
 augroup jinjahtml
     autocmd!
     au FileType jinja.html let g:ale_fix_on_save=0
