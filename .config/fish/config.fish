@@ -133,11 +133,13 @@ end
 # bat
 if type -q bat
     set -gx BAT_THEME Dracula
-    alias cat="bat"
+    abbr cat bat
 end
 
 # fzf
-set -gx FZF_DEFAULT_OPTS '--layout=reverse --color=dark --color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f --color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7'
+if type -q fzf
+    set -gx FZF_DEFAULT_OPTS '--layout=reverse --color=dark --color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f --color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7'
+end
 
 # vim
 if type -q nvim
@@ -193,3 +195,14 @@ abbr jellyfin-mpv flatpak run com.github.iwalton3.jellyfin-mpv-shim/x86_64/stabl
 if type -q neomutt
     abbr mutt neomutt
 end
+
+# nnn
+if type -q bat
+    set -gx NNN_PLUG 'f:finder;o:fzopen;p:mocplay;d:diffs;t:nmount;v:imgview'
+end
+
+# cp with progress bar
+abbr rcp rsync -ah --info=progress2
+
+# mv with progress bar
+abbr rmv rsync -ah --info=progress2 --remove-source-files
