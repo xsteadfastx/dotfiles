@@ -1,0 +1,17 @@
+[database]
+path=/home/marv/.mail
+
+[user]
+name=Marvin Preuss
+primary_email=marvin@xsteadfastx.org
+other_email=xsteadfastx@gmail.com;marvin.preuss@wobcom.de;preuss@tsm-office.de
+
+[new]
+tags=
+ignore=.uidvalidity;.mbsyncstate;
+
+[search]
+exclude_tags=deleted;
+
+[maildir]
+synchronize_flags=true

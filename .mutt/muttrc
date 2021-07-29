@@ -69,3 +69,8 @@ folder-hook "~/.mail/wobcom/INBOX" 'source ~/.mutt/profile.wobcom'
 mailboxes ~/.mail/gmail/INBOX
 mailboxes ~/.mail/gmail/alpine-lists
 mailboxes ~/.mail/wobcom/INBOX
+
+# notmuch
+macro index <F8> \
+          "<enter-command>unset wait_key<enter><shell-escape>notmuch-mutt --prompt search<enter><change-folder-readonly>~/.cache/notmuch/mutt/results<enter>" \
+          "search mail (using notmuch)"
