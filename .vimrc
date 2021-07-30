@@ -159,6 +159,9 @@ if has('nvim')
 	" gemini
 	Plug 'https://git.sr.ht/~torresjrjr/gemini.vim'
 
+	" elvish
+	Plug 'dmix/elvish.vim', { 'on_ft': ['elvish']}
+
         call plug#end()
 
 endif
