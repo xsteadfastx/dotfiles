@@ -1,5 +1,6 @@
 use readline-binding
 use path
+use 2mp4
 
 # set default editor
 E:EDITOR = nvim
@@ -134,6 +135,7 @@ fn ssh [@_args]{
   set E:TERM = xterm-256color
   tmux rename-window $@_args
   e:ssh $@_args
+  tmux rename-window '$'
 }
 
 # mutt
@@ -144,12 +146,14 @@ fn mutt [@_args]{
   } else {
     mutt $@_args
   }
+  tmux rename-window '$'
 }
 
 # weechat
 fn weechat [@_args]{
   tmux rename-window weechat
   e:weechat $@_args
+  tmux rename-window '$'
 }
 
 # yaegi
@@ -211,17 +215,4 @@ if (has-external grc) {
       w
       who
     ]
-}
-
-# some media stuff
-fn 2mp4 [input output]{
-  HandBrakeCLI ^
-  --input $input ^
-  --output $output ^
-  --preset "Fast 1080p30" ^
-  --audio-lang-list "eng,deu" ^
-  --all-audio ^
-  --aencoder copy --audio-fallback av_aac --ab 160 ^
-  --subtitle-lang-list "eng,deu" ^
-  --all-subtitles
 }
