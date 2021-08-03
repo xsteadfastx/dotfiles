@@ -3,10 +3,11 @@
   apt:
     name:
       - cmake
-      - pkg-config
-      - libfreetype6-dev
       - libfontconfig1-dev
+      - libfreetype6-dev
       - libxcb-xfixes0-dev
+      - libxkbcommon-dev
+      - pkg-config
       - python3
   become: true
 
@@ -23,7 +24,7 @@
   git:
     repo: https://github.com/alacritty/alacritty.git
     dest: ~/tmp/alacritty
-    version: v0.8.0
+    version: v0.9.0
 
 - name: build
   command: cargo build --release
