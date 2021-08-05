@@ -1,7 +1,7 @@
 # vim: tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
-# enabling vi mode
-fish_vi_key_bindings
+# fish_vi_key_bindings
+fish_default_key_bindings
 
 # set default user
 set default_user marv
@@ -63,8 +63,19 @@ if test -f /home/linuxbrew/.linuxbrew/bin/brew
 end
 
 # starship
-if type -q starship
-    starship init fish | source
+# if type -q starship
+#     starship init fish | source
+# end
+
+# powerline-go
+if type -q powerline-go
+    function fish_prompt
+        eval powerline-go \
+            -error $status \
+            -jobs (count (jobs -p)) \
+            -newline \
+            -modules "cwd,kube,git,venv,jobs,exit"
+    end
 end
 
 # krew
@@ -186,6 +197,10 @@ abbr gd 'git diff'
 abbr gu 'git remote update'
 abbr gs 'git status'
 abbr gp 'git push --tags'
+
+if test -d ~/library/apps/git-fuzzy
+    set fish_user_paths ~/library/apps/git-fuzzy/bin $fish_user_paths
+end
 
 # ssh
 abbr ssh 'TERM=xterm-256color ssh'
