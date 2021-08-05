@@ -151,9 +151,10 @@ end
 if type -q fzf
     set -gx FZF_DEFAULT_OPTS '
       --layout=reverse
-      --color=dark
-      --color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
-      --color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7
+      --color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9
+      --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9
+      --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6
+      --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4
     '
 end
 
