@@ -93,8 +93,7 @@ IMAPAccount	wobcom
 Host		localhost
 Port		1143
 User		wobcom\\mpreuss
-# PassCmd		"gopass show -o WOBCOM/lsw"
-Pass		8goyTLuMb1dbsDK91QuAkIrF
+PassCmd		"gopass show -o WOBCOM/lsw"
 SSLType		None
 AuthMechs	LOGIN
 
