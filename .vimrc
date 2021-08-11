@@ -174,7 +174,6 @@ set number
 set relativenumber
 set backspace=2
 set laststatus=2
-" set foldenable
 set synmaxcol=120
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
@@ -186,7 +185,8 @@ set listchars=tab:\│\ ,trail:-,extends:>,precedes:<,nbsp:+
 set list
 set cursorline
 set termguicolors
-" set foldmethod=indent
+set nofoldenable
+set foldmethod=syntax
 
 if has('nvim')
         if !empty(glob('~/.vim/plugged/dracula/colors/dracula.vim'))
