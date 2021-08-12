@@ -1,0 +1,30 @@
+{
+	default_flags: shi
+	verbs: [
+		{
+			invocation: edit
+			key: F2
+			shortcut: e
+			execution: "$EDITOR +{line} {file}"
+			leave_broot: false
+		}
+		{
+			invocation: terminal
+			key: ctrl-t
+			execution: "$SHELL"
+			set_working_dir: true
+			leave_broot: false
+		}
+		# {
+		# 	key: F5
+		# 	execution: ":copy_to_panel"
+		# }
+		# {
+		# 	key: F6
+		# 	execution: ":move_to_panel"
+		# }
+	]
+	skin: {
+		default: "none none"
+	}
+}
