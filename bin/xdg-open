@@ -1,13 +1,16 @@
 #!/bin/sh
-case "${1%%:*}" in
-http | https | *.pdf)
+case "$(file -b --mime-type "$1")" in
+text/plain)
+	exec nano "$1"
+	;;
+application/pdf)
 	exec firefox "$1"
 	;;
-mailto)
-	exec mutt "$1"
-	;;
-*.mp3 | *.ogg | *.mp4 | *.mkv | *.avi | *.opus)
+audio/* | video/*)
 	exec mpv "$1"
+	;;
+image/jpeg)
+	exec feh "$1"
 	;;
 *)
 	exec /usr/bin/xdg-open "$@"
