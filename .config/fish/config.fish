@@ -173,6 +173,11 @@ if type -q gping
     abbr ping gping
 end
 
+# viddy
+if type -q viddy
+    abbr watch viddy
+end
+
 # kubernetes
 abbr k kubectl
 abbr ks 'set -gx KUBECONFIG (fd -I -t f --exact-depth 1 . ~/.kube|fzf)'
