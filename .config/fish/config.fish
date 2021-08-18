@@ -25,8 +25,8 @@ end
 # go
 if type -q go
     set -gx GOPATH ~/.local/share/go
-    set fish_user_paths ~/.local/share/go/bin $fish_user_paths
 end
+set fish_user_paths ~/.local/share/go/bin $fish_user_paths
 
 # gpg terminal agent
 if type -q gpg-agent
