@@ -154,7 +154,7 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle && pactl
 bindsym Control+mod1+l exec i3lock-fancy
 
 # run password manager
-bindsym $mod+p exec ~/bin/rofi-pass
+bindsym $mod+p exec gopass ls --flat | rofi -dmenu -p gopass | xargs --no-run-if-empty gopass show -o | head -n 1 | xdotool type --clearmodifiers --file -
 
 # dracula
 bar {
