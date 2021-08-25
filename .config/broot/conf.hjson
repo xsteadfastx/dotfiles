@@ -16,7 +16,7 @@
 			leave_broot: false
 		}
 		{
-			key: F5
+			key: F6
 			external: "rsync -ah --info=progress2 {file} {other-panel-directory}/"
 			leave_broot: false
 
