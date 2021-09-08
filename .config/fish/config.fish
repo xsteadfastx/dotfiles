@@ -189,7 +189,7 @@ abbr gc 'git commit'
 abbr gco 'git checkout'
 abbr gd 'git diff'
 
-abbr gu 'git remote update'
+abbr gu 'git remote update --prune'
 abbr gs 'git status'
 abbr gp 'git push --tags'
 
