@@ -1,0 +1,28 @@
+default_flags = "shi"
+
+[skin]
+default = "none none"
+
+[[verbs]]
+invocation = "edit"
+key = "F2"
+shortcut = "e"
+execution = "$EDITOR +{line} {file}"
+leave_broot = false
+
+[[verbs]]
+invocation = "terminal"
+key = "ctrl-t"
+execution = "$SHELL"
+set_working_dir = true
+leave_broot = false
+
+[[verbs]]
+key = "F6"
+external = "rsync -ah --info=progress2 {file} {other-panel-directory}/"
+leave_broot = false
+
+[[verbs]]
+invocation = "beet_import"
+external = "beet import {file}"
+leave_broot = false
