@@ -10,4 +10,4 @@ if command -v gopass >>/dev/null; then
 fi
 
 wait
-/usr/bin/ssh "$@"
+/usr/bin/"$(basename "$0")" "$@"
