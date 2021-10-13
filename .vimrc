@@ -402,3 +402,12 @@ augroup jinjahtml
     au FileType jinja.html let g:ale_fix_on_save=0
 augroup end
 
+" ---------------------------------------
+" GOPASS
+" ---------------------------------------
+"
+augroup gopass
+    autocmd!
+    au BufNewFile,BufRead /dev/shm/gopass.* setlocal noswapfile nobackup noundofile
+augroup end
+
