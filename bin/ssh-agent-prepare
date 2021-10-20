@@ -1,6 +1,8 @@
 #!/bin/sh
 set -e
 
+ssh-agent "$SHELL"
+
 if command -v gopass; then
 	for key in $(gopass ls -f ssh/ | grep privkey); do
 		gopass show -n "$key" | ssh-add - &
