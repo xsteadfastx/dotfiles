@@ -58,7 +58,7 @@ color sidebar_divider color8 black
 color sidebar_flagged red black
 color sidebar_new green black
 color sidebar_ordinary color245 default
-color sidebar_spoolfile color207 default
+# color sidebar_spoolfile color207 default
 color sidebar_unread color136 default
 
 # hooks
