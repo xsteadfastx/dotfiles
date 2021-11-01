@@ -89,62 +89,62 @@ Channel		alpine-lists
 ######## Account wobcom ##########
 #################################
 
-IMAPAccount	wobcom
-Host		localhost
-Port		1143
-User		wobcom\\mpreuss
-PassCmd		"gopass show -o WOBCOM/lsw"
-SSLType		None
-AuthMechs	LOGIN
+# IMAPAccount	wobcom
+# Host		localhost
+# Port		1143
+# User		wobcom\\mpreuss
+# PassCmd		"gopass show -o WOBCOM/lsw"
+# SSLType		None
+# AuthMechs	LOGIN
 
-# remote storage
-IMAPStore	wobcom-remote
-Account		wobcom
+# # remote storage
+# IMAPStore	wobcom-remote
+# Account		wobcom
 
-# local storage
-MaildirStore	wobcom-local
-Path		~/.mail/wobcom/
-Inbox		~/.mail/wobcom/INBOX
+# # local storage
+# MaildirStore	wobcom-local
+# Path		~/.mail/wobcom/
+# Inbox		~/.mail/wobcom/INBOX
 
-# INBOX channel
-Channel		wobcom-inbox
-Far		:wobcom-remote:"INBOX"
-Near		:wobcom-local:INBOX
-Create		Both
-Expunge		Both
+# # INBOX channel
+# Channel		wobcom-inbox
+# Far		:wobcom-remote:"INBOX"
+# Near		:wobcom-local:INBOX
+# Create		Both
+# Expunge		Both
 
-# sent channel
-Channel		wobcom-sent
-Far		:wobcom-remote:"Sent"
-Near		:wobcom-local:sent
-Create		Both
-Expunge		Both
+# # sent channel
+# Channel		wobcom-sent
+# Far		:wobcom-remote:"Sent"
+# Near		:wobcom-local:sent
+# Create		Both
+# Expunge		Both
 
-# trash channel
-Channel		wobcom-trash
-Far		:wobcom-remote:"Trash"
-Near		:wobcom-local:trash
-Create		Both
-Expunge		Both
+# # trash channel
+# Channel		wobcom-trash
+# Far		:wobcom-remote:"Trash"
+# Near		:wobcom-local:trash
+# Create		Both
+# Expunge		Both
 
-# drafts channel
-Channel		wobcom-drafts
-Far		:wobcom-remote:"Drafts"
-Near		:wobcom-local:drafts
-Create		Both
-Expunge		Both
+# # drafts channel
+# Channel		wobcom-drafts
+# Far		:wobcom-remote:"Drafts"
+# Near		:wobcom-local:drafts
+# Create		Both
+# Expunge		Both
 
-# drafts channel
-Channel		wobcom-all
-Far		:wobcom-remote:"All"
-Near		:wobcom-local:all
-Create		Both
-Expunge		Both
+# # drafts channel
+# Channel		wobcom-all
+# Far		:wobcom-remote:"All"
+# Near		:wobcom-local:all
+# Create		Both
+# Expunge		Both
 
-# group them
-Group 		wobcom
-Channel		wobcom-inbox
-Channel		wobcom-sent
-Channel		wobcom-trash
-Channel		wobcom-drafts
-Channel		wobcom-all
+# # group them
+# Group 		wobcom
+# Channel		wobcom-inbox
+# Channel		wobcom-sent
+# Channel		wobcom-trash
+# Channel		wobcom-drafts
+# Channel		wobcom-all

@@ -1,10 +1,6 @@
 #!/bin/sh
 set -eux
 
-davmail &
-piddavmail=$!
-trap 'kill $piddavmail' EXIT INT HUP
-
 while true; do
 	mbsync -aV || true
 	notmuch new
