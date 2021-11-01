@@ -17,7 +17,7 @@ if has('nvim')
 
         call plug#begin('~/.vim/plugged')
 
-        Plug 'dracula/vim', { 'as': 'dracula' }
+	Plug 'Mofiqul/dracula.nvim'
 
         Plug 'ConradIrwin/vim-bracketed-paste'
 
@@ -29,12 +29,7 @@ if has('nvim')
         " auto close parentheses
         Plug 'cohama/lexima.vim'
 
-        " Plug 'ervandew/supertab'
-
-        " powerline
-        Plug 'vim-airline/vim-airline'
-            let g:airline_powerline_fonts = 1
-            let g:airline#extensions#tabline#enabled = 1
+	Plug 'nvim-lualine/lualine.nvim'
 
         " nerd font in vim
         Plug 'ryanoasis/vim-devicons'
@@ -68,8 +63,8 @@ if has('nvim')
             let g:vimwiki_list = [{'path': '~/permanent/vimwiki/', 'syntax': 'markdown', 'ext': '.md', 'index': 'Home'}, {'path': '~/permanent/vimwiki-vwit/', 'syntax': 'markdown', 'ext': '.md', 'index': 'Home'}]
             let g:vimwiki_global_ext = 0
 
-        let g:ale_completion_enabled = 1
-        let g:ale_set_balloons = 1
+        let g:ale_completion_enabled = 0
+        let g:ale_set_balloons = 0
         Plug 'dense-analysis/ale'
             let g:ale_open_list = 1
             let g:ale_fix_on_save = 1
@@ -90,7 +85,7 @@ if has('nvim')
                 \ }
             let g:ale_linters= {
                 \ 'python': ['bandit', 'mypy', 'prospector', 'pydocstyle', 'pyls'],
-                \ 'go': ['gofmt', 'golangci-lint', 'gopls'],
+                \ 'go': ['gofmt', 'golangci-lint'],
                 \ 'javascript': ['eslint'],
                 \ 'sh': ['language_server', 'shellcheck']
                 \ }
@@ -99,12 +94,7 @@ if has('nvim')
 
             let g:ale_go_gofmt_executable = '/home/linuxbrew/.linuxbrew/bin/gofumpt'
             let g:ale_go_golangci_lint_executable = '/home/linuxbrew/.linuxbrew/bin/golangci-lint'
-            let g:ale_go_golangci_lint_options = '--enable-all --disable godox --fast'
-            let g:ale_go_gopls_executable = '/home/linuxbrew/.linuxbrew/bin/gopls'
-
-            let g:ale_go_gopls_init_options = {'buildFlags': ['-tags=integration,tools']}
-
-            let g:ale_go_langserver_executable = '/home/linuxbrew/.linuxbrew/bin/gopls'
+            let g:ale_go_golangci_lint_options = '--enable-all --disable godox,tagliatelle --fast'
 
             let g:ale_javascript_prettier_executable = '/home/linuxbrew/.linuxbrew/bin/prettier'
             let g:ale_javascript_eslint_executable = '/home/linuxbrew/.linuxbrew/bin/eslint'
@@ -147,9 +137,9 @@ if has('nvim')
         Plug 'mattn/webapi-vim'
 
         " fzf
-        Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-        Plug 'junegunn/fzf.vim'
-            let g:fzf_preview_window = ''
+        " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+        " Plug 'junegunn/fzf.vim'
+        "     let g:fzf_preview_window = ''
 
         " ansible
         Plug 'pearofducks/ansible-vim'
@@ -162,6 +152,23 @@ if has('nvim')
 
 	" elvish
 	Plug 'dmix/elvish.vim', { 'on_ft': ['elvish']}
+
+	" LSP
+	Plug 'neovim/nvim-lspconfig'
+	Plug 'williamboman/nvim-lsp-installer'
+	Plug 'hrsh7th/nvim-cmp'
+	Plug 'hrsh7th/cmp-nvim-lsp'
+	Plug 'hrsh7th/cmp-buffer'
+	Plug 'hrsh7th/cmp-path'
+	Plug 'hrsh7th/cmp-cmdline'
+	Plug 'hrsh7th/nvim-cmp'
+
+	" telescope
+	Plug 'nvim-lua/plenary.nvim'
+	Plug 'nvim-telescope/telescope.nvim'
+
+	" treesitter
+	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
         call plug#end()
 
@@ -189,7 +196,7 @@ set nofoldenable
 set foldmethod=syntax
 
 if has('nvim')
-        if !empty(glob('~/.vim/plugged/dracula/colors/dracula.vim'))
+        if !empty(glob('~/.vim/plugged/dracula.nvim/colors/dracula.lua'))
                 colors dracula
                 syntax on
                 highlight Comment cterm=italic gui=italic
@@ -252,17 +259,17 @@ if has('nvim')
     " circle through buffers
     nnoremap <F6> :Buffer<CR>
 
-    " fzf
-    nnoremap ; :Buffers<CR>
-    nnoremap <Leader>ff :FZF<CR>
-    nnoremap <Leader>bb :Buffers<CR>
-    nnoremap <Leader>ll :Lines<CR>
-    nnoremap <Leader>rg :Rg<CR>
+    " telescope
+    nnoremap ; <cmd>Telescope buffers<CR>
+    nnoremap <Leader>ff <cmd>Telescope find_files<CR>
+    nnoremap <Leader>bb <cmd>Telescope buffers<CR>
+    nnoremap <Leader>rg <cmd>Telescope live_grep<CR>
+    nnoremap <Leader>ll <cmd>Telescope grep_string<CR>
 
-    " ALE
-    nnoremap <Leader>ho :ALEHover<CR>
-    nnoremap <Leader>gd :ALEGoToDefinition<CR>
-    nnoremap <Leader>fr :ALEFindReferences<CR>
+    " LSP
+    nnoremap <Leader>ho <cmd>lua vim.lsp.buf.hover()<CR>
+    nnoremap <Leader>gd <cmd>lua vim.lsp.buf.definition()<CR><CR>
+    nnoremap <Leader>fr <cmd>lua vim.lsp.buf.references()<CR><CR>
 endif
 
 
@@ -411,3 +418,57 @@ augroup gopass
     au BufNewFile,BufRead /dev/shm/gopass.* setlocal noswapfile nobackup noundofile
 augroup end
 
+
+" ---------------------------------------
+" LSP
+" ---------------------------------------
+if has('nvim')
+
+set completeopt=menu,menuone,noselect
+
+lua << EOF
+
+	-- Setup lualine.
+	require'lualine'.setup()
+
+	-- Setup LSP.
+	local lsp_installer = require("nvim-lsp-installer")
+
+	lsp_installer.on_server_ready(function(server)
+		local opts = {}
+		server:setup(opts)
+	end)
+
+	-- Setup nvim-cmp.
+	local cmp = require'cmp'
+
+	cmp.setup({
+	  sources = cmp.config.sources({
+	    { name = 'nvim_lsp' },
+	  }, {
+	    { name = 'buffer' },
+	  })
+	})
+
+	-- Use buffer source for `/`.
+	cmp.setup.cmdline('/', {
+	  sources = {
+	    { name = 'buffer' }
+	  }
+	})
+
+	-- Use cmdline & path source for ':'.
+	cmp.setup.cmdline(':', {
+	  sources = cmp.config.sources({
+	    { name = 'path' }
+	  }, {
+	    { name = 'cmdline' }
+	  })
+	})
+
+	-- Setup lspconfig.
+	local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+EOF
+
+endif
