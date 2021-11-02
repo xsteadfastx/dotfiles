@@ -156,12 +156,6 @@ if has('nvim')
 	" LSP
 	Plug 'neovim/nvim-lspconfig'
 	Plug 'williamboman/nvim-lsp-installer'
-	Plug 'hrsh7th/nvim-cmp'
-	Plug 'hrsh7th/cmp-nvim-lsp'
-	Plug 'hrsh7th/cmp-buffer'
-	Plug 'hrsh7th/cmp-path'
-	Plug 'hrsh7th/cmp-cmdline'
-	Plug 'hrsh7th/nvim-cmp'
 
 	" telescope
 	Plug 'nvim-lua/plenary.nvim'
@@ -169,6 +163,18 @@ if has('nvim')
 
 	" treesitter
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+	" completions
+	Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+	Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+
+	" top bar
+	Plug 'kyazdani42/nvim-web-devicons'
+	Plug 'romgrk/barbar.nvim'
+		let bufferline = get(g:, 'bufferline', {})
+		let bufferline.clickable = v:false
+		let bufferline.closable = v:false
+		let bufferline.tabpages = v:false
 
         call plug#end()
 
@@ -268,8 +274,8 @@ if has('nvim')
 
     " LSP
     nnoremap <Leader>ho <cmd>lua vim.lsp.buf.hover()<CR>
-    nnoremap <Leader>gd <cmd>lua vim.lsp.buf.definition()<CR><CR>
-    nnoremap <Leader>fr <cmd>lua vim.lsp.buf.references()<CR><CR>
+    nnoremap <Leader>gd <cmd>Telescope lsp_definitions<CR>
+    nnoremap <Leader>fr <cmd>Telescope lsp_references<CR>
 endif
 
 
@@ -420,11 +426,11 @@ augroup end
 
 
 " ---------------------------------------
-" LSP
+" LUA NEOVIM
 " ---------------------------------------
 if has('nvim')
 
-set completeopt=menu,menuone,noselect
+" set completeopt=menu,menuone,noselect
 
 lua << EOF
 
@@ -433,41 +439,15 @@ lua << EOF
 
 	-- Setup LSP.
 	local lsp_installer = require("nvim-lsp-installer")
+	local coq = require "coq"
 
 	lsp_installer.on_server_ready(function(server)
 		local opts = {}
 		server:setup(opts)
 	end)
 
-	-- Setup nvim-cmp.
-	local cmp = require'cmp'
-
-	cmp.setup({
-	  sources = cmp.config.sources({
-	    { name = 'nvim_lsp' },
-	  }, {
-	    { name = 'buffer' },
-	  })
-	})
-
-	-- Use buffer source for `/`.
-	cmp.setup.cmdline('/', {
-	  sources = {
-	    { name = 'buffer' }
-	  }
-	})
-
-	-- Use cmdline & path source for ':'.
-	cmp.setup.cmdline(':', {
-	  sources = cmp.config.sources({
-	    { name = 'path' }
-	  }, {
-	    { name = 'cmdline' }
-	  })
-	})
-
-	-- Setup lspconfig.
-	local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+	-- Autostart COQ.
+	vim.cmd("COQnow -s")
 
 EOF
 
