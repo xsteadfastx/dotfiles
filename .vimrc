@@ -149,8 +149,13 @@ if has('nvim')
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 	" completions
-	Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
-	Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+	Plug 'neovim/nvim-lspconfig'
+	Plug 'hrsh7th/cmp-nvim-lsp'
+	Plug 'hrsh7th/cmp-buffer'
+	Plug 'hrsh7th/cmp-path'
+	Plug 'hrsh7th/cmp-cmdline'
+	Plug 'hrsh7th/cmp-emoji'
+	Plug 'hrsh7th/nvim-cmp'
 
 	" top bar
 	Plug 'kyazdani42/nvim-web-devicons'
@@ -411,7 +416,7 @@ augroup end
 " ---------------------------------------
 if has('nvim')
 
-" set completeopt=menu,menuone,noselect
+set completeopt=menu,menuone,noselect
 
 lua << EOF
 
@@ -420,15 +425,52 @@ lua << EOF
 
 	-- Setup LSP.
 	local lsp_installer = require("nvim-lsp-installer")
-	local coq = require "coq"
 
 	lsp_installer.on_server_ready(function(server)
 		local opts = {}
 		server:setup(opts)
 	end)
 
-	-- Autostart COQ.
-	vim.cmd("COQnow -s")
+	-- Setup nvim-cmp.
+	local cmp = require'cmp'
+
+	cmp.setup({
+		sources = cmp.config.sources({
+			{ name = 'nvim_lsp' },
+			{ name = 'emoji' },
+		}, {
+			{ name = 'buffer' },
+		})
+	})
+
+	-- Use buffer source for `/` (if you enabled `native_menu`, this wont work anymore).
+	cmp.setup.cmdline('/', {
+		sources = {
+			{ name = 'buffer' }
+		}
+	})
+
+	-- Use cmdline & path source for ':' (if you enabled `native_menu`, this wont work anymore).
+	cmp.setup.cmdline(':', {
+		sources = cmp.config.sources({
+			{ name = 'path' }
+		}, {
+			{ name = 'cmdline' }
+		})
+	})
+
+	-- Setup lspconfig.
+	local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+	-- Setup Neoscroll.
+	require('neoscroll').setup()
+
+	-- Setup zen-mode
+	require("zen-mode").setup {
+		plugins = {
+			twilight = { enabled = true },
+		}
+	}
 
 EOF
 
