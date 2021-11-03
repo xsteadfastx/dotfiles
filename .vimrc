@@ -15,7 +15,7 @@ filetype plugin indent on
 " ---------------------------------------
 if has('nvim')
 
-        call plug#begin('~/.vim/plugged')
+	call plug#begin('~/.vim/plugged')
 
 	Plug 'Mofiqul/dracula.nvim'
 
@@ -55,48 +55,6 @@ if has('nvim')
 	Plug 'vimwiki/vimwiki'
 		let g:vimwiki_list = [{'path': '~/permanent/vimwiki/', 'syntax': 'markdown', 'ext': '.md', 'index': 'Home'}, {'path': '~/permanent/vimwiki-vwit/', 'syntax': 'markdown', 'ext': '.md', 'index': 'Home'}]
 		let g:vimwiki_global_ext = 0
-
-	let g:ale_completion_enabled = 0
-	let g:ale_set_balloons = 0
-	Plug 'dense-analysis/ale'
-		let g:ale_set_loclist = 0
-		let g:ale_set_quickfix = 1
-		let g:ale_open_list = 1
-		let g:ale_list_window_size = 5
-		let g:ale_fix_on_save = 1
-		let g:ale_fixers = {
-		\ 'python': ['isort', 'black'],
-		\ 'go': ['gofmt', 'goimports'],
-		\ 'javascript': ['eslint'],
-		\ 'css': ['prettier'],
-		\ 'less': ['prettier'],
-		\ 'scss': ['prettier'],
-		\ 'html': ['prettier'],
-		\ 'json': ['prettier'],
-		\ 'yaml': ['prettier', 'remove_trailing_lines', 'trim_whitespace'],
-		\ 'markdown': ['prettier'],
-		\ 'fish': ['fish_indent', 'remove_trailing_lines', 'trim_whitespace'],
-		\ 'sh': ['shfmt']
-		\ }
-		let g:ale_linters= {
-		\ 'python': ['bandit', 'mypy', 'prospector', 'pydocstyle', 'pyls'],
-		\ 'go': ['gofmt', 'golangci-lint'],
-		\ 'javascript': ['eslint'],
-		\ 'sh': ['language_server', 'shellcheck']
-		\ }
-		let g:ale_python_mypy_options = '--ignore-missing-imports --follow-imports=skip --strict-optional'
-		let g:ale_python_pylint_executable = 'python -m pylint'
-
-		let g:ale_go_gofmt_executable = '/home/linuxbrew/.linuxbrew/bin/gofumpt'
-		let g:ale_go_golangci_lint_executable = '/home/linuxbrew/.linuxbrew/bin/golangci-lint'
-		let g:ale_go_golangci_lint_options = '--enable-all --disable godox,tagliatelle --fast'
-
-		let g:ale_javascript_prettier_executable = '/home/linuxbrew/.linuxbrew/bin/prettier'
-		let g:ale_javascript_eslint_executable = '/home/linuxbrew/.linuxbrew/bin/eslint'
-
-		let g:ale_sh_shfmt_executable = '/home/linuxbrew/.linuxbrew/bin/shfmt'
-		let g:ale_sh_language_server_executable = expand($HOME).'/node_modules/.bin/bash-language-server'
-		let g:ale_sh_shellcheck_executable = '/home/linuxbrew/.linuxbrew/bin/shellcheck'
 
 	" easy alignment
 	Plug 'junegunn/vim-easy-align'
@@ -172,6 +130,12 @@ if has('nvim')
 	Plug 'folke/zen-mode.nvim'
 	Plug 'folke/twilight.nvim'
 
+	" linting
+	Plug 'mfussenegger/nvim-lint'
+
+	" format
+	Plug 'lukas-reineke/format.nvim'
+
 	call plug#end()
 
 endif
@@ -211,9 +175,6 @@ endif
 set autoindent
 set smartindent
 set nowrap
-
-" automatically remove trail. whitespace at write
-"au BufWritePre <buffer> StripWhitespace
 
 " ---------------------------------------
 " KEYMAPS
@@ -417,6 +378,23 @@ augroup gopass
     au BufNewFile,BufRead /dev/shm/gopass.* setlocal noswapfile nobackup noundofile
 augroup end
 
+" ---------------------------------------
+" LINT
+" ---------------------------------------
+"
+augroup lint
+    autocmd!
+		au BufWritePost * lua require('lint').try_lint()
+augroup end
+
+" ---------------------------------------
+" FORMAT
+" ---------------------------------------
+"
+augroup format
+    autocmd!
+    au BufWritePost * FormatWrite
+	augroup end
 
 " ---------------------------------------
 " LUA NEOVIM
@@ -426,59 +404,123 @@ if has('nvim')
 set completeopt=menu,menuone,noselect
 
 lua << EOF
+-- Setup lualine.
+require "lualine".setup()
 
-	-- Setup lualine.
-	require'lualine'.setup()
+-- Setup LSP.
+local lsp_installer = require("nvim-lsp-installer")
 
-	-- Setup LSP.
-	local lsp_installer = require("nvim-lsp-installer")
+lsp_installer.on_server_ready(
+    function(server)
+        local opts = {}
+        server:setup(opts)
+    end
+)
 
-	lsp_installer.on_server_ready(function(server)
-		local opts = {}
-		server:setup(opts)
-	end)
+-- Setup nvim-cmp.
+local cmp = require "cmp"
 
-	-- Setup nvim-cmp.
-	local cmp = require'cmp'
+cmp.setup(
+    {
+        mapping = {
+            ["<CR>"] = cmp.mapping.confirm({select = true})
+        },
+        sources = cmp.config.sources(
+            {
+                {name = "nvim_lsp"},
+                {name = "emoji"}
+            },
+            {
+                {name = "buffer"}
+            }
+        )
+    }
+)
 
-	cmp.setup({
-		sources = cmp.config.sources({
-			{ name = 'nvim_lsp' },
-			{ name = 'emoji' },
-		}, {
-			{ name = 'buffer' },
-		})
-	})
+-- Use buffer source for `/` (if you enabled `native_menu`, this wont work anymore).
+cmp.setup.cmdline(
+    "/",
+    {
+        sources = {
+            {name = "buffer"}
+        }
+    }
+)
 
-	-- Use buffer source for `/` (if you enabled `native_menu`, this wont work anymore).
-	cmp.setup.cmdline('/', {
-		sources = {
-			{ name = 'buffer' }
-		}
-	})
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this wont work anymore).
+cmp.setup.cmdline(
+    ":",
+    {
+        sources = cmp.config.sources(
+            {
+                {name = "path"}
+            },
+            {
+                {name = "cmdline"}
+            }
+        )
+    }
+)
 
-	-- Use cmdline & path source for ':' (if you enabled `native_menu`, this wont work anymore).
-	cmp.setup.cmdline(':', {
-		sources = cmp.config.sources({
-			{ name = 'path' }
-		}, {
-			{ name = 'cmdline' }
-		})
-	})
+-- Setup lspconfig.
+local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-	-- Setup lspconfig.
-	local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- Setup Neoscroll.
+require("neoscroll").setup()
 
-	-- Setup Neoscroll.
-	require('neoscroll').setup()
+-- Setup zen-mode
+require("zen-mode").setup {
+    plugins = {
+        twilight = {enabled = true}
+    }
+}
 
-	-- Setup zen-mode
-	require("zen-mode").setup {
-		plugins = {
-			twilight = { enabled = true },
-		}
-	}
+-- Setup nvim-lint
+local lint = require "lint"
 
+lint.linters.golangcilint.args = {
+    "run",
+    "--enable-all",
+    "--disable",
+    "godox,tagliatelle,exhaustivestruct",
+    "--out-format",
+    "json"
+}
+
+lint.linters_by_ft = {
+    go = {"golangcilint"},
+    sh = {"shellcheck"},
+    ansible = {"ansible_lint"}
+}
+
+-- Setup format.nvim
+require("format").setup {
+    go = {
+        {
+            cmd = {"gofmt -w", "gofumpt -w"},
+            tempfile_postfix = ".tmp"
+        }
+    },
+    markdown = {
+        {cmd = {"prettier -w"}}
+    },
+    yaml = {
+        {cmd = {"prettier -w"}}
+    },
+    json = {
+        {cmd = {"prettier -w"}}
+    },
+    vim = {
+        {
+            cmd = {"npx lua-fmt -w replace"},
+            start_pattern = "^lua << EOF$",
+            end_pattern = "^EOF$"
+        }
+    },
+    sh = {
+        {cmd = {"shfmt -w"}}
+    }
+}
 EOF
 
 endif
