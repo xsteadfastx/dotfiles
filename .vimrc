@@ -19,139 +19,123 @@ if has('nvim')
 
 	Plug 'Mofiqul/dracula.nvim'
 
-        Plug 'ConradIrwin/vim-bracketed-paste'
+	Plug 'ConradIrwin/vim-bracketed-paste'
 
-        Plug 'mhinz/vim-signify'
+	Plug 'mhinz/vim-signify'
 
-        " color hex codes and color names
-        Plug 'chrisbra/Colorizer'
+	" color hex codes and color names
+	Plug 'chrisbra/Colorizer'
 
-        " auto close parentheses
-        Plug 'cohama/lexima.vim'
+	" auto close parentheses
+	Plug 'cohama/lexima.vim'
 
 	Plug 'nvim-lualine/lualine.nvim'
 
-        " nerd font in vim
-        Plug 'ryanoasis/vim-devicons'
+	" nerd font in vim
+	Plug 'ryanoasis/vim-devicons'
 
-        Plug 'junegunn/goyo.vim'
+	Plug 'lepture/vim-jinja'
 
-        Plug 'junegunn/limelight.vim'
-            let g:limelight_conceal_ctermfg = 'gray'
-            let g:limelight_conceal_ctermfg = 240
-            let g:limelight_default_coefficient = 0.7
+	Plug 'mattn/gist-vim'
+		let g:gist_post_private = 1
 
-        Plug 'lepture/vim-jinja'
+	Plug 'ntpeters/vim-better-whitespace'
 
-        Plug 'mattn/gist-vim'
-            let g:gist_post_private = 1
+	Plug 'reedes/vim-pencil'
+		let g:pencil#wrapModeDefault = 'soft'
 
-        Plug 'ntpeters/vim-better-whitespace'
+	Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+		map <C-n> :NERDTreeToggle<CR> " open nerdtree
 
-        Plug 'reedes/vim-pencil'
-            let g:pencil#wrapModeDefault = 'soft'
+	Plug 'tpope/vim-repeat'
+		silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
 
-        Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-            map <C-n> :NERDTreeToggle<CR> " open nerdtree
+	Plug 'tpope/vim-surround'
 
-        Plug 'tpope/vim-repeat'
-            silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
+	Plug 'vimwiki/vimwiki'
+		let g:vimwiki_list = [{'path': '~/permanent/vimwiki/', 'syntax': 'markdown', 'ext': '.md', 'index': 'Home'}, {'path': '~/permanent/vimwiki-vwit/', 'syntax': 'markdown', 'ext': '.md', 'index': 'Home'}]
+		let g:vimwiki_global_ext = 0
 
-        Plug 'tpope/vim-surround'
+	let g:ale_completion_enabled = 0
+	let g:ale_set_balloons = 0
+	Plug 'dense-analysis/ale'
+		let g:ale_set_loclist = 0
+		let g:ale_set_quickfix = 1
+		let g:ale_open_list = 1
+		let g:ale_list_window_size = 5
+		let g:ale_fix_on_save = 1
+		let g:ale_fixers = {
+		\ 'python': ['isort', 'black'],
+		\ 'go': ['gofmt', 'goimports'],
+		\ 'javascript': ['eslint'],
+		\ 'css': ['prettier'],
+		\ 'less': ['prettier'],
+		\ 'scss': ['prettier'],
+		\ 'html': ['prettier'],
+		\ 'json': ['prettier'],
+		\ 'yaml': ['prettier', 'remove_trailing_lines', 'trim_whitespace'],
+		\ 'markdown': ['prettier'],
+		\ 'fish': ['fish_indent', 'remove_trailing_lines', 'trim_whitespace'],
+		\ 'sh': ['shfmt']
+		\ }
+		let g:ale_linters= {
+		\ 'python': ['bandit', 'mypy', 'prospector', 'pydocstyle', 'pyls'],
+		\ 'go': ['gofmt', 'golangci-lint'],
+		\ 'javascript': ['eslint'],
+		\ 'sh': ['language_server', 'shellcheck']
+		\ }
+		let g:ale_python_mypy_options = '--ignore-missing-imports --follow-imports=skip --strict-optional'
+		let g:ale_python_pylint_executable = 'python -m pylint'
 
-        Plug 'vimwiki/vimwiki'
-            let g:vimwiki_list = [{'path': '~/permanent/vimwiki/', 'syntax': 'markdown', 'ext': '.md', 'index': 'Home'}, {'path': '~/permanent/vimwiki-vwit/', 'syntax': 'markdown', 'ext': '.md', 'index': 'Home'}]
-            let g:vimwiki_global_ext = 0
+		let g:ale_go_gofmt_executable = '/home/linuxbrew/.linuxbrew/bin/gofumpt'
+		let g:ale_go_golangci_lint_executable = '/home/linuxbrew/.linuxbrew/bin/golangci-lint'
+		let g:ale_go_golangci_lint_options = '--enable-all --disable godox,tagliatelle --fast'
 
-        let g:ale_completion_enabled = 0
-        let g:ale_set_balloons = 0
-        Plug 'dense-analysis/ale'
-            let g:ale_open_list = 1
-            let g:ale_fix_on_save = 1
-	    let g:ale_list_window_size = 5
-            let g:ale_fixers = {
-                \ 'python': ['isort', 'black'],
-                \ 'go': ['gofmt', 'goimports'],
-                \ 'javascript': ['eslint'],
-                \ 'css': ['prettier'],
-                \ 'less': ['prettier'],
-                \ 'scss': ['prettier'],
-                \ 'html': ['prettier'],
-                \ 'json': ['prettier'],
-                \ 'yaml': ['prettier', 'remove_trailing_lines', 'trim_whitespace'],
-                \ 'markdown': ['prettier'],
-                \ 'fish': ['fish_indent', 'remove_trailing_lines', 'trim_whitespace'],
-                \ 'sh': ['shfmt']
-                \ }
-            let g:ale_linters= {
-                \ 'python': ['bandit', 'mypy', 'prospector', 'pydocstyle', 'pyls'],
-                \ 'go': ['gofmt', 'golangci-lint'],
-                \ 'javascript': ['eslint'],
-                \ 'sh': ['language_server', 'shellcheck']
-                \ }
-            let g:ale_python_mypy_options = '--ignore-missing-imports --follow-imports=skip --strict-optional'
-            let g:ale_python_pylint_executable = 'python -m pylint'
+		let g:ale_javascript_prettier_executable = '/home/linuxbrew/.linuxbrew/bin/prettier'
+		let g:ale_javascript_eslint_executable = '/home/linuxbrew/.linuxbrew/bin/eslint'
 
-            let g:ale_go_gofmt_executable = '/home/linuxbrew/.linuxbrew/bin/gofumpt'
-            let g:ale_go_golangci_lint_executable = '/home/linuxbrew/.linuxbrew/bin/golangci-lint'
-            let g:ale_go_golangci_lint_options = '--enable-all --disable godox,tagliatelle --fast'
+		let g:ale_sh_shfmt_executable = '/home/linuxbrew/.linuxbrew/bin/shfmt'
+		let g:ale_sh_language_server_executable = expand($HOME).'/node_modules/.bin/bash-language-server'
+		let g:ale_sh_shellcheck_executable = '/home/linuxbrew/.linuxbrew/bin/shellcheck'
 
-            let g:ale_javascript_prettier_executable = '/home/linuxbrew/.linuxbrew/bin/prettier'
-            let g:ale_javascript_eslint_executable = '/home/linuxbrew/.linuxbrew/bin/eslint'
+	" easy alignment
+	Plug 'junegunn/vim-easy-align'
+		xmap ga <Plug>(EasyAlign)
+		nmap ga <Plug>(EasyAlign)
 
-            let g:ale_sh_shfmt_executable = '/home/linuxbrew/.linuxbrew/bin/shfmt'
-            let g:ale_sh_language_server_executable = expand($HOME).'/node_modules/.bin/bash-language-server'
-            let g:ale_sh_shellcheck_executable = '/home/linuxbrew/.linuxbrew/bin/shellcheck'
+	" a collection of language packs
+	Plug 'sheerun/vim-polyglot'
 
-        " easy alignment
-        Plug 'junegunn/vim-easy-align'
-            xmap ga <Plug>(EasyAlign)
-            nmap ga <Plug>(EasyAlign)
+	" unicode handling
+	Plug 'chrisbra/unicode.vim'
 
-        " a collection of language packs
-        Plug 'sheerun/vim-polyglot', { 'tag': 'v4.1.2' }
+	" CSV
+	Plug 'chrisbra/csv.vim'
 
-        " unicode handling
-        Plug 'chrisbra/unicode.vim'
+	" visual ident levels
+	Plug 'Yggdroot/indentLine'
+		let g:indentLine_char = '┆'
 
-        " CSV
-        Plug 'chrisbra/csv.vim'
+	" git
+	Plug 'tpope/vim-fugitive'
 
-        " LaTeX
-        "Plug 'lervag/vimtex'
+	" comments
+	Plug 'tpope/vim-commentary'
 
-        " visual ident levels
-        Plug 'Yggdroot/indentLine'
-            let g:indentLine_char = '┆'
+	" dir settings
+	Plug 'chazy/dirsettings'
 
-        " git
-        Plug 'tpope/vim-fugitive'
+	" talk to apis
+	Plug 'mattn/webapi-vim'
 
-        " comments
-        Plug 'tpope/vim-commentary'
+	" ansible
+	Plug 'pearofducks/ansible-vim'
 
-        " dir settings
-        Plug 'chazy/dirsettings'
-
-        " talk to apis
-        Plug 'mattn/webapi-vim'
-
-        " fzf
-        " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-        " Plug 'junegunn/fzf.vim'
-        "     let g:fzf_preview_window = ''
-
-        " ansible
-        Plug 'pearofducks/ansible-vim'
-
-        " ascii tables
-        Plug 'dhruvasagar/vim-table-mode'
+	" ascii tables
+	Plug 'dhruvasagar/vim-table-mode'
 
 	" gemini
 	Plug 'https://git.sr.ht/~torresjrjr/gemini.vim'
-
-	" elvish
-	Plug 'dmix/elvish.vim', { 'on_ft': ['elvish']}
 
 	" LSP
 	Plug 'neovim/nvim-lspconfig'
@@ -359,9 +343,6 @@ augroup pencil
                              " \ | setl thesaurus+=~/.vim/thesaurus/openthesaurus.txt
                              \ | setl tabstop=4 expandtab shiftwidth=4 softtabstop=4
                              \ | setl syntax=off
-    au User GoyoEnter Limelight
-    au User GoyoLeave Limelight!
-    au User GoyoLeave nested set background=dark
 augroup end
 
 " ---------------------------------------
