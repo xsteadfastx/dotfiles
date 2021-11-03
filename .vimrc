@@ -165,7 +165,14 @@ if has('nvim')
 		let bufferline.closable = v:false
 		let bufferline.tabpages = v:false
 
-        call plug#end()
+	" scrolling
+	Plug 'karb94/neoscroll.nvim'
+
+	" distraction free writing
+	Plug 'folke/zen-mode.nvim'
+	Plug 'folke/twilight.nvim'
+
+	call plug#end()
 
 endif
 
