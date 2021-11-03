@@ -228,6 +228,7 @@ if has('nvim')
     nnoremap <Leader>bb <cmd>Telescope buffers<CR>
     nnoremap <Leader>rg <cmd>Telescope live_grep<CR>
     nnoremap <Leader>ll <cmd>Telescope current_buffer_fuzzy_find<CR>
+    nnoremap <Leader>le <cmd>Telescope lsp_workspace_diagnostics<CR>
 
     " LSP
     nnoremap <Leader>ho <cmd>lua vim.lsp.buf.hover()<CR>
