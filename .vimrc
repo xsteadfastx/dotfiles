@@ -326,7 +326,6 @@ augroup wiki
     autocmd!
     au FileType vimwiki call pencil#init()
                              \ | setl tabstop=4 expandtab shiftwidth=4 softtabstop=4
-                             \ | let g:ale_open_list=0
 augroup end
 
 " ---------------------------------------
@@ -414,6 +413,9 @@ local lsp_installer = require("nvim-lsp-installer")
 lsp_installer.on_server_ready(
     function(server)
         local opts = {}
+        if server.name == "gopls" then
+            opts.init_options = {buildFlags = {"-tags=integration,tools"}}
+        end
         server:setup(opts)
     end
 )
