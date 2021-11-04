@@ -483,7 +483,7 @@ lint.linters.golangcilint.args = {
     "run",
     "--enable-all",
     "--disable",
-    "godox,tagliatelle,exhaustivestruct",
+    "godox,tagliatelle,exhaustivestruct,varnamelen",
     "--out-format",
     "json"
 }
