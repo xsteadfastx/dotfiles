@@ -278,7 +278,7 @@ augroup end
 " ---------------------------------------
 augroup go
     autocmd!
-    au FileType go setlocal noexpandtab tabstop=8 softtabstop=8
+    au FileType go setlocal noexpandtab tabstop=8 shiftwidth=8 softtabstop=8
 augroup end
 
 
