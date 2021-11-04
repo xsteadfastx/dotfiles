@@ -498,7 +498,7 @@ lint.linters_by_ft = {
 require("format").setup {
     go = {
         {
-            cmd = {"gofmt -w", "gofumpt -w"},
+            cmd = {"goimports -w", "gofumpt -w"},
             tempfile_postfix = ".tmp"
         }
     },
