@@ -47,85 +47,48 @@ if fn.empty(fn.glob(install_path)) > 0 then
     fn.system({"git", "clone", "--depth=1", "https://github.com/savq/paq-nvim.git", install_path})
 end
 
-local paq = require("paq-nvim").paq
-
-paq {"Mofiqul/dracula.nvim"}
-paq {"ConradIrwin/vim-bracketed-paste"}
-paq {"chrisbra/Colorizer"} -- color hex codes and color names
-paq {"cohama/lexima.vim"} -- auto close parentheses
-paq {"nvim-lualine/lualine.nvim"}
-paq {"ryanoasis/vim-devicons"} -- nerd fonts in vim
-
-paq {"mattn/gist-vim"}
-g["gist_post_private"] = 1
-
-paq {"ntpeters/vim-better-whitespace"}
-
-paq {"reedes/vim-pencil"}
-g["pencil#wrapModeDefault"] = "soft"
-
-paq {"tpope/vim-surround"}
-
-paq {"vimwiki/vimwiki"}
-g["vimwiki_list"] = {{path = "~/permanent/vimwiki/", syntax = "markdown", ext = ".md", index = "Home"}}
-g["vimwiki_global_ext"] = 0
-
-paq {"sheerun/vim-polyglot"}
-paq {"chrisbra/unicode.vim"}
-paq {"chrisbra/csv.vim"}
-
-paq {"lukas-reineke/indent-blankline.nvim"}
-require("indent_blankline").setup {
-    show_end_of_file = true
+require("paq") {
+    "savq/paq-nvim",
+    "Mofiqul/dracula.nvim",
+    "ConradIrwin/vim-bracketed-paste",
+    "chrisbra/Colorizer", -- color hex codes and color names
+    "cohama/lexima.vim", -- auto close parentheses
+    "nvim-lualine/lualine.nvim",
+    "ryanoasis/vim-devicons", -- nerd fonts in vim
+    "mattn/gist-vim",
+    "ntpeters/vim-better-whitespace",
+    "reedes/vim-pencil",
+    "tpope/vim-surround",
+    "vimwiki/vimwiki",
+    "sheerun/vim-polyglot",
+    "chrisbra/unicode.vim",
+    "chrisbra/csv.vim",
+    "lukas-reineke/indent-blankline.nvim",
+    "nvim-lua/plenary.nvim", -- needed for telescope and gitsigns
+    "nvim-telescope/telescope.nvim",
+    "lewis6991/gitsigns.nvim",
+    "tpope/vim-commentary",
+    "chazy/dirsettings",
+    "mattn/webapi-vim", -- talk to apis
+    "dhruvasagar/vim-table-mode",
+    "neovim/nvim-lspconfig",
+    "williamboman/nvim-lsp-installer",
+    {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"},
+    "neovim/nvim-lspconfig",
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
+    "hrsh7th/cmp-cmdline",
+    "hrsh7th/cmp-emoji",
+    "hrsh7th/nvim-cmp",
+    "kyazdani42/nvim-web-devicons",
+    "romgrk/barbar.nvim",
+    "folke/zen-mode.nvim",
+    "folke/twilight.nvim",
+    "mfussenegger/nvim-lint",
+    "lukas-reineke/format.nvim",
+    "folke/trouble.nvim"
 }
-
--- git indicators
-paq {"lewis6991/gitsigns.nvim"}
-require("gitsigns").setup()
-
-paq {"tpope/vim-commentary"}
-paq {"chazy/dirsettings"}
-paq {"mattn/webapi-vim"} -- talk to apis
-paq {"dhruvasagar/vim-table-mode"}
-
--- lsp
-paq {"neovim/nvim-lspconfig"}
-paq {"williamboman/nvim-lsp-installer"}
-
--- telescope
-paq {"nvim-lua/plenary.nvim"}
-paq {"nvim-telescope/telescope.nvim"}
-
--- treesitter
-paq {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
-
--- completions
-paq {"neovim/nvim-lspconfig"}
-paq {"hrsh7th/cmp-nvim-lsp"}
-paq {"hrsh7th/cmp-buffer"}
-paq {"hrsh7th/cmp-path"}
-paq {"hrsh7th/cmp-cmdline"}
-paq {"hrsh7th/cmp-emoji"}
-paq {"hrsh7th/nvim-cmp"}
-
--- topbar
-paq {"kyazdani42/nvim-web-devicons"}
-paq {"romgrk/barbar.nvim"}
-g.bufferline = {
-    clickable = false,
-    closable = false,
-    tabpages = false
-}
-
--- distration free writing
-paq {"folke/zen-mode.nvim"}
-paq {"folke/twilight.nvim"}
-
--- linting
-paq {"mfussenegger/nvim-lint"}
-
--- format
-paq {"lukas-reineke/format.nvim"}
 
 --
 -- UI
@@ -275,6 +238,9 @@ nvim_create_augroups(
 --
 -- VIMWIKI
 --
+g["vimwiki_list"] = {{path = "~/permanent/vimwiki/", syntax = "markdown", ext = ".md", index = "Home"}}
+g["vimwiki_global_ext"] = 0
+
 nvim_create_augroups(
     {
         wiki = {
@@ -447,4 +413,44 @@ require("zen-mode").setup {
     plugins = {
         twilight = {enabled = true}
     }
+}
+
+--
+-- GIST
+--
+g["gist_post_private"] = 1
+
+--
+-- PENCIL
+--
+g["pencil#wrapModeDefault"] = "soft"
+
+---
+-- indent-blankline
+--
+require("indent_blankline").setup {
+    show_end_of_file = true
+}
+
+--
+-- GITSIGNS
+--
+require("gitsigns").setup()
+
+--
+-- TOPBAR
+--
+g.bufferline = {
+    clickable = false,
+    closable = false,
+    tabpages = false
+}
+
+--
+-- TROUBLE
+--
+--
+require("trouble").setup {
+    auto_open = true,
+    auto_close = true
 }
