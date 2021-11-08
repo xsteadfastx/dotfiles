@@ -1,6 +1,4 @@
---
--- HELPERS
---
+-- HELPERS --------------------------------------
 local cmd = vim.cmd -- to execute vim commands e.g. cmd('pwd')
 local fn = vim.fn -- to call vim functions e.g. fn.bufnr()
 local g = vim.g -- a table to access global variables
@@ -30,16 +28,11 @@ local function nvim_create_augroups(definitions)
     end
 end
 
----
--- OPTIONS
---
-opt.clipboard = "unnamedplus"
+-- OPTIONS --------------------------------------
+cmd "set clipboard+=unnamedplus"
 opt.completeopt = "menu,menuone,noselect"
 
---
--- PLUGINS
---
-
+-- PLUGINS --------------------------------------
 -- bootstrapping paq
 local install_path = fn.stdpath("data") .. "/site/pack/paqs/start/paq-nvim"
 
@@ -90,9 +83,7 @@ require("paq") {
     "folke/trouble.nvim"
 }
 
---
--- UI
---
+-- UI -------------------------------------------
 opt.number = true
 opt.relativenumber = true
 opt.backspace = "2"
@@ -114,16 +105,12 @@ opt.foldmethod = "syntax"
 cmd "colorscheme dracula"
 cmd "highlight Comment cterm=italic gui=italic"
 
---
--- TEXTFORMAT
---
+-- TEXTFORMAT -----------------------------------
 opt.autoindent = true
 opt.smartindent = true
 opt.wrap = false
 
---
--- KEYMAPS
---
+-- KEYMAPS --------------------------------------
 g.mapleader = ","
 g.maplocalleader = "\\"
 
@@ -162,9 +149,7 @@ map("n", "<Leader>rg", "<cmd>Telescope live_grep<CR>")
 map("n", "<Leader>ll", "<cmd>Telescope current_buffer_fuzzy_find<CR>")
 map("n", "<Leader>le", "<cmd>Telescope lsp_workspace_diagnostics<CR>")
 
---
--- PYTHON
---
+-- PYTHON ---------------------------------------
 nvim_create_augroups(
     {
         python = {
@@ -174,9 +159,7 @@ nvim_create_augroups(
     }
 )
 
---
--- HTML
---
+-- HTML -----------------------------------------
 nvim_create_augroups(
     {
         html = {
@@ -186,9 +169,7 @@ nvim_create_augroups(
     }
 )
 
---
--- CSS
---
+-- CSS ------------------------------------------
 nvim_create_augroups(
     {
         css = {
@@ -199,19 +180,13 @@ nvim_create_augroups(
     }
 )
 
---
--- JAVASCRIPT
---
+-- JAVASCRIPT -----------------------------------
 nvim_create_augroups({javascript = {{"FileType", "javascript", "setl tabstop=2 expandtab shiftwidth=2 softtabstop=2"}}})
 
---
--- GOLANG
---
+-- GOLANG ---------------------------------------
 nvim_create_augroups({go = {{"FileType", "go", "setlocal noexpandtab tabstop=8 shiftwidth=8 softtabstop=8"}}})
 
---
--- YAML
---
+-- YAML -----------------------------------------
 nvim_create_augroups(
     {
         yaml = {
@@ -221,9 +196,7 @@ nvim_create_augroups(
     }
 )
 
---
--- MARKDOWN / RST
---
+-- MARKDOWN / RST -------------------------------
 nvim_create_augroups(
     {
         pencil = {
@@ -235,9 +208,7 @@ nvim_create_augroups(
     }
 )
 
---
--- VIMWIKI
---
+-- VIMWIKI --------------------------------------
 g["vimwiki_list"] = {{path = "~/permanent/vimwiki/", syntax = "markdown", ext = ".md", index = "Home"}}
 g["vimwiki_global_ext"] = 0
 
@@ -250,9 +221,7 @@ nvim_create_augroups(
     }
 )
 
---
--- LATEX
---
+-- LATEX ----------------------------------------
 nvim_create_augroups(
     {
         tex = {
@@ -262,26 +231,18 @@ nvim_create_augroups(
     }
 )
 
---
--- JSON
---
+-- JSON -----------------------------------------
 nvim_create_augroups({json = {{"FileType", "json", "setl tabstop=2 expandtab shiftwidth=2 softtabstop=2"}}})
 
---
--- LEKTOR
---
+-- LEKTOR ---------------------------------------
 nvim_create_augroups({lektor = {{"BufRead,BufNewFile", "*.lr", "set filetype=markdown"}}})
 
---
--- GOPASS
---
+-- GOPASS ---------------------------------------
 nvim_create_augroups(
     {gopass = {{"BufNewFile,BufRead", "/dev/shm/gopass.*", "setlocal noswapfile nobackup noundofile"}}}
 )
 
---
--- LINT
---
+-- LINT -----------------------------------------
 nvim_create_augroups({lint = {{"BufWritePost", "*", "lua require('lint').try_lint()"}}})
 
 local lint = require "lint"
@@ -299,9 +260,7 @@ lint.linters_by_ft = {
     ansible = {"ansible_lint"}
 }
 
---
--- FORMAT
---
+-- FORMAT ---------------------------------------
 nvim_create_augroups({format = {{"BufWritePost", "*", "FormatWrite"}}})
 
 require("format").setup {
@@ -335,18 +294,14 @@ require("format").setup {
     }
 }
 
---
--- LUALINE
---
+-- LUALINE --------------------------------------
 require("lualine").setup {
     options = {
         theme = "dracula-nvim"
     }
 }
 
---
--- LSP
---
+-- LSP ------------------------------------------
 local lsp_installer = require("nvim-lsp-installer")
 
 lsp_installer.on_server_ready(
@@ -359,9 +314,7 @@ lsp_installer.on_server_ready(
     end
 )
 
---
--- COMPLETIONS
---
+-- COMPLETIONS ----------------------------------
 local cmp = require "cmp"
 cmp.setup(
     {
@@ -406,50 +359,35 @@ cmp.setup.cmdline(
 -- lspconfig
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
---
--- ZENMODE
---
+-- ZENMODE --------------------------------------
 require("zen-mode").setup {
     plugins = {
         twilight = {enabled = true}
     }
 }
 
---
--- GIST
---
+-- GIST -----------------------------------------
 g["gist_post_private"] = 1
 
---
--- PENCIL
---
+-- PENCIL ---------------------------------------
 g["pencil#wrapModeDefault"] = "soft"
 
----
--- indent-blankline
---
+-- IDENT_BLANKLINE -----------------------------
 require("indent_blankline").setup {
     show_end_of_file = true
 }
 
---
--- GITSIGNS
---
+-- GITSIGNS -------------------------------------
 require("gitsigns").setup()
 
---
--- TOPBAR
---
+-- TOPBAR ---------------------------------------
 g.bufferline = {
     clickable = false,
     closable = false,
     tabpages = false
 }
 
---
--- TROUBLE
---
---
+-- TROUBLE --------------------------------------
 require("trouble").setup {
     auto_open = true,
     auto_close = true
