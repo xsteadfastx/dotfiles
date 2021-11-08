@@ -51,7 +51,6 @@ local paq = require("paq-nvim").paq
 
 paq {"Mofiqul/dracula.nvim"}
 paq {"ConradIrwin/vim-bracketed-paste"}
-paq {"mhinz/vim-signify"}
 paq {"chrisbra/Colorizer"} -- color hex codes and color names
 paq {"cohama/lexima.vim"} -- auto close parentheses
 paq {"nvim-lualine/lualine.nvim"}
