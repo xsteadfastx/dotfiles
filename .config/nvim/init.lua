@@ -98,7 +98,7 @@ opt.listchars:append({precedes = "<"})
 
 opt.background = "dark"
 opt.list = true
-opt.cursorline = true
+-- opt.cursorline = true -- mark current line
 opt.termguicolors = true
 opt.foldenable = false
 opt.foldmethod = "syntax"
