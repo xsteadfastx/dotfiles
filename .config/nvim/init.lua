@@ -29,8 +29,8 @@ local function nvim_create_augroups(definitions)
 end
 
 -- OPTIONS --------------------------------------
-cmd "set clipboard+=unnamedplus"
-opt.completeopt = "menu,menuone,noselect"
+cmd "set clipboard+=unnamedplus" -- needed for neovim copy paste
+opt.completeopt = "menu,menuone,noselect" -- needed for completion
 
 -- PLUGINS --------------------------------------
 -- bootstrapping paq
@@ -40,6 +40,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
     fn.system({"git", "clone", "--depth=1", "https://github.com/savq/paq-nvim.git", install_path})
 end
 
+-- all plugins go here
 require("paq") {
     "savq/paq-nvim",
     "Mofiqul/dracula.nvim",
@@ -84,23 +85,25 @@ require("paq") {
 }
 
 -- UI -------------------------------------------
-opt.number = true
-opt.relativenumber = true
+opt.number = true -- numbers on the side
+opt.relativenumber = true -- ralative line numbers
 opt.backspace = "2"
 opt.laststatus = 2
 opt.synmaxcol = 120
 
--- opt.listchars:append({eol = "↵"})
+-- marks for file characters in the document
+opt.listchars:append({eol = "↴"})
 opt.listchars:append({trail = "-"})
 opt.listchars:append({nbsp = "+"})
 opt.listchars:append({extends = ">"})
 opt.listchars:append({precedes = "<"})
+opt.listchars:append({space = "⋅"})
 
 opt.background = "dark"
-opt.list = true
--- opt.cursorline = true -- mark current line
-opt.termguicolors = true
-opt.foldenable = false
+opt.list = true -- show some hidden characters
+opt.cursorline = true -- mark current line
+opt.termguicolors = true -- true color support
+opt.foldenable = false -- disable initional folding
 opt.foldmethod = "syntax"
 cmd "colorscheme dracula"
 cmd "highlight Comment cterm=italic gui=italic"
@@ -372,9 +375,12 @@ g["gist_post_private"] = 1
 -- PENCIL ---------------------------------------
 g["pencil#wrapModeDefault"] = "soft"
 
--- IDENT_BLANKLINE -----------------------------
+-- INDENT_BLANKLINE -----------------------------
 require("indent_blankline").setup {
-    show_end_of_file = true
+    show_end_of_file = true,
+    space_char_blankline = " ",
+    show_current_context = true,
+    show_current_context_start = true
 }
 
 -- GITSIGNS -------------------------------------
