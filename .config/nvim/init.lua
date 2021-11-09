@@ -262,6 +262,8 @@ require("packer").startup(
                 end
             }
 
+            use "Xuyuanp/scrollbar.nvim"
+
             if packer_bootstrap then
                 require("packer").sync()
             end
@@ -456,4 +458,21 @@ g.bufferline = {
     clickable = false,
     closable = false,
     tabpages = false
+}
+
+-- SCROLLBAR ------------------------------------
+nvim_create_augroups(
+    {
+        scrollbar = {
+            {"CursorMoved,VimResized,QuitPre", "*", "silent! lua require('scrollbar').show()"},
+            {"WinEnter,FocusGained", "*", "silent! lua require('scrollbar').show()"},
+            {"WinLeave,BufLeave,BufWinLeave,FocusLost", "*", "silent! lua require('scrollbar').clear()"}
+        }
+    }
+)
+
+g.scrollbar_shape = {
+    head = "█",
+    body = "█",
+    tail = "█"
 }
