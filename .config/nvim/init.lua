@@ -33,56 +33,249 @@ cmd "set clipboard+=unnamedplus" -- needed for neovim copy paste
 opt.completeopt = "menu,menuone,noselect" -- needed for completion
 
 -- PLUGINS --------------------------------------
--- bootstrapping paq
-local install_path = fn.stdpath("data") .. "/site/pack/paqs/start/paq-nvim"
-
+local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({"git", "clone", "--depth=1", "https://github.com/savq/paq-nvim.git", install_path})
+    packer_bootstrap =
+        fn.system({"git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path})
 end
 
--- all plugins go here
-require("paq") {
-    "savq/paq-nvim",
-    "Mofiqul/dracula.nvim",
-    "ConradIrwin/vim-bracketed-paste",
-    "chrisbra/Colorizer", -- color hex codes and color names
-    "cohama/lexima.vim", -- auto close parentheses
-    "nvim-lualine/lualine.nvim",
-    "ryanoasis/vim-devicons", -- nerd fonts in vim
-    "mattn/gist-vim",
-    "ntpeters/vim-better-whitespace",
-    "reedes/vim-pencil",
-    "tpope/vim-surround",
-    "vimwiki/vimwiki",
-    "sheerun/vim-polyglot",
-    "chrisbra/unicode.vim",
-    "chrisbra/csv.vim",
-    "lukas-reineke/indent-blankline.nvim",
-    "nvim-lua/plenary.nvim", -- needed for telescope and gitsigns
-    "nvim-telescope/telescope.nvim",
-    "lewis6991/gitsigns.nvim",
-    "tpope/vim-commentary",
-    "chazy/dirsettings",
-    "mattn/webapi-vim", -- talk to apis
-    "dhruvasagar/vim-table-mode",
-    "neovim/nvim-lspconfig",
-    "williamboman/nvim-lsp-installer",
-    {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"},
-    "neovim/nvim-lspconfig",
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-path",
-    "hrsh7th/cmp-cmdline",
-    "hrsh7th/cmp-emoji",
-    "hrsh7th/nvim-cmp",
-    "kyazdani42/nvim-web-devicons",
-    "romgrk/barbar.nvim",
-    "folke/zen-mode.nvim",
-    "folke/twilight.nvim",
-    "mfussenegger/nvim-lint",
-    "lukas-reineke/format.nvim",
-    "folke/trouble.nvim"
-}
+require("packer").startup(
+    {
+        function(use)
+            use "savq/paq-nvim"
+            use "Mofiqul/dracula.nvim"
+            use "ConradIrwin/vim-bracketed-paste"
+            use "chrisbra/Colorizer" -- color hex codes and color names
+            use "cohama/lexima.vim" -- auto close parentheses
+
+            use {
+                "nvim-lualine/lualine.nvim",
+                config = function()
+                    require("lualine").setup {
+                        options = {
+                            theme = "dracula-nvim"
+                        }
+                    }
+                end
+            }
+
+            use "mattn/gist-vim"
+            use "ntpeters/vim-better-whitespace"
+            use "reedes/vim-pencil"
+            use "tpope/vim-surround"
+            use "vimwiki/vimwiki"
+            use "sheerun/vim-polyglot"
+            use "chrisbra/unicode.vim"
+            use "chrisbra/csv.vim"
+
+            use {
+                "lukas-reineke/indent-blankline.nvim",
+                config = function()
+                    require("indent_blankline").setup {
+                        show_end_of_file = true,
+                        space_char_blankline = " ",
+                        show_current_context = true,
+                        show_current_context_start = true
+                    }
+                end
+            }
+
+            use {
+                "nvim-telescope/telescope.nvim",
+                requires = {"nvim-lua/plenary.nvim"}
+            }
+
+            use {
+                "lewis6991/gitsigns.nvim",
+                config = function()
+                    require("gitsigns").setup()
+                end,
+                requires = {"nvim-lua/plenary.nvim"}
+            }
+
+            use "tpope/vim-commentary"
+            use "chazy/dirsettings"
+            use "mattn/webapi-vim" -- talk to apis
+            use "dhruvasagar/vim-table-mode"
+            use "neovim/nvim-lspconfig"
+
+            use {
+                "williamboman/nvim-lsp-installer",
+                config = function()
+                    local lsp_installer = require("nvim-lsp-installer")
+
+                    lsp_installer.on_server_ready(
+                        function(server)
+                            local opts = {}
+                            if server.name == "gopls" then
+                                opts.init_options = {buildFlags = {"-tags=integration,tools"}}
+                            end
+                            server:setup(opts)
+                        end
+                    )
+                end
+            }
+
+            use {
+                "nvim-treesitter/nvim-treesitter",
+                run = ":TSUpdate",
+                config = function()
+                    require("nvim-treesitter.configs").setup {
+                        ensure_installed = "maintained",
+                        highlight = {enable = true}
+                    }
+                end
+            }
+
+            use {
+                "hrsh7th/nvim-cmp",
+                requires = {
+                    {"neovim/nvim-lspconfig"},
+                    {"hrsh7th/cmp-nvim-lsp"},
+                    {"hrsh7th/cmp-buffer"},
+                    {"hrsh7th/cmp-path"},
+                    {"hrsh7th/cmp-cmdline"}
+                },
+                config = function()
+                    local cmp = require "cmp"
+                    cmp.setup(
+                        {
+                            mapping = {
+                                ["<CR>"] = cmp.mapping.confirm({select = true})
+                            },
+                            sources = cmp.config.sources(
+                                {
+                                    {name = "nvim_lsp"},
+                                    {name = "emoji"}
+                                },
+                                {
+                                    {name = "buffer"}
+                                }
+                            )
+                        }
+                    )
+                    -- Use buffer source for `/` (if you enabled `native_menu`, this wont work anymore).
+                    cmp.setup.cmdline(
+                        "/",
+                        {
+                            sources = {
+                                {name = "buffer"}
+                            }
+                        }
+                    )
+                    -- Use cmdline & path source for ':' (if you enabled `native_menu`, this wont work anymore).
+                    cmp.setup.cmdline(
+                        ":",
+                        {
+                            sources = cmp.config.sources(
+                                {
+                                    {name = "path"}
+                                },
+                                {
+                                    {name = "cmdline"}
+                                }
+                            )
+                        }
+                    )
+
+                    -- lspconfig
+                    local capabilities =
+                        require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+                end
+            }
+
+            use {"romgrk/barbar.nvim", requires = {"kyazdani42/nvim-web-devicons"}}
+
+            use {
+                "folke/zen-mode.nvim",
+                requires = {"folke/twilight.nvim"},
+                config = function()
+                    require("zen-mode").setup {
+                        plugins = {
+                            twilight = {enabled = true}
+                        }
+                    }
+                end
+            }
+
+            use {
+                "mfussenegger/nvim-lint",
+                config = function()
+                    local lint = require "lint"
+                    lint.linters.golangcilint.args = {
+                        "run",
+                        "--enable-all",
+                        "--disable",
+                        "godox,tagliatelle,exhaustivestruct,varnamelen",
+                        "--out-format",
+                        "json"
+                    }
+                    lint.linters_by_ft = {
+                        go = {"golangcilint"},
+                        sh = {"shellcheck"},
+                        ansible = {"ansible_lint"}
+                    }
+                end
+            }
+
+            use {
+                "lukas-reineke/format.nvim",
+                config = function()
+                    require("format").setup {
+                        go = {
+                            {
+                                cmd = {"goimports -w", "gofumpt -w"},
+                                tempfile_postfix = ".tmp"
+                            }
+                        },
+                        markdown = {
+                            {cmd = {"prettier -w"}}
+                        },
+                        yaml = {
+                            {cmd = {"prettier -w"}}
+                        },
+                        json = {
+                            {cmd = {"prettier -w"}}
+                        },
+                        vim = {
+                            {
+                                cmd = {"npx lua-fmt -w replace"},
+                                start_pattern = "^lua << EOF$",
+                                end_pattern = "^EOF$"
+                            }
+                        },
+                        lua = {
+                            {cmd = {"npx lua-fmt -w replace"}}
+                        },
+                        sh = {
+                            {cmd = {"shfmt -w"}}
+                        }
+                    }
+                end
+            }
+
+            use {
+                "folke/trouble.nvim",
+                requires = {"kyazdani42/nvim-web-devicons"},
+                config = function()
+                    require("trouble").setup {
+                        auto_open = true,
+                        auto_close = true
+                    }
+                end
+            }
+
+            if packer_bootstrap then
+                require("packer").sync()
+            end
+        end,
+        config = {
+            display = {
+                open_fn = require("packer.util").float
+            }
+        }
+    }
+)
 
 -- UI -------------------------------------------
 opt.number = true -- numbers on the side
@@ -248,126 +441,8 @@ nvim_create_augroups(
 -- LINT -----------------------------------------
 nvim_create_augroups({lint = {{"BufWritePost", "*", "lua require('lint').try_lint()"}}})
 
-local lint = require "lint"
-lint.linters.golangcilint.args = {
-    "run",
-    "--enable-all",
-    "--disable",
-    "godox,tagliatelle,exhaustivestruct,varnamelen",
-    "--out-format",
-    "json"
-}
-lint.linters_by_ft = {
-    go = {"golangcilint"},
-    sh = {"shellcheck"},
-    ansible = {"ansible_lint"}
-}
-
 -- FORMAT ---------------------------------------
 nvim_create_augroups({format = {{"BufWritePost", "*", "FormatWrite"}}})
-
-require("format").setup {
-    go = {
-        {
-            cmd = {"goimports -w", "gofumpt -w"},
-            tempfile_postfix = ".tmp"
-        }
-    },
-    markdown = {
-        {cmd = {"prettier -w"}}
-    },
-    yaml = {
-        {cmd = {"prettier -w"}}
-    },
-    json = {
-        {cmd = {"prettier -w"}}
-    },
-    vim = {
-        {
-            cmd = {"npx lua-fmt -w replace"},
-            start_pattern = "^lua << EOF$",
-            end_pattern = "^EOF$"
-        }
-    },
-    lua = {
-        {cmd = {"npx lua-fmt -w replace"}}
-    },
-    sh = {
-        {cmd = {"shfmt -w"}}
-    }
-}
-
--- LUALINE --------------------------------------
-require("lualine").setup {
-    options = {
-        theme = "dracula-nvim"
-    }
-}
-
--- LSP ------------------------------------------
-local lsp_installer = require("nvim-lsp-installer")
-
-lsp_installer.on_server_ready(
-    function(server)
-        local opts = {}
-        if server.name == "gopls" then
-            opts.init_options = {buildFlags = {"-tags=integration,tools"}}
-        end
-        server:setup(opts)
-    end
-)
-
--- COMPLETIONS ----------------------------------
-local cmp = require "cmp"
-cmp.setup(
-    {
-        mapping = {
-            ["<CR>"] = cmp.mapping.confirm({select = true})
-        },
-        sources = cmp.config.sources(
-            {
-                {name = "nvim_lsp"},
-                {name = "emoji"}
-            },
-            {
-                {name = "buffer"}
-            }
-        )
-    }
-)
--- Use buffer source for `/` (if you enabled `native_menu`, this wont work anymore).
-cmp.setup.cmdline(
-    "/",
-    {
-        sources = {
-            {name = "buffer"}
-        }
-    }
-)
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this wont work anymore).
-cmp.setup.cmdline(
-    ":",
-    {
-        sources = cmp.config.sources(
-            {
-                {name = "path"}
-            },
-            {
-                {name = "cmdline"}
-            }
-        )
-    }
-)
-
--- lspconfig
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
-
--- ZENMODE --------------------------------------
-require("zen-mode").setup {
-    plugins = {
-        twilight = {enabled = true}
-    }
-}
 
 -- GIST -----------------------------------------
 g["gist_post_private"] = 1
@@ -375,32 +450,9 @@ g["gist_post_private"] = 1
 -- PENCIL ---------------------------------------
 g["pencil#wrapModeDefault"] = "soft"
 
--- INDENT_BLANKLINE -----------------------------
-require("indent_blankline").setup {
-    show_end_of_file = true,
-    space_char_blankline = " ",
-    show_current_context = true,
-    show_current_context_start = true
-}
-
--- GITSIGNS -------------------------------------
-require("gitsigns").setup()
-
 -- TOPBAR ---------------------------------------
 g.bufferline = {
     clickable = false,
     closable = false,
     tabpages = false
-}
-
--- TROUBLE --------------------------------------
-require("trouble").setup {
-    auto_open = true,
-    auto_close = true
-}
-
--- TREESITTER -----------------------------------
-require("nvim-treesitter.configs").setup {
-    ensure_installed = "maintained",
-    highlight = {enable = true}
 }
