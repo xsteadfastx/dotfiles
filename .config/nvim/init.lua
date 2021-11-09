@@ -345,6 +345,10 @@ map("n", "<Leader>rg", "<cmd>Telescope live_grep<CR>")
 map("n", "<Leader>ll", "<cmd>Telescope current_buffer_fuzzy_find<CR>")
 map("n", "<Leader>le", "<cmd>Telescope lsp_workspace_diagnostics<CR>")
 
+-- barbar
+map("n", "<A-,>", ":BufferPrevious<CR>")
+map("n", "<A-.>", ":BufferNext<CR>")
+
 -- PYTHON ---------------------------------------
 nvim_create_augroups(
     {
