@@ -472,7 +472,7 @@ nvim_create_augroups(
 )
 
 g.scrollbar_shape = {
-    head = "█",
-    body = "█",
-    tail = "█"
+    head = "│",
+    body = "│",
+    tail = "│"
 }
