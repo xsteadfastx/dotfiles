@@ -263,6 +263,7 @@ require("packer").startup(
             }
 
             use "Xuyuanp/scrollbar.nvim"
+            use "f-person/git-blame.nvim"
 
             if packer_bootstrap then
                 require("packer").sync()
@@ -476,3 +477,6 @@ g.scrollbar_shape = {
     body = "│",
     tail = "│"
 }
+
+-- GITBLAME -------------------------------------
+g.gitblame_enabled = 0
