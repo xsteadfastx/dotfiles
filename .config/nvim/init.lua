@@ -350,6 +350,9 @@ map("n", "<Leader>le", "<cmd>Telescope lsp_workspace_diagnostics<CR>")
 map("n", "<A-,>", ":BufferPrevious<CR>")
 map("n", "<A-.>", ":BufferNext<CR>")
 
+-- terminal mode
+map("t", "<Esc>", "<C-\\><C-n>")
+
 -- PYTHON ---------------------------------------
 nvim_create_augroups(
     {
