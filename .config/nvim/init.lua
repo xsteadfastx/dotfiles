@@ -31,6 +31,7 @@ end
 -- OPTIONS --------------------------------------
 cmd "set clipboard+=unnamedplus" -- needed for neovim copy paste
 opt.completeopt = "menu,menuone,noselect" -- needed for completion
+opt.hidden = true
 
 -- PLUGINS --------------------------------------
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
