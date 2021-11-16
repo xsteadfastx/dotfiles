@@ -109,9 +109,21 @@ require("packer").startup(
                     lsp_installer.on_server_ready(
                         function(server)
                             local opts = {}
+
                             if server.name == "gopls" then
                                 opts.init_options = {buildFlags = {"-tags=integration,tools"}}
                             end
+
+                            if server.name == "sumneko_lua" then
+                                opts.settings = {
+                                    Lua = {
+                                        diagnostics = {
+                                            globals = {"vim"}
+                                        }
+                                    }
+                                }
+                            end
+
                             server:setup(opts)
                         end
                     )
@@ -178,8 +190,7 @@ require("packer").startup(
                     )
 
                     -- lspconfig
-                    local capabilities =
-                        require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+                    require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
                 end
             }
 
