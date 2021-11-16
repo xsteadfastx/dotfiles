@@ -366,7 +366,7 @@ map("n", "<A-,>", ":BufferPrevious<CR>")
 map("n", "<A-.>", ":BufferNext<CR>")
 
 -- terminal mode
-map("t", "<Esc>", "<C-\\><C-n>")
+map("t", "<Leader><Esc>", "<C-\\><C-n>")
 
 -- PYTHON ---------------------------------------
 nvim_create_augroups(
