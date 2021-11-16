@@ -36,7 +36,7 @@ opt.hidden = true
 -- PLUGINS --------------------------------------
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
-    packer_bootstrap =
+    Packer_bootstrap =
         fn.system({"git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path})
 end
 
@@ -267,15 +267,17 @@ require("packer").startup(
             use "Xuyuanp/scrollbar.nvim"
             use "f-person/git-blame.nvim"
 
-            if packer_bootstrap then
+            use {
+                "iamcco/markdown-preview.nvim",
+                run = function()
+                    fn["mkdp#util#install"](0)
+                end
+            }
+
+            if Packer_bootstrap then
                 require("packer").sync()
             end
-        end,
-        config = {
-            display = {
-                open_fn = require("packer.util").float
-            }
-        }
+        end
     }
 )
 
