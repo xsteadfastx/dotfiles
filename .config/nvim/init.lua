@@ -44,6 +44,8 @@ cmd [[packadd packer.nvim]]
 require("packer").startup(
     {
         function(use)
+            use {"wbthomason/packer.nvim", opt = true}
+
             use "savq/paq-nvim"
             use "Mofiqul/dracula.nvim"
             use "ConradIrwin/vim-bracketed-paste"
