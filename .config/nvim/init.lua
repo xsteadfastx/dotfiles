@@ -311,7 +311,6 @@ opt.listchars:append({space = "⋅"})
 
 opt.background = "dark"
 opt.list = true -- show some hidden characters
-opt.cursorline = true -- mark current line
 opt.termguicolors = true -- true color support
 opt.foldenable = false -- disable initional folding
 opt.foldmethod = "syntax"
