@@ -101,7 +101,27 @@ require("packer").startup(
             use "chazy/dirsettings"
             use "mattn/webapi-vim" -- talk to apis
             use "dhruvasagar/vim-table-mode"
-            use "neovim/nvim-lspconfig"
+
+            use {
+                "neovim/nvim-lspconfig",
+                config = function()
+                    vim.lsp.handlers["textDocument/hover"] =
+                        vim.lsp.with(
+                        vim.lsp.handlers.hover,
+                        {
+                            border = "single"
+                        }
+                    )
+
+                    vim.lsp.handlers["textDocument/signatureHelp"] =
+                        vim.lsp.with(
+                        vim.lsp.handlers.signature_help,
+                        {
+                            border = "single"
+                        }
+                    )
+                end
+            }
 
             use {
                 "williamboman/nvim-lsp-installer",
