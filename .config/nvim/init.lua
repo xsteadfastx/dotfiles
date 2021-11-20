@@ -134,7 +134,7 @@ require("packer").startup(
                             local opts = {}
 
                             if server.name == "gopls" then
-                                opts.init_options = {buildFlags = {"-tags=integration,tools"}}
+                                opts.init_options = {buildFlags = {"-tags=integration,tools"}, gofumpt = true}
                             end
 
                             if server.name == "sumneko_lua" then
