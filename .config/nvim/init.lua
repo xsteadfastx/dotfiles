@@ -2,6 +2,7 @@
 local cmd = vim.cmd -- to execute vim commands e.g. cmd('pwd')
 local fn = vim.fn -- to call vim functions e.g. fn.bufnr()
 local g = vim.g -- a table to access global variables
+local b = vim.b
 local opt = vim.opt -- to set options
 local api = vim.api
 
@@ -519,3 +520,6 @@ g.scrollbar_shape = {
 
 -- GITBLAME -------------------------------------
 g.gitblame_enabled = 0
+
+-- CSV ------------------------------------------
+b.csv_arrange_use_all_rows = 1
