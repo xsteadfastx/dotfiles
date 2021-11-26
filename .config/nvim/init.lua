@@ -308,14 +308,6 @@ require("packer").startup(
                 end
             }
 
-            -- nvim in firefox
-            use {
-                "glacambre/firenvim",
-                run = function()
-                    fn["firenvim#install"](0)
-                end
-            }
-
             if Packer_bootstrap then
                 require("packer").sync()
             end
