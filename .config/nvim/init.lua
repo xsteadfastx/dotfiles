@@ -321,6 +321,7 @@ opt.relativenumber = true -- ralative line numbers
 opt.backspace = "2"
 opt.laststatus = 2
 opt.synmaxcol = 120
+opt.cursorline = true
 
 -- marks for file characters in the document
 opt.listchars:append({eol = "↴"})
