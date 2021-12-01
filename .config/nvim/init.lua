@@ -86,11 +86,6 @@ require("packer").startup(
             }
 
             use {
-                "nvim-telescope/telescope.nvim",
-                requires = {"nvim-lua/plenary.nvim"}
-            }
-
-            use {
                 "lewis6991/gitsigns.nvim",
                 config = function()
                     require("gitsigns").setup()
@@ -308,6 +303,21 @@ require("packer").startup(
                 end
             }
 
+            -- all the fzf things
+            use {
+                "junegunn/fzf",
+                run = ":call fzf#install()"
+            }
+
+            use "junegunn/fzf.vim"
+
+            use {
+                "gfanto/fzf-lsp.nvim",
+                config = function()
+                    require("fzf_lsp").setup()
+                end
+            }
+
             if Packer_bootstrap then
                 require("packer").sync()
             end
@@ -372,16 +382,15 @@ map("i", "<S-Tab>", "<C-V><Tab>")
 
 -- lsp
 map("n", "<Leader>ho", "<cmd>lua vim.lsp.buf.hover()<CR>")
-map("n", "<Leader>gd", "<cmd>Telescope lsp_definitions<CR>")
-map("n", "<Leader>fr", "<cmd>Telescope lsp_references<CR>")
+map("n", "<Leader>gd", ":Definitions<CR>")
+map("n", "<Leader>fr", ":References<CR>")
 
--- telescope
-map("n", ";", "<cmd>Telescope buffers<CR>")
-map("n", "<Leader>ff", "<cmd>Telescope find_files<CR>")
-map("n", "<Leader>bb", "<cmd>Telescope buffers<CR>")
-map("n", "<Leader>rg", "<cmd>Telescope live_grep<CR>")
-map("n", "<Leader>ll", "<cmd>Telescope current_buffer_fuzzy_find<CR>")
-map("n", "<Leader>le", "<cmd>Telescope lsp_workspace_diagnostics<CR>")
+-- fzf
+map("n", ";", ":Buffers<CR>")
+map("n", "<Leader>ff", ":FZF<CR>")
+map("n", "<Leader>bb", ":Buffers<CR>")
+map("n", "<Leader>rg", ":Rg<CR>")
+map("n", "<Leader>ll", ":Lines<CR>")
 
 -- barbar
 map("n", "<A-,>", ":BufferPrevious<CR>")
