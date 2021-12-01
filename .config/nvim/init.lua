@@ -316,7 +316,13 @@ require("packer").startup(
                 run = ":call fzf#install()"
             }
 
-            use "junegunn/fzf.vim"
+            use {
+                "ibhagwan/fzf-lua",
+                requires = {
+                    "vijaymarupudi/nvim-fzf",
+                    "kyazdani42/nvim-web-devicons"
+                }
+            }
 
             use {
                 "gfanto/fzf-lsp.nvim",
@@ -389,15 +395,14 @@ map("i", "<S-Tab>", "<C-V><Tab>")
 
 -- lsp
 map("n", "<Leader>ho", "<cmd>lua vim.lsp.buf.hover()<CR>")
-map("n", "<Leader>gd", ":Definitions<CR>")
-map("n", "<Leader>fr", ":References<CR>")
+map("n", "<Leader>gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
+map("n", "<Leader>fr", "<cmd>lua require('fzf-lua').lsp_references()<CR>")
 
 -- fzf
-map("n", ";", ":Buffers<CR>")
-map("n", "<Leader>ff", ":FZF<CR>")
-map("n", "<Leader>bb", ":Buffers<CR>")
-map("n", "<Leader>rg", ":Rg<CR>")
-map("n", "<Leader>ll", ":Lines<CR>")
+map("n", ";", "<cmd>lua require('fzf-lua').buffers()<CR>")
+map("n", "<Leader>ff", "<cmd>lua require('fzf-lua').files()<CR>")
+map("n", "<Leader>rg", "<cmd>lua require('fzf-lua').grep_project()<CR>")
+map("n", "<Leader>ll", "<cmd>lua require('fzf-lua').grep_curbuf()<CR>")
 
 -- barbar
 map("n", "<A-,>", ":BufferPrevious<CR>")
