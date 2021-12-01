@@ -403,6 +403,8 @@ map("n", ";", "<cmd>lua require('fzf-lua').buffers()<CR>")
 map("n", "<Leader>ff", "<cmd>lua require('fzf-lua').files()<CR>")
 map("n", "<Leader>rg", "<cmd>lua require('fzf-lua').grep_project()<CR>")
 map("n", "<Leader>ll", "<cmd>lua require('fzf-lua').grep_curbuf()<CR>")
+map("n", "<Leader>cm", "<cmd>lua require('fzf-lua').git_commits()<CR>")
+map("n", "<Leader>cf", "<cmd>lua require('fzf-lua').git_bcommits()<CR>")
 
 -- barbar
 map("n", "<A-,>", ":BufferPrevious<CR>")
