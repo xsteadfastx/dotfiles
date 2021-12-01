@@ -324,13 +324,6 @@ require("packer").startup(
                 }
             }
 
-            use {
-                "gfanto/fzf-lsp.nvim",
-                config = function()
-                    require("fzf_lsp").setup()
-                end
-            }
-
             if Packer_bootstrap then
                 require("packer").sync()
             end
