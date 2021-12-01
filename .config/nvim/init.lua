@@ -160,6 +160,13 @@ require("packer").startup(
             }
 
             use {
+                "romgrk/nvim-treesitter-context",
+                config = function()
+                    require("treesitter-context").setup()
+                end
+            }
+
+            use {
                 "hrsh7th/nvim-cmp",
                 requires = {
                     {"neovim/nvim-lspconfig"},
