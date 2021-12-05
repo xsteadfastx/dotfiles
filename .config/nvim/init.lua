@@ -412,6 +412,9 @@ map("n", "<A-.>", ":BufferNext<CR>")
 -- terminal mode
 map("t", "<Leader><Esc>", "<C-\\><C-n>")
 
+-- trouble
+map("n", "<C-t>", "<cmd>TroubleToggle<CR>")
+
 -- PYTHON ---------------------------------------
 nvim_create_augroups(
     {
