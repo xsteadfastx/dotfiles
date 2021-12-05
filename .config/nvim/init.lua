@@ -93,7 +93,13 @@ require("packer").startup(
                 requires = {"nvim-lua/plenary.nvim"}
             }
 
-            use "tpope/vim-commentary"
+            use {
+                "numToStr/Comment.nvim",
+                config = function()
+                    require("Comment").setup()
+                end
+            }
+
             use "chazy/dirsettings"
             use "mattn/webapi-vim" -- talk to apis
             use "dhruvasagar/vim-table-mode"
