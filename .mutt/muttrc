@@ -68,7 +68,7 @@ folder-hook "~/.mail/wobcom/INBOX" 'source ~/.mutt/profile.wobcom'
 # mailboxes
 mailboxes ~/.mail/gmail/INBOX
 mailboxes ~/.mail/gmail/alpine-lists
-mailboxes ~/.mail/wobcom/INBOX
+# mailboxes ~/.mail/wobcom/INBOX
 
 # notmuch
 macro index <F8> \
