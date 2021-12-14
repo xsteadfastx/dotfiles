@@ -526,7 +526,7 @@ nvim_create_augroups(
 )
 
 -- LINT -----------------------------------------
-nvim_create_augroups({lint = {{"BufWritePost", "*", "lua require('lint').try_lint()"}}})
+nvim_create_augroups({lint = {{"BufWritePost", "<buffer>", "lua require('lint').try_lint()"}}})
 
 -- FORMAT ---------------------------------------
 nvim_create_augroups({format = {{"BufWritePost", "*", "FormatWrite"}}})
