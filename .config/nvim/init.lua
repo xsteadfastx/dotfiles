@@ -420,9 +420,11 @@ map("n", "<Leader>ll", "<cmd>lua require('fzf-lua').grep_curbuf()<CR>")
 map("n", "<Leader>cm", "<cmd>lua require('fzf-lua').git_commits()<CR>")
 map("n", "<Leader>cf", "<cmd>lua require('fzf-lua').git_bcommits()<CR>")
 
--- barbar
+-- buffers
+-- should be delivered through barbar or moll/vim-bbye
 map("n", "<A-,>", ":BufferPrevious<CR>")
 map("n", "<A-.>", ":BufferNext<CR>")
+map("n", "<A-c>", ":BufferDelete<CR>") -- else map it to :bd
 
 -- terminal mode
 map("t", "<Leader><Esc>", "<C-\\><C-n>")
