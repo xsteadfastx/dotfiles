@@ -106,6 +106,11 @@ if type -q grc
     end
 end
 
+# pgadmin4
+if test -f /usr/pgadmin4/bin/pgadmin4
+    set fish_user_paths /usr/pgadmin4/bin $fish_user_paths
+end
+
 # home paths
 if test -d ~/.local/bin
     set fish_user_paths ~/.local/bin $fish_user_paths
