@@ -47,7 +47,6 @@ require("packer").startup(
         function(use)
             use {"wbthomason/packer.nvim"}
 
-            use "savq/paq-nvim"
             use "Mofiqul/dracula.nvim"
             use "ConradIrwin/vim-bracketed-paste"
             use "chrisbra/Colorizer" -- color hex codes and color names
