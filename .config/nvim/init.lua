@@ -360,7 +360,7 @@ opt.synmaxcol = 120
 opt.cursorline = true
 
 -- marks for file characters in the document
-opt.listchars:append({eol = "↴"})
+-- opt.listchars:append({eol = "↴"})
 opt.listchars:append({trail = "-"})
 opt.listchars:append({nbsp = "+"})
 opt.listchars:append({extends = ">"})
