@@ -344,6 +344,8 @@ require("packer").startup(
                 end
             }
 
+            use "yamatsum/nvim-cursorline"
+
             if Packer_bootstrap then
                 require("packer").sync()
             end
@@ -357,7 +359,7 @@ opt.relativenumber = true -- ralative line numbers
 opt.backspace = "2"
 opt.laststatus = 2
 opt.synmaxcol = 120
-opt.cursorline = true
+-- opt.cursorline = true
 
 -- marks for file characters in the document
 -- opt.listchars:append({eol = "↴"})
@@ -565,3 +567,6 @@ g.gitblame_enabled = 0
 
 -- CSV ------------------------------------------
 b.csv_arrange_use_all_rows = 1
+
+-- NVIM-CURSORLINE ------------------------------
+g.cursorline_timeout = 0
