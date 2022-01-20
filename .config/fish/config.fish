@@ -219,3 +219,6 @@ abbr rcp rsync -ah --info=progress2
 
 # mv with progress bar
 abbr rmv rsync -ah --info=progress2 --remove-source-files
+
+# terraform
+abbr tf terraform
