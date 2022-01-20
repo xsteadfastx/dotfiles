@@ -272,7 +272,7 @@ require("packer").startup(
                             {cmd = {"prettier -w"}}
                         },
                         yaml = {
-                            {cmd = {"prettier -w"}}
+                            {cmd = {"prettier -w", "kustomize cfg fmt"}}
                         },
                         json = {
                             {cmd = {"prettier -w"}}
