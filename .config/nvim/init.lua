@@ -531,7 +531,7 @@ nvim_create_augroups({lint = {{"BufWritePost", "<buffer>", "lua require('lint').
 
 -- FORMAT ---------------------------------------
 nvim_create_augroups({format = {{"BufWritePost", "*", "FormatWrite"}}})
-nvim_create_augroups({lsp_format = {{"BufWritePost", "*", "lua vim.lsp.buf.formatting()"}}})
+nvim_create_augroups({lsp_format = {{"BufWritePre", "*", "lua vim.lsp.buf.formatting_seq_sync()"}}})
 
 -- GIST -----------------------------------------
 g["gist_post_private"] = 1
