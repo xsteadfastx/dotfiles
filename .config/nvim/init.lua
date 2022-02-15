@@ -295,8 +295,7 @@ require("packer").startup(
                 end,
                 function()
                   return {
-                    exe = "kustomize",
-                    args = {"cfg", "fmt"},
+                    exe = "yamlfmt",
                     stdin = true
                   }
                 end
