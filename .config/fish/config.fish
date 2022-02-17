@@ -196,6 +196,8 @@ abbr gu 'git remote update --prune'
 abbr gs 'git status'
 abbr gp 'git push --tags'
 
+abbr git-prepare-for-worktrees 'echo "gitdir: ./.bare" > .git'
+
 if test -d ~/library/apps/git-fuzzy
     set fish_user_paths ~/library/apps/git-fuzzy/bin $fish_user_paths
 end
