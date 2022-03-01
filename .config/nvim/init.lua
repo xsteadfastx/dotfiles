@@ -417,6 +417,10 @@ require("packer").startup(
 
       use "yamatsum/nvim-cursorline"
 
+      use "buoto/gotests-vim"
+
+      use "vim-test/vim-test"
+
       if Packer_bootstrap then
         require("packer").sync()
       end
