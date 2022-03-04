@@ -397,7 +397,8 @@ require("packer").startup(
         "ibhagwan/fzf-lua",
         requires = {
           "kyazdani42/nvim-web-devicons"
-        }
+        },
+        after = "nvim-dap-go"
       }
 
       use {
@@ -420,6 +421,16 @@ require("packer").startup(
       use "buoto/gotests-vim"
 
       use "vim-test/vim-test"
+
+      use "preservim/vimux"
+
+      use {
+        "leoluz/nvim-dap-go",
+        requires = "mfussenegger/nvim-dap",
+        config = function()
+          require("dap-go").setup()
+        end
+      }
 
       if Packer_bootstrap then
         require("packer").sync()
@@ -507,6 +518,24 @@ map("t", "<Leader><Esc>", "<C-\\><C-n>")
 
 -- trouble
 map("n", "<C-t>", "<cmd>TroubleToggle<CR>")
+
+-- vimux
+map("n", "<Leader>mt", ':call VimuxRunCommand("clear; make test")<CR>')
+map("n", "<Leader>ml", ':call VimuxRunCommand("clear; make lint")<CR>')
+map("n", "<Leader>vp", ":VimuxPromptCommand<CR>")
+map("n", "<Leader>va", ":VimuxRunLastCommand<CR>")
+map("n", "<Leader>vq", ":VimuxCloseRunner<CR>")
+map("n", "<Leader>vo", ":VimuxOpenRunner<CR>")
+
+-- dap
+map("n", "<Leader>b", ":lua require'dap'.toggle_breakpoint()<CR>")
+map("n", "<F5>", ":lua require'dap'.continue()<CR>")
+map("n", "<Leader>dr", ":lua require'dap'.repl.open()<CR>")
+map("n", "<Leader>dt", ":lua require('dap-go').debug_test()<CR>")
+map("n", "<Leader>dc", ":lua require('fzf-lua').dap_commands()<CR>")
+map("n", "<Leader>db", ":lua require('fzf-lua').dap_breakpoints()<CR>")
+map("n", "<Leader>dv", ":lua require('fzf-lua').dap_variables()<CR>")
+map("n", "<Leader>df", ":lua require('fzf-lua').dap_frames()<CR>")
 
 -- PYTHON ---------------------------------------
 nvim_create_augroups(
@@ -647,3 +676,6 @@ b.csv_arrange_use_all_rows = 1
 
 -- NVIM-CURSORLINE ------------------------------
 g.cursorline_timeout = 0
+
+-- VIM-DELVE ------------------------------------
+g.delve_use_vimux = 1
