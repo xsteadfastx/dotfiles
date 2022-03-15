@@ -212,10 +212,12 @@ require("packer").startup(
           {"hrsh7th/cmp-nvim-lsp"},
           {"hrsh7th/cmp-buffer"},
           {"hrsh7th/cmp-path"},
-          {"hrsh7th/cmp-cmdline"}
+          {"hrsh7th/cmp-cmdline"},
+          {"andersevenrud/cmp-tmux"}
         },
         config = function()
           local cmp = require "cmp"
+
           cmp.setup(
             {
               mapping = {
@@ -224,12 +226,13 @@ require("packer").startup(
               sources = cmp.config.sources(
                 {
                   {name = "nvim_lsp"},
-                  {name = "buffer"}
+                  {name = "buffer"},
+                  {name = "tmux"}
                 }
               )
             }
           )
-          -- Use buffer source for `/` (if you enabled `native_menu`, this wont work anymore).
+
           cmp.setup.cmdline(
             "/",
             {
@@ -238,7 +241,7 @@ require("packer").startup(
               }
             }
           )
-          -- Use cmdline & path source for ':' (if you enabled `native_menu`, this wont work anymore).
+
           cmp.setup.cmdline(
             ":",
             {
