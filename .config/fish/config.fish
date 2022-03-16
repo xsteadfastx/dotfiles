@@ -14,17 +14,17 @@ set -e fish_user_paths
 
 # sbin
 if test -d /sbin
-    set fish_user_paths /sbin $fish_user_paths
+    fish_add_path /sbin
 end
 
 # poetry
 if test -d ~/.poetry
-    set fish_user_paths ~/.poetry/bin $fish_user_paths
+    fish_add_path ~/.poetry/bin
 end
 
 # go
 set -gx GOPATH ~/.local/share/go
-set fish_user_paths ~/.local/share/go/bin $fish_user_paths
+fish_add_path ~/.local/share/go/bin
 
 # gpg terminal agent
 if type -q gpg-agent
@@ -42,7 +42,7 @@ end
 
 # nix
 if test -f ~/.nix-profile/bin/nix
-    set fish_user_paths ~/.nix-profile/bin $fish_user_paths
+    fish_add_path ~/.nix-profile/bin
     set -e LD_PRELOAD
     if type -q bass
         set -e NIX_PATH
@@ -55,8 +55,8 @@ if test -f /home/linuxbrew/.linuxbrew/bin/brew
     set -gx HOMEBREW_PREFIX "/home/linuxbrew/.linuxbrew"
     set -gx HOMEBREW_CELLAR "/home/linuxbrew/.linuxbrew/Cellar"
     set -gx HOMEBREW_REPOSITORY "/home/linuxbrew/.linuxbrew/Homebrew"
-    set fish_user_paths /home/linuxbrew/.linuxbrew/bin $fish_user_paths
-    set fish_user_paths /home/linuxbrew/.linuxbrew/sbin $fish_user_paths
+    fish_add_path /home/linuxbrew/.linuxbrew/bin
+    fish_add_path /home/linuxbrew/.linuxbrew/sbin
     set fish_function_path /home/linuxbrew/.linuxbrew/share/fish/vendor_completions.d $fish_function_path
 end
 
@@ -67,14 +67,14 @@ end
 
 # krew
 if test -d ~/.krew/bin
-    set fish_user_paths ~/.krew/bin $fish_user_paths
+    fish_add_path ~/.krew/bin
 end
 
 # pyenv
 if type -q pyenv
     if not set -q POETRY_ACTIVE
         set -gx PYENV_ROOT ~/.pyenv
-        set fish_user_paths $PYENV_ROOT/bin $fish_user_paths
+        fish_add_path $PYENV_ROOT/bin
         status --is-interactive; and source (pyenv init --path|psub)
     end
 end
@@ -108,22 +108,27 @@ end
 
 # pgadmin4
 if test -f /usr/pgadmin4/bin/pgadmin4
-    set fish_user_paths /usr/pgadmin4/bin $fish_user_paths
+    fish_add_path /usr/pgadmin4/bin
+end
+
+# git-fuzzy
+if test -d ~/library/apps/git-fuzzy
+    fish_add_path ~/library/apps/git-fuzzy/bin
 end
 
 # home paths
 if test -d ~/.local/bin
-    set fish_user_paths ~/.local/bin $fish_user_paths
+    fish_add_path ~/.local/bin
 end
 
-set fish_user_paths ~/bin $fish_user_paths
+fish_add_path ~/bin
 
 if test -d ~/bin/(uname -m)
-    set fish_user_paths ~/bin/(uname -m) $fish_user_paths
+    fish_add_path ~/bin/(uname -m)
 end
 
 if test -d ~/bin/(hostname)
-    set fish_user_paths ~/bin/(hostname) $fish_user_paths
+    fish_add_path ~/bin/(hostname)
 end
 
 # theme
@@ -197,10 +202,6 @@ abbr gs 'git status'
 abbr gp 'git push --tags'
 
 abbr git-prepare-for-worktrees 'echo "gitdir: ./.bare" > .git'
-
-if test -d ~/library/apps/git-fuzzy
-    set fish_user_paths ~/library/apps/git-fuzzy/bin $fish_user_paths
-end
 
 # ssh
 abbr ssh 'TERM=xterm-256color ssh'
