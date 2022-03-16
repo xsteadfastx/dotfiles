@@ -60,6 +60,14 @@ if test -f /home/linuxbrew/.linuxbrew/bin/brew
     set fish_function_path /home/linuxbrew/.linuxbrew/share/fish/vendor_completions.d $fish_function_path
 end
 
+# asdf
+if type -q asdf
+    set -x ASDF_DIR (brew --prefix asdf)/libexec
+    fish_add_path $ASDF_DIR/bin
+    fish_add_path ~/.asdf/shims
+    . $ASDF_DIR/lib/asdf.fish
+end
+
 # starship
 if type -q starship
     starship init fish | source
