@@ -70,15 +70,6 @@ if test -d ~/.krew/bin
     fish_add_path ~/.krew/bin
 end
 
-# pyenv
-if type -q pyenv
-    if not set -q POETRY_ACTIVE
-        set -gx PYENV_ROOT ~/.pyenv
-        fish_add_path $PYENV_ROOT/bin
-        status --is-interactive; and source (pyenv init --path|psub)
-    end
-end
-
 # direnv
 if type -q direnv
     direnv hook fish | source
