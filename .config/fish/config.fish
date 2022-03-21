@@ -68,9 +68,9 @@ if type -q asdf
     . $ASDF_DIR/lib/asdf.fish
 end
 
-# starship
-if type -q starship
-    starship init fish | source
+# oh-my-posh
+if type -q oh-my-posh
+    oh-my-posh prompt init fish --config ~/.config/oh-my-posh/config.omp.json | source
 end
 
 # krew
