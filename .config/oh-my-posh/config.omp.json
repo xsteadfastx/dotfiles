@@ -5,51 +5,81 @@
       "alignment": "left",
       "segments": [
         {
-          "foreground": "#ffffff",
+          "foreground": "#ff5555",
           "properties": {
-            "template": "<#bd93f9>\u276f</>"
+            "template": "{{ .UserName }} "
           },
           "style": "plain",
-          "type": "text"
+          "type": "session"
         },
         {
-          "foreground": "#44475a",
+          "foreground": "#8be9fd",
           "properties": {
-            "style": "folder",
-            "template": " {{ .Path }} "
+            "style": "full",
+            "template": "{{ .Path }} "
           },
           "style": "plain",
           "type": "path"
-        },
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "segments": [
         {
-          "foreground": "#ff5555",
+          "foreground": "#6272a4",
           "properties": {
+            "branch_ahead_icon": "<#8be9fd>\u21e1 </>",
+            "branch_behind_icon": "<#8be9fd>\u21e3 </>",
             "branch_icon": "",
-            "fetch_status": false,
-            "template": "<#6272a4>git:(</>{{ .HEAD }}<#6272a4>)</>"
+            "fetch_stash_count": true,
+            "fetch_status": true,
+            "fetch_upstream_icon": true,
+            "github_icon": "",
+            "template": "{{ .UpstreamIcon }}{{ .HEAD }}{{ .BranchStatus }}{{ if .Working.Changed }}<#bd93f9>*</>{{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uf692 {{ .StashCount }}{{ end }} "
           },
           "style": "plain",
           "type": "git"
-        },
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "segments": [
         {
-          "foreground": "#f1fa8c",
+          "foreground": "#50fa7b",
           "properties": {
-            "template": " \uf119"
+            "style": "austin",
+            "template": " {{ .FormattedMs }} "
+          },
+          "style": "plain",
+          "type": "executiontime"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "foreground": "#bd93f9",
+          "foreground_templates": [
+            "{{ if gt .Code 0 }}#ff5555{{ end }}"
+          ],
+          "properties": {
+            "always_enabled": true,
+            "template": "$ "
           },
           "style": "plain",
           "type": "exit"
-        },
-        {
-          "foreground": "#bd93f9",
-          "properties": {
-            "template": " $ "
-          },
-          "style": "plain",
-          "type": "text"
         }
       ],
       "type": "prompt"
     }
   ],
+  "console_title_template": "{{if .Root}}(Admin){{end}} {{.PWD}}",
   "version": 1
 }
