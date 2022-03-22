@@ -1,19 +1,33 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "palette": {
+    "background": "#282a36",
+    "current-line": "#44475a",
+    "selection": "#44475a",
+    "foreground": "#f8f8f2",
+    "comment": "#6272a4",
+    "cyan": "#8be9fd",
+    "green": "#50fa7b",
+    "orange": "#ffb86c",
+    "pink": "#ff79c6",
+    "purple": "#bd93f9",
+    "red": "#ff5555",
+    "yellow": "#f1fa8c"
+  },
   "blocks": [
     {
       "alignment": "left",
       "segments": [
         {
-          "foreground": "#ff5555",
-          "properties": {
-            "template": "{{ .UserName }} "
-          },
+          "foreground": "p:cyan",
           "style": "plain",
-          "type": "session"
+          "type": "session",
+          "properties": {
+            "template": "{{ if .SSHSession }}\uf817 {{ .UserName }}@{{ .HostName }}{{ end }} "
+          }
         },
         {
-          "foreground": "#8be9fd",
+          "foreground": "p:pink",
           "properties": {
             "style": "full",
             "template": "{{ .Path }} "
@@ -28,16 +42,16 @@
       "alignment": "left",
       "segments": [
         {
-          "foreground": "#6272a4",
+          "foreground": "p:comment",
           "properties": {
-            "branch_ahead_icon": "<#8be9fd>\u21e1 </>",
-            "branch_behind_icon": "<#8be9fd>\u21e3 </>",
+            "branch_ahead_icon": "<p:cyan>\u21e1 </>",
+            "branch_behind_icon": "<p:cyan>\u21e3 </>",
             "branch_icon": "",
             "fetch_stash_count": true,
             "fetch_status": true,
             "fetch_upstream_icon": true,
             "github_icon": "",
-            "template": "{{ .UpstreamIcon }}{{ .HEAD }}{{ .BranchStatus }}{{ if .Working.Changed }}<#bd93f9>*</>{{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uf692 {{ .StashCount }}{{ end }} "
+            "template": "{{ .UpstreamIcon }}{{ .HEAD }}{{ .BranchStatus }}{{ if .Working.Changed }}<p:purple>*</>{{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uf692 {{ .StashCount }}{{ end }} "
           },
           "style": "plain",
           "type": "git"
@@ -49,7 +63,21 @@
       "alignment": "left",
       "segments": [
         {
-          "foreground": "#50fa7b",
+          "foreground": "p:orange",
+          "properties": {
+            "template": " \uFD31 {{if .Namespace}}{{.Namespace}}{{end}} "
+          },
+          "style": "plain",
+          "type": "kubectl"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "segments": [
+        {
+          "foreground": "p:green",
           "properties": {
             "style": "austin",
             "template": " {{ .FormattedMs }} "
@@ -65,9 +93,9 @@
       "newline": true,
       "segments": [
         {
-          "foreground": "#bd93f9",
+          "foreground": "p:purple",
           "foreground_templates": [
-            "{{ if gt .Code 0 }}#ff5555{{ end }}"
+            "{{ if gt .Code 0 }}p:red{{ end }}"
           ],
           "properties": {
             "always_enabled": true,
