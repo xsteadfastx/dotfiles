@@ -200,6 +200,8 @@ abbr gu 'git remote update --prune'
 abbr gs 'git status'
 abbr gp 'git push --tags'
 
+abbr gt 'git tag -l --sort=v:refname'
+
 abbr git-prepare-for-worktrees 'echo "gitdir: ./.bare" > .git'
 
 # ssh
