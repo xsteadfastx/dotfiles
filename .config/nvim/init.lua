@@ -400,7 +400,12 @@ require("packer").startup(
         end
       }
 
-      use "yamatsum/nvim-cursorline"
+      use {
+        "yamatsum/nvim-cursorline",
+        config = function()
+          require("nvim-cursorline").setup()
+        end
+      }
 
       use "buoto/gotests-vim"
 
