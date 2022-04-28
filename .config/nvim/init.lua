@@ -201,9 +201,11 @@ require("packer").startup(
 
           cmp.setup(
             {
-              mapping = {
-                ["<CR>"] = cmp.mapping.confirm({select = true})
-              },
+              mapping = cmp.mapping.preset.insert(
+                {
+                  ["<CR>"] = cmp.mapping.confirm({select = true})
+                }
+              ),
               sources = cmp.config.sources(
                 {
                   {name = "nvim_lsp"},
@@ -217,6 +219,7 @@ require("packer").startup(
           cmp.setup.cmdline(
             "/",
             {
+              mapping = cmp.mapping.preset.cmdline(),
               sources = {
                 {name = "buffer"}
               }
@@ -226,6 +229,7 @@ require("packer").startup(
           cmp.setup.cmdline(
             ":",
             {
+              mapping = cmp.mapping.preset.cmdline(),
               sources = cmp.config.sources(
                 {
                   {name = "path"}
