@@ -36,7 +36,7 @@ function OrgImports(wait_ms) -- from https://github.com/golang/tools/blob/master
   for _, res in pairs(result or {}) do
     for _, r in pairs(res.result or {}) do
       if r.edit then
-        vim.lsp.util.apply_workspace_edit(r.edit)
+        vim.lsp.util.apply_workspace_edit(r.edit, "UTF-8")
       else
         vim.lsp.buf.execute_command(r.command)
       end
@@ -422,6 +422,13 @@ require("packer").startup(
         requires = "mfussenegger/nvim-dap",
         config = function()
           require("dap-go").setup()
+        end
+      }
+
+      use {
+        "folke/which-key.nvim",
+        config = function()
+          require("which-key").setup()
         end
       }
 
