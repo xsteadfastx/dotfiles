@@ -264,16 +264,7 @@ require("packer").startup(
         "mfussenegger/nvim-lint",
         config = function()
           local lint = require "lint"
-          lint.linters.golangcilint.args = {
-            "run",
-            "--enable-all",
-            "--disable=godox,tagliatelle,exhaustivestruct,varnamelen",
-            "--build-tags=integration",
-            "--out-format",
-            "json"
-          }
           lint.linters_by_ft = {
-            go = {"golangcilint"},
             sh = {"shellcheck"},
             ansible = {"ansible_lint"}
           }
