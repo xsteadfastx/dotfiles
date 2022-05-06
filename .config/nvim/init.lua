@@ -7,7 +7,7 @@ local opt = vim.opt -- to set options
 local api = vim.api
 
 local function map(mode, lhs, rhs, opts) -- adding keymaps
-  local options = {noremap = true}
+  local options = { noremap = true }
   if opts then
     options = vim.tbl_extend("force", options, opts)
   end
@@ -22,7 +22,7 @@ local function nvim_create_augroups(definitions)
       -- if type(def) == 'table' and type(def[#def]) == 'function' then
       -- 	def[#def] = lua_callback(def[#def])
       -- end
-      local command = table.concat(vim.tbl_flatten {"autocmd", def}, " ")
+      local command = table.concat(vim.tbl_flatten { "autocmd", def }, " ")
       api.nvim_command(command)
     end
     api.nvim_command("augroup END")
@@ -31,7 +31,7 @@ end
 
 function OrgImports(wait_ms) -- from https://github.com/golang/tools/blob/master/gopls/doc/vim.md#neovim-imports
   local params = vim.lsp.util.make_range_params()
-  params.context = {only = {"source.organizeImports"}}
+  params.context = { only = { "source.organizeImports" } }
   local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, wait_ms)
   for _, res in pairs(result or {}) do
     for _, r in pairs(res.result or {}) do
@@ -52,382 +52,395 @@ opt.hidden = true
 -- PLUGINS --------------------------------------
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
-  Packer_bootstrap =
-    fn.system({"git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path})
+  Packer_bootstrap = fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
 end
 
 cmd [[packadd packer.nvim]]
 require("packer").startup(
   {
-    function(use)
-      use {"wbthomason/packer.nvim"}
+  function(use)
+    use { "wbthomason/packer.nvim" }
 
-      use "Mofiqul/dracula.nvim"
-      use "ConradIrwin/vim-bracketed-paste"
-      use "chrisbra/Colorizer" -- color hex codes and color names
-      use "cohama/lexima.vim" -- auto close parentheses
+    use "Mofiqul/dracula.nvim"
+    use "ConradIrwin/vim-bracketed-paste"
+    use "chrisbra/Colorizer" -- color hex codes and color names
+    use "cohama/lexima.vim" -- auto close parentheses
 
-      use {
-        "nvim-lualine/lualine.nvim",
-        config = function()
-          require("lualine").setup {
-            options = {
-              theme = "dracula-nvim"
-            }
+    use {
+      "nvim-lualine/lualine.nvim",
+      config = function()
+        require("lualine").setup {
+          options = {
+            theme = "dracula-nvim"
           }
-        end
-      }
+        }
+      end
+    }
 
-      use "mattn/gist-vim"
-      use "ntpeters/vim-better-whitespace"
-      use "reedes/vim-pencil"
-      use "tpope/vim-surround"
-      use "vimwiki/vimwiki"
-      use "sheerun/vim-polyglot"
-      use "chrisbra/unicode.vim"
-      use "chrisbra/csv.vim"
+    use "mattn/gist-vim"
+    use "ntpeters/vim-better-whitespace"
+    use "reedes/vim-pencil"
+    use "tpope/vim-surround"
+    use "vimwiki/vimwiki"
+    use "sheerun/vim-polyglot"
+    use "chrisbra/unicode.vim"
+    use "chrisbra/csv.vim"
 
-      use {
-        "lukas-reineke/indent-blankline.nvim",
-        config = function()
-          require("indent_blankline").setup {
-            show_end_of_file = true,
-            space_char_blankline = " ",
-            show_current_context = true,
-            show_current_context_start = true
-          }
-        end
-      }
+    use {
+      "lukas-reineke/indent-blankline.nvim",
+      config = function()
+        require("indent_blankline").setup {
+          show_end_of_file = true,
+          space_char_blankline = " ",
+          show_current_context = true,
+          show_current_context_start = true
+        }
+      end
+    }
 
-      use {
-        "lewis6991/gitsigns.nvim",
-        config = function()
-          require("gitsigns").setup()
-        end,
-        requires = {"nvim-lua/plenary.nvim"}
-      }
+    use {
+      "lewis6991/gitsigns.nvim",
+      config = function()
+        require("gitsigns").setup()
+      end,
+      requires = { "nvim-lua/plenary.nvim" }
+    }
 
-      use {
-        "numToStr/Comment.nvim",
-        config = function()
-          require("Comment").setup()
-        end
-      }
+    use {
+      "numToStr/Comment.nvim",
+      config = function()
+        require("Comment").setup()
+      end
+    }
 
-      use "chazy/dirsettings"
-      use "mattn/webapi-vim" -- talk to apis
-      use "dhruvasagar/vim-table-mode"
+    use "chazy/dirsettings"
+    use "mattn/webapi-vim" -- talk to apis
+    use "dhruvasagar/vim-table-mode"
 
-      use {
+    use {
+      "williamboman/nvim-lsp-installer",
+      {
         "neovim/nvim-lspconfig",
-        config = function()
-          vim.lsp.handlers["textDocument/hover"] =
-            vim.lsp.with(
-            vim.lsp.handlers.hover,
-            {
-              border = "single"
-            }
-          )
-
-          vim.lsp.handlers["textDocument/signatureHelp"] =
-            vim.lsp.with(
-            vim.lsp.handlers.signature_help,
-            {
-              border = "single"
-            }
-          )
-        end
-      }
-
-      use {
-        "williamboman/nvim-lsp-installer",
         config = function()
           local lsp_installer = require("nvim-lsp-installer")
 
           lsp_installer.on_server_ready(
             function(server)
-              local opts = {}
+            local opts = {}
 
-              if server.name == "gopls" then
-                opts.init_options = {buildFlags = {"-tags=integration,tools"}, gofumpt = true}
-              end
-
-              if server.name == "sumneko_lua" then
-                opts.settings = {
-                  Lua = {
-                    diagnostics = {
-                      globals = {"vim"}
-                    }
-                  }
-                }
-              end
-
-              server:setup(opts)
+            if server.name == "gopls" then
+              opts.init_options = { buildFlags = { "-tags=integration,tools" }, gofumpt = true }
             end
-          )
-        end
-      }
 
-      use {
-        "nvim-treesitter/nvim-treesitter",
-        run = ":TSUpdate",
-        config = function()
-          require("nvim-treesitter.configs").setup {
-            ensure_installed = "all",
-            highlight = {enable = true}
-          }
-        end
-      }
-
-      use {
-        "romgrk/nvim-treesitter-context",
-        config = function()
-          require("treesitter-context").setup()
-        end
-      }
-
-      use {
-        "hrsh7th/nvim-cmp",
-        requires = {
-          {"neovim/nvim-lspconfig"},
-          {"hrsh7th/cmp-nvim-lsp"},
-          {"hrsh7th/cmp-buffer"},
-          {"hrsh7th/cmp-path"},
-          {"hrsh7th/cmp-cmdline"},
-          {"andersevenrud/cmp-tmux"}
-        },
-        config = function()
-          local cmp = require "cmp"
-
-          cmp.setup(
-            {
-              mapping = cmp.mapping.preset.insert(
-                {
-                  ["<CR>"] = cmp.mapping.confirm({select = true})
+            if server.name == "sumneko_lua" then
+              opts.settings = {
+                Lua = {
+                  diagnostics = {
+                    globals = { "vim" }
+                  }
                 }
-              ),
-              sources = cmp.config.sources(
-                {
-                  {name = "nvim_lsp"},
-                  {name = "buffer"},
-                  {name = "tmux"}
-                }
-              )
-            }
-          )
-
-          cmp.setup.cmdline(
-            "/",
-            {
-              mapping = cmp.mapping.preset.cmdline(),
-              sources = {
-                {name = "buffer"}
               }
-            }
-          )
+            end
 
-          cmp.setup.cmdline(
-            ":",
+            server:setup(opts)
+          end
+          )
+          vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+            vim.lsp.handlers.hover,
             {
-              mapping = cmp.mapping.preset.cmdline(),
-              sources = cmp.config.sources(
-                {
-                  {name = "path"}
-                },
-                {
-                  {name = "cmdline"}
-                }
-              )
-            }
+            border = "single"
+          }
           )
 
-          -- lspconfig
-          require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
-        end
-      }
-
-      use {"romgrk/barbar.nvim", requires = {"kyazdani42/nvim-web-devicons"}}
-
-      use {
-        "folke/zen-mode.nvim",
-        requires = {"folke/twilight.nvim"},
-        config = function()
-          require("zen-mode").setup {
-            plugins = {
-              twilight = {enabled = true}
-            }
+          vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+            vim.lsp.handlers.signature_help,
+            {
+            border = "single"
           }
+          )
         end
       }
+    }
 
-      use {
-        "mfussenegger/nvim-lint",
-        config = function()
-          local lint = require "lint"
-          lint.linters_by_ft = {
-            sh = {"shellcheck"},
-            ansible = {"ansible_lint"}
-          }
-        end
-      }
-
-      use {
-        "mhartington/formatter.nvim",
-        config = function()
-          require("formatter").setup {
-            filetype = {
-              lua = {
-                function()
-                  return {
-                    exe = "npx lua-fmt",
-                    args = {"-w", "stdout", "--stdin", "--indent-count", 2},
-                    stdin = true
-                  }
-                end
-              },
-              yaml = {
-                function()
-                  return {
-                    exe = "prettier",
-                    args = {
-                      "--stdin-filepath",
-                      vim.fn.fnameescape(vim.api.nvim_buf_get_name(0)),
-                      "--single-quote"
-                    },
-                    stdin = true
-                  }
-                end,
-                function()
-                  return {
-                    exe = "kustomize cfg fmt",
-                    stdin = true
-                  }
-                end
-              },
-              sh = {
-                function()
-                  return {
-                    exe = "shfmt",
-                    args = {"-i", 0},
-                    stdin = true
-                  }
-                end
-              },
-              markdown = {
-                function()
-                  return {
-                    exe = "prettier",
-                    args = {
-                      "--stdin-filepath",
-                      vim.fn.fnameescape(vim.api.nvim_buf_get_name(0)),
-                      "--single-quote"
-                    },
-                    stdin = true
-                  }
-                end
-              },
-              json = {
-                function()
-                  return {
-                    exe = "prettier",
-                    args = {
-                      "--stdin-filepath",
-                      vim.fn.fnameescape(vim.api.nvim_buf_get_name(0)),
-                      "--single-quote"
-                    },
-                    stdin = true
-                  }
-                end
-              }
-            }
-          }
-        end
-      }
-
-      use {
-        "folke/trouble.nvim",
-        requires = {"kyazdani42/nvim-web-devicons"},
-        config = function()
-          require("trouble").setup {
-            auto_open = true,
-            auto_close = true,
-            use_lsp_diagnostic_signs = false
-          }
-        end
-      }
-
-      use "Xuyuanp/scrollbar.nvim"
-      use "f-person/git-blame.nvim"
-
-      use {
-        "iamcco/markdown-preview.nvim",
-        run = function()
-          fn["mkdp#util#install"](0)
-        end
-      }
-
-      -- all the fzf things
-      use {
-        "junegunn/fzf",
-        run = ":call fzf#install()"
-      }
-
-      use {
-        "ibhagwan/fzf-lua",
-        requires = {
-          "kyazdani42/nvim-web-devicons"
-        },
-        after = "nvim-dap-go"
-      }
-
-      use {
-        "karb94/neoscroll.nvim",
-        config = function()
-          require("neoscroll").setup()
-        end
-      }
-
-      use {
-        "folke/todo-comments.nvim",
-        requires = "nvim-lua/plenary.nvim",
-        config = function()
-          require("todo-comments").setup {}
-        end
-      }
-
-      use {
-        "yamatsum/nvim-cursorline",
-        config = function()
-          require("nvim-cursorline").setup()
-        end
-      }
-
-      use "buoto/gotests-vim"
-
-      use "vim-test/vim-test"
-
-      use "preservim/vimux"
-
-      use {
-        "leoluz/nvim-dap-go",
-        requires = "mfussenegger/nvim-dap",
-        config = function()
-          require("dap-go").setup()
-        end
-      }
-
-      use {
-        "folke/which-key.nvim",
-        config = function()
-          require("which-key").setup()
-        end
-      }
-
-      if Packer_bootstrap then
-        require("packer").sync()
+    use {
+      "nvim-treesitter/nvim-treesitter",
+      run = ":TSUpdate",
+      config = function()
+        require("nvim-treesitter.configs").setup {
+          ensure_installed = "all",
+          highlight = { enable = true }
+        }
       end
+    }
+
+    use {
+      "romgrk/nvim-treesitter-context",
+      config = function()
+        require("treesitter-context").setup()
+      end
+    }
+
+    use {
+      "hrsh7th/nvim-cmp",
+      requires = {
+        { "neovim/nvim-lspconfig" },
+        { "hrsh7th/cmp-nvim-lsp" },
+        { "hrsh7th/cmp-buffer" },
+        { "hrsh7th/cmp-path" },
+        { "hrsh7th/cmp-cmdline" },
+        { "andersevenrud/cmp-tmux" }
+      },
+      config = function()
+        local cmp = require "cmp"
+
+        cmp.setup(
+          {
+          mapping = cmp.mapping.preset.insert(
+            {
+            ["<CR>"] = cmp.mapping.confirm({ select = true })
+          }
+          ),
+          sources = cmp.config.sources(
+            {
+            { name = "nvim_lsp" },
+            { name = "buffer" },
+            { name = "tmux" }
+          }
+          )
+        }
+        )
+
+        cmp.setup.cmdline(
+          "/",
+          {
+          mapping = cmp.mapping.preset.cmdline(),
+          sources = {
+            { name = "buffer" }
+          }
+        }
+        )
+
+        cmp.setup.cmdline(
+          ":",
+          {
+          mapping = cmp.mapping.preset.cmdline(),
+          sources = cmp.config.sources(
+            {
+              { name = "path" }
+            },
+            {
+            { name = "cmdline" }
+          }
+          )
+        }
+        )
+
+        -- lspconfig
+        require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+      end
+    }
+
+    use { "romgrk/barbar.nvim", requires = { "kyazdani42/nvim-web-devicons" } }
+
+    use {
+      "folke/zen-mode.nvim",
+      requires = { "folke/twilight.nvim" },
+      config = function()
+        require("zen-mode").setup {
+          plugins = {
+            twilight = { enabled = true }
+          }
+        }
+      end
+    }
+
+    use {
+      "mfussenegger/nvim-lint",
+      config = function()
+        local lint = require "lint"
+        lint.linters_by_ft = {
+          sh = { "shellcheck" },
+          ansible = { "ansible_lint" }
+        }
+      end
+    }
+
+    use {
+      "mhartington/formatter.nvim",
+      config = function()
+        require("formatter").setup {
+          filetype = {
+            sql = {
+              function()
+                return {
+                  exe = "npx sql-formatter",
+                  args = { "-u", "-l", "postgresql" },
+                  stdin = true
+                }
+              end
+            },
+            lua = {
+              function()
+                return {
+                  exe = "npx lua-fmt",
+                  args = { "-w", "stdout", "--stdin", "--indent-count", 2 },
+                  stdin = true
+                }
+              end
+            },
+            yaml = {
+              function()
+                return {
+                  exe = "prettier",
+                  args = {
+                    "--stdin-filepath",
+                    vim.fn.fnameescape(vim.api.nvim_buf_get_name(0)),
+                    "--single-quote"
+                  },
+                  stdin = true
+                }
+              end,
+              function()
+                return {
+                  exe = "kustomize cfg fmt",
+                  stdin = true
+                }
+              end
+            },
+            sh = {
+              function()
+                return {
+                  exe = "shfmt",
+                  args = { "-i", 0 },
+                  stdin = true
+                }
+              end
+            },
+            markdown = {
+              function()
+                return {
+                  exe = "prettier",
+                  args = {
+                    "--stdin-filepath",
+                    vim.fn.fnameescape(vim.api.nvim_buf_get_name(0)),
+                    "--single-quote"
+                  },
+                  stdin = true
+                }
+              end
+            },
+            json = {
+              function()
+                return {
+                  exe = "prettier",
+                  args = {
+                    "--stdin-filepath",
+                    vim.fn.fnameescape(vim.api.nvim_buf_get_name(0)),
+                    "--single-quote"
+                  },
+                  stdin = true
+                }
+              end
+            }
+          }
+        }
+      end
+    }
+
+    use {
+      "folke/trouble.nvim",
+      requires = { "kyazdani42/nvim-web-devicons" },
+      config = function()
+        require("trouble").setup {
+          auto_open = true,
+          auto_close = true,
+          use_lsp_diagnostic_signs = false
+        }
+      end
+    }
+
+    use "Xuyuanp/scrollbar.nvim"
+    use "f-person/git-blame.nvim"
+
+    use {
+      "iamcco/markdown-preview.nvim",
+      run = function()
+        fn["mkdp#util#install"](0)
+      end
+    }
+
+    -- all the fzf things
+    use {
+      "junegunn/fzf",
+      run = "./install --bin"
+    }
+
+    use {
+      "ibhagwan/fzf-lua",
+      requires = {
+        "kyazdani42/nvim-web-devicons"
+      },
+      after = "nvim-dap-go",
+      config = function()
+        require("fzf-lua").setup {
+          winopts = {
+            fullscreen = true
+          },
+          files = {
+            fd_opts = "--color=always --type f --hidden --no-ignore --follow --exclude .git"
+          }
+        }
+      end
+    }
+
+    use {
+      "karb94/neoscroll.nvim",
+      config = function()
+        require("neoscroll").setup()
+      end
+    }
+
+    use {
+      "folke/todo-comments.nvim",
+      requires = "nvim-lua/plenary.nvim",
+      config = function()
+        require("todo-comments").setup {}
+      end
+    }
+
+    use {
+      "yamatsum/nvim-cursorline",
+      config = function()
+        require("nvim-cursorline").setup()
+      end
+    }
+
+    use "buoto/gotests-vim"
+
+    use "vim-test/vim-test"
+
+    use "preservim/vimux"
+
+    use {
+      "leoluz/nvim-dap-go",
+      requires = "mfussenegger/nvim-dap",
+      config = function()
+        require("dap-go").setup()
+      end
+    }
+
+    use {
+      "folke/which-key.nvim",
+      config = function()
+        require("which-key").setup()
+      end
+    }
+
+    if Packer_bootstrap then
+      require("packer").sync()
     end
-  }
+  end
+}
 )
 
 -- UI -------------------------------------------
@@ -440,11 +453,11 @@ opt.synmaxcol = 120
 
 -- marks for file characters in the document
 -- opt.listchars:append({eol = "↴"})
-opt.listchars:append({trail = "-"})
-opt.listchars:append({nbsp = "+"})
-opt.listchars:append({extends = ">"})
-opt.listchars:append({precedes = "<"})
-opt.listchars:append({space = "⋅"})
+opt.listchars:append({ trail = "-" })
+opt.listchars:append({ nbsp = "+" })
+opt.listchars:append({ extends = ">" })
+opt.listchars:append({ precedes = "<" })
+opt.listchars:append({ space = "⋅" })
 
 opt.background = "dark"
 opt.list = true -- show some hidden characters
@@ -531,103 +544,103 @@ map("n", "<Leader>df", ":lua require('fzf-lua').dap_frames()<CR>")
 -- PYTHON ---------------------------------------
 nvim_create_augroups(
   {
-    python = {
-      {"BufRead,BufNewFile", "*.xsh", "set filetype=python"},
-      {"FileType", "python", "colorcolumn=88"}
-    }
+  python = {
+    { "BufRead,BufNewFile", "*.xsh", "set filetype=python" },
+    { "FileType", "python", "colorcolumn=88" }
   }
+}
 )
 
 -- HTML -----------------------------------------
 nvim_create_augroups(
   {
-    html = {
-      {"FileType", "html", "setl sw=2 ts=2 sts=2"},
-      {"FileType", "htmldjango", "setl sw=2 ts=2 sts=2"}
-    }
+  html = {
+    { "FileType", "html", "setl sw=2 ts=2 sts=2" },
+    { "FileType", "htmldjango", "setl sw=2 ts=2 sts=2" }
   }
+}
 )
 
 -- CSS ------------------------------------------
 nvim_create_augroups(
   {
-    css = {
-      {"BufRead,BufNewFile", "*.scss", "filetype=css"},
-      {"FileType", "css", "setl tabstop=2 expandtab shiftwidth=2 softtabstop=2"},
-      {"FileType", "css", "ColorHighlight"}
-    }
+  css = {
+    { "BufRead,BufNewFile", "*.scss", "filetype=css" },
+    { "FileType", "css", "setl tabstop=2 expandtab shiftwidth=2 softtabstop=2" },
+    { "FileType", "css", "ColorHighlight" }
   }
+}
 )
 
 -- JAVASCRIPT -----------------------------------
-nvim_create_augroups({javascript = {{"FileType", "javascript", "setl tabstop=2 expandtab shiftwidth=2 softtabstop=2"}}})
+nvim_create_augroups({ javascript = { { "FileType", "javascript", "setl tabstop=2 expandtab shiftwidth=2 softtabstop=2" } } })
 
 -- GOLANG ---------------------------------------
-nvim_create_augroups({go = {{"FileType", "go", "setlocal noexpandtab tabstop=8 shiftwidth=8 softtabstop=8"}}})
+nvim_create_augroups({ go = { { "FileType", "go", "setlocal noexpandtab tabstop=8 shiftwidth=8 softtabstop=8" } } })
 
 -- YAML -----------------------------------------
 nvim_create_augroups(
   {
-    yaml = {
-      {"BufRead,BufNewFile", "*.yml,*.yaml", "set filetype=yaml"},
-      {"FileType", "yaml", "setl tabstop=2 expandtab shiftwidth=2 softtabstop=2"}
-    }
+  yaml = {
+    { "BufRead,BufNewFile", "*.yml,*.yaml", "set filetype=yaml" },
+    { "FileType", "yaml", "setl tabstop=2 expandtab shiftwidth=2 softtabstop=2" }
   }
+}
 )
 
 -- MARKDOWN / RST -------------------------------
 nvim_create_augroups(
   {
-    pencil = {
-      {"BufRead,BufNewFile", "*.markdown,*.md", "set filetype=markdown"},
-      {"FileType", "markdown,mkd,rst", "call pencil#init()"},
-      {"FileType", "markdown,mkd,rst", "setl tabstop=4 expandtab shiftwidth=4 softtabstop=4"},
-      {"FileType", "markdown,mkd,rst", "setl syntax=off"}
-    }
+  pencil = {
+    { "BufRead,BufNewFile", "*.markdown,*.md", "set filetype=markdown" },
+    { "FileType", "markdown,mkd,rst", "call pencil#init()" },
+    { "FileType", "markdown,mkd,rst", "setl tabstop=4 expandtab shiftwidth=4 softtabstop=4" },
+    { "FileType", "markdown,mkd,rst", "setl syntax=off" }
   }
+}
 )
 
 -- VIMWIKI --------------------------------------
-g["vimwiki_list"] = {{path = "~/permanent/vimwiki/", syntax = "markdown", ext = ".md", index = "Home"}}
+g["vimwiki_list"] = { { path = "~/permanent/vimwiki/", syntax = "markdown", ext = ".md", index = "Home" } }
 g["vimwiki_global_ext"] = 0
 
 nvim_create_augroups(
   {
-    wiki = {
-      {"FileType", "vimwiki", "call pencil#init()"},
-      {"FileType", "vimwiki", "setl tabstop=4 expandtab shiftwidth=4 softtabstop=4"}
-    }
+  wiki = {
+    { "FileType", "vimwiki", "call pencil#init()" },
+    { "FileType", "vimwiki", "setl tabstop=4 expandtab shiftwidth=4 softtabstop=4" }
   }
+}
 )
 
 -- LATEX ----------------------------------------
 nvim_create_augroups(
   {
-    tex = {
-      {"FileType", "tex", "call pencil#init()"},
-      {"FileType", "tex", "setl tabstop=4 expandtab shiftwidth=4 softtabstop=4"}
-    }
+  tex = {
+    { "FileType", "tex", "call pencil#init()" },
+    { "FileType", "tex", "setl tabstop=4 expandtab shiftwidth=4 softtabstop=4" }
   }
+}
 )
 
 -- JSON -----------------------------------------
-nvim_create_augroups({json = {{"FileType", "json", "setl tabstop=2 expandtab shiftwidth=2 softtabstop=2"}}})
+nvim_create_augroups({ json = { { "FileType", "json", "setl tabstop=2 expandtab shiftwidth=2 softtabstop=2" } } })
 
 -- LEKTOR ---------------------------------------
-nvim_create_augroups({lektor = {{"BufRead,BufNewFile", "*.lr", "set filetype=markdown"}}})
+nvim_create_augroups({ lektor = { { "BufRead,BufNewFile", "*.lr", "set filetype=markdown" } } })
 
 -- GOPASS ---------------------------------------
 nvim_create_augroups(
-  {gopass = {{"BufNewFile,BufRead", "/dev/shm/gopass.*", "setlocal noswapfile nobackup noundofile"}}}
+  { gopass = { { "BufNewFile,BufRead", "/dev/shm/gopass.*", "setlocal noswapfile nobackup noundofile" } } }
 )
 
 -- LINT -----------------------------------------
-nvim_create_augroups({lint = {{"BufWritePost", "<buffer>", "lua require('lint').try_lint()"}}})
+nvim_create_augroups({ lint = { { "BufWritePost", "<buffer>", "lua require('lint').try_lint()" } } })
 
 -- FORMAT ---------------------------------------
-nvim_create_augroups({format = {{"BufWritePost", "*", "FormatWrite"}}})
-nvim_create_augroups({lsp_format = {{"BufWritePre", "*", "lua vim.lsp.buf.formatting_seq_sync()"}}})
-nvim_create_augroups({org_imports = {{"BufWritePre", "*.go", "lua OrgImports(1000)"}}})
+nvim_create_augroups({ format = { { "BufWritePost", "*", "FormatWrite" } } })
+nvim_create_augroups({ lsp_format = { { "BufWritePre", "*", "lua vim.lsp.buf.formatting_seq_sync()" } } })
+nvim_create_augroups({ org_imports = { { "BufWritePre", "*.go", "lua OrgImports(1000)" } } })
 
 -- GIST -----------------------------------------
 g["gist_post_private"] = 1
@@ -645,12 +658,12 @@ g.bufferline = {
 -- SCROLLBAR ------------------------------------
 nvim_create_augroups(
   {
-    scrollbar = {
-      {"CursorMoved,VimResized,QuitPre", "*", "silent! lua require('scrollbar').show()"},
-      {"WinEnter,FocusGained", "*", "silent! lua require('scrollbar').show()"},
-      {"WinLeave,BufLeave,BufWinLeave,FocusLost", "*", "silent! lua require('scrollbar').clear()"}
-    }
+  scrollbar = {
+    { "CursorMoved,VimResized,QuitPre", "*", "silent! lua require('scrollbar').show()" },
+    { "WinEnter,FocusGained", "*", "silent! lua require('scrollbar').show()" },
+    { "WinLeave,BufLeave,BufWinLeave,FocusLost", "*", "silent! lua require('scrollbar').clear()" }
   }
+}
 )
 
 g.scrollbar_shape = {
