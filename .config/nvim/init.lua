@@ -270,6 +270,14 @@ require("packer").startup(
       config = function()
         require("formatter").setup {
           filetype = {
+            proto = {
+              function()
+                return {
+                  exe = "clang-format",
+                  stdin = true
+                }
+              end
+            },
             sql = {
               function()
                 return {
