@@ -444,6 +444,13 @@ require("packer").startup(
       end
     }
 
+    use {
+      "j-hui/fidget.nvim",
+      config = function()
+        require("fidget").setup()
+      end
+    }
+
     if Packer_bootstrap then
       require("packer").sync()
     end
