@@ -24,7 +24,7 @@
   git:
     repo: https://github.com/alacritty/alacritty.git
     dest: ~/tmp/alacritty
-    version: v0.9.0
+    version: v0.10.1
 
 - name: build
   command: cargo build --release
