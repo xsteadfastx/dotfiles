@@ -14,17 +14,17 @@ set -e fish_user_paths
 
 # sbin
 if test -d /sbin
-    fish_add_path /sbin
+    set fish_user_paths /sbin $fish_user_paths
 end
 
 # poetry
 if test -d ~/.poetry
-    fish_add_path ~/.poetry/bin
+    set fish_user_paths ~/.poetry/bin $fish_user_paths
 end
 
 # go
 set -gx GOPATH ~/.local/share/go
-fish_add_path ~/.local/share/go/bin
+set fish_user_paths ~/.local/share/go/bin $fish_user_paths
 
 # gpg terminal agent
 if type -q gpg-agent
@@ -42,7 +42,7 @@ end
 
 # nix
 if test -f ~/.nix-profile/bin/nix
-    fish_add_path ~/.nix-profile/bin
+    set fish_user_paths ~/.nix-profile/bin $fish_user_paths
     set -e LD_PRELOAD
     if type -q bass
         set -e NIX_PATH
@@ -55,16 +55,16 @@ if test -f /home/linuxbrew/.linuxbrew/bin/brew
     set -gx HOMEBREW_PREFIX "/home/linuxbrew/.linuxbrew"
     set -gx HOMEBREW_CELLAR "/home/linuxbrew/.linuxbrew/Cellar"
     set -gx HOMEBREW_REPOSITORY "/home/linuxbrew/.linuxbrew/Homebrew"
-    fish_add_path /home/linuxbrew/.linuxbrew/bin
-    fish_add_path /home/linuxbrew/.linuxbrew/sbin
+    set fish_user_paths /home/linuxbrew/.linuxbrew/bin $fish_user_paths
+    set fish_user_paths /home/linuxbrew/.linuxbrew/sbin $fish_user_paths
     set fish_function_path /home/linuxbrew/.linuxbrew/share/fish/vendor_completions.d $fish_function_path
 end
 
 # asdf
 if type -q asdf
     set -x ASDF_DIR (brew --prefix asdf)/libexec
-    fish_add_path $ASDF_DIR/bin
-    fish_add_path ~/.asdf/shims
+    set fish_user_paths  $ASDF_DIR/bin $fish_user_paths
+    set fish_user_paths  ~/.asdf/shims $fish_user_paths
     . $ASDF_DIR/lib/asdf.fish
 end
 
@@ -75,7 +75,7 @@ end
 
 # krew
 if test -d ~/.krew/bin
-    fish_add_path ~/.krew/bin
+    set fish_user_paths ~/.krew/bin $fish_user_paths
 end
 
 # direnv
@@ -107,27 +107,27 @@ end
 
 # pgadmin4
 if test -f /usr/pgadmin4/bin/pgadmin4
-    fish_add_path /usr/pgadmin4/bin
+    set fish_user_paths /usr/pgadmin4/bin $fish_user_paths
 end
 
 # git-fuzzy
 if test -d ~/library/apps/git-fuzzy
-    fish_add_path ~/library/apps/git-fuzzy/bin
+    set fish_user_paths ~/library/apps/git-fuzzy/bin $fish_user_paths
 end
 
 # home paths
 if test -d ~/.local/bin
-    fish_add_path ~/.local/bin
+    set fish_user_paths ~/.local/bin $fish_user_paths
 end
 
-fish_add_path ~/bin
+set fish_user_paths ~/bin $fish_user_paths
 
 if test -d ~/bin/(uname -m)
-    fish_add_path ~/bin/(uname -m)
+    set fish_user_paths ~/bin/(uname -m) $fish_user_paths
 end
 
 if test -d ~/bin/(hostname)
-    fish_add_path ~/bin/(hostname)
+    set fish_user_paths ~/bin/(hostname) $fish_user_paths
 end
 
 # theme
