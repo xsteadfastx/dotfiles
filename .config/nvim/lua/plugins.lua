@@ -150,6 +150,10 @@ require("packer").startup(
         "j-hui/fidget.nvim",
         config = get_config("fidget")
       }
+      use {
+        "fatih/vim-go",
+        config = get_config("go-vim")
+      }
       if Packer_bootstrap then
         require("packer").sync()
       end

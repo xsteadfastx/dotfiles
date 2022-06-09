@@ -69,3 +69,8 @@ map("n", "<Leader>dc", ":lua require('fzf-lua').dap_commands()<CR>")
 map("n", "<Leader>db", ":lua require('fzf-lua').dap_breakpoints()<CR>")
 map("n", "<Leader>dv", ":lua require('fzf-lua').dap_variables()<CR>")
 map("n", "<Leader>df", ":lua require('fzf-lua').dap_frames()<CR>")
+
+--go-vim
+map("n", "<Leader>gc", ":GoCoverageToggle<CR>")
+map("n", "<Leader>grn", ":GoRename<CR>")
+map("n", "<Leader>gie", ":GoIfErr<CR>")
