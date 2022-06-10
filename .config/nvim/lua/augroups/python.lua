@@ -1,8 +1,8 @@
 require("helpers").create_augroups(
 	{
 		python = {
-			{ "BufRead,BufNewFile", "*.xsh", "set filetype=python" },
-			{ "FileType", "python", "colorcolumn=88" }
+			{ "BufRead,BufNewFile", "*.xsh", "set filetype=python" }
+			-- { "FileType", "python", "set colorcolumn=88" }
 		}
 	}
 )
