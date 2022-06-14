@@ -3,7 +3,16 @@ local cmd = vim.cmd -- to execute vim commands e.g. cmd('pwd')
 
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
-  Packer_bootstrap = fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+  Packer_bootstrap = fn.system(
+    {
+      "git",
+      "clone",
+      "--depth",
+      "1",
+      "https://github.com/wbthomason/packer.nvim",
+      install_path
+    }
+  )
 end
 
 local function get_config(name)
@@ -153,6 +162,16 @@ require("packer").startup(
       use {
         "fatih/vim-go",
         config = get_config("go-vim")
+      }
+      use {
+        "rcarriga/neotest",
+        requires = {
+          "nvim-lua/plenary.nvim",
+          "nvim-treesitter/nvim-treesitter",
+          "antoinemadec/FixCursorHold.nvim",
+          "akinsho/neotest-go"
+        },
+        config = get_config("neotest")
       }
       if Packer_bootstrap then
         require("packer").sync()

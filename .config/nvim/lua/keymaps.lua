@@ -70,7 +70,12 @@ map("n", "<Leader>db", ":lua require('fzf-lua').dap_breakpoints()<CR>")
 map("n", "<Leader>dv", ":lua require('fzf-lua').dap_variables()<CR>")
 map("n", "<Leader>df", ":lua require('fzf-lua').dap_frames()<CR>")
 
---go-vim
+-- go-vim
 map("n", "<Leader>gc", ":GoCoverageToggle<CR>")
 map("n", "<Leader>grn", ":GoRename<CR>")
 map("n", "<Leader>gie", ":GoIfErr<CR>")
+
+-- neotest
+map("n", "<Leader>ntf", ":lua require('neotest').run.run(vim.fn.expand('%'))<CR>")
+map("n", "<Leader>nto", ":lua require('neotest').output.open()<CR>")
+map("n", "<Leader>nts", ":lua require('neotest').summary.open()<CR>")
