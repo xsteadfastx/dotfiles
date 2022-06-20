@@ -173,6 +173,9 @@ require("packer").startup(
         },
         config = get_config("neotest")
       }
+      use {
+        "b0o/SchemaStore.nvim"
+      }
       if Packer_bootstrap then
         require("packer").sync()
       end

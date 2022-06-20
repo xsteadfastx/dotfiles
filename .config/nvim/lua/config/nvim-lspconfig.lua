@@ -21,9 +21,18 @@ lspconfig.sumneko_lua.setup {
 	}
 }
 
+lspconfig.jsonls.setup {
+	settings = {
+		json = {
+			schemas = require("schemastore").json.schemas(),
+			validate = { enable = true }
+		}
+	}
+}
+
 -- setup the rest
 for _, server in ipairs(lspinstaller.get_installed_servers()) do
-	if server.name ~= "sumneko_lua" and server.name ~= "gopls" then
+	if server.name ~= "sumneko_lua" and server.name ~= "gopls" and server.name ~= "jsonls" then
 		lspconfig[server.name].setup {}
 	end
 end
