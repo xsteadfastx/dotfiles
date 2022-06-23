@@ -226,3 +226,6 @@ abbr rmv rsync -ah --info=progress2 --remove-source-files
 
 # terraform
 abbr tf terraform
+
+# task
+abbr t task
