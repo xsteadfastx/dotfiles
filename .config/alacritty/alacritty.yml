@@ -3,16 +3,7 @@ import:
 font:
   size: 7.5
   normal:
-    family: GoMono Nerd Font
-    style: Medium,Regular
-  bold:
-    family: GoMono Nerd Font
-    style: Bold
-  italic:
-    family: GoMono Nerd Font
-    style: Italic
-  bold_italic:
-    family: GoMono Nerd Font
-    style: Bold Italic
+    family: PTMono Nerd Font
+    style: Regular
 scrolling:
   history: 0
