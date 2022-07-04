@@ -2,6 +2,15 @@ local util = require("formatter.util")
 
 require("formatter").setup {
 	filetype = {
+		go = {
+			function()
+				return {
+					exe = "golines",
+					args = { "--base-formatter=gofumpt" },
+					stdin = true
+				}
+			end
+		},
 		proto = {
 			function()
 				return {
