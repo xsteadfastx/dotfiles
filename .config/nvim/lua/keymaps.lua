@@ -55,6 +55,7 @@ map("n", "<C-t>", "<cmd>TroubleToggle<CR>")
 -- vimux
 map("n", "<Leader>mt", ':call VimuxRunCommand("clear; task test")<CR>')
 map("n", "<Leader>ml", ':call VimuxRunCommand("clear; task lint")<CR>')
+map("n", "<Leader>mtv", ':call VimuxRunCommand("clear; task tidy")<CR>')
 map("n", "<Leader>vp", ":VimuxPromptCommand<CR>")
 map("n", "<Leader>va", ":VimuxRunLastCommand<CR>")
 map("n", "<Leader>vq", ":VimuxCloseRunner<CR>")
