@@ -14,7 +14,10 @@ require("formatter").setup {
 		proto = {
 			function()
 				return {
-					exe = "clang-format",
+					exe = "/usr/bin/clang-format",
+					args = {
+						"-style='{BasedOnStyle: Google, IndentWidth: 4, AlignConsecutiveDeclarations: true, AlignConsecutiveAssignments: true, ColumnLimit: 0}'"
+					},
 					stdin = true
 				}
 			end
