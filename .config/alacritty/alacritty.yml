@@ -1,7 +1,7 @@
 import:
 - ~/.config/alacritty/dracula.yml
 font:
-  size: 7.5
+  size: 8
   normal:
     family: GoMono Nerd Font
     style: Regular
