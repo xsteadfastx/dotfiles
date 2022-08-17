@@ -30,12 +30,17 @@ msonlsp.setup({
   },
 })
 
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
 msonlsp.setup_handlers({
   function(server_name)
-    lspconfig[server_name].setup({})
+    lspconfig[server_name].setup({
+      capabilities = capabilities
+    })
   end,
   ["gopls"] = function()
     lspconfig.gopls.setup({
+      capabilities = capabilities,
       init_options = {
         buildFlags = { "-tags=integration,tools" },
         gofumpt = true,
@@ -44,6 +49,7 @@ msonlsp.setup_handlers({
   end,
   ["sumneko_lua"] = function()
     lspconfig.sumneko_lua.setup({
+      capabilities = capabilities,
       settings = {
         Lua = {
           diagnostics = {
@@ -55,6 +61,7 @@ msonlsp.setup_handlers({
   end,
   ["jsonls"] = function()
     lspconfig.jsonls.setup({
+      capabilities = capabilities,
       settings = {
         json = {
           schemas = require("schemastore").json.schemas(),
@@ -72,9 +79,6 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
   border = "single",
 })
-
--- completions
-require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 -- install the other mason
 require("mason-tool-installer").setup({
