@@ -96,5 +96,6 @@ require("mason-tool-installer").setup({
     "stylua",
     "prettier",
     "shfmt",
+    "hadolint",
   },
 })

@@ -1,8 +1,9 @@
-local lint = require "lint"
+local lint = require("lint")
 
 lint.linters_by_ft = {
 	sh = { "shellcheck" },
-	ansible = { "ansible_lint" }
+	ansible = { "ansible_lint" },
+	dockerfile = { "hadolint" },
 }
 
-require("helpers").create_augroups({ lint = { { "BufWritePost", "<buffer>", "lua require('lint').try_lint()" } } })
+require("helpers").create_augroups({ format = { { "BufWritePost", "*", "lua require('lint').try_lint()" } } })
