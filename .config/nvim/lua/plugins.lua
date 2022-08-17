@@ -3,7 +3,8 @@ local cmd = vim.cmd -- to execute vim commands e.g. cmd('pwd')
 
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
-  Packer_bootstrap = fn.system(
+  Packer_bootstrap =
+  fn.system(
     {
       "git",
       "clone",
@@ -56,16 +57,18 @@ require("packer").startup(
       use "chazy/dirsettings"
       use "mattn/webapi-vim" -- talk to apis
       use "dhruvasagar/vim-table-mode"
+
       use {
-        "williamboman/nvim-lsp-installer",
+        "williamboman/mason.nvim",
+        config = get_config("nvim-lspconfig"),
         requires = {
-          "hrsh7th/nvim-cmp"
-        },
-        {
-          "neovim/nvim-lspconfig",
-          config = get_config("nvim-lspconfig")
+          "williamboman/mason-lspconfig.nvim",
+          "WhoIsSethDaniel/mason-tool-installer.nvim",
+          "hrsh7th/nvim-cmp",
+          "neovim/nvim-lspconfig"
         }
       }
+
       use {
         "nvim-treesitter/nvim-treesitter",
         run = ":TSUpdate",

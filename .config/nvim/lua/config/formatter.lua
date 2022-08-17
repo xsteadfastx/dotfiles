@@ -1,44 +1,38 @@
 local util = require("formatter.util")
 
-require("formatter").setup {
+require("formatter").setup({
 	filetype = {
 		go = {
 			function()
 				return {
 					exe = "golines",
 					args = { "--base-formatter=gofumpt" },
-					stdin = true
+					stdin = true,
 				}
-			end
+			end,
 		},
 		proto = {
 			function()
 				return {
-					exe = "/usr/bin/clang-format",
+					exe = "clang-format",
 					args = {
-						"-style='{BasedOnStyle: Google, IndentWidth: 4, AlignConsecutiveDeclarations: true, AlignConsecutiveAssignments: true, ColumnLimit: 0}'"
+						"-style='{BasedOnStyle: Google, IndentWidth: 4, AlignConsecutiveDeclarations: true, AlignConsecutiveAssignments: true, ColumnLimit: 0}'",
 					},
-					stdin = true
+					stdin = true,
 				}
-			end
+			end,
 		},
 		sql = {
 			function()
 				return {
-					exe = "npx sql-formatter",
+					exe = "sql-formatter",
 					args = { "-u", "-l", "postgresql" },
-					stdin = true
+					stdin = true,
 				}
-			end
+			end,
 		},
 		lua = {
-			function()
-				return {
-					exe = "npx lua-fmt",
-					args = { "-w", "stdout", "--stdin", "--indent-count", 2 },
-					stdin = true
-				}
-			end
+			require("formatter.filetypes.lua").stylua,
 		},
 		yaml = {
 			-- function()
@@ -57,26 +51,20 @@ require("formatter").setup {
 					args = {
 						"--stdin-filepath",
 						util.escape_path(util.get_current_buffer_file_path()),
-						"--single-quote"
+						"--single-quote",
 					},
-					stdin = true
+					stdin = true,
 				}
 			end,
 			function()
 				return {
 					exe = "kustomize cfg fmt",
-					stdin = true
+					stdin = true,
 				}
-			end
+			end,
 		},
 		sh = {
-			function()
-				return {
-					exe = "shfmt",
-					args = { "-i", 0 },
-					stdin = true
-				}
-			end
+			require("formatter.filetypes.sh").shfmt,
 		},
 		markdown = {
 			function()
@@ -85,11 +73,11 @@ require("formatter").setup {
 					args = {
 						"--stdin-filepath",
 						vim.fn.fnameescape(vim.api.nvim_buf_get_name(0)),
-						"--single-quote"
+						"--single-quote",
 					},
-					stdin = true
+					stdin = true,
 				}
-			end
+			end,
 		},
 		json = {
 			function()
@@ -98,11 +86,11 @@ require("formatter").setup {
 					args = {
 						"--stdin-filepath",
 						vim.fn.fnameescape(vim.api.nvim_buf_get_name(0)),
-						"--single-quote"
+						"--single-quote",
 					},
-					stdin = true
+					stdin = true,
 				}
-			end
+			end,
 		},
 		javascript = {
 			function()
@@ -111,11 +99,11 @@ require("formatter").setup {
 					args = {
 						"--stdin-filepath",
 						vim.fn.fnameescape(vim.api.nvim_buf_get_name(0)),
-						"--single-quote"
+						"--single-quote",
 					},
-					stdin = true
+					stdin = true,
 				}
-			end
-		}
-	}
-}
+			end,
+		},
+	},
+})
