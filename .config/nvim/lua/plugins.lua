@@ -82,6 +82,10 @@ require("packer").startup({
         { "hrsh7th/cmp-path" },
         { "hrsh7th/cmp-cmdline" },
         { "andersevenrud/cmp-tmux" },
+        { "hrsh7th/cmp-vsnip" },
+        { "hrsh7th/vim-vsnip" },
+        { "rafamadriz/friendly-snippets" },
+        { "golang/vscode-go" },
       },
       config = get_config("nvim-cmp"),
     })
