@@ -85,6 +85,7 @@ require("mason-tool-installer").setup({
   run_on_start = true,
   start_delay = 3000,
   ensure_installed = {
+    "buf",
     "clang-format",
     "go-debug-adapter",
     "gofumpt",
