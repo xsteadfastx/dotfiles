@@ -1,3 +1,5 @@
+require("helpers").create_augroups({ format = { { "BufWritePost", "*", "FormatWrite" } } })
+
 local util = require("formatter.util")
 
 require("formatter").setup({
