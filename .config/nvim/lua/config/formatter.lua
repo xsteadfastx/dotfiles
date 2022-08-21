@@ -65,6 +65,9 @@ require("formatter").setup({
 				}
 			end,
 		},
+		taskfile = {
+			require("formatter.filetypes.yaml").prettier,
+		},
 		sh = {
 			require("formatter.filetypes.sh").shfmt,
 		},
