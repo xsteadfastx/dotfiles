@@ -1,5 +1,5 @@
 local g = vim.g -- a table to access global variables
-local map = require("helpers").map
+local map = require("xsfx.helpers").map
 
 g.mapleader = ","
 g.maplocalleader = "\\"

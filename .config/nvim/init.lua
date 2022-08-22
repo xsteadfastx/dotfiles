@@ -1,5 +1,1 @@
-require("augroups")
-require("keymaps")
-require("options")
-require("plugins")
-require("ui")
+require("xsfx")

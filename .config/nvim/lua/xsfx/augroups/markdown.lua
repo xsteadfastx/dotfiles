@@ -1,4 +1,4 @@
-require("helpers").create_augroups(
+require("xsfx.helpers").create_augroups(
 	{
 		pencil = {
 			{ "BufRead,BufNewFile", "*.markdown,*.md", "set filetype=markdown" },

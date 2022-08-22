@@ -1,4 +1,4 @@
-require("helpers").create_augroups(
+require("xsfx.helpers").create_augroups(
 	{
 		tex = {
 			{ "FileType", "tex", "call pencil#init()" },

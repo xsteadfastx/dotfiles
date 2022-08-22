@@ -1,4 +1,4 @@
-require("helpers").create_augroups(
+require("xsfx.helpers").create_augroups(
 	{
 		css = {
 			{ "BufRead,BufNewFile", "*.scss", "filetype=css" },

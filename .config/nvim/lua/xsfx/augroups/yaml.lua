@@ -1,4 +1,4 @@
-require("helpers").create_augroups(
+require("xsfx.helpers").create_augroups(
 	{
 		yaml = {
 			{ "BufRead,BufNewFile", "*.yml,*.yaml", "set filetype=yaml" },
