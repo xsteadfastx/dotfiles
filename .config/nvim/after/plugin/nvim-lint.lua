@@ -7,4 +7,11 @@ lint.linters_by_ft = {
 	markdown = { "markdownlint" },
 }
 
-require("xsfx.helpers").create_augroups({ lint = { { "BufWritePost", "*", "lua require('lint').try_lint()" } } })
+require("xsfx.helpers").create_augroups({
+	lint = { { "BufWritePost", {
+		pattern = "*",
+		callback = function()
+			require("lint").try_lint()
+		end,
+	} } },
+})

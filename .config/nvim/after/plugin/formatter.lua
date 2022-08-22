@@ -1,4 +1,4 @@
-require("xsfx.helpers").create_augroups({ format = { { "BufWritePost", "*", "FormatWrite" } } })
+require("xsfx.helpers").create_augroups({ format = { { "BufWritePost", { pattern = "*", command = "FormatWrite" } } } })
 
 local util = require("formatter.util")
 

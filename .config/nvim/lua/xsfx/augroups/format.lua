@@ -13,5 +13,5 @@ function OrgImports(wait_ms) -- from https://github.com/golang/tools/blob/master
 	end
 end
 
-require("xsfx.helpers").create_augroups({ lsp_format = { { "BufWritePre", "*", "lua vim.lsp.buf.formatting_seq_sync()" } } })
-require("xsfx.helpers").create_augroups({ org_imports = { { "BufWritePre", "*.go", "lua OrgImports(1000)" } } })
+require("xsfx.helpers").create_augroups({ lsp_format = { { "BufWritePre", {pattern="*", callback=function() vim.lsp.buf.formatting_seq_sync() end} } } })
+require("xsfx.helpers").create_augroups({ org_imports = { { "BufWritePre", {pattern="*.go", callback=function() OrgImports(1000)end}} } })

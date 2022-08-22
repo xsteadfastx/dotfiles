@@ -1,3 +1,8 @@
-require("xsfx.helpers").create_augroups(
-	{ gopass = { { "BufNewFile,BufRead", "/dev/shm/gopass.*", "setlocal noswapfile nobackup noundofile" } } }
-)
+require("xsfx.helpers").create_augroups({
+	gopass = {
+		{
+			"BufNewFile,BufRead",
+			{ pattern = "/dev/shm/gopass.*", command = "setlocal noswapfile nobackup noundofile" },
+		},
+	},
+})
