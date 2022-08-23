@@ -259,12 +259,6 @@ require("packer").startup({
 		})
 		use("b0o/SchemaStore.nvim")
 		use("stevearc/dressing.nvim")
-		use({
-			"Xuyuanp/scrollbar.nvim",
-			setup = function()
-				require("xsfx.packer_configs.scrollbar")
-			end,
-		})
 		use({ "jghauser/follow-md-links.nvim" })
 		if Packer_bootstrap then
 			require("packer").sync()
