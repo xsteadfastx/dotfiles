@@ -158,6 +158,9 @@ bindsym $mod+p exec gopass ls --flat | rofi -dmenu -p gopass | xargs --no-run-if
 
 # dracula
 bar {
+        mode hide
+        hidden_state hide
+        modifier Mod4
         position top
         # output primary
         status_command /opt/bumblebee-status/env/bin/python /opt/bumblebee-status/bumblebee-status \
