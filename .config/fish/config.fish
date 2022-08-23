@@ -202,7 +202,7 @@ abbr gp 'git push --tags'
 
 abbr gt 'git tag -l --sort=v:refname'
 
-abbr git-prepare-for-worktrees 'echo "gitdir: ./.bare" > .git'
+abbr gw 'git worktree'
 
 # ssh
 abbr ssh 'TERM=xterm-256color ssh'
