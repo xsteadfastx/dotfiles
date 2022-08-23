@@ -1,12 +1,9 @@
 import:
 - ~/.config/alacritty/dracula.yml
 font:
-  size: 7.5
+  size: 8.5
   normal:
-    family: FiraCode Nerd Font
+    family: UbuntuMono Nerd Font
     style: Regular
-  bold:
-    family: FiraCode Nerd Font
-    style: Bold
 scrolling:
   history: 0
