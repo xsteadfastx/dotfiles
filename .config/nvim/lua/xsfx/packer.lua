@@ -81,7 +81,6 @@ require("packer").startup({
       "folke/trouble.nvim",
       requires = { "kyazdani42/nvim-web-devicons" },
     })
-    use("Xuyuanp/scrollbar.nvim")
     use("APZelos/blamer.nvim")
     use("iamcco/markdown-preview.nvim")
     use({
