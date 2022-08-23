@@ -520,13 +520,6 @@ require("packer").startup({
         require("todo-comments").setup({})
       end,
     })
-    use({
-      "yamatsum/nvim-cursorline",
-      config = function()
-        require("nvim-cursorline").setup()
-        vim.g.cursorline_timeout = 0
-      end,
-    })
     use("buoto/gotests-vim")
     use("vim-test/vim-test")
     use("preservim/vimux")
