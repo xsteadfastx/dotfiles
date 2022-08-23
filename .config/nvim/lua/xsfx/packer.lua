@@ -265,6 +265,7 @@ require("packer").startup({
 				require("xsfx.packer_configs.scrollbar")
 			end,
 		})
+		use({ "jghauser/follow-md-links.nvim" })
 		if Packer_bootstrap then
 			require("packer").sync()
 		end
