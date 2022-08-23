@@ -1,9 +1,9 @@
 import:
 - ~/.config/alacritty/dracula.yml
 font:
-  size: 8.5
+  size: 7.5
   normal:
-    family: UbuntuMono Nerd Font
+    family: GoMono Nerd Font
     style: Regular
 scrolling:
   history: 0
