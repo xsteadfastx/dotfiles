@@ -1,7 +1,7 @@
 require("xsfx.augroups")
 require("xsfx.helpers")
 require("xsfx.keymaps")
+require("xsfx.netwr")
 require("xsfx.options")
 require("xsfx.packer")
 require("xsfx.ui")
-require("xsfx.netwr")
