@@ -4,7 +4,6 @@ set -e
 
 xsetroot -solid "#282a36"
 dunst &
-killall -SIGUSR1 dunst
 nm-applet &
 xfce4-power-manager &
 xautolock -time 10 -locker 'i3lock -c 000000 -t' &
