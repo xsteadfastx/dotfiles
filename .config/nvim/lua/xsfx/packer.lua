@@ -260,6 +260,7 @@ require("packer").startup({
 		use("b0o/SchemaStore.nvim")
 		use("stevearc/dressing.nvim")
 		use({ "jghauser/follow-md-links.nvim" })
+		use({ "folke/lua-dev.nvim" })
 		if Packer_bootstrap then
 			require("packer").sync()
 		end

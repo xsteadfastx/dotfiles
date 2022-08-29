@@ -1,10 +1,15 @@
 local mason = require("mason")
-mason.setup({})
+mason.setup({ ui = { border = "single" } })
 
 -- lsp configuration
 local msonlsp = require("mason-lspconfig")
 local lspconfig = require("lspconfig")
 
+-- lua-dev
+local luadev = require("lua-dev").setup()
+lspconfig.sumneko_lua.setup(luadev)
+
+-- the rest
 msonlsp.setup({
 	{
 		ensure_installed = {
