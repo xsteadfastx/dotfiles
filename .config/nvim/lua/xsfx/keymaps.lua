@@ -9,10 +9,6 @@ map("", "<Down>", "<Nop>")
 map("", "<Left>", "<Nop>")
 map("", "<Right>", "<Nop>")
 
--- center line
--- map("n", "j", "jzz")
--- map("n", "k", "kzz")
-
 -- fixes some strange arrow errors in insert mode
 map("i", "^[OA", "<ESC>kli")
 map("i", "^[OB", "<ESC>jli")
@@ -62,14 +58,20 @@ map("n", "<Leader>vq", ":VimuxCloseRunner<CR>")
 map("n", "<Leader>vo", ":VimuxOpenRunner<CR>")
 
 -- dap
-map("n", "<Leader>b", ":lua require'dap'.toggle_breakpoint()<CR>")
-map("n", "<F5>", ":lua require'dap'.continue()<CR>")
-map("n", "<Leader>dr", ":lua require'dap'.repl.open()<CR>")
 map("n", "<Leader>dt", ":lua require('dap-go').debug_test()<CR>")
-map("n", "<Leader>dc", ":lua require('fzf-lua').dap_commands()<CR>")
+map("n", "<F5>", ":lua require'dap'.continue()<CR>")
+map("n", "<F10>", ":lua require'dap'.step_over()<CR>")
+map("n", "<F11>", ":lua require'dap'.step_into()<CR>")
+map("n", "<F12>", ":lua require'dap'.step_out()<CR>")
+map("n", "<Leader>b", ":lua require'dap'.toggle_breakpoint()<CR>")
+map("n", "<Leader>B", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: ')<CR>")
+map("n", "<Leader>lp", ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>")
+map("n", "<Leader>dr", ":lua require'dap'.repl.open()<CR>")
+map("n", "<Leader>dl", ":lua require'dap'.run_last()<CR>")
 map("n", "<Leader>db", ":lua require('fzf-lua').dap_breakpoints()<CR>")
 map("n", "<Leader>dv", ":lua require('fzf-lua').dap_variables()<CR>")
 map("n", "<Leader>df", ":lua require('fzf-lua').dap_frames()<CR>")
+map("n", "<Leader>dui", ":lua require('dapui').toggle()<CR>")
 
 -- go-vim
 map("n", "<Leader>gc", ":GoCoverageToggle<CR>")

@@ -215,10 +215,9 @@ require("packer").startup({
 		use("preservim/vimux")
 		use({
 			"leoluz/nvim-dap-go",
-			requires = "mfussenegger/nvim-dap",
+			requires = { "mfussenegger/nvim-dap", "rcarriga/nvim-dap-ui" },
 			config = function()
 				require("dap-go").setup()
-				vim.g.delve_use_vimux = 1
 			end,
 		})
 		use({
