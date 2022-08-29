@@ -161,7 +161,7 @@ bar {
         mode hide
         modifier Mod4
         position top
-        # output primary
+        output primary
         status_command /opt/bumblebee-status/env/bin/python /opt/bumblebee-status/bumblebee-status \
                 -m cpu memory disk nic battery pasink datetime \
                 -p \
