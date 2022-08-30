@@ -212,7 +212,7 @@ require("packer").startup({
 		})
 		use("buoto/gotests-vim")
 		use("vim-test/vim-test")
-		use("preservim/vimux")
+		use({ "preservim/vimux", requires = "benmills/vimux-golang" })
 		use({
 			"leoluz/nvim-dap-go",
 			requires = { "mfussenegger/nvim-dap", "rcarriga/nvim-dap-ui" },

@@ -35,6 +35,7 @@ map("n", "<Leader>rg", "<cmd>lua require('fzf-lua').grep_project()<CR>")
 map("n", "<Leader>ll", "<cmd>lua require('fzf-lua').grep_curbuf()<CR>")
 map("n", "<Leader>cm", "<cmd>lua require('fzf-lua').git_commits()<CR>")
 map("n", "<Leader>cf", "<cmd>lua require('fzf-lua').git_bcommits()<CR>")
+map("n", "<Leader>:", "<cmd>lua require('fzf-lua').commands()<CR>")
 
 -- buffers
 -- should be delivered through barbar or moll/vim-bbye
@@ -56,6 +57,7 @@ map("n", "<Leader>vp", ":VimuxPromptCommand<CR>")
 map("n", "<Leader>va", ":VimuxRunLastCommand<CR>")
 map("n", "<Leader>vq", ":VimuxCloseRunner<CR>")
 map("n", "<Leader>vo", ":VimuxOpenRunner<CR>")
+map("n", "<Leader>vz", ":VimuxZoomRunner<CR>")
 
 -- dap
 map("n", "<Leader>dt", ":lua require('dap-go').debug_test()<CR>")
