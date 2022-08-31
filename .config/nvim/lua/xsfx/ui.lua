@@ -21,8 +21,6 @@ opt.list = true -- show some hidden characters
 opt.termguicolors = true -- true color support
 opt.foldenable = false -- disable initional folding
 opt.foldmethod = "syntax"
-cmd("colorscheme dracula")
-cmd("highlight Comment cterm=italic gui=italic") -- sets comments to italic font
 
 opt.autoindent = true
 opt.smartindent = true
