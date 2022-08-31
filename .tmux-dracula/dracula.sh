@@ -193,7 +193,7 @@ main() {
       elif $show_military; then # only military time
         script="%a %m/%d %R ${timezone} "
       elif $show_day_month; then # only dd/mm
-        script="%a %d/%m %k:%M %p ${timezone} "
+        script=" %T %d/%m/%Y ${timezone} "
       else
         script="%a %m/%d %I:%M %p ${timezone} "
       fi
