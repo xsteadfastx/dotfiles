@@ -14,6 +14,7 @@ msonlsp.setup({
 	{
 		ensure_installed = {
 			"ansiblels",
+			"bash-language-server",
 			"cmake",
 			"dockerls",
 			"eslint",
