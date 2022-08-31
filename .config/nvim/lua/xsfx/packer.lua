@@ -221,7 +221,6 @@ require("packer").startup({
 
 				local dap = require("dap")
 				local dapui = require("dapui")
-				dapui.setup()
 
 				-- auto starting dapui
 				dap.listeners.after.event_initialized["dapui_config"] = function()
