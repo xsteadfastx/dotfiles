@@ -138,13 +138,13 @@ require("packer").startup({
 				{ "hrsh7th/cmp-path" },
 				{ "hrsh7th/cmp-cmdline" },
 				{ "andersevenrud/cmp-tmux" },
-				{ "hrsh7th/cmp-vsnip" },
-				{ "hrsh7th/vim-vsnip" },
+				{ "L3MON4D3/LuaSnip" },
+				{ "saadparwaiz1/cmp_luasnip" },
 				{ "rafamadriz/friendly-snippets" },
-				{ "golang/vscode-go" },
 			},
 			config = function()
 				require("xsfx.packer_configs.nvim-cmp")
+				require("xsfx.packer_configs.luasnip-cfg")
 			end,
 		})
 		use({

@@ -84,3 +84,11 @@ map("n", "<Leader>gie", ":GoIfErr<CR>")
 map("n", "<Leader>ntf", ":lua require('neotest').run.run(vim.fn.expand('%'))<CR>")
 map("n", "<Leader>nto", ":lua require('neotest').output.open()<CR>")
 map("n", "<Leader>nts", ":lua require('neotest').summary.open()<CR>")
+
+-- luasnip
+vim.keymap.set({ "i", "s" }, "<C-k>", function()
+	local ls = require("luasnip")
+	if ls.expand_or_jumpable() then
+		ls.expand_or_jump()
+	end
+end)
