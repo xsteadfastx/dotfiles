@@ -39,6 +39,14 @@ require("packer").startup({
 				})
 			end,
 		})
+		use({ -- A "buffer and tab" tabline for neovim
+			"kdheepak/tabline.nvim",
+			config = function()
+				require("tabline").setup({
+					enable = true,
+				})
+			end,
+		})
 		use({
 			"mattn/gist-vim",
 			config = function()
@@ -140,17 +148,6 @@ require("packer").startup({
 			end,
 		})
 		use({
-			"romgrk/barbar.nvim",
-			requires = { "kyazdani42/nvim-web-devicons" },
-			config = function()
-				require("bufferline").setup({
-					clickable = false,
-					closable = false,
-					tabpages = false,
-				})
-			end,
-		})
-		use({
 			"folke/zen-mode.nvim",
 			requires = { "folke/twilight.nvim" },
 			config = function()
@@ -229,6 +226,7 @@ require("packer").startup({
 
 				local dap = require("dap")
 				local dapui = require("dapui")
+				dapui.setup()
 
 				-- auto starting dapui
 				dap.listeners.after.event_initialized["dapui_config"] = function()

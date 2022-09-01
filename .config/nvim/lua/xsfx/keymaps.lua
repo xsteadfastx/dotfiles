@@ -39,9 +39,9 @@ map("n", "<Leader>:", "<cmd>lua require('fzf-lua').commands()<CR>")
 
 -- buffers
 -- should be delivered through barbar or moll/vim-bbye
-map("n", "<A-,>", ":BufferPrevious<CR>")
-map("n", "<A-.>", ":BufferNext<CR>")
-map("n", "<A-c>", ":BufferDelete<CR>") -- else map it to :bd
+map("n", "<A-,>", ":TablineBufferPrevious<CR>")
+map("n", "<A-.>", ":TablineBufferNext<CR>")
+map("n", "<A-c>", ":bd<CR>")
 
 -- terminal mode
 map("t", "<Leader><Esc>", "<C-\\><C-n>")
