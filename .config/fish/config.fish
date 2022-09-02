@@ -69,7 +69,7 @@ if type -q asdf
 end
 
 # starship
-if type -q oh-my-posh
+if type -q starship
     starship init fish | source
 end
 
