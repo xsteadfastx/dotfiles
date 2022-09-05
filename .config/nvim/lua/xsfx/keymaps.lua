@@ -1,7 +1,7 @@
 local g = vim.g -- a table to access global variables
 local map = require("xsfx.helpers").map
 
-g.mapleader = ","
+g.mapleader = " "
 g.maplocalleader = "\\"
 
 map("", "<Up>", "<Nop>")
@@ -29,7 +29,7 @@ map("n", "<Leader>fr", "<cmd>lua require('fzf-lua').lsp_references()<CR>")
 map("n", "<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
 
 -- fzf
-map("n", ";", "<cmd>lua require('fzf-lua').buffers()<CR>")
+map("n", "<Leader>bb", "<cmd>lua require('fzf-lua').buffers()<CR>")
 map("n", "<Leader>ff", "<cmd>lua require('fzf-lua').files()<CR>")
 map("n", "<Leader>rg", "<cmd>lua require('fzf-lua').grep_project()<CR>")
 map("n", "<Leader>ll", "<cmd>lua require('fzf-lua').grep_curbuf()<CR>")
