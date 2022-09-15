@@ -82,6 +82,7 @@ map("n", "<Leader>gie", ":GoIfErr<CR>")
 
 -- neotest
 map("n", "<Leader>ntf", ":lua require('neotest').run.run(vim.fn.expand('%'))<CR>")
+map("n", "<Leader>ntn", ":lua require('neotest').run.run()<CR>")
 map("n", "<Leader>nto", ":lua require('neotest').output.open()<CR>")
 map("n", "<Leader>nts", ":lua require('neotest').summary.open()<CR>")
 
