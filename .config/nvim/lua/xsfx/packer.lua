@@ -290,6 +290,15 @@ require("packer").startup({
 		use("stevearc/dressing.nvim")
 		use({ "jghauser/follow-md-links.nvim" })
 		use({ "folke/lua-dev.nvim" })
+		use({
+			"yamatsum/nvim-cursorline",
+			config = function()
+				require("nvim-cursorline").setup({
+					cursorline = { enable = true, timeout = 500 },
+					cursorword = { enable = true, min_length = 3, hl = { underline = true } },
+				})
+			end,
+		})
 		if Packer_bootstrap then
 			require("packer").sync()
 		end

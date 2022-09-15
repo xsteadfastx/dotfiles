@@ -9,6 +9,10 @@ map("", "<Down>", "<Nop>")
 map("", "<Left>", "<Nop>")
 map("", "<Right>", "<Nop>")
 
+-- center line
+map("n", "j", "jzz")
+map("n", "k", "kzz")
+
 -- fixes some strange arrow errors in insert mode
 map("i", "^[OA", "<ESC>kli")
 map("i", "^[OB", "<ESC>jli")
