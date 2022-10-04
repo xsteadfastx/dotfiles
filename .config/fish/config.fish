@@ -6,6 +6,9 @@ fish_vi_key_bindings
 # set default user
 set default_user marv
 
+# FIXME: Shouldnt be needed!
+# set -gx LC_ALL "en_US.utf-8"
+
 # set default editor
 set -gx EDITOR nvim
 
