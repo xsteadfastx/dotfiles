@@ -26,7 +26,6 @@ msonlsp.setup({
 			"jsonls",
 			"marksman",
 			"sqlls",
-			"sqls",
 			"sumneko_lua",
 			"taplo",
 			"tflint",

@@ -30,7 +30,7 @@ require("formatter").setup({
 			function()
 				return {
 					exe = "sql-formatter",
-					args = { "-u", "-l", "postgresql" },
+					args = { "-l", "postgresql" },
 					stdin = true,
 				}
 			end,
