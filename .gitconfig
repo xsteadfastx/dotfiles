@@ -40,3 +40,6 @@
        smtpencryption = tls
        smtpserverport = 587
 	annotate = yes
+
+[url "ssh://git@git.wobcom.de/"]
+	insteadOf = https://git.wobcom.de/
