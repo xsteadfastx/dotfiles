@@ -1,13 +1,23 @@
 local mason = require("mason")
 mason.setup({ ui = { border = "single" } })
 
+-- neodev
+require("neodev").setup({})
+
 -- lsp configuration
 local msonlsp = require("mason-lspconfig")
 local lspconfig = require("lspconfig")
 
--- lua-dev
-local luadev = require("lua-dev").setup()
-lspconfig.sumneko_lua.setup(luadev)
+-- neodev
+lspconfig.sumneko_lua.setup({
+	settings = {
+		Lua = {
+			completion = {
+				callSnippet = "Replace",
+			},
+		},
+	},
+})
 
 -- the rest
 msonlsp.setup({
@@ -36,7 +46,7 @@ msonlsp.setup({
 	},
 })
 
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 msonlsp.setup_handlers({
 	function(server_name)

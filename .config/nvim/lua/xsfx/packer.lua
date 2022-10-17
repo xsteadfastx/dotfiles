@@ -356,7 +356,7 @@ require("packer").startup({
 		use({ "jghauser/follow-md-links.nvim" })
 
 		-- dev setup for init.lua and plugin development
-		use({ "folke/lua-dev.nvim" })
+		use({ "folke/neodev.nvim" })
 
 		-- plugin for neovim that highlights cursor words and lines
 		use({
