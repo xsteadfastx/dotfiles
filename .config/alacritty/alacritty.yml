@@ -3,16 +3,10 @@ import:
 font:
   size: 7.5
   normal:
-    family: JetBrainsMonoNL Nerd Font
+    family: FiraCode Nerd Font
     style: Regular
-  bold_italic:
-    family: JetBrainsMonoNL Nerd Font
-    style: Bold Italic
   bold:
-    family: JetBrainsMonoNL Nerd Font
+    family: FiraCode Nerd Font
     style: Bold
-  italic:
-    family: JetBrainsMonoNL Nerd Font
-    style: Italic
 scrolling:
   history: 0

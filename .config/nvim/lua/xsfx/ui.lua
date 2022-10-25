@@ -1,5 +1,4 @@
 local opt = vim.opt -- to set options
-local cmd = vim.cmd -- to execute vim commands e.g. cmd('pwd')
 
 opt.number = true -- numbers on the side
 opt.relativenumber = true -- ralative line numbers
