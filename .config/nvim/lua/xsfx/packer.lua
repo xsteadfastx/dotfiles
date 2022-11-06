@@ -369,6 +369,9 @@ require("packer").startup({
 			end,
 		})
 
+		-- Earthfile syntax highlighting for vim
+		use("earthly/earthly.vim")
+
 		if Packer_bootstrap then
 			require("packer").sync()
 		end
