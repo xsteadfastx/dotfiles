@@ -372,6 +372,9 @@ require("packer").startup({
 		-- Earthfile syntax highlighting for vim
 		use("earthly/earthly.vim")
 
+		-- EditorConfig plugin for Neovim
+		use("gpanders/editorconfig.nvim")
+
 		if Packer_bootstrap then
 			require("packer").sync()
 		end
