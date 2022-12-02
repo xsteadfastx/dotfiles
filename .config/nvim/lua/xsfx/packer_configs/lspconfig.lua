@@ -41,6 +41,7 @@ msonlsp.setup({
 			"tflint",
 			"tsserver",
 			"vimls",
+			"yamlfmt",
 			"yamlls",
 		},
 	},

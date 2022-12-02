@@ -39,33 +39,7 @@ require("formatter").setup({
 			require("formatter.filetypes.lua").stylua,
 		},
 		yaml = {
-			-- function()
-			-- 	return {
-			-- 		exe = "yq",
-			-- 		args = {
-			-- 			'"sort_keys(..)"',
-			-- 			"-P"
-			-- 		},
-			-- 		stdin = true
-			-- 	}
-			-- end,
-			function()
-				return {
-					exe = "prettier",
-					args = {
-						"--stdin-filepath",
-						util.escape_path(util.get_current_buffer_file_path()),
-						"--single-quote",
-					},
-					stdin = true,
-				}
-			end,
-			function()
-				return {
-					exe = "kustomize cfg fmt",
-					stdin = true,
-				}
-			end,
+			require("formatter.filetypes.yaml").yamlfmt,
 		},
 		taskfile = {
 			require("formatter.filetypes.yaml").prettier,
