@@ -375,6 +375,18 @@ require("packer").startup({
 		-- EditorConfig plugin for Neovim
 		use("gpanders/editorconfig.nvim")
 
+		-- minimap plugin for neovim
+		use({
+			"gorbit99/codewindow.nvim",
+			config = function()
+				local codewindow = require("codewindow")
+				codewindow.setup({
+					auto_enable = true,
+				})
+				codewindow.apply_default_keybinds()
+			end,
+		})
+
 		if Packer_bootstrap then
 			require("packer").sync()
 		end
