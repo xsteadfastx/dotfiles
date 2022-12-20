@@ -381,7 +381,7 @@ require("packer").startup({
 			config = function()
 				local codewindow = require("codewindow")
 				codewindow.setup({
-					auto_enable = true,
+					auto_enable = false,
 				})
 				codewindow.apply_default_keybinds()
 			end,
