@@ -3,16 +3,10 @@ import:
 font:
   size: 7.5
   normal:
-    family: RecMonoLinear Nerd Font
+    family: FiraCode Nerd Font
     style: Regular
   bold:
-    family: RecMonoLinear Nerd Font
+    family: FiraCode Nerd Font
     style: Bold
-  bold_italic:
-    family: RecMonoLinear Nerd Font
-    style: Bold Italic
-  italic:
-    family: RecMonoLinear Nerd Font
-    style: Italic
 scrolling:
   history: 0
