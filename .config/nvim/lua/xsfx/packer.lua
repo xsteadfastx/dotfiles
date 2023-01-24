@@ -391,6 +391,8 @@ require("packer").startup({
 		-- Detect tabstop and shiftwidth automatically
 		use("tpope/vim-sleuth")
 
+		use("terrastruct/d2-vim")
+
 		if Packer_bootstrap then
 			require("packer").sync()
 		end
