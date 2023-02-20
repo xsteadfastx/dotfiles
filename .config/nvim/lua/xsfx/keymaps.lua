@@ -81,9 +81,9 @@ map("n", "<Leader>df", ":lua require('fzf-lua').dap_frames()<CR>")
 map("n", "<Leader>dui", ":lua require('dapui').toggle()<CR>")
 
 -- go-vim
-map("n", "<Leader>gc", ":GoCoverageToggle<CR>")
-map("n", "<Leader>grn", ":GoRename<CR>")
-map("n", "<Leader>gie", ":GoIfErr<CR>")
+-- map("n", "<Leader>gc", ":GoCoverageToggle<CR>")
+-- map("n", "<Leader>grn", ":GoRename<CR>")
+-- map("n", "<Leader>gie", ":GoIfErr<CR>")
 
 -- neotest
 map("n", "<Leader>ntf", ":lua require('neotest').run.run(vim.fn.expand('%'))<CR>")
