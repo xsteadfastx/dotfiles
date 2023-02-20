@@ -9,15 +9,15 @@ local msonlsp = require("mason-lspconfig")
 local lspconfig = require("lspconfig")
 
 -- neodev
-lspconfig.sumneko_lua.setup({
-	settings = {
-		Lua = {
-			completion = {
-				callSnippet = "Replace",
-			},
-		},
-	},
-})
+-- lspconfig.sumneko_lua.setup({
+-- 	settings = {
+-- 		Lua = {
+-- 			completion = {
+-- 				callSnippet = "Replace",
+-- 			},
+-- 		},
+-- 	},
+-- })
 
 -- the rest
 msonlsp.setup({
@@ -64,24 +64,24 @@ msonlsp.setup_handlers({
 			},
 		})
 	end,
-	["sumneko_lua"] = function()
-		lspconfig.sumneko_lua.setup({
-			capabilities = capabilities,
-			settings = {
-				Lua = {
-					diagnostics = {
-						globals = { "vim" },
-					},
-					workspace = {
-						library = {
-							[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-							[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-						},
-					},
-				},
-			},
-		})
-	end,
+	-- ["sumneko_lua"] = function()
+	-- 	lspconfig.sumneko_lua.setup({
+	-- 		capabilities = capabilities,
+	-- 		settings = {
+	-- 			Lua = {
+	-- 				diagnostics = {
+	-- 					globals = { "vim" },
+	-- 				},
+	-- 				workspace = {
+	-- 					library = {
+	-- 						[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+	-- 						[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+	-- 					},
+	-- 				},
+	-- 			},
+	-- 		},
+	-- 	})
+	-- end,
 	["jsonls"] = function()
 		lspconfig.jsonls.setup({
 			capabilities = capabilities,
