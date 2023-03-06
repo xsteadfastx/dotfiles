@@ -164,7 +164,7 @@ end
 
 # radio
 abbr coderadio 'tmux rename-window coderadio; mpv http://coderadio-admin.freecodecamp.org/radio/8010/radio.mp3'
-abbr chillradio 'tmux rename-window chillradio; streamlink "https://www.youtube.com/watch?v=5qap5aO4i9A" 720p -p "mpv --no-video"'
+abbr chillradio 'tmux rename-window chillradio; streamlink "https://www.youtube.com/watch?v=jfKfPfyJRdk" 720p -p "mpv --no-video"'
 
 # ls
 if type -q exa
