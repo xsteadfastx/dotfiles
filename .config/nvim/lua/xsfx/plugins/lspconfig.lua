@@ -5,11 +5,10 @@ return {
 		dependencies = {
 			"williamboman/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
+			"hrsh7th/nvim-cmp",
 			"neovim/nvim-lspconfig",
 		},
-		wants = {
-			"hrsh7th/nvim-cmp",
-		},
+		lazy = false, -- needed, else its not working at all!
 		keys = {
 			{ "<Leader>ho", "<cmd>lua vim.lsp.buf.hover()<CR>" },
 			{ "<Leader>gd", "<cmd>lua vim.lsp.buf.definition()<CR>" },
