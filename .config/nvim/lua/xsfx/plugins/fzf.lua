@@ -9,6 +9,17 @@ return {
 				build = "./install --bin",
 			},
 		},
+		keys = {
+			{ "<Leader><space>", "<cmd>lua require('fzf-lua').buffers()<CR>" },
+			{ "<Leader>tt",      "<cmd>lua require('fzf-lua').tabs()<CR>" },
+			{ "<Leader>ff",      "<cmd>lua require('fzf-lua').files()<CR>" },
+			{ "<Leader>rg",      "<cmd>lua require('fzf-lua').grep_project()<CR>" },
+			{ "<Leader>ll",      "<cmd>lua require('fzf-lua').grep_curbuf()<CR>" },
+			{ "<Leader>cm",      "<cmd>lua require('fzf-lua').git_commits()<CR>" },
+			{ "<Leader>cf",      "<cmd>lua require('fzf-lua').git_bcommits()<CR>" },
+			{ "<Leader>:",       "<cmd>lua require('fzf-lua').commands()<CR>" },
+			{ "<Leader>fr",      "<cmd>lua require('fzf-lua').lsp_references()<CR>" },
+		},
 		config = function()
 			require("fzf-lua").setup({
 				winopts = {

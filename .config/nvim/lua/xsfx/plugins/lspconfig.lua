@@ -10,6 +10,11 @@ return {
 		wants = {
 			"hrsh7th/nvim-cmp",
 		},
+		keys = {
+			{ "<Leader>ho", "<cmd>lua vim.lsp.buf.hover()<CR>" },
+			{ "<Leader>gd", "<cmd>lua vim.lsp.buf.definition()<CR>" },
+			{ "<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>" },
+		},
 		config = function()
 			local mason = require("mason")
 			mason.setup({ ui = { border = "single" } })

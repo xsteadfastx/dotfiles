@@ -140,6 +140,9 @@ return {
 	{
 		"folke/trouble.nvim",
 		dependencies = { "kyazdani42/nvim-web-devicons" },
+		keys = {
+			{ "<C-t>", "<cmd>TroubleToggle<CR>" },
+		},
 		config = function()
 			require("trouble").setup({
 				auto_open = false,
@@ -172,10 +175,6 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = true,
 	},
-
-	-- easily interact with tmux from vim
-	-- with plugin to run go tests in tmux
-	{ "preservim/vimux",     dependencies = { "benmills/vimux-golang" } },
 
 	-- displays a popup with possible keybindings of the command you started typing
 	{

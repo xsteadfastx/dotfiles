@@ -26,22 +26,6 @@ map("v", ">", ">gv")
 -- force tab
 map("i", "<S-Tab>", "<C-V><Tab>")
 
--- lsp
-map("n", "<Leader>ho", "<cmd>lua vim.lsp.buf.hover()<CR>")
-map("n", "<Leader>gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
-map("n", "<Leader>fr", "<cmd>lua require('fzf-lua').lsp_references()<CR>")
-map("n", "<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
-
--- fzf
-map("n", "<Leader><space>", "<cmd>lua require('fzf-lua').buffers()<CR>")
-map("n", "<Leader>tt", "<cmd>lua require('fzf-lua').tabs()<CR>")
-map("n", "<Leader>ff", "<cmd>lua require('fzf-lua').files()<CR>")
-map("n", "<Leader>rg", "<cmd>lua require('fzf-lua').grep_project()<CR>")
-map("n", "<Leader>ll", "<cmd>lua require('fzf-lua').grep_curbuf()<CR>")
-map("n", "<Leader>cm", "<cmd>lua require('fzf-lua').git_commits()<CR>")
-map("n", "<Leader>cf", "<cmd>lua require('fzf-lua').git_bcommits()<CR>")
-map("n", "<Leader>:", "<cmd>lua require('fzf-lua').commands()<CR>")
-
 -- buffers
 -- should be delivered through barbar or moll/vim-bbye
 map("n", "<A-,>", ":TablineBufferPrevious<CR>")
@@ -50,19 +34,6 @@ map("n", "<A-c>", ":bd<CR>")
 
 -- terminal mode
 map("t", "<Leader><Esc>", "<C-\\><C-n>")
-
--- trouble
-map("n", "<C-t>", "<cmd>TroubleToggle<CR>")
-
--- vimux
-map("n", "<Leader>mt", ':call VimuxRunCommand("clear; task test")<CR>')
-map("n", "<Leader>ml", ':call VimuxRunCommand("clear; task lint")<CR>')
-map("n", "<Leader>mtv", ':call VimuxRunCommand("clear; task tidy")<CR>')
-map("n", "<Leader>vp", ":VimuxPromptCommand<CR>")
-map("n", "<Leader>va", ":VimuxRunLastCommand<CR>")
-map("n", "<Leader>vq", ":VimuxCloseRunner<CR>")
-map("n", "<Leader>vo", ":VimuxOpenRunner<CR>")
-map("n", "<Leader>vz", ":VimuxZoomRunner<CR>")
 
 -- dap
 map("n", "<Leader>dt", ":lua require('dap-go').debug_test()<CR>")
@@ -79,11 +50,6 @@ map("n", "<Leader>db", ":lua require('fzf-lua').dap_breakpoints()<CR>")
 map("n", "<Leader>dv", ":lua require('fzf-lua').dap_variables()<CR>")
 map("n", "<Leader>df", ":lua require('fzf-lua').dap_frames()<CR>")
 map("n", "<Leader>dui", ":lua require('dapui').toggle()<CR>")
-
--- go-vim
--- map("n", "<Leader>gc", ":GoCoverageToggle<CR>")
--- map("n", "<Leader>grn", ":GoRename<CR>")
--- map("n", "<Leader>gie", ":GoIfErr<CR>")
 
 -- neotest
 map("n", "<Leader>ntf", ":lua require('neotest').run.run(vim.fn.expand('%'))<CR>")
