@@ -128,14 +128,6 @@ return {
 		config = true,
 	},
 
-	-- an asynchronous linter plugin for Neovim complementary to the built-in Language Server Protocol support
-	{
-		"mfussenegger/nvim-lint",
-		config = function()
-			require("xsfx.packer_configs.nvim-lint")
-		end,
-	},
-
 	-- A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing
 	{
 		"folke/trouble.nvim",
