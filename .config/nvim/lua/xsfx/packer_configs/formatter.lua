@@ -2,8 +2,6 @@ require("xsfx.helpers").create_augroups({
 	format = { { "BufWritePost", { pattern = "*", command = "FormatWrite" } } },
 })
 
-local util = require("formatter.util")
-
 require("formatter").setup({
 	filetype = {
 		go = {
