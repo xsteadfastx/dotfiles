@@ -1,12 +1,11 @@
+vim.g["vimwiki_list"] = { { path = "~/permanent/vimwiki/", syntax = "markdown", ext = ".md", index = "Home" } }
+vim.g["vimwiki_global_ext"] = 0
+
 return {
 	-- personal wiki for vim
 	{
 		"vimwiki/vimwiki",
 		config = function()
-			vim.g["vimwiki_list"] =
-			{ { path = "~/permanent/vimwiki/", syntax = "markdown", ext = ".md", index = "Home" } }
-			vim.g["vimwiki_global_ext"] = 0
-
 			require("xsfx.helpers").create_augroups({
 				wiki = {
 					{ "FileType", { pattern = "vimwiki", command = "call pencil#init()" } },

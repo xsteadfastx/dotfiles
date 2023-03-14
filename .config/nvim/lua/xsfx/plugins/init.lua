@@ -109,20 +109,6 @@ return {
 	-- automatic table creator & formatter
 	"dhruvasagar/vim-table-mode",
 
-	-- install and manage LSP servers, DAP servers, linters, and formatters
-	{
-		"williamboman/mason.nvim",
-		dependencies = {
-			"williamboman/mason-lspconfig.nvim",
-			"WhoIsSethDaniel/mason-tool-installer.nvim",
-			"hrsh7th/nvim-cmp",
-			"neovim/nvim-lspconfig",
-		},
-		config = function()
-			require("xsfx.packer_configs.lspconfig")
-		end,
-	},
-
 	-- provide a simple and easy way to use the interface for tree-sitter
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -142,38 +128,11 @@ return {
 		config = true,
 	},
 
-	-- completions
-	{
-		"hrsh7th/nvim-cmp",
-		dependencies = {
-			{ "hrsh7th/cmp-nvim-lsp" },
-			{ "hrsh7th/cmp-buffer" },
-			{ "hrsh7th/cmp-path" },
-			{ "hrsh7th/cmp-cmdline" },
-			{ "andersevenrud/cmp-tmux" },
-			{ "L3MON4D3/LuaSnip" },
-			{ "saadparwaiz1/cmp_luasnip" },
-			{ "rafamadriz/friendly-snippets" },
-		},
-		config = function()
-			require("xsfx.packer_configs.nvim-cmp")
-			require("xsfx.packer_configs.luasnip-cfg")
-		end,
-	},
-
 	-- an asynchronous linter plugin for Neovim complementary to the built-in Language Server Protocol support
 	{
 		"mfussenegger/nvim-lint",
 		config = function()
 			require("xsfx.packer_configs.nvim-lint")
-		end,
-	},
-
-	-- format runner
-	{
-		"mhartington/formatter.nvim",
-		config = function()
-			require("xsfx.packer_configs.formatter")
 		end,
 	},
 
@@ -201,27 +160,10 @@ return {
 		end,
 	},
 
-	-- all glory to fzf
-	{
-		"ibhagwan/fzf-lua",
-		dependencies = {
-			"kyazdani42/nvim-web-devicons",
-			{
-				"junegunn/fzf",
-				build = "./install --bin",
-			},
-		},
-		config = function()
-			require("xsfx.packer_configs.fzf-lua")
-		end,
-	},
-
 	-- smooth scrolling
 	{
 		"karb94/neoscroll.nvim",
-		config = function()
-			require("neoscroll").setup()
-		end,
+		config = true,
 	},
 
 	-- highlight, list and search todo comments in your projects
