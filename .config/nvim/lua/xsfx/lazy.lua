@@ -13,4 +13,4 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("xsfx.plugins")
+require("lazy").setup("xsfx.plugins", { ui = { border = "single" } })
