@@ -110,6 +110,15 @@ return {
 						},
 					})
 				end,
+				["yamlls"] = function()
+					lspconfig.yamlls.setup({
+						settings = {
+							yaml = {
+								keyOrdering = false,
+							},
+						},
+					})
+				end,
 			})
 
 			vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
