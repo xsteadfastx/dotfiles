@@ -67,7 +67,7 @@ return {
 	"tpope/vim-surround",
 
 	-- a solid language pack for Vim
-	{ "sheerun/vim-polyglot" },
+	-- { "sheerun/vim-polyglot" },
 
 	-- a Filetype plugin for csv files
 	{
@@ -204,7 +204,10 @@ return {
 	},
 
 	-- Earthfile syntax highlighting for vim
-	"earthly/earthly.vim",
+	{
+		"earthly/earthly.vim",
+		lazy = false,
+	},
 
 	-- EditorConfig plugin for Neovim
 	"gpanders/editorconfig.nvim",
