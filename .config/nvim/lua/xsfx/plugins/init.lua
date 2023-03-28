@@ -99,7 +99,8 @@ return {
 	-- provide a simple and easy way to use the interface for tree-sitter
 	{
 		"nvim-treesitter/nvim-treesitter",
-		run = ":TSUpdate",
+		build = ":TSUpdate",
+		event = { "BufReadPost", "BufNewFile" },
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				ensure_installed = "all",
