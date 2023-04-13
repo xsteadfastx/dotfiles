@@ -143,7 +143,7 @@ end
 # bat
 if type -q bat
     set -gx BAT_THEME Dracula
-    abbr cat bat
+    abbr -a cat bat
 end
 
 # fzf
@@ -159,76 +159,77 @@ end
 
 # vim
 if type -q nvim
-    abbr vim nvim
+    abbr -a vim nvim
 end
 
 # radio
-abbr coderadio 'tmux rename-window coderadio; mpv http://coderadio-admin.freecodecamp.org/radio/8010/radio.mp3'
-abbr chillradio 'tmux rename-window chillradio; streamlink "https://www.youtube.com/watch?v=jfKfPfyJRdk" 720p -p "mpv --no-video"'
+abbr -a coderadio 'tmux rename-window coderadio; mpv http://coderadio-admin.freecodecamp.org/radio/8010/radio.mp3'
+abbr -a chillradio 'tmux rename-window chillradio; streamlink "https://www.youtube.com/watch?v=jfKfPfyJRdk" 720p -p "mpv --no-video"'
+abbr -a synthwaveradio 'tmux rename-window synthwaveradio; streamlink "https://www.youtube.com/watch?v=MVPTGNGiI-4" 720p -p "mpv --no-video"'
 
 # ls
 if type -q exa
-    abbr ll 'exa --git -la'
+    abbr -a ll 'exa --git -la'
 else
-    abbr ll 'ls -la'
+    abbr -a ll 'ls -la'
 end
 
 # search
-abbr fd 'fd -I'
-abbr rg 'rg --no-ignore-vcs --hidden'
-abbr prev "fzf --preview 'bat --style=numbers --color=always {}'"
+abbr -a fd 'fd -I'
+abbr -a rg 'rg --no-ignore-vcs --hidden'
+abbr -a prev "fzf --preview 'bat --style=numbers --color=always {}'"
 
 # gping
 if type -q gping
-    abbr ping gping
+    abbr -a ping gping
 end
 
 # viddy
 if type -q viddy
-    abbr watch viddy
+    abbr -a watch viddy
 end
 
 # kubernetes
-abbr k kubectl
-abbr ks 'set -gx KUBECONFIG (fd -I -t f --exact-depth 1 . ~/.kube|fzf)'
+abbr -a k kubectl
+abbr -a ks 'set -gx KUBECONFIG (fd -I -t f --exact-depth 1 . ~/.kube|fzf)'
 
 # git
-abbr g git
-abbr ga 'git add -A'
-abbr gc 'git commit'
-abbr gco 'git checkout'
-abbr gd 'git diff'
+abbr -a g git
+abbr -a ga 'git add -A'
+abbr -a gc 'git commit'
+abbr -a gco 'git checkout'
+abbr -a gd 'git diff'
 
-abbr gu 'git remote update --prune'
-abbr gs 'git status'
-abbr gp 'git push --tags'
+abbr -a gu 'git remote update --prune'
+abbr -a gs 'git status'
+abbr -a gp 'git push --tags'
 
-abbr gt 'git tag -l --sort=v:refname'
+abbr -a gt 'git tag -l --sort=v:refname'
 
-abbr gw 'git worktree'
+abbr -a gw 'git worktree'
 
 # ssh
-abbr ssh 'TERM=xterm-256color ssh'
+abbr -a ssh 'TERM=xterm-256color ssh'
 
 # yaegi
-abbr yaegi 'rlwrap yaegi'
+abbr -a yaegi 'rlwrap yaegi'
 
 # jellyfin-mpv-shim
-abbr jellyfin-mpv flatpak run com.github.iwalton3.jellyfin-mpv-shim/x86_64/stable
+abbr -a jellyfin-mpv flatpak run com.github.iwalton3.jellyfin-mpv-shim/x86_64/stable
 
 # neomutt
 if type -q neomutt
-    abbr mutt neomutt
+    abbr -a mutt neomutt
 end
 
 # cp with progress bar
-abbr rcp rsync -ah --info=progress2
+abbr -a rcp rsync -ah --info=progress2
 
 # mv with progress bar
-abbr rmv rsync -ah --info=progress2 --remove-source-files
+abbr -a rmv rsync -ah --info=progress2 --remove-source-files
 
 # terraform
-abbr tf terraform
+abbr -a tf terraform
 
 # task
-abbr t task
+abbr -a t task
