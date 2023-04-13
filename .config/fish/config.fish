@@ -233,3 +233,6 @@ abbr -a tf terraform
 
 # task
 abbr -a t task
+
+# prepare ssh
+fish_ssh_agent
