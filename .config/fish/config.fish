@@ -202,7 +202,7 @@ abbr -a gd 'git diff'
 
 abbr -a gu 'git remote update --prune'
 abbr -a gs 'git status'
-abbr -a gp 'git push --mirror'
+abbr -a gp 'git push --tags'
 
 abbr -a gt 'git tag -l --sort=v:refname'
 
