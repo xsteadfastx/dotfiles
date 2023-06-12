@@ -3,16 +3,10 @@ import:
 font:
   size: 8
   normal:
-    family: iMWritingMono Nerd Font
+    family: FiraCode Nerd Font
     style: Regular
   bold:
-    family: iMWritingMono Nerd Font
+    family: FiraCode Nerd Font
     style: Bold
-  bold_italic:
-    family: iMWritingMono Nerd Font
-    style: Bold Italic
-  italic:
-    family: iMWritingMono Nerd Font
-    style: Italic
 scrolling:
   history: 0
