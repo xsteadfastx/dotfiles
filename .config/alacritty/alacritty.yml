@@ -3,10 +3,16 @@ import:
 font:
   size: 8
   normal:
-    family: FiraCode Nerd Font
+    family: GoMono Nerd Font
     style: Regular
   bold:
-    family: FiraCode Nerd Font
+    family: GoMono Nerd Font
     style: Bold
+  bold_italic:
+    family: GoMono Nerd Font
+    style: Bold Italic
+  italic:
+    family: GoMono Nerd Font
+    style: Italic
 scrolling:
   history: 0
