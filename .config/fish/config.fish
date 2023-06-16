@@ -68,7 +68,7 @@ if type -q asdf
     set -x ASDF_DIR (brew --prefix asdf)/libexec
     set fish_user_paths  $ASDF_DIR/bin $fish_user_paths
     set fish_user_paths  ~/.asdf/shims $fish_user_paths
-    . $ASDF_DIR/lib/asdf.fish
+    . $ASDF_DIR/asdf.fish
 end
 
 # starship
