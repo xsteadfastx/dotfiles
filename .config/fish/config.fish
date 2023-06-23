@@ -9,6 +9,9 @@ set default_user marv
 # FIXME: Shouldnt be needed!
 # set -gx LC_ALL "en_US.utf-8"
 
+# clean abbrs
+abbr --erase (abbr --list)
+
 # set default editor
 set -gx EDITOR nvim
 
