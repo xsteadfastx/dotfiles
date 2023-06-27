@@ -165,6 +165,7 @@ return {
 	-- standalone UI for nvim-lsp progress
 	{
 		"j-hui/fidget.nvim",
+		tag = "legacy",
 		config = true,
 	},
 
