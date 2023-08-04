@@ -106,6 +106,7 @@ return {
 				ensure_installed = "all",
 				highlight = { enable = true },
 				indent = { enable = true },
+				markid = { enable = true },
 			})
 		end,
 	},
@@ -217,4 +218,6 @@ return {
 	-- "tpope/vim-sleuth",
 
 	"terrastruct/d2-vim",
+
+	"David-Kunz/markid",
 }
