@@ -1,6 +1,6 @@
-local opt = vim.opt -- to set options
+local opt = vim.opt       -- to set options
 
-opt.number = true -- numbers on the side
+opt.number = true         -- numbers on the side
 opt.relativenumber = true -- ralative line numbers
 opt.backspace = "2"
 opt.laststatus = 2
@@ -16,9 +16,9 @@ opt.listchars:append({ precedes = "<" })
 opt.listchars:append({ space = "⋅" })
 
 opt.background = "dark"
-opt.list = true -- show some hidden characters
+opt.list = true          -- show some hidden characters
 opt.termguicolors = true -- true color support
-opt.foldenable = false -- disable initional folding
+opt.foldenable = false   -- disable initional folding
 opt.foldmethod = "syntax"
 
 opt.autoindent = true
@@ -26,3 +26,7 @@ opt.smartindent = true
 opt.wrap = false
 
 opt.hlsearch = false -- no highlights for search
+
+-- folding
+opt.foldmethod = "expr"
+opt.foldexpr = "nvim_treesitter#foldexpr()"
