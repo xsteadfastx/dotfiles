@@ -199,9 +199,6 @@ return {
 		lazy = false,
 	},
 
-	-- EditorConfig plugin for Neovim
-	"gpanders/editorconfig.nvim",
-
 	-- minimap plugin for neovim
 	{
 		"gorbit99/codewindow.nvim",
