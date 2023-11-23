@@ -40,3 +40,5 @@
        smtpencryption = tls
        smtpserverport = 587
 	annotate = yes
+[rerere]
+	enabled = true
