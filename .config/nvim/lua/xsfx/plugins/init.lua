@@ -60,6 +60,17 @@ return {
 		"reedes/vim-pencil",
 		config = function()
 			vim.g["pencil#wrapModeDefault"] = "soft"
+
+			local api = vim.api
+			local group = api.nvim_create_augroup("pencil", { clear = true })
+
+			api.nvim_create_autocmd("Filetype", {
+				pattern = "tex,markdown,mkd,vimwiki",
+				callback = function()
+					vim.cmd("call pencil#init()")
+				end,
+				group = group,
+			})
 		end,
 	},
 

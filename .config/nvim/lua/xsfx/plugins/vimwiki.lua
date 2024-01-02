@@ -12,7 +12,6 @@ return {
 			api.nvim_create_autocmd("Filetype", {
 				pattern = "vimwiki",
 				callback = function()
-					vim.cmd("call pencil#init()")
 					vim.cmd("setl tabstop=4 expandtab shiftwidth=4 softtabstop=4")
 				end,
 				group = group,
