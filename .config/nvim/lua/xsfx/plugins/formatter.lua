@@ -1,7 +1,13 @@
 -- format runner
---
-require("xsfx.helpers").create_augroups({
-	format = { { "BufWritePost", { pattern = "*", command = "FormatWrite" } } },
+local api = vim.api
+local group = api.nvim_create_augroup("format", { clear = true })
+
+api.nvim_create_autocmd("BufWritePost", {
+	pattern = "*",
+	callback = function()
+		vim.cmd("FormatWrite")
+	end,
+	group = group,
 })
 
 return {

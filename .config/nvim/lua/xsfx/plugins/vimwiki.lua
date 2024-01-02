@@ -6,14 +6,16 @@ return {
 	{
 		"vimwiki/vimwiki",
 		config = function()
-			require("xsfx.helpers").create_augroups({
-				wiki = {
-					{ "FileType", { pattern = "vimwiki", command = "call pencil#init()" } },
-					{
-						"FileType",
-						{ pattern = "vimwiki", command = "setl tabstop=4 expandtab shiftwidth=4 softtabstop=4" },
-					},
-				},
+			local api = vim.api
+			local group = api.nvim_create_augroup("wiki", { clear = true })
+
+			api.nvim_create_autocmd("Filetype", {
+				pattern = "vimwiki",
+				callback = function()
+					vim.cmd("call pencil#init()")
+					vim.cmd("setl tabstop=4 expandtab shiftwidth=4 softtabstop=4")
+				end,
+				group = group,
 			})
 		end,
 	},

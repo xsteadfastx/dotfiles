@@ -1,7 +1,7 @@
 local api = vim.api
 local group = api.nvim_create_augroup("taskfile", { clear = true })
 
-vim.api.nvim_create_autocmd("Filetype", {
+api.nvim_create_autocmd("Filetype", {
 	pattern = "taskfile",
 	callback = function()
 		vim.cmd("syntax on")

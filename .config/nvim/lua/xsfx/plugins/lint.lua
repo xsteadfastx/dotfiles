@@ -12,18 +12,15 @@ return {
 				markdown = { "markdownlint" },
 			}
 
-			require("xsfx.helpers").create_augroups({
-				lint = {
-					{
-						"BufWritePost",
-						{
-							pattern = "*",
-							callback = function()
-								require("lint").try_lint()
-							end,
-						},
-					},
-				},
+			local api = vim.api
+			local group = api.nvim_create_augroup("lint", { clear = true })
+
+			api.nvim_create_autocmd("BufWritePost", {
+				pattern = "*",
+				callback = function()
+					require("lint").try_lint()
+				end,
+				group = group,
 			})
 		end,
 	},
