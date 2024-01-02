@@ -25,17 +25,6 @@ return {
 			local msonlsp = require("mason-lspconfig")
 			local lspconfig = require("lspconfig")
 
-			-- neodev
-			-- lspconfig.sumneko_lua.setup({
-			-- 	settings = {
-			-- 		Lua = {
-			-- 			completion = {
-			-- 				callSnippet = "Replace",
-			-- 			},
-			-- 		},
-			-- 	},
-			-- })
-
 			-- the rest
 			msonlsp.setup({
 				{
@@ -72,6 +61,7 @@ return {
 						capabilities = capabilities,
 					})
 				end,
+
 				["gopls"] = function()
 					lspconfig.gopls.setup({
 						capabilities = capabilities,
@@ -81,24 +71,7 @@ return {
 						},
 					})
 				end,
-				-- ["sumneko_lua"] = function()
-				-- 	lspconfig.sumneko_lua.setup({
-				-- 		capabilities = capabilities,
-				-- 		settings = {
-				-- 			Lua = {
-				-- 				diagnostics = {
-				-- 					globals = { "vim" },
-				-- 				},
-				-- 				workspace = {
-				-- 					library = {
-				-- 						[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-				-- 						[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-				-- 					},
-				-- 				},
-				-- 			},
-				-- 		},
-				-- 	})
-				-- end,
+
 				["jsonls"] = function()
 					lspconfig.jsonls.setup({
 						capabilities = capabilities,
@@ -110,13 +83,21 @@ return {
 						},
 					})
 				end,
+
 				["yamlls"] = function()
 					lspconfig.yamlls.setup({
+						capabilities = capabilities,
 						settings = {
+							schemaStore = {
+								enable = false,
+								url = "",
+							},
 							yaml = {
+								schemas = require("schemastore").yaml.schemas(),
 								keyOrdering = false,
 							},
 						},
+						filetypes = { "yaml", "yaml.docker-compose", "taskfile" },
 					})
 				end,
 			})
