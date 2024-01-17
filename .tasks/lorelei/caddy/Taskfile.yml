@@ -1,0 +1,29 @@
+version: "3"
+
+includes:
+  docker:
+    taskfile: ~/.tasks/docker.yml
+    internal: true
+
+tasks:
+  build:
+    cmds:
+      - task: docker:compose
+        vars:
+          DOCKER_COMPOSE_ARGS: build
+          DIR: ~/.tasks/lorelei/caddy
+
+  up:
+    cmds:
+      - task: docker:network
+        vars:
+          NETWORK: http-backend
+      - echo "HETZNER_API_TOKEN={{.HETZNER_API_TOKEN}}" > ~/.tasks/lorelei/caddy/.env
+      - defer: rm .env
+      - task: docker:compose
+        vars:
+          DOCKER_COMPOSE_ARGS: up
+          DIR: ~/.tasks/lorelei/caddy
+    vars:
+      HETZNER_API_TOKEN:
+        sh: gopass show -o ansible/xsfx.monitoring/hetzner_api_key

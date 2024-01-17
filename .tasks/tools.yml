@@ -1,0 +1,89 @@
+version: "3"
+
+tasks:
+  install:software:
+    vars:
+      BIN: '{{if .BIN_NAME}}{{.BIN_NAME}}{{else}}{{last (splitList "/" .PACKAGE)}}{{end}}'
+    log:
+      error: Failed to install `{{.PACKAGE}}`
+      start: Ensuring the `{{.PACKAGE}}` Homebrew formulae is installed
+      success: Successfully installed `{{.PACKAGE}}`
+    cmds:
+      - brew install {{.PACKAGE}}
+    status:
+      - "test -f /home/linuxbrew/.linuxbrew/bin/{{.BIN}}"
+
+  update:apk:
+    run: once
+    cmds:
+      - |
+        if [ "$USER" == "root" ]; then
+          apk update
+        else
+          sudo apk update
+        fi
+    interactive: true
+    status:
+      - '[ -z "$(which apt-get)" ]'
+
+  update:apt:
+    run: once
+    cmds:
+      - |
+        if [ "$USER" == "root" ]; then
+          apt-get update
+        else
+          sudo apt-get update
+        fi
+    interactive: true
+    status:
+      - '[ -z "$(which apt-get)" ]'
+
+  install:pip:
+    cmds:
+      - pip3 install --user {{.PACKAGE}}
+    status:
+      - '[ -z "$(which pip3)" ]'
+
+  install:pkg:
+    vars:
+      LINUX_FAMILY:
+        sh: |-
+          if [ -f "/etc/debian_version" ]; then
+            echo "debian"
+          elif [ -f "/etc/redhat-release" ]; then
+            echo "redhat"
+          elif [ -f "/etc/arch-release" ]; then
+            echo "archlinux"
+          elif [ -f "/etc/alpine-release" ]; then
+            echo "alpine"
+          else
+            echo "unknown"
+          fi
+    cmds:
+      - |-
+        set -e
+
+        {{if eq .LINUX_FAMILY "debian"}}
+        if dpkg -s {{.PACKAGE}} >> /dev/null;then
+          exit 0
+        fi
+
+        if [ "$USER" == "root" ]; then
+          apt-get install -y {{.PACKAGE}}
+        else
+          sudo apt-get install -y {{.PACKAGE}}
+        fi
+
+        {{else if eq .LINUX_FAMILY "alpine"}}
+        if apk list {{.PACKAGE}} >> /dev/null; then
+        exit 0
+        fi
+
+        if [ "$USER" == "root" ]; then
+          apk add {{.PACKAGE}}
+        else
+          sudo apk add {{.PACKAGE}}
+        fi
+        {{end}}
+    silent: true

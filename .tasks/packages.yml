@@ -1,0 +1,40 @@
+version: "3"
+
+includes:
+  tools: ./tools.yml
+
+tasks:
+  git:
+    cmds:
+      - task: tools:install:software
+        vars:
+          PACKAGE: git
+
+  tmux:
+    cmds:
+      - task: tools:install:software
+        vars:
+          PACKAGE: tmux
+      - task: tools:install:software
+        vars:
+          PACKAGE: tmux-xpanes
+
+  pipx:
+    cmds:
+      - task: tools:install:software
+        vars:
+          PACKAGE: pipx
+
+  fish:
+    - task: tools:install:pkg
+      vars:
+        PACKAGE: curl
+    - task: tools:install:pkg
+      vars:
+        PACKAGE: ncurses-base
+    - task: tools:install:pkg
+      vars:
+        PACKAGE: procps
+    - task: tools:install:software
+      vars:
+        PACKAGE: fish

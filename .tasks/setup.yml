@@ -1,0 +1,10 @@
+version: "3"
+
+includes:
+  packages: ./packages.yml
+
+tasks:
+  shell:
+    desc: Setup shell
+    cmds:
+      - task: packages:fish

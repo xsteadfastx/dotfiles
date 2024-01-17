@@ -1,0 +1,18 @@
+version: "3.8"
+services:
+  caddy:
+    build:
+      context: .
+    env_file:
+      - .env
+    networks:
+      - http-frontend
+      - http-backend
+    volumes:
+      - caddy-data:/data
+volumes:
+  caddy-data:
+networks:
+  http-frontend:
+  http-backend:
+    external: true

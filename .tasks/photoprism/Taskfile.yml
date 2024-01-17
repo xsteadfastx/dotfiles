@@ -1,0 +1,20 @@
+version: "3"
+
+includes:
+  airmtp: ~/.tasks/airmtp/Taskfile.yml
+
+tasks:
+  import:
+    desc: gets photos from sony alpha cam and copies them to photoprism import
+    cmds:
+      - defer: rm -rf {{.DIR}}
+      - task: airmtp:import
+        vars:
+          OUTPUT_DIR: '{{.DIR}}'
+      - 'rclone copy -P {{.DIR}} photoprism-import:'
+    vars:
+      DIR:
+        sh: mktemp -p ~/tmp -d -t photoprism-XXXXXXX
+    requires:
+      vars:
+        - OUTPUT_DIR

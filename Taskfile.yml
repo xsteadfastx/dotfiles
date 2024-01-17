@@ -1,0 +1,18 @@
+version: "3"
+
+includes:
+  docker:
+    taskfile: ~/.tasks/docker.yml
+    internal: true
+  photoprism: ~/.tasks/photoprism/Taskfile.yml
+  yt: ~/.tasks/youtube/Taskfile.yml
+  caddy: ~/.tasks/lorelei/caddy/Taskfile.yml
+
+tasks:
+  ps:
+    cmds:
+      - task: docker:ps
+
+  xsfx:monitoring:
+    cmds:
+      - echo foo

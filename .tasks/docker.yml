@@ -1,0 +1,37 @@
+version: "3"
+
+vars:
+  DOCKER: '{{default "docker" .DOCKER}}'
+  DOCKER_COMPOSE: '{{default (print .DOCKER " compose") .DOCKER_COMPOSE}}'
+  DOCKER_HOST: '{{default "" .DOCKER_HOST}}'
+
+tasks:
+  compose:
+    cmds:
+      - '{{if ne .DOCKER_HOST ""}}DOCKER_HOST={{.DOCKER_HOST}} {{end}}{{.DOCKER_COMPOSE}} {{.DOCKER_COMPOSE_ARGS}}'
+    vars:
+      DOCKER_COMPOSE_ARGS: '{{default "--help" .DOCKER_COMPOSE_ARGS}}'
+    dir: '{{default "." .DIR}}'
+
+  bin:
+    cmds:
+      - '{{if ne .DOCKER_HOST ""}}DOCKER_HOST={{.DOCKER_HOST}} {{end}}{{.DOCKER}} {{.DOCKER_ARGS}}'
+    vars:
+      DOCKER_ARGS: '{{default "--help" .DOCKER_ARGS}}'
+    dir: '{{default "." .DIR}}'
+
+  network:
+    cmds:
+      - task: bin
+        vars:
+          DOCKER_ARGS: network create {{.NETWORK}} || true
+    run: once
+    requires:
+      vars:
+        - NETWORK
+
+  ps:
+    cmds:
+      - task: bin
+        vars:
+          DOCKER_ARGS: ps
