@@ -4,7 +4,12 @@ tasks:
   album-download:
     cmds:
       - yt-dlp -x --audio-format mp3 --audio-quality 0 -i -o "%(album)s/%(title)s-%(id)s.%(ext)s" --cookies ~/tmp/cookies.txt {{.PLAYLIST_ID}}
-    dir: '{{.USER_WORKING_DIR}}'
+    dir: "{{.USER_WORKING_DIR}}"
     requires:
       vars:
         - PLAYLIST_ID
+
+  synthwaveradio:
+    cmds:
+      - tmux rename-window synthwaveradio
+      - mpv --no-video "https://www.youtube.com/watch?v=4xDzrJKXOOY"
