@@ -1,7 +1,9 @@
 version: "3"
 
 includes:
-  airmtp: ~/.tasks/airmtp/Taskfile.yml
+  airmtp:
+    taskfile: ~/.tasks/airmtp/Taskfile.yml
+    internal: true
 
 tasks:
   import:
@@ -15,6 +17,3 @@ tasks:
     vars:
       DIR:
         sh: mktemp -p ~/tmp -d -t photoprism-XXXXXXX
-    requires:
-      vars:
-        - OUTPUT_DIR

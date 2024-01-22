@@ -17,16 +17,15 @@ tasks:
 
   import:
     desc: import photos from my sony alpha
-    summary: needs date in format like "mm/dd/yy"
     deps:
       - build
     cmds:
       - task: docker:bin
         vars:
-          DOCKER_ARGS: "run --rm -ti -v {{.OUTPUT_DIR}}:/mnt --net=host airmtp:latest --ipaddress auto --outputdir /mnt --startdate {{.START_DATE}}"
+          DOCKER_ARGS: 'run --rm -ti -v {{.OUTPUT_DIR}}:/mnt --net=host airmtp:latest --ipaddress auto --outputdir /mnt --startdate {{toDate "02/01/2006" .START_DATE | date "01/02/06"}}'
     vars:
-      NOW_DEFAULT: '{{ now | date "01/02/06" }}'
-      START_DATE: "{{default .NOW_DEFAULT .START_DATE}}"
+      NOW: '{{now|date "02/01/2006"}}'
+      START_DATE: '{{default .NOW .START_DATE}}'
     requires:
       vars:
         - OUTPUT_DIR
