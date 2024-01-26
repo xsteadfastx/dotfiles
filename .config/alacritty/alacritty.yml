@@ -1,7 +1,7 @@
 import:
   - ~/.config/alacritty/dracula.yml
 font:
-  size: 8
+  size: 8.5
   normal:
     family: BlexMono Nerd Font
     style: Regular
