@@ -1,0 +1,17 @@
+version: "3"
+
+tasks:
+  backup:
+    cmds:
+      - autorestic backup -av
+    vars:
+      KEY:
+        sh: gopass show -o ansible/xsfx.restic/restic__crypt_password-{{.HOST}}
+      PATH:
+        sh: gopass show -o ansible/xsfx.restic/restic__repo-{{.HOST}}
+    env:
+      AUTORESTIC_LORELEI_RESTIC_PASSWORD: "{{.KEY}}"
+      AUTORESTIC_LORELEI_PATH: "{{.PATH}}"
+    requires:
+      vars:
+        - HOST
