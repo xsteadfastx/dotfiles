@@ -1,0 +1,42 @@
+version: "3"
+
+includes:
+  docker:
+    taskfile: ~/.tasks/docker.yml
+    internal: true
+
+env:
+  UPTIME_KUMA_PASSWORD:
+    sh: gopass show -o websites/status.xsfx.dev/marv
+
+  TELEGRAM_BOT_TOKEN:
+    sh: gopass show -o misc/telegram-bot-status bot_token
+
+tasks:
+  build:
+    cmds:
+      - task: docker:compose
+        vars:
+          DOCKER_COMPOSE_ARGS: build
+
+  up:
+    cmds:
+      - task: docker:network
+        vars:
+          NETWORK: http_backend
+
+      - task: docker:compose
+        vars:
+          DOCKER_COMPOSE_ARGS: up -d
+
+  down:
+    cmds:
+      - task: docker:compose
+        vars:
+          DOCKER_COMPOSE_ARGS: down
+
+  logs:
+    cmds:
+      - task: docker:compose
+        vars:
+          DOCKER_COMPOSE_ARGS: logs -f
