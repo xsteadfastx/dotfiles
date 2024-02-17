@@ -28,3 +28,8 @@ scrape_configs:
     basic_auth:
       username: marv
       password_file: /run/secrets/UPTIME_KUMA_PASSWORD
+  - job_name: caddy
+    scheme: http
+    static_configs:
+      - targets:
+          - "lorelei.ts.xsfx.dev:2019"
