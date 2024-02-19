@@ -1,0 +1,5 @@
+- job_name: gitea
+  scheme: https
+  static_configs:
+    - targets:
+        - "git.xsfx.dev:443"

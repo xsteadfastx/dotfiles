@@ -1,0 +1,5 @@
+- job_name: caddy
+  scheme: http
+  static_configs:
+    - targets:
+        - "lorelei.ts.xsfx.dev:2019"

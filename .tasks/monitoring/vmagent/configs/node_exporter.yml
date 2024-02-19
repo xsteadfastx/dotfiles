@@ -1,0 +1,9 @@
+- job_name: node_exporter
+  scheme: http
+  static_configs:
+    - targets:
+        - "abed.ts.xsfx.dev:9100"
+        - "castlelabs.ts.xsfx.dev:9100"
+        - "dalek.ts.xsfx.dev:9100"
+        - "dipper.ts.xsfx.dev:9100"
+        - "lorelei.ts.xsfx.dev:9100"

@@ -13,6 +13,12 @@ env:
     sh: gopass show -o misc/telegram-bot-status bot_token
 
 tasks:
+  restart:
+    cmds:
+      - task: build
+      - task: down
+      - task: up
+
   build:
     cmds:
       - task: docker:compose

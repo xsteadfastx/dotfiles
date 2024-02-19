@@ -1,0 +1,5 @@
+- job_name: coredns
+  scheme: http
+  static_configs:
+    - targets:
+        - "dalek.ts.xsfx.dev:9153"
