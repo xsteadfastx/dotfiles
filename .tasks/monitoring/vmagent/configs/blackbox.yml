@@ -1,0 +1,44 @@
+- job_name: blackbox-http
+  scrape_interval: 1m
+  metrics_path: /probe
+  params:
+    module:
+      - http_2xx
+  static_configs:
+    - targets:
+        - https://amsel-kaffee.de
+        - https://chirpstack.iot.wolfsburg.digital
+        - https://ci.xsfx.dev
+        - https://cloud.xn--rhrsdorf-n4a.de
+        - https://git.xsfx.dev
+        - https://jellyfin.xsfx.name
+        - https://sonic.xsfx.name
+        - https://wobcom.de
+  relabel_configs:
+    - source_labels: [__address__]
+      target_label: __param_target
+    - source_labels: [__param_target]
+      target_label: instance
+    - target_label: __address__
+      replacement: blackbox_exporter:9115
+- job_name: blackbox-icmp
+  scrape_interval: 1m
+  metrics_path: /probe
+  params:
+    module:
+      - icmp
+  static_configs:
+    - targets:
+        - abed.ts.xsfx.dev
+        - dalek.ts.xsfx.dev
+        - dipper.ts.xsfx.dev
+        - viktoria.ts.xsfx.dev
+        - castlelabs.ts.xsfx.dev
+        - 192.168.39.100
+  relabel_configs:
+    - source_labels: [__address__]
+      target_label: __param_target
+    - source_labels: [__param_target]
+      target_label: instance
+    - target_label: __address__
+      replacement: blackbox_exporter:9115

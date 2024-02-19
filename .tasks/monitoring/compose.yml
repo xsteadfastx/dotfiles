@@ -97,6 +97,8 @@ services:
   blackbox_exporter:
     container_name: blackbox_exporter
     image: quay.io/prometheus/blackbox-exporter:v0.24.0
+    networks:
+      - http_backend
 volumes:
   vmagent-data:
   victoriametrics-data:
