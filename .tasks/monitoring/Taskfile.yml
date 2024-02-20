@@ -12,6 +12,9 @@ env:
   TELEGRAM_BOT_TOKEN:
     sh: gopass show -o misc/telegram-bot-status bot_token
 
+  GCPE_GITLAB_TOKEN:
+    sh: gopass show -o WOBCOM/gitlab/token
+
 tasks:
   restart:
     cmds:

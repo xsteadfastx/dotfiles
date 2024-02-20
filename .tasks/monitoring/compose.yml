@@ -94,11 +94,30 @@ services:
       driver: "json-file"
       options:
         max-size: "10m"
+    environment:
+      GF_INSTALL_PLUGINS: "grafana-polystat-panel"
   blackbox_exporter:
     container_name: blackbox_exporter
     image: quay.io/prometheus/blackbox-exporter:v0.24.0
     networks:
       - http_backend
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+  gitlab_exporter:
+    container_name: gitlab_exporter
+    build:
+      context: ./gitlab_exporter/
+    environment:
+      GCPE_GITLAB_TOKEN: ${GCPE_GITLAB_TOKEN}
+    command: run --config /etc/config.yml
+    networks:
+      - http_backend
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
 volumes:
   vmagent-data:
   victoriametrics-data:
