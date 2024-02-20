@@ -1,0 +1,5 @@
+- job_name: gitlab
+  scheme: http
+  static_configs:
+    - targets:
+        - "gitlab_exporter:8080"

@@ -1,5 +1,4 @@
 - job_name: blackbox-http
-  scrape_interval: 1m
   metrics_path: /probe
   params:
     module:
@@ -22,7 +21,6 @@
     - target_label: __address__
       replacement: blackbox_exporter:9115
 - job_name: blackbox-icmp
-  scrape_interval: 1m
   metrics_path: /probe
   params:
     module:
