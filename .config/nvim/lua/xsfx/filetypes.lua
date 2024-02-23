@@ -2,6 +2,7 @@ vim.filetype.add({
 	extension = {
 		lr = "markdown",
 		xsh = "python",
+		templ = "templ",
 	},
 
 	pattern = {
