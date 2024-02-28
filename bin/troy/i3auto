@@ -3,5 +3,6 @@
 set -e
 
 pasystray &
+blueman-applet &
 
 ~/.screenlayout/troy/standalone.sh
