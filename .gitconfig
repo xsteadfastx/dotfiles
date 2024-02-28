@@ -5,7 +5,13 @@
 [github]
 	user = xsteadfastx
 [merge]
-	tool = vimdiff
+	tool = nvim
+[mergetool]
+	keepBackup = false
+	prompt = false
+[mergetool "nvim"]
+	cmd = "nvim -d -c \"wincmd l\" -c \"norm ]c\" \"$LOCAL\" \"$MERGED\" \"$REMOTE\""
+	layout = LOCAL,MERGED,REMOTE
 [alias]
 	please = push --force-with-lease
 	graph = log --oneline --abbrev-commit --all --graph --decorate --color
