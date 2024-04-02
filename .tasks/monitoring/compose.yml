@@ -1,12 +1,10 @@
+# vim: set ft=yaml.docker-compose:
 version: "3.5"
+
 services:
   victoriametrics:
     container_name: victoriametrics
     image: victoriametrics/victoria-metrics:v1.97.1
-    # ports:
-    # - 8428:8428
-    # - 8089:8089
-    # - 8089:8089/udp
     volumes:
       - victoriametrics-data:/storage
     command:
@@ -17,12 +15,13 @@ services:
     networks:
       - http_backend
     restart: always
-    logging:
+    logging: &logging
       driver: "json-file"
       options:
         max-size: "10m"
+
   vmagent:
-    container_name: vmwagent
+    container_name: vmagent
     build:
       context: ./vmagent/
     depends_on:
@@ -37,10 +36,8 @@ services:
     networks:
       - http_backend
     restart: always
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
+    logging: *logging
+
   vmalert:
     container_name: vmalert
     build:
@@ -57,54 +54,42 @@ services:
       - "--external.url=https://metrics.mon.xsfx.dev"
     networks:
       - http_backend
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
+    logging: *logging
+
   alertmanager:
     container_name: alertmanager
     build:
       context: ./alertmanager/
-    # ports:
-    #   - 9093:9093
     command:
       - "--config.file=/config/alertmanager.yml"
     networks:
       - http_backend
     restart: always
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
+    logging: *logging
     secrets:
       - TELEGRAM_BOT_TOKEN
+
   grafana:
     container_name: grafana
     build:
       context: ./grafana/
     depends_on:
       - victoriametrics
-    # ports:
-    #   - 3000:3000
     volumes:
       - grafana-data:/var/lib/grafana
     networks:
       - http_backend
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
+    logging: *logging
     environment:
       GF_INSTALL_PLUGINS: "grafana-polystat-panel"
+
   blackbox_exporter:
     container_name: blackbox_exporter
     image: quay.io/prometheus/blackbox-exporter:v0.24.0
     networks:
       - http_backend
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
+    logging: *logging
+
   gitlab_exporter:
     container_name: gitlab_exporter
     build:
@@ -114,19 +99,37 @@ services:
     command: run --config /etc/config.yml
     networks:
       - http_backend
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
+    logging: *logging
+
+  glucose_exporter:
+    container_name: glucose_exporter
+    image: ghcr.io/xsteadfastx/glucose_exporter:0.1.0-rc3
+    secrets:
+      - GLUCOSE_PASSWORD
+    environment:
+      EMAIL: marv@xsfx.dev
+      PASSWORD_FILE: /run/secrets/GLUCOSE_PASSWORD
+      DEBUG: true
+    networks:
+      - http_backend
+    logging: *logging
+
 volumes:
   vmagent-data:
   victoriametrics-data:
   grafana-data:
+
+
 networks:
   http_backend:
     external: true
+
 secrets:
   UPTIME_KUMA_PASSWORD:
     environment: UPTIME_KUMA_PASSWORD
+
   TELEGRAM_BOT_TOKEN:
     environment: TELEGRAM_BOT_TOKEN
+
+  GLUCOSE_PASSWORD:
+    environment: GLUCOSE_PASSWORD

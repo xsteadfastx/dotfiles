@@ -15,6 +15,9 @@ env:
   GCPE_GITLAB_TOKEN:
     sh: gopass show -o WOBCOM/gitlab/token
 
+  GLUCOSE_PASSWORD:
+    sh: gopass show -o misc/librelinkup/marv@xsfx.dev
+
 tasks:
   restart:
     cmds:
@@ -49,3 +52,9 @@ tasks:
       - task: docker:compose
         vars:
           DOCKER_COMPOSE_ARGS: logs -f
+
+  ps:
+    cmds:
+      - task: docker:compose
+        vars:
+          DOCKER_COMPOSE_ARGS: ps
