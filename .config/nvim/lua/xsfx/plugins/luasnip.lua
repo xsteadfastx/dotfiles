@@ -55,7 +55,7 @@ return {
 						name string
 					}{
 						{
-							"00",
+							name: "00",
 						},
 					}
 
