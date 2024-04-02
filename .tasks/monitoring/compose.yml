@@ -10,7 +10,6 @@ services:
     command:
       - "--storageDataPath=/storage"
       - "--httpListenAddr=:8428"
-      # - "--influxListenAddr=:8089"
       - "--vmalert.proxyURL=http://vmalert:8880"
     networks:
       - http_backend
@@ -110,6 +109,17 @@ services:
       EMAIL: marv@xsfx.dev
       PASSWORD_FILE: /run/secrets/GLUCOSE_PASSWORD
       DEBUG: true
+    networks:
+      - http_backend
+    logging: *logging
+
+  nextcloud_exporter:
+    container_name: nextcloud_exporter
+    image: ghcr.io/xperimental/nextcloud-exporter:0.7.0
+    environment:
+      NEXTCLOUD_SERVER: ${NEXTCLOUD_SERVER}
+      NEXTCLOUD_AUTH_TOKEN: ${NEXTCLOUD_AUTH_TOKEN}
+      NEXTCLOUD_INFO_APPS: true
     networks:
       - http_backend
     logging: *logging

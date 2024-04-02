@@ -32,7 +32,16 @@ tasks:
           DOCKER_COMPOSE_ARGS: build
 
   up:
+    vars:
+      NEXTCLOUD_SERVER:
+        sh: gopass show -o misc/roehrscloud/serverinfo_token server
+      NEXTCLOUD_AUTH_TOKEN:
+        sh: gopass show -o misc/roehrscloud/serverinfo_token
     cmds:
+      - echo "NEXTCLOUD_SERVER={{.NEXTCLOUD_SERVER}}" > .env
+      - echo "NEXTCLOUD_AUTH_TOKEN={{.NEXTCLOUD_AUTH_TOKEN}}" >> .env
+      - defer: rm .env
+
       - task: docker:network
         vars:
           NETWORK: http_backend
