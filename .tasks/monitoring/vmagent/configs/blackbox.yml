@@ -1,3 +1,5 @@
+# vim: ft=yaml
+
 - job_name: blackbox-http
   metrics_path: /probe
   params:
@@ -5,14 +7,16 @@
       - http_2xx
   static_configs:
     - targets:
-        - https://amsel-kaffee.de
+        # - https://amsel-kaffee.de
         - https://chirpstack.iot.wolfsburg.digital
         - https://ci.xsfx.dev
         - https://cloud.xn--rhrsdorf-n4a.de
         - https://git.xsfx.dev
         - https://jellyfin.xsfx.name
         - https://sonic.xsfx.name
-        - https://wobcom.de
+        # - https://wobcom.de
+        - https://sarahbrendel.de
+        - https://das-kleinste-ist-nicht-zu-klein.de
   relabel_configs:
     - source_labels: [__address__]
       target_label: __param_target
@@ -33,6 +37,10 @@
         - viktoria.ts.xsfx.dev
         - castlelabs.ts.xsfx.dev
         - 192.168.39.100
+        - 192.168.39.101
+        - 192.168.39.102
+        - 192.168.39.103
+        - 192.168.39.104
   relabel_configs:
     - source_labels: [__address__]
       target_label: __param_target
