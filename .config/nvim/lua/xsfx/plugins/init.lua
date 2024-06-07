@@ -132,8 +132,9 @@ return {
 	{
 		"folke/trouble.nvim",
 		dependencies = { "kyazdani42/nvim-web-devicons" },
+		cmd = "Trouble",
 		keys = {
-			{ "<C-t>", "<cmd>TroubleToggle<CR>" },
+			{ "<C-t>", "<cmd>Trouble diagnostics toggle<CR>" },
 		},
 		config = function()
 			require("trouble").setup({
