@@ -2,6 +2,8 @@
 
 set -e
 
+setxkbmap -option "caps:super"
+
 pasystray &
 blueman-applet &
 
