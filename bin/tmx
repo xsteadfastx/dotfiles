@@ -1,10 +1,4 @@
 #!/bin/sh
 set -e
 
-TMUX=tmux
-
-if [ -e "/home/linuxbrew/.linuxbrew/bin/tmux" ]; then
-	TMUX="/home/linuxbrew/.linuxbrew/bin/tmux"
-fi
-
-$TMUX new-session -t local
+tmux new-session -t local
