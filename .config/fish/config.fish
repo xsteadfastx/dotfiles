@@ -48,12 +48,10 @@ end
 
 # nix
 if test -f ~/.nix-profile/bin/nix
-    set fish_user_paths ~/.nix-profile/bin $fish_user_paths
-    set -e LD_PRELOAD
-    if type -q bass
-        set -e NIX_PATH
-        bass source ~/.nix-profile/etc/profile.d/nix.sh
-    end
+  source ~/.nix-profile/etc/profile.d/nix.fish
+  if type -q babelfish
+    babelfish < ~/.nix-profile/etc/profile.d/hm-session-vars.sh | source
+  end
 end
 
 # brew
