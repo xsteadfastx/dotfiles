@@ -148,14 +148,6 @@ return {
 	-- git blame plugin
 	"APZelos/blamer.nvim",
 
-	-- markdown preview plugin
-	{
-		"iamcco/markdown-preview.nvim",
-		config = function()
-			fn["mkdp#util#install"](0)
-		end,
-	},
-
 	-- smooth scrolling
 	{
 		"karb94/neoscroll.nvim",
