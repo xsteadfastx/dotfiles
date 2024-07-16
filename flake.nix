@@ -13,9 +13,11 @@
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    airmtp.url = "github:xsteadfastx/airmtp";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, airmtp, ... }:
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
@@ -27,7 +29,7 @@
         xsfx = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [ ./home.nix ];
-          extraSpecialArgs = { inherit pkgs-unstable; };
+          extraSpecialArgs = { inherit pkgs-unstable airmtp; };
         };
       };
     };

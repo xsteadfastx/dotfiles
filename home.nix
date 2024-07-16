@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, ... }:
+{ config, pkgs, pkgs-unstable, airmtp, ... }:
 
 {
   home.username = "marv";
@@ -7,6 +7,8 @@
   home.stateVersion = "24.05";
 
   home.packages = with pkgs-unstable; [
+    airmtp.packages.x86_64-linux.default
+
     # systemtools
     bat
     eza
