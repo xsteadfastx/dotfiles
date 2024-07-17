@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, airmtp, ... }:
+{ config, pkgs, pkgs-unstable, inputs, ... }:
 
 {
   home.username = "marv";
@@ -7,7 +7,7 @@
   home.stateVersion = "24.05";
 
   home.packages = with pkgs-unstable; [
-    airmtp.packages.x86_64-linux.default
+    inputs.airmtp.packages.x86_64-linux.default
 
     # systemtools
     bat
@@ -31,6 +31,7 @@
 
     # dev
     neovim
+    earthly
 
     # k8s
     k9s

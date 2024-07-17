@@ -17,19 +17,18 @@
     airmtp.url = "github:xsteadfastx/airmtp";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, airmtp, ... }:
+  outputs = inputs:
     let
-      lib = nixpkgs.lib;
       system = "x86_64-linux";
-      pkgs = import nixpkgs { inherit system; };
-      pkgs-unstable = import nixpkgs-unstable { inherit system; };
+      pkgs = import inputs.nixpkgs { inherit system; };
+      pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; };
     in
     {
       homeConfigurations = {
-        xsfx = home-manager.lib.homeManagerConfiguration {
+        xsfx = inputs.home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [ ./home.nix ];
-          extraSpecialArgs = { inherit pkgs-unstable airmtp; };
+          extraSpecialArgs = { inherit pkgs-unstable inputs; };
         };
       };
     };
