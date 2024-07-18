@@ -1,6 +1,5 @@
 require("xsfx.augroups.css")
 require("xsfx.augroups.folding")
-require("xsfx.augroups.format")
 require("xsfx.augroups.golang")
 require("xsfx.augroups.gopass")
 require("xsfx.augroups.html")
