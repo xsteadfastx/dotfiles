@@ -46,14 +46,6 @@ if type -q gopass
     status --is-interactive; and gopass completion fish | source
 end
 
-# nix
-if test -f ~/.nix-profile/bin/nix
-  source ~/.nix-profile/etc/profile.d/nix.fish
-  if type -q babelfish
-    babelfish < ~/.nix-profile/etc/profile.d/hm-session-vars.sh | source
-  end
-end
-
 # brew
 if test -f /home/linuxbrew/.linuxbrew/bin/brew
     set -gx HOMEBREW_PREFIX "/home/linuxbrew/.linuxbrew"
@@ -70,6 +62,14 @@ if type -q asdf
     set fish_user_paths  $ASDF_DIR/bin $fish_user_paths
     set fish_user_paths  ~/.asdf/shims $fish_user_paths
     . $ASDF_DIR/asdf.fish
+end
+
+# nix
+if test -f ~/.nix-profile/bin/nix
+  source ~/.nix-profile/etc/profile.d/nix.fish
+  if type -q babelfish
+    babelfish < ~/.nix-profile/etc/profile.d/hm-session-vars.sh | source
+  end
 end
 
 # starship
