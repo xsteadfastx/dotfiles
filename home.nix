@@ -1,4 +1,9 @@
-{ config, pkgs, pkgs-unstable, inputs, ... }:
+{ config, pkgs, system, inputs, }:
+
+let
+  pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; };
+  airmtp = inputs.airmtp.packages.${system}.default;
+in
 
 {
   home.username = "marv";
@@ -7,8 +12,6 @@
   home.stateVersion = "24.05";
 
   home.packages = with pkgs-unstable; [
-    inputs.airmtp.packages.x86_64-linux.default
-
     # systemtools
     bat
     eza
@@ -40,6 +43,7 @@
     kubectx
 
     # other tools
+    airmtp
     babelfish
     gopass
   ];
