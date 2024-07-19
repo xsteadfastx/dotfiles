@@ -20,3 +20,8 @@
     nix flake update
     git add -f flake.nix home.nix
     home-manager switch --flake .#xsfx
+
+### Updating nix stuff
+
+    nix-channel --update
+    nix-env --install --file '<nixpkgs>' --attr nix
