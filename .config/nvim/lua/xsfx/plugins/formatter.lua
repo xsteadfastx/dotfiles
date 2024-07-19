@@ -35,6 +35,7 @@ return {
 					lua = { "stylua" },
 					markdown = { "prettier" },
 					proto = { "clang_format" },
+					python = { "black" },
 					sh = { "shfmt" },
 					sql = { "sql_formatter" },
 					taskfile = { "prettier" },
