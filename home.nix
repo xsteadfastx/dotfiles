@@ -1,4 +1,4 @@
-{ config, pkgs, system, inputs, }:
+{ config, pkgs, system, inputs, ... }:
 
 let
   pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; };
@@ -45,6 +45,7 @@ in
     # other tools
     airmtp
     babelfish
+    croc
     gopass
   ];
 
