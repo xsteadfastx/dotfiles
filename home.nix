@@ -47,6 +47,7 @@ in
     babelfish
     croc
     gopass
+    rclone
   ];
 
   home.sessionVariables = {
