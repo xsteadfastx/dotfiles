@@ -42,6 +42,9 @@ in
     kubectl
     kubectx
 
+    # vpn
+    openfortivpn
+
     # other tools
     airmtp
     babelfish
@@ -56,4 +59,8 @@ in
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  # Direnv
+  programs.direnv.enable = true;
+  programs.direnv.nix-direnv.enable = true;
 }

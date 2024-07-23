@@ -24,4 +24,5 @@
 ### Updating nix stuff
 
     nix-channel --update
+    nix-env -u '*'
     nix-env --install --file '<nixpkgs>' --attr nix
