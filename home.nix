@@ -1,7 +1,22 @@
 { config, pkgs, system, inputs, ... }:
 
 let
-  pkgs-unstable = import inputs.nixpkgs-unstable { inherit system; };
+  pkgs-unstable = import inputs.nixpkgs-unstable {
+    inherit system;
+    overlays = [
+      (final: prev: {
+        neovim = prev.neovim-unwrapped.overrideAttrs (old: {
+          src = prev.fetchFromGitHub {
+            owner = "neovim";
+            repo = "neovim";
+            rev = "v0.10.1";
+            hash = "sha256-OsHIacgorYnB/dPbzl1b6rYUzQdhTtsJYLsFLJxregk=";
+          };
+        });
+      })
+    ];
+  };
+
   airmtp = inputs.airmtp.packages.${system}.default;
 in
 
