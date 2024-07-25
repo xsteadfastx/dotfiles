@@ -60,6 +60,9 @@ in
     # vpn
     openfortivpn
 
+    # download stuff
+    yt-dlp
+
     # other tools
     airmtp
     babelfish
