@@ -3,6 +3,9 @@
 let
   pkgs-unstable = import inputs.nixpkgs-unstable {
     inherit system;
+    config = {
+      allowUnfree = true;
+    };
     overlays = [
       (final: prev: {
         neovim = prev.neovim-unwrapped.overrideAttrs {
@@ -62,6 +65,9 @@ in
 
     # download stuff
     yt-dlp
+
+    # browser
+    google-chrome
 
     # other tools
     airmtp
