@@ -1,4 +1,4 @@
-{ config, pkgs, system, inputs, ... }:
+{ config, pkgs, system, inputs, ... }@args:
 
 let
   pkgs-unstable = import inputs.nixpkgs-unstable {
@@ -7,6 +7,7 @@ let
       allowUnfree = true;
     };
     overlays = [
+      # up to date neovim
       (final: prev: {
         neovim = prev.neovim-unwrapped.overrideAttrs {
           src = prev.fetchFromGitHub {
@@ -15,6 +16,14 @@ let
             rev = "v0.10.1";
             hash = "sha256-OsHIacgorYnB/dPbzl1b6rYUzQdhTtsJYLsFLJxregk=";
           };
+        };
+      })
+
+      # needed because there is a system gpg-agent and gpg from wrapped gopass mismatch
+      (final: prev: {
+        gopass = prev.gopass.overrideAttrs {
+          postFixup = "";
+          passthru = { };
         };
       })
     ];
@@ -38,10 +47,10 @@ in
     fzf
     git
     gping
+    htop
     nmap
     ripgrep
     tree
-
     # mail
     isync
     neomutt
