@@ -5,14 +5,14 @@ let
     inherit system;
     overlays = [
       (final: prev: {
-        neovim = prev.neovim-unwrapped.overrideAttrs (old: {
+        neovim = prev.neovim-unwrapped.overrideAttrs {
           src = prev.fetchFromGitHub {
             owner = "neovim";
             repo = "neovim";
             rev = "v0.10.1";
             hash = "sha256-OsHIacgorYnB/dPbzl1b6rYUzQdhTtsJYLsFLJxregk=";
           };
-        });
+        };
       })
     ];
   };
