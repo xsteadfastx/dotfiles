@@ -21,9 +21,16 @@ let
 
       # needed because there is a system gpg-agent and gpg from wrapped gopass mismatch
       (final: prev: {
-        gopass = prev.gopass.overrideAttrs {
-          postFixup = "";
-          passthru = { };
+        gopass = prev.gopass.overrideAttrs rec {
+          wrapperPath = args.lib.makeBinPath ([ prev.git prev.xclip ] ++ args.lib.optional prev.stdenv.isLinux prev.wl-clipboard);
+          postFixup = ''
+            wrapProgram $out/bin/gopass \
+              --prefix PATH : "${wrapperPath}" \
+              --set GOPASS_NO_REMINDER true
+          '';
+          passthru = {
+            inherit wrapperPath;
+          };
         };
       })
     ];
