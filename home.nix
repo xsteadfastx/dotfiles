@@ -85,8 +85,12 @@ in
     # browser
     google-chrome
 
+    # backup
+    restic
+
     # other tools
     airmtp
+    ansible
     babelfish
     croc
     gopass
