@@ -88,6 +88,9 @@ in
     # backup
     restic
 
+    # media
+    abcde
+
     # other tools
     airmtp
     ansible
