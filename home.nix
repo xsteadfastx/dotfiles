@@ -96,6 +96,7 @@ in
     ansible
     babelfish
     croc
+    glab
     gopass
     rclone
   ];
