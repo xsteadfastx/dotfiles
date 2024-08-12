@@ -1,0 +1,23 @@
+import = ["/home/marv/.config/alacritty/dracula.toml"]
+
+[font]
+size = 8
+
+[font.bold]
+family = "CommitMono Nerd Font"
+style = "Bold"
+
+[font.bold_italic]
+family = "CommitMono Nerd Font"
+style = "Bold Italic"
+
+[font.italic]
+family = "CommitMono Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "CommitMono Nerd Font"
+style = "Regular"
+
+[scrolling]
+history = 0
