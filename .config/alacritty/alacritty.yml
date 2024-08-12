@@ -3,10 +3,16 @@ import:
 font:
   size: 8
   normal:
-    family: BlexMono Nerd Font
+    family: CommitMono Nerd Font
     style: Regular
   italic:
-    family: BlexMono Nerd Font
+    family: CommitMono Nerd Font
     style: Italic
+  bold:
+    family: CommitMono Nerd Font
+    style: Bold
+  bold_italic:
+    family: CommitMono Nerd Font
+    style: Bold Italic
 scrolling:
   history: 0
