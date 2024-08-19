@@ -52,7 +52,6 @@ in
     fd
     fish
     fzf
-    git
     gping
     htop
     nmap
@@ -62,6 +61,10 @@ in
     isync
     neomutt
     notmuch
+
+    # dev
+    git
+    pkgs.delta
 
     # go
     go
