@@ -95,6 +95,9 @@ in
     # media
     abcde
 
+    # communication
+    signal-desktop
+
     # other tools
     airmtp
     ansible
