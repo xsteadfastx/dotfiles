@@ -57,6 +57,7 @@ in
     nmap
     ripgrep
     tree
+    viddy
 
     # mail
     isync
