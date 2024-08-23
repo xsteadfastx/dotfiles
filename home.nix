@@ -54,6 +54,7 @@ in
     fzf
     gping
     htop
+    ncdu
     nmap
     ripgrep
     tree
@@ -98,6 +99,7 @@ in
 
     # communication
     signal-desktop
+    slack
 
     # other tools
     airmtp
