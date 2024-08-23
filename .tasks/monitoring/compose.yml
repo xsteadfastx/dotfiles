@@ -1,6 +1,5 @@
 # vim: set ft=yaml.docker-compose:
 version: "3.5"
-
 services:
   victoriametrics:
     container_name: victoriametrics
@@ -18,7 +17,6 @@ services:
       driver: "json-file"
       options:
         max-size: "10m"
-
   vmagent:
     container_name: vmagent
     build:
@@ -36,7 +34,6 @@ services:
       - http_backend
     restart: always
     logging: *logging
-
   vmalert:
     container_name: vmalert
     build:
@@ -54,7 +51,6 @@ services:
     networks:
       - http_backend
     logging: *logging
-
   alertmanager:
     container_name: alertmanager
     build:
@@ -67,7 +63,6 @@ services:
     logging: *logging
     secrets:
       - TELEGRAM_BOT_TOKEN
-
   grafana:
     container_name: grafana
     build:
@@ -81,14 +76,14 @@ services:
     logging: *logging
     environment:
       GF_INSTALL_PLUGINS: "grafana-polystat-panel"
-
+    restart: always
   blackbox_exporter:
     container_name: blackbox_exporter
     image: quay.io/prometheus/blackbox-exporter:v0.24.0
     networks:
       - http_backend
     logging: *logging
-
+    restart: always
   gitlab_exporter:
     container_name: gitlab_exporter
     build:
@@ -99,7 +94,7 @@ services:
     networks:
       - http_backend
     logging: *logging
-
+    restart: always
   glucose_exporter:
     container_name: glucose_exporter
     image: ghcr.io/xsteadfastx/glucose_exporter:0.1.0-rc3
@@ -112,7 +107,7 @@ services:
     networks:
       - http_backend
     logging: *logging
-
+    restart: always
   nextcloud_exporter:
     container_name: nextcloud_exporter
     image: ghcr.io/xperimental/nextcloud-exporter:0.7.0
@@ -123,23 +118,18 @@ services:
     networks:
       - http_backend
     logging: *logging
-
+    restart: always
 volumes:
   vmagent-data:
   victoriametrics-data:
   grafana-data:
-
-
 networks:
   http_backend:
     external: true
-
 secrets:
   UPTIME_KUMA_PASSWORD:
     environment: UPTIME_KUMA_PASSWORD
-
   TELEGRAM_BOT_TOKEN:
     environment: TELEGRAM_BOT_TOKEN
-
   GLUCOSE_PASSWORD:
     environment: GLUCOSE_PASSWORD
