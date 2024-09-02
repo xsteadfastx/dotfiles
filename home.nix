@@ -28,9 +28,6 @@ let
               --prefix PATH : "${wrapperPath}" \
               --set GOPASS_NO_REMINDER true
           '';
-          passthru = {
-            inherit wrapperPath;
-          };
         };
       })
     ];
@@ -96,6 +93,7 @@ in
 
     # media
     abcde
+    makemkv
 
     # communication
     signal-desktop
