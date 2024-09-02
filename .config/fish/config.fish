@@ -210,7 +210,7 @@ abbr -a gt 'git tag -l --sort=v:refname'
 abbr -a gw 'git worktree'
 
 # ssh
-abbr -a ssh 'TERM=xterm-256color ssh'
+abbr -a ssh 'TERM=xterm-256color SHELL=/bin/sh ssh'
 
 # yaegi
 abbr -a yaegi 'rlwrap yaegi'
@@ -236,4 +236,4 @@ abbr -a tf terraform
 abbr -a t task
 
 # prepare ssh
-fish_ssh_agent
+# fish_ssh_agent
