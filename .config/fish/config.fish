@@ -223,6 +223,9 @@ if type -q neomutt
     abbr -a mutt neomutt
 end
 
+# kodi
+abbr -a kodi flatpak run tv.kodi.Kodi
+
 # cp with progress bar
 abbr -a rcp rsync -ah --info=progress2
 
