@@ -3,3 +3,4 @@
   static_configs:
     - targets:
         - "lorelei.ts.xsfx.dev:2019"
+        - "abed.ts.xsfx.dev:2019"
