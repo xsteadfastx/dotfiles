@@ -1,0 +1,12 @@
+# vim: set ft=yaml:
+- job_name: nextcloud_exporter_roehrscloud
+  scheme: http
+  scrape_interval: 1m
+  static_configs:
+    - targets:
+        - "nextcloud_exporter:9205"
+  relabel_configs:
+    - source_labels: [__address__]
+      regex: '.*'
+      target_label: instance
+      replacement: 'https://cloud.xn--rhrsdorf-n4a.de/'
