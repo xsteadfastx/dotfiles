@@ -1,5 +1,4 @@
 # vim: set ft=yaml.docker-compose:
-version: "3.5"
 services:
   victoriametrics:
     container_name: victoriametrics
@@ -57,12 +56,15 @@ services:
       context: ./alertmanager/
     command:
       - "--config.file=/config/alertmanager.yml"
+      - "--storage.path=/data"
     networks:
       - http_backend
     restart: always
     logging: *logging
     secrets:
       - TELEGRAM_BOT_TOKEN
+    volumes:
+      - alertmanager-data:/data
   grafana:
     container_name: grafana
     build:
@@ -100,6 +102,8 @@ services:
     image: ghcr.io/xsteadfastx/glucose_exporter:0.1.0-rc3
     secrets:
       - GLUCOSE_PASSWORD
+    volumes:
+      - glucose_exporter-data:/var/cache/glucose_exporter
     environment:
       EMAIL: marv@xsfx.dev
       PASSWORD_FILE: /run/secrets/GLUCOSE_PASSWORD
@@ -120,9 +124,11 @@ services:
     logging: *logging
     restart: always
 volumes:
-  vmagent-data:
-  victoriametrics-data:
+  alertmanager-data:
+  glucose_exporter-data:
   grafana-data:
+  victoriametrics-data:
+  vmagent-data:
 networks:
   http_backend:
     external: true
