@@ -1,0 +1,49 @@
+{
+	admin 0.0.0.0:2019
+	acme_ca https://acme-v02.api.letsencrypt.org/directory
+	email marv@xsfx.dev
+	cache
+	servers {
+		metrics
+	}
+}
+
+(subdomain-log) {
+	log {
+		format json
+		hostnames {args[0]}
+		output file /var/log/caddy/{args[0]}.log
+	}
+}
+
+git.xsfx.dev {
+	import subdomain-log git.xsfx.dev
+
+	@badbots {
+		header User-Agent *AhrefsBot*
+		header User-Agent *Amazonbot*
+		header User-Agent *Barkrowler*
+		header User-Agent *Bytespider*
+		header User-Agent *ImagesiftBot*
+		header User-Agent *MJ12bot*
+		header User-Agent *PetalBot*
+		header User-Agent *SemrushBot*
+		header User-Agent *facebookexternalhit*
+		header User-Agent *meta-externalagent*
+	}
+
+	abort @badbots
+
+	cache
+	reverse_proxy gitea:3000
+}
+
+go.xsfx.dev {
+	import subdomain-log go.xsfx.dev
+
+	route /* {
+		@goget query go-get=1
+		respond @goget `<meta name="go-import" content="{host}{path} git https://git.xsfx.dev/xsteadfastx{path}">`
+		redir https://git.xsfx.dev/xsteadfastx{path}
+	}
+}

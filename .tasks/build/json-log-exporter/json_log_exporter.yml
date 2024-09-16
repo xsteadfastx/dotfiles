@@ -1,0 +1,38 @@
+namespace: jsonlog
+exports:
+  - name: default
+    path: /metrics
+log_groups:
+  - name: caddy
+    subsystem: caddy
+    files:
+      - /var/log/caddy/git.xsfx.dev.log
+      - /var/log/caddy/go.xsfx.dev.log
+    labels:
+      host: "{{.request.host}}"
+      proto: "{{.request.proto}}"
+      method: "{{.request.method}}"
+      response: "{{.status}}"
+    metrics:
+      - name: count_total
+        type: counter
+        export_to: default
+      - name: bytes_total
+        type: counter
+        value: "{{.size}}"
+        export_to: default
+      - name: duration_total
+        type: histogram
+        buckets:
+          - 0.001
+          - 0.01
+          - 0.05
+          - 0.1
+          - 0.5
+          - 1
+          - 5
+          - 10
+          - 30
+          - 60
+        value: "{{.duration}}"
+        export_to: default
