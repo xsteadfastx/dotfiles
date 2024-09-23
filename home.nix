@@ -101,12 +101,13 @@ in
 
     # other tools
     airmtp
-    ansible
+    ansible_2_15
     babelfish
     croc
     fx
     glab
     gopass
+    qrcp # easy sending files to android
     rclone
   ];
 
