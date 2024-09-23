@@ -32,14 +32,15 @@ services:
       - http_backend
     restart: always
     logging: *logging
-  json-log-exporter:
-    container_name: json-log-exporter
-    build:
-      context: json-log-exporter/
+  caddy-log-exporter:
+    container_name: caddy-log-exporter
+    image: ghcr.io/xsteadfastx/caddy-log-exporter:0.1.0-rc6
+    environment:
+      CADDY_LOG_EXPORTER_LOG_FILES: /var/log/caddy/git.xsfx.dev.log,/var/log/caddy/go.xsfx.dev.log
     volumes:
       - caddy-log:/var/log/caddy
     ports:
-      - 100.115.77.113:9321:9321
+      - 100.115.77.113:9321:2112
     restart: always
     logging: *logging
 volumes:
