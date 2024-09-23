@@ -45,7 +45,6 @@ return {
 						"sumneko_lua",
 						"taplo",
 						"tflint",
-						"tsserver",
 						"vimls",
 						"yamlfmt",
 						"yamlls",
