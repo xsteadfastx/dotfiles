@@ -24,6 +24,7 @@ git.xsfx.dev {
 		header User-Agent *Amazonbot*
 		header User-Agent *Barkrowler*
 		header User-Agent *Bytespider*
+		header User-Agent *DataForSeoBot*
 		header User-Agent *ImagesiftBot*
 		header User-Agent *MJ12bot*
 		header User-Agent *PetalBot*
