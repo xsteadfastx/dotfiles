@@ -34,7 +34,7 @@ services:
     logging: *logging
   caddy-log-exporter:
     container_name: caddy-log-exporter
-    image: ghcr.io/xsteadfastx/caddy-log-exporter:0.1.0-rc6
+    image: ghcr.io/xsteadfastx/caddy-log-exporter-x86_64-linux:0.1.0-rc9
     environment:
       CADDY_LOG_EXPORTER_LOG_FILES: /var/log/caddy/git.xsfx.dev.log,/var/log/caddy/go.xsfx.dev.log
     volumes:
