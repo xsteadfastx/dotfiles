@@ -16,9 +16,7 @@
 	}
 }
 
-git.xsfx.dev {
-	import subdomain-log git.xsfx.dev
-
+(badbots) {
 	@badbots {
 		header User-Agent *AhrefsBot*
 		header User-Agent *Amazonbot*
@@ -34,8 +32,14 @@ git.xsfx.dev {
 	}
 
 	abort @badbots
+}
+
+git.xsfx.dev {
+	import subdomain-log git.xsfx.dev
+	import badbots
 
 	cache
+
 	reverse_proxy gitea:3000
 }
 
