@@ -4,3 +4,10 @@
     - targets:
         - "lorelei.ts.xsfx.dev:2019"
         - "abed.ts.xsfx.dev:2019"
+
+- job_name: caddy_log_exporter
+  scheme: http
+  static_configs:
+    - targets:
+        - "abed.ts.xsfx.dev:9321"
+        - "lorelei.ts.xsfx.dev:9321"
