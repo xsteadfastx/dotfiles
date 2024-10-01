@@ -93,6 +93,7 @@ in
 
     # media
     abcde
+    handbrake
     makemkv
 
     # communication
