@@ -1,4 +1,4 @@
-local fn = vim.fn   -- to call vim functions e.g. fn.bufnr()
+local fn = vim.fn -- to call vim functions e.g. fn.bufnr()
 local cmd = vim.cmd -- to execute vim commands e.g. cmd('pwd')
 
 return {
@@ -146,7 +146,13 @@ return {
 	},
 
 	-- git blame plugin
-	"APZelos/blamer.nvim",
+	{
+		"FabijanZulj/blame.nvim",
+		setup = true,
+		opts = {
+			blame_options = { "-w" },
+		},
+	},
 
 	-- smooth scrolling
 	{
