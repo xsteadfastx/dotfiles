@@ -13,8 +13,8 @@ let
           src = prev.fetchFromGitHub {
             owner = "neovim";
             repo = "neovim";
-            rev = "v0.10.1";
-            hash = "sha256-OsHIacgorYnB/dPbzl1b6rYUzQdhTtsJYLsFLJxregk=";
+            rev = "v0.10.2";
+            hash = "sha256-+qjjelYMB3MyjaESfCaGoeBURUzSVh/50uxUqStxIfY=";
           };
         };
       })
