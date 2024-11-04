@@ -30,6 +30,10 @@ let
           '';
         };
       })
+
+      (final: prev: {
+        go-task = prev.go-task.overrideAttrs (finalAttrs: previousAttrs: { patches = [ ]; });
+      })
     ];
   };
 
