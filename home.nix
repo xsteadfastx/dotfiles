@@ -55,6 +55,7 @@ in
     fzf
     gping
     htop
+    mtr
     ncdu
     nmap
     ripgrep
@@ -111,9 +112,12 @@ in
     croc
     fx
     glab
+    go-task
     gopass
+    pandoc
     qrcp # easy sending files to android
     rclone
+    tectonic
   ];
 
   home.sessionVariables = {
