@@ -34,6 +34,32 @@ let
       (final: prev: {
         go-task = prev.go-task.overrideAttrs (finalAttrs: previousAttrs: { patches = [ ]; });
       })
+
+      (final: prev: {
+        localsend-go = prev.buildGo123Module rec {
+          pname = "localsend-go";
+          version = "1.1.0";
+
+          src = prev.fetchFromGitHub {
+            owner = "meowrain";
+            repo = "localsend-go";
+            rev = version;
+            hash = "sha256-oQqK0Omqeqs0gflyDt72TbJUeNmCr3kzlFblgAwayYQ=";
+          };
+
+          vendorHash = "sha256-wjrtv1Y1umQlbc1JhYd4uJ9QXCtucAUI8WCbeIqE1do=";
+          subPackages = "cmd/";
+          ldflags = [
+            "-s"
+            "-w"
+          ];
+          CGO_ENABLED = 0;
+
+          postInstall = ''
+            mv $out/bin/cmd $out/bin/localsend-go
+          '';
+        };
+      })
     ];
   };
 
@@ -104,6 +130,9 @@ in
     # communication
     signal-desktop
     slack
+
+    # filetransfer
+    localsend-go
 
     # other tools
     airmtp
