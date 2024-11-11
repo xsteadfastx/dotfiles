@@ -95,7 +95,7 @@ in
 
     # dev
     git
-    pkgs.delta
+    difftastic
 
     # go
     go
