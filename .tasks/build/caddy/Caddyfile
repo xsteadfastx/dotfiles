@@ -22,6 +22,7 @@
 		header User-Agent *Amazonbot*
 		header User-Agent *Barkrowler*
 		header User-Agent *Bytespider*
+		header User-Agent *ClaudeBot*
 		header User-Agent *DataForSeoBot*
 		header User-Agent *GPTBot*
 		header User-Agent *ImagesiftBot*
