@@ -30,7 +30,6 @@ tasks:
       - task: docker:compose
         vars:
           DOCKER_COMPOSE_ARGS: build
-
   up:
     vars:
       NEXTCLOUD_SERVER:
