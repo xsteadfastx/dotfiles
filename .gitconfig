@@ -54,3 +54,5 @@
 
 [pager]
 	difftool = true
+[url "git@git.wobcom.de:"]
+	insteadOf = https://git.wobcom.de/
