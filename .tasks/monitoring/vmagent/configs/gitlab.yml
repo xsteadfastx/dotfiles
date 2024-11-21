@@ -3,3 +3,9 @@
   static_configs:
     - targets:
         - "gitlab_exporter:8080"
+
+- job_name: gitlab-runner
+  scheme: http
+  static_configs:
+    - targets:
+        - "muska.ts.xsfx.dev:9252"
