@@ -136,13 +136,14 @@ in
 
     # other tools
     airmtp
-    ansible_2_15
+    ansible
     babelfish
     croc
     fx
     glab
     go-task
     gopass
+    git-credential-gopass
     pandoc
     qrcp # easy sending files to android
     rclone
