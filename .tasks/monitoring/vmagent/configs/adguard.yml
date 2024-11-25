@@ -1,0 +1,5 @@
+- job_name: adguard
+  scheme: http
+  static_configs:
+    - targets:
+        - lorelei.ts.xsfx.dev:9617

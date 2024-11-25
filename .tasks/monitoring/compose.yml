@@ -77,7 +77,7 @@ services:
       - http_backend
     logging: *logging
     environment:
-      GF_INSTALL_PLUGINS: "grafana-polystat-panel"
+      GF_INSTALL_PLUGINS: "grafana-polystat-panel,grafana-piechart-panel"
     restart: always
   blackbox_exporter:
     container_name: blackbox_exporter
