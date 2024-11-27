@@ -79,12 +79,16 @@ in
     fd
     fish
     fzf
+    git-annex
     gping
     htop
     mtr
     ncdu
     nmap
+    nodejs
+    python3
     ripgrep
+    starship
     tree
     viddy
 
