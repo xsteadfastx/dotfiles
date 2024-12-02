@@ -75,6 +75,7 @@ in
   home.packages = with pkgs-unstable; [
     # systemtools
     bat
+    btop
     eza
     fd
     fish
@@ -144,14 +145,15 @@ in
     babelfish
     croc
     fx
+    git-credential-gopass
     glab
     go-task
     gopass
-    git-credential-gopass
     pandoc
     qrcp # easy sending files to android
     rclone
     tectonic
+    w3m
   ];
 
   home.sessionVariables = {
