@@ -20,6 +20,7 @@
 	@badbots {
 		header User-Agent *AhrefsBot*
 		header User-Agent *Amazonbot*
+		header User-Agent *BLEXBot*
 		header User-Agent *Barkrowler*
 		header User-Agent *Bytespider*
 		header User-Agent *ClaudeBot*
