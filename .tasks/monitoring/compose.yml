@@ -50,6 +50,7 @@ services:
     networks:
       - http_backend
     logging: *logging
+    restart: always
   alertmanager:
     container_name: alertmanager
     build:
