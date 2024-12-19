@@ -15,6 +15,11 @@
     };
 
     airmtp.url = "github:xsteadfastx/airmtp";
+
+    compose2nix = {
+      url = "github:aksiksi/compose2nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs:
@@ -85,6 +90,10 @@
 
           (final: prev: {
             airmtp = inputs.airmtp.packages.${system}.default;
+          })
+
+          (final: prev: {
+            compose2nix = inputs.compose2nix.packages.${system}.default;
           })
 
         ];

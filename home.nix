@@ -28,12 +28,14 @@
 
     # mail
     isync
+    msmtp
     neomutt
     notmuch
 
     # dev
     git
     difftastic
+    nixfmt-classic
 
     # go
     go
@@ -76,6 +78,7 @@
     airmtp
     ansible
     babelfish
+    compose2nix
     croc
     fx
     git-credential-gopass
