@@ -162,7 +162,7 @@ bar {
         modifier Mod4
         position top
         output primary
-        status_command /opt/bumblebee-status/env/bin/python /opt/bumblebee-status/bumblebee-status \
+        status_command bumblebee-status \
                 -m cpu memory disk nic battery pasink datetime \
                 -p \
                         nic.exclude="enp0,veth,vir,docker,lxc,br,lo,cni0,flannel.1,cali,vxlan.calico,w1nd50r" \

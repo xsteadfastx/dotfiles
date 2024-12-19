@@ -78,6 +78,7 @@
     airmtp
     ansible
     babelfish
+    bumblebee-status
     compose2nix
     croc
     fx

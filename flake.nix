@@ -96,6 +96,10 @@
             compose2nix = inputs.compose2nix.packages.${system}.default;
           })
 
+          (final: prev: {
+            bumblebee-status = prev.bumblebee-status.override { plugins = p: [ p.cpu p.nic ]; };
+          })
+
         ];
       };
     in
