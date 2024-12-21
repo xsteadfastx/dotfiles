@@ -8,6 +8,9 @@
     # Unstable
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    # hardware tweaks
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
     # home manager
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
@@ -27,6 +30,8 @@
       system = "x86_64-linux";
 
       pkgs = import inputs.nixpkgs { inherit system; };
+
+      lib = inputs.nixpkgs.lib;
 
       pkgsUnstable = import inputs.nixpkgs-unstable {
         inherit system;
@@ -97,7 +102,7 @@
           })
 
           (final: prev: {
-            bumblebee-status = prev.bumblebee-status.override { plugins = p: [ p.cpu p.nic ]; };
+            bumblebee-status = prev.bumblebee-status.override { plugins = p: [ p.cpu p.nic p.pipewire]; };
           })
 
         ];
@@ -107,8 +112,27 @@
       homeConfigurations = {
         xsfx = inputs.home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          modules = [ ./home.nix ];
+          modules = [ .nix-configurations/home.nix ];
           extraSpecialArgs = { inherit system pkgsUnstable; };
+        };
+      };
+
+      nixosConfigurations = {
+        troy = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./.nix-configurations/troy/configuration.nix
+            ./.nix-configurations/troy/hardware-configuration.nix
+            inputs.nixos-hardware.nixosModules.dell-xps-13-7390
+            inputs.home-manager.nixosModules.home-manager {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+
+              home-manager.extraSpecialArgs = { inherit system pkgsUnstable; };
+
+              home-manager.users.marv = import .nix-configurations/home.nix;
+            }
+          ];
         };
       };
     };

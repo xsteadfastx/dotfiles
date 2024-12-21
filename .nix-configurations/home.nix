@@ -56,9 +56,6 @@
     # download stuff
     yt-dlp
 
-    # browser
-    google-chrome
-
     # backup
     restic
 
@@ -91,6 +88,18 @@
     rclone
     tectonic
     w3m
+    gnupg
+
+    # x11
+    alacritty
+    arandr
+    bumblebee-status
+    dunst
+    fish
+    google-chrome
+    networkmanagerapplet
+    pavucontrol
+    rofi
   ];
 
   home.sessionVariables = {
