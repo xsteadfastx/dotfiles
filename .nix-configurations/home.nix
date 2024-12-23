@@ -1,5 +1,4 @@
-{ pkgsUnstable, ... }:
-{
+{ pkgsUnstable, ... }: {
   home.username = "marv";
   home.homeDirectory = "/home/marv";
 
@@ -33,21 +32,26 @@
     neomutt
     notmuch
 
-    # dev
-    git
-    difftastic
-    nixfmt-classic
-
     # go
     go
 
     # dev
-    cargo
-    cmake
+    difftastic
     earthly
-    gcc
-    lua-language-server
+    git
     neovim
+    nil
+
+    # formatter
+    nixfmt-classic
+    nodePackages.prettier
+    shfmt
+    sql-formatter
+
+    # lsp
+    gopls
+    vscode-langservers-extracted
+    lua-language-server
 
     # k8s
     k9s
