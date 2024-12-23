@@ -1,8 +1,4 @@
 { pkgsUnstable, ... }: {
-  home.username = "marv";
-  home.homeDirectory = "/home/marv";
-
-  home.stateVersion = "24.05";
 
   home.packages = with pkgsUnstable; [
     # systemtools
@@ -39,19 +35,6 @@
     difftastic
     earthly
     git
-    neovim
-    nil
-
-    # formatter
-    nixfmt-classic
-    nodePackages.prettier
-    shfmt
-    sql-formatter
-
-    # lsp
-    gopls
-    vscode-langservers-extracted
-    lua-language-server
 
     # k8s
     k9s
@@ -97,14 +80,4 @@
     w3m
   ];
 
-  home.sessionVariables = {
-    # EDITOR = "emacs";
-  };
-
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
-
-  # Direnv
-  programs.direnv.enable = true;
-  programs.direnv.nix-direnv.enable = true;
 }

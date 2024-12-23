@@ -83,7 +83,7 @@
                 "sha256-wjrtv1Y1umQlbc1JhYd4uJ9QXCtucAUI8WCbeIqE1do=";
               subPackages = "cmd/";
               ldflags = [ "-s" "-w" ];
-              CGO_ENABLED = 0;
+              env.CGO_ENABLED = 0;
 
               postInstall = ''
                 mv $out/bin/cmd $out/bin/localsend-go
@@ -118,8 +118,8 @@
         troy = lib.nixosSystem {
           inherit system;
           modules = [
-            ./.nix-configurations/troy/configuration.nix
-            ./.nix-configurations/troy/hardware-configuration.nix
+            ./.nix-configurations/systems/troy/configuration.nix
+            ./.nix-configurations/systems/troy/hardware-configuration.nix
             inputs.nixos-hardware.nixosModules.dell-xps-13-7390
             inputs.home-manager.nixosModules.home-manager
             {
@@ -127,23 +127,28 @@
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = { inherit system pkgsUnstable; };
               home-manager.users.marv = { pkgsUnstable, ... }: {
-                imports = [ .nix-configurations/home.nix ];
+                home.username = "marv";
+                home.homeDirectory = "/home/marv";
 
-                home.packages = with pkgsUnstable; [
-                  alacritty
-                  arandr
-                  bumblebee-status
-                  dunst
-                  google-chrome
-                  networkmanagerapplet
-                  pavucontrol
-                  rofi
-                  signal-desktop
-                  slack
-                  system-config-printer
-                  unclutter-xfixes
-                  xdotool
+                home.stateVersion = "24.05";
+
+                imports = [
+                  .nix-configurations/homes/base.nix
+                  .nix-configurations/homes/neovim.nix
+                  .nix-configurations/homes/x11.nix
                 ];
+
+                home.sessionVariables = {
+                  # EDITOR = "emacs";
+                };
+
+                # Let Home Manager install and manage itself.
+                programs.home-manager.enable = true;
+
+                # Direnv
+                programs.direnv.enable = true;
+                programs.direnv.nix-direnv.enable = true;
+
               };
             }
           ];
