@@ -35,9 +35,7 @@
 
       pkgsUnstable = import inputs.nixpkgs-unstable {
         inherit system;
-        config = {
-          allowUnfree = true;
-        };
+        config = { allowUnfree = true; };
         overlays = [
           # up to date neovim
           (final: prev: {
@@ -54,7 +52,8 @@
           # needed because there is a system gpg-agent and gpg from wrapped gopass mismatch
           (final: prev: {
             gopass = prev.gopass.overrideAttrs rec {
-              wrapperPath = pkgs.lib.makeBinPath ([ prev.git prev.xclip ] ++ pkgs.lib.optional prev.stdenv.isLinux prev.wl-clipboard);
+              wrapperPath = pkgs.lib.makeBinPath ([ prev.git prev.xclip ]
+                ++ pkgs.lib.optional prev.stdenv.isLinux prev.wl-clipboard);
               postFixup = ''
                 wrapProgram $out/bin/gopass \
                   --prefix PATH : "${wrapperPath}" \
@@ -64,7 +63,8 @@
           })
 
           (final: prev: {
-            go-task = prev.go-task.overrideAttrs (finalAttrs: previousAttrs: { patches = [ ]; });
+            go-task = prev.go-task.overrideAttrs
+              (finalAttrs: previousAttrs: { patches = [ ]; });
           })
 
           (final: prev: {
@@ -79,12 +79,10 @@
                 hash = "sha256-oQqK0Omqeqs0gflyDt72TbJUeNmCr3kzlFblgAwayYQ=";
               };
 
-              vendorHash = "sha256-wjrtv1Y1umQlbc1JhYd4uJ9QXCtucAUI8WCbeIqE1do=";
+              vendorHash =
+                "sha256-wjrtv1Y1umQlbc1JhYd4uJ9QXCtucAUI8WCbeIqE1do=";
               subPackages = "cmd/";
-              ldflags = [
-                "-s"
-                "-w"
-              ];
+              ldflags = [ "-s" "-w" ];
               CGO_ENABLED = 0;
 
               postInstall = ''
@@ -93,22 +91,21 @@
             };
           })
 
-          (final: prev: {
-            airmtp = inputs.airmtp.packages.${system}.default;
-          })
+          (final: prev: { airmtp = inputs.airmtp.packages.${system}.default; })
 
           (final: prev: {
             compose2nix = inputs.compose2nix.packages.${system}.default;
           })
 
           (final: prev: {
-            bumblebee-status = prev.bumblebee-status.override { plugins = p: [ p.cpu p.nic p.pipewire]; };
+            bumblebee-status = prev.bumblebee-status.override {
+              plugins = p: [ p.cpu p.nic p.pipewire ];
+            };
           })
 
         ];
       };
-    in
-    {
+    in {
       homeConfigurations = {
         xsfx = inputs.home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
@@ -124,13 +121,30 @@
             ./.nix-configurations/troy/configuration.nix
             ./.nix-configurations/troy/hardware-configuration.nix
             inputs.nixos-hardware.nixosModules.dell-xps-13-7390
-            inputs.home-manager.nixosModules.home-manager {
+            inputs.home-manager.nixosModules.home-manager
+            {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-
               home-manager.extraSpecialArgs = { inherit system pkgsUnstable; };
+              home-manager.users.marv = { pkgsUnstable, ... }: {
+                imports = [ .nix-configurations/home.nix ];
 
-              home-manager.users.marv = import .nix-configurations/home.nix;
+                home.packages = with pkgsUnstable; [
+                  alacritty
+                  arandr
+                  bumblebee-status
+                  dunst
+                  google-chrome
+                  networkmanagerapplet
+                  pavucontrol
+                  rofi
+                  signal-desktop
+                  slack
+                  system-config-printer
+                  unclutter-xfixes
+                  xdotool
+                ];
+              };
             }
           ];
         };

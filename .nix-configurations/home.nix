@@ -24,6 +24,7 @@
     ripgrep
     starship
     tree
+    unzip
     viddy
 
     # mail
@@ -41,8 +42,12 @@
     go
 
     # dev
-    neovim
+    cargo
+    cmake
     earthly
+    gcc
+    lua-language-server
+    neovim
 
     # k8s
     k9s
@@ -64,10 +69,6 @@
     handbrake
     makemkv
 
-    # communication
-    signal-desktop
-    slack
-
     # filetransfer
     localsend-go
 
@@ -78,9 +79,11 @@
     bumblebee-status
     compose2nix
     croc
+    fish
     fx
     git-credential-gopass
     glab
+    gnupg
     go-task
     gopass
     pandoc
@@ -88,18 +91,6 @@
     rclone
     tectonic
     w3m
-    gnupg
-
-    # x11
-    alacritty
-    arandr
-    bumblebee-status
-    dunst
-    fish
-    google-chrome
-    networkmanagerapplet
-    pavucontrol
-    rofi
   ];
 
   home.sessionVariables = {
