@@ -33,7 +33,7 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -79,8 +79,8 @@
     isNormalUser = true;
     description = "marv";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    ];
+    # packages = with pkgs; [
+    # ];
   };
 
   # Install firefox.
@@ -91,11 +91,7 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    tmux
-    vim
-    wget
-  ];
+  environment.systemPackages = with pkgs; [ tmux vim wget ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
