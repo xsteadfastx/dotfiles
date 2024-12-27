@@ -9,9 +9,10 @@
     sql-formatter
 
     # lsp
-    nil
     gopls
-    vscode-langservers-extracted
     lua-language-server
+    nil
+    vscode-langservers-extracted
+    yaml-language-server
   ];
 }
