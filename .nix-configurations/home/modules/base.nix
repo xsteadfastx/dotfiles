@@ -35,6 +35,7 @@
     difftastic
     earthly
     git
+    gcc
 
     # k8s
     k9s
