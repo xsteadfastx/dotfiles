@@ -118,13 +118,13 @@
         troy = lib.nixosSystem {
           inherit system;
           modules = [
-            ./.nix-configurations/systems/troy/configuration.nix
-            ./.nix-configurations/systems/troy/hardware-configuration.nix
+            ./.nix-configurations/hosts/troy/configuration.nix
+            ./.nix-configurations/hosts/troy/hardware-configuration.nix
             inputs.nixos-hardware.nixosModules.dell-xps-13-7390
             inputs.home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
+              home-manager.useUserPackages = false;
               home-manager.extraSpecialArgs = { inherit system pkgsUnstable; };
               home-manager.users.marv = { pkgsUnstable, ... }: {
                 home.username = "marv";
@@ -133,9 +133,9 @@
                 home.stateVersion = "24.05";
 
                 imports = [
-                  .nix-configurations/homes/base.nix
-                  .nix-configurations/homes/neovim.nix
-                  .nix-configurations/homes/x11.nix
+                  .nix-configurations/home/base.nix
+                  .nix-configurations/home/neovim.nix
+                  .nix-configurations/home/x11.nix
                 ];
 
                 home.sessionVariables = {
@@ -148,7 +148,6 @@
                 # Direnv
                 programs.direnv.enable = true;
                 programs.direnv.nix-direnv.enable = true;
-
               };
             }
           ];
