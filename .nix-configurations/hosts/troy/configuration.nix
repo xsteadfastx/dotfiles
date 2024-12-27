@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   # imports =
@@ -115,6 +115,22 @@
 
   services.pcscd.enable = true;
   services.tailscale.enable = true;
+
+  # Laptop stuff
+  services.thermald.enable = true;
+  services.power-profiles-daemon.enable = false;
+  services.tlp.enable = false;
+  services.auto-cpufreq.enable = true;
+  services.auto-cpufreq.settings = {
+    battery = {
+      governor = "powersave";
+      turbo = "never";
+    };
+    charger = {
+      governor = "performance";
+      turbo = "auto";
+    };
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
