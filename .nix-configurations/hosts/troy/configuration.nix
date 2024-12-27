@@ -41,7 +41,14 @@
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
+
   services.xserver.windowManager.i3.enable = true;
+
+  # locking screen
+  programs.xss-lock = {
+    enable = true;
+    lockerCommand = "${pkgs.xsecurelock}/bin/xsecurelock";
+  };
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -91,7 +98,7 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [ tmux vim wget ];
+  environment.systemPackages = with pkgs; [ tmux vim wget xsecurelock ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
