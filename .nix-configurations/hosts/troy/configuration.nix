@@ -59,6 +59,16 @@
   # Configure console keymap
   console.keyMap = "de";
 
+  # Hidpi
+  # bigger tty fonts
+  console.font = "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
+  # services.xserver.dpi = 180;
+  # environment.variables = {
+  #   GDK_SCALE = "2";
+  #   GDK_DPI_SCALE = "0.5";
+  #   _JAVA_OPTIONS = "-Dsun.java2d.uiScale=2";
+  # };
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
