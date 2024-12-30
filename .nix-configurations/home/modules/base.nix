@@ -54,8 +54,6 @@
 
     # media
     abcde
-    handbrake
-    makemkv
 
     # filetransfer
     localsend-go

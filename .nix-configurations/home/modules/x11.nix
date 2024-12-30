@@ -5,6 +5,8 @@
     bumblebee-status
     dunst
     google-chrome
+    handbrake
+    # makemkv
     networkmanagerapplet
     pavucontrol
     rofi
