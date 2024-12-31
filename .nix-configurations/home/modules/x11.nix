@@ -6,7 +6,8 @@
     dunst
     google-chrome
     handbrake
-    # makemkv
+    libmediainfo
+    makemkv
     networkmanagerapplet
     pavucontrol
     rofi
