@@ -189,7 +189,6 @@
   services.thermald.enable = true;
   services.power-profiles-daemon.enable = false;
   services.tlp.enable = false;
-  powerManagement.powertop.enable = true;
   services.auto-cpufreq.enable = true;
   services.auto-cpufreq.settings = {
     battery = {
