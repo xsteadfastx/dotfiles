@@ -2,6 +2,7 @@
 
   home.packages = with pkgsUnstable; [
     neovim
+
     # formatter
     nixfmt-classic
     nodePackages.prettier
@@ -14,5 +15,8 @@
     nil
     vscode-langservers-extracted
     yaml-language-server
+
+    # lint
+    shellcheck
   ];
 }
