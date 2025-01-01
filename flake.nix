@@ -41,13 +41,13 @@
         ];
       };
     in {
-      homeConfigurations = {
-        xsfx = inputs.home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [ .nix-configurations/home.nix ];
-          extraSpecialArgs = { inherit system pkgsUnstable; };
-        };
-      };
+      # homeConfigurations = {
+      #   xsfx = inputs.home-manager.lib.homeManagerConfiguration {
+      #     inherit pkgs;
+      #     modules = [ .nix-configurations/home.nix ];
+      #     extraSpecialArgs = { inherit system pkgsUnstable; };
+      #   };
+      # };
 
       nixosConfigurations = {
         troy = lib.nixosSystem {
@@ -55,6 +55,7 @@
           modules = [
             ./.nix-configurations/hosts/troy/configuration.nix
             ./.nix-configurations/hosts/troy/hardware-configuration.nix
+            ./.nix-configurations/hosts/troy/syncthing.nix
             inputs.nixos-hardware.nixosModules.dell-xps-13-7390
             inputs.home-manager.nixosModules.home-manager
             {
