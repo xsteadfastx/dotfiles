@@ -75,6 +75,7 @@
     pandoc
     qrcp # easy sending files to android
     rclone
+    sshfs
     tectonic
     w3m
   ];

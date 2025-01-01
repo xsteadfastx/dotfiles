@@ -8,6 +8,7 @@
     handbrake
     libmediainfo
     makemkv
+    mediaelch
     networkmanagerapplet
     pavucontrol
     rofi
