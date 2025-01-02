@@ -1,4 +1,6 @@
 { pkgsUnstable, ... }: {
+  programs.firefox.enable = true;
+
   home.packages = with pkgsUnstable; [
     alacritty
     arandr

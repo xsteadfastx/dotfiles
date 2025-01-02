@@ -1,4 +1,4 @@
-{ pkgsUnstable, ... }: {
+{ ... }: {
   home.username = "marv";
   home.homeDirectory = "/home/marv";
 

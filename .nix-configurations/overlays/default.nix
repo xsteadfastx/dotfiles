@@ -27,16 +27,16 @@ final: prev: {
 
   localsend-go = prev.buildGo123Module rec {
     pname = "localsend-go";
-    version = "1.1.0";
+    version = "1.2.0";
 
     src = prev.fetchFromGitHub {
       owner = "meowrain";
       repo = "localsend-go";
-      rev = version;
-      hash = "sha256-oQqK0Omqeqs0gflyDt72TbJUeNmCr3kzlFblgAwayYQ=";
+      rev = "v${version}";
+      hash = "sha256-6gvN6Ny9FOUu6ieI5NuaGMNEEtrgYqHmkTZUqobxLiM=";
     };
 
-    vendorHash = "sha256-wjrtv1Y1umQlbc1JhYd4uJ9QXCtucAUI8WCbeIqE1do=";
+    vendorHash = "sha256-2R8L+CIJKRGcX19udw60eM1Qwpo2RXDWL6N8s7lVN8s=";
     subPackages = "cmd/";
     ldflags = [ "-s" "-w" ];
     env.CGO_ENABLED = 0;

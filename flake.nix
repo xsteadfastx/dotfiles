@@ -25,51 +25,20 @@
     };
   };
 
-  outputs = inputs:
-    let
-      system = "x86_64-linux";
-
-      pkgs = import inputs.nixpkgs { inherit system; };
-
-      lib = inputs.nixpkgs.lib;
-
-      pkgsUnstable = import inputs.nixpkgs-unstable {
-        inherit system;
-        config = { allowUnfree = true; };
-        overlays = [
-          (import .nix-configurations/overlays { inherit pkgs system inputs; })
+  outputs = inputs: {
+    nixosConfigurations = {
+      troy = inputs.nixpkgs.lib.nixosSystem rec {
+        system = "x86_64-linux";
+        modules = [
+          ./.nix-configurations/home/home.nix
+          ./.nix-configurations/hosts/troy/configuration.nix
+          ./.nix-configurations/hosts/troy/hardware-configuration.nix
+          ./.nix-configurations/hosts/troy/syncthing.nix
+          inputs.home-manager.nixosModules.home-manager
+          inputs.nixos-hardware.nixosModules.dell-xps-13-7390
+          { _module.args = { inherit inputs system; }; }
         ];
       };
-    in {
-      # homeConfigurations = {
-      #   xsfx = inputs.home-manager.lib.homeManagerConfiguration {
-      #     inherit pkgs;
-      #     modules = [ .nix-configurations/home.nix ];
-      #     extraSpecialArgs = { inherit system pkgsUnstable; };
-      #   };
-      # };
-
-      nixosConfigurations = {
-        troy = lib.nixosSystem {
-          inherit system;
-          modules = [
-            ./.nix-configurations/hosts/troy/configuration.nix
-            ./.nix-configurations/hosts/troy/hardware-configuration.nix
-            ./.nix-configurations/hosts/troy/syncthing.nix
-            inputs.nixos-hardware.nixosModules.dell-xps-13-7390
-            inputs.home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-
-              # put the stuff to .nix-profile
-              home-manager.useUserPackages = false;
-
-              home-manager.extraSpecialArgs = { inherit system pkgsUnstable; };
-              home-manager.users.marv =
-                import .nix-configurations/home/marv.nix;
-            }
-          ];
-        };
-      };
     };
+  };
 }
