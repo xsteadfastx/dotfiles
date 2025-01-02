@@ -1,4 +1,4 @@
-{ pkgs, system, inputs, ... }:
+{ system, inputs, ... }:
 final: prev: {
 
   # up to date neovim
