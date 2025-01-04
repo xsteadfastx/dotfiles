@@ -30,6 +30,10 @@
       troy = inputs.nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
         modules = [
+          {
+            xsfx.neovim = true;
+            xsfx.x11 = true;
+          }
           ./.nix-configurations/home/home.nix
           ./.nix-configurations/hosts/troy/configuration.nix
           ./.nix-configurations/hosts/troy/hardware-configuration.nix

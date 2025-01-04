@@ -1,11 +1,9 @@
-{ config, lib, pkgsUnstable, ... }:
-let cfg = config.xsfx;
+{ nixosConfig, lib, pkgsUnstable, ... }:
+let cfg = nixosConfig.xsfx;
 in {
-  options.xsfx.x11 = lib.mkEnableOption "enable x11";
+  programs.firefox.enable = lib.mkIf cfg.x11 true;
 
-  config.programs.firefox.enable = lib.mkIf cfg.x11 true;
-
-  config.home.packages = with pkgsUnstable;
+  home.packages = with pkgsUnstable;
     lib.mkIf cfg.x11 [
       alacritty
       arandr

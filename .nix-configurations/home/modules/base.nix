@@ -1,5 +1,4 @@
 { pkgsUnstable, ... }: {
-
   home.packages = with pkgsUnstable; [
     # systemtools
     bat

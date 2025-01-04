@@ -1,9 +1,7 @@
-{ config, lib, pkgsUnstable, ... }:
-let cfg = config.xsfx;
+{ nixosConfig, lib, pkgsUnstable, ... }:
+let cfg = nixosConfig.xsfx;
 in {
-  options.xsfx.neovim = lib.mkEnableOption "enable neovim";
-
-  config.home.packages = with pkgsUnstable;
+  home.packages = with pkgsUnstable;
     lib.mkIf cfg.neovim [
       neovim
 

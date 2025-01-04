@@ -1,13 +1,14 @@
-{ inputs, system, ... }:
+{ lib, inputs, system, ... }:
 let
   pkgsUnstable = (import ../pkgs/get.nix) inputs.nixpkgs-unstable system inputs;
 in {
-  home-manager.useGlobalPkgs = true;
+  options.xsfx.neovim = lib.mkEnableOption "enable neovim";
+  options.xsfx.x11 = lib.mkEnableOption "enable x11";
 
-  # Put the stuff to .nix-profile
-  home-manager.useUserPackages = false;
-
-  home-manager.extraSpecialArgs = { inherit pkgsUnstable; };
-
-  home-manager.users.marv = import ./marv.nix;
+  config = {
+    home-manager.useGlobalPkgs = true;
+    home-manager.useUserPackages = false; # Put the stuff to .nix-profile
+    home-manager.extraSpecialArgs = { inherit pkgsUnstable; };
+    home-manager.users.marv = import ./marv.nix;
+  };
 }

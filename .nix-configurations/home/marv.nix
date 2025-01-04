@@ -6,9 +6,6 @@
 
   home.stateVersion = "24.05";
 
-  xsfx.neovim = true;
-  xsfx.x11 = true;
-
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
