@@ -1,10 +1,13 @@
 { ... }: {
+  imports = [ modules/base.nix modules/neovim.nix modules/x11.nix ];
+
   home.username = "marv";
   home.homeDirectory = "/home/marv";
 
   home.stateVersion = "24.05";
 
-  imports = [ modules/base.nix modules/neovim.nix modules/x11.nix ];
+  xsfx.neovim = true;
+  xsfx.x11 = true;
 
   home.sessionVariables = {
     # EDITOR = "emacs";
