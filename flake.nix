@@ -33,8 +33,11 @@
           {
             xsfx.neovim = true;
             xsfx.x11 = true;
+
+            home-manager.users.marv =
+              import ./.nix-configurations/home/marv.nix;
           }
-          ./.nix-configurations/home/home.nix
+          ./.nix-configurations/home
           ./.nix-configurations/hosts/troy/configuration.nix
           ./.nix-configurations/hosts/troy/hardware-configuration.nix
           ./.nix-configurations/hosts/troy/syncthing.nix

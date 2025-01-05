@@ -9,6 +9,5 @@ in {
     home-manager.useGlobalPkgs = true;
     home-manager.useUserPackages = false; # Put the stuff to .nix-profile
     home-manager.extraSpecialArgs = { inherit pkgsUnstable; };
-    home-manager.users.marv = import ./marv.nix;
   };
 }
