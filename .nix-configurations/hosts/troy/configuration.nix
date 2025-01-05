@@ -154,7 +154,7 @@
   users.users.marv = {
     isNormalUser = true;
     description = "marv";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     # packages = with pkgs; [
     # ];
   };
@@ -203,6 +203,8 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+
+  virtualisation.docker.enable = true;
 
   system.stateVersion = "24.11"; # Did you read the comment?
 
