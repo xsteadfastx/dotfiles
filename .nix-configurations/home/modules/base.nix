@@ -64,6 +64,7 @@
     bumblebee-status
     compose2nix
     croc
+    doggo
     fish
     fx
     git-credential-gopass
