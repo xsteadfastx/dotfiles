@@ -42,6 +42,8 @@ return {
 				},
 			})
 
+			lspconfig.golangci_lint_ls.setup {}
+
 			lspconfig.jsonls.setup({
 				capabilities = capabilities,
 				settings = {

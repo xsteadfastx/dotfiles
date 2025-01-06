@@ -12,6 +12,7 @@ in {
       sql-formatter
 
       # lsp
+      golangci-lint-langserver
       gopls
       lua-language-server
       nil
