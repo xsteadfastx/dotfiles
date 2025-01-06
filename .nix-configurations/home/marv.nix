@@ -1,5 +1,5 @@
 { ... }: {
-  imports = [ modules/base.nix modules/neovim.nix modules/x11.nix ];
+  imports = [ ./modules ];
 
   home.username = "marv";
   home.homeDirectory = "/home/marv";
