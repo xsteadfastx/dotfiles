@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   # imports =
@@ -127,6 +127,9 @@
       };
     };
   };
+
+  # Disable autorandr service
+  systemd.services.autorandr.wantedBy = lib.mkForce [ ];
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
