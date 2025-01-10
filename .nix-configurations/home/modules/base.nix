@@ -77,14 +77,19 @@
     pandoc
     qrcp # easy sending files to android
     rclone
-    sshfs
     tectonic
     w3m
 
     # vpn
     (writeShellScriptBin "wobcom-vpn" ''
+      set -e
+
+      ${tmux}/bin/tmux rename-window "wobcom-vpn"
       sudo ${openfortivpn}/bin/openfortivpn vpn.wobcom.de -u mpreuss -p $(${gopass}/bin/gopass show -o WOBCOM/ldap)
     '')
+
+    # ssh
+    sshfs
   ];
 
 }
