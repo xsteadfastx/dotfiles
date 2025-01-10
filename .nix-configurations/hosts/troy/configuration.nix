@@ -39,10 +39,20 @@
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
+  # services.xserver.displayManager.gdm.enable = true;
   # services.xserver.desktopManager.gnome.enable = true;
 
   services.xserver.windowManager.i3.enable = true;
+
+  # Try to fix wakeup problems
+
+  # systemd.sleep.extraConfig = ''
+  #   SuspendState=freeze
+  # '';
+
+  # https://github.com/kachick/dotfiles/issues/959
+  systemd.services.systemd-suspend.environment.SYSTEMD_SLEEP_FREEZE_USER_SESSIONS =
+    "false";
 
   # locking screen
   programs.xss-lock = let
