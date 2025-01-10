@@ -10,6 +10,7 @@ in {
       nodePackages.prettier
       shfmt
       sql-formatter
+      yamlfmt
 
       # lsp
       golangci-lint-langserver
