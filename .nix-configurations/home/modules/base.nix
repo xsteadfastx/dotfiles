@@ -22,10 +22,15 @@
     viddy
 
     # mail
-    isync
     msmtp
     neomutt
-    notmuch
+    (writeShellScriptBin "checkmail" ''
+      while true; do
+      	${isync}/bin/mbsync -aV || true
+      	${notmuch}/bin/notmuch new
+      	sleep 1m
+      done
+    '')
 
     # go
     go
@@ -41,9 +46,6 @@
     krew
     kubectl
     kubectx
-
-    # vpn
-    openfortivpn
 
     # download stuff
     yt-dlp
@@ -78,6 +80,11 @@
     sshfs
     tectonic
     w3m
+
+    # vpn
+    (writeShellScriptBin "wobcom-vpn" ''
+      sudo ${openfortivpn}/bin/openfortivpn vpn.wobcom.de -u mpreuss -p $(${gopass}/bin/gopass show -o WOBCOM/ldap)
+    '')
   ];
 
 }

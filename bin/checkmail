@@ -1,8 +1,0 @@
-#!/bin/sh
-set -eux
-
-while true; do
-	mbsync -aV || true
-	notmuch new
-	sleep 1m
-done
