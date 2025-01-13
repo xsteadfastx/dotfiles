@@ -1,4 +1,4 @@
-local fn = vim.fn -- to call vim functions e.g. fn.bufnr()
+local fn = vim.fn   -- to call vim functions e.g. fn.bufnr()
 local cmd = vim.cmd -- to execute vim commands e.g. cmd('pwd')
 
 return {
@@ -227,4 +227,7 @@ return {
 	"terrastruct/d2-vim",
 
 	"David-Kunz/markid",
+
+	-- Grafana Alloy support for Vim/Neovim
+	"grafana/vim-alloy"
 }
