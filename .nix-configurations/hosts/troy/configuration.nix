@@ -235,6 +235,9 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [ tmux vim wget ];
 
+  # Needs to be enabled for completions
+  programs.fish.enable = true;
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -276,5 +279,4 @@
   virtualisation.docker.enable = true;
 
   system.stateVersion = "24.11"; # Did you read the comment?
-
 }
