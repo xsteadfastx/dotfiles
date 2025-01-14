@@ -105,11 +105,11 @@
         --pass-media-keys \
         --pass-screen-keys \
         --pass-volume-keys \
-        --time-font="BlexMono Nerd Font" \
-        --date-font="BlexMono Nerd Font" \
-        --layout-font="BlexMono Nerd Font" \
-        --verif-font="BlexMono Nerd Font" \
-        --wrong-font="BlexMono Nerd Font"
+        --time-font="JetBrainsMonoNL Nerd Font" \
+        --date-font="JetBrainsMonoNL Nerd Font" \
+        --layout-font="JetBrainsMonoNL Nerd Font" \
+        --verif-font="JetBrainsMonoNL Nerd Font" \
+        --wrong-font="JetBrainsMonoNL Nerd Font"
     '';
   in {
     enable = true;
