@@ -6,10 +6,14 @@ in {
       neovim
 
       # formatter
+      black
+      clang-tools
+      hclfmt
       nixfmt-classic
       nodePackages.prettier
       shfmt
       sql-formatter
+      stylua
       yamlfmt
 
       # lsp

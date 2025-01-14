@@ -28,9 +28,16 @@ return {
 				prepend_args = { "-l", "postgresql" },
 			}
 
+			require("conform").formatters.injected = {
+				options = {
+					ignore_errors = false,
+				},
+			}
+
 			require("conform").setup({
 				formatters_by_ft = {
 					go = { "golines" },
+					hcl = { "hcl" },
 					js = { "prettier" },
 					lua = { "stylua" },
 					markdown = { "prettier" },
