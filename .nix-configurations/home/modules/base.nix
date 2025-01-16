@@ -88,6 +88,13 @@
       sudo ${openfortivpn}/bin/openfortivpn vpn.wobcom.de -u mpreuss -p $(${gopass}/bin/gopass show -o WOBCOM/ldap)
     '')
 
+    #tmux wrapper for always same session
+    (writeShellScriptBin "tmx" ''
+      set -e
+
+      ${tmux}/bin/tmux new-session -t local
+    '')
+
     # ssh
     sshfs
   ];
