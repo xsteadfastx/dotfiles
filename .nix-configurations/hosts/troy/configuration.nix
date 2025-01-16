@@ -105,11 +105,11 @@
         --pass-media-keys \
         --pass-screen-keys \
         --pass-volume-keys \
-        --time-font="JetBrainsMonoNL Nerd Font" \
-        --date-font="JetBrainsMonoNL Nerd Font" \
-        --layout-font="JetBrainsMonoNL Nerd Font" \
-        --verif-font="JetBrainsMonoNL Nerd Font" \
-        --wrong-font="JetBrainsMonoNL Nerd Font"
+        --time-font="JetBrainsMono Nerd Font" \
+        --date-font="JetBrainsMono Nerd Font" \
+        --layout-font="JetBrainsMono Nerd Font" \
+        --verif-font="JetBrainsMono Nerd Font" \
+        --wrong-font="JetBrainsMono Nerd Font"
     '';
   in {
     enable = true;

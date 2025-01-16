@@ -5,10 +5,10 @@ in {
 
   home.packages = with pkgsUnstable;
     lib.mkIf cfg.x11 [
-      alacritty
       arandr
       bumblebee-status
       dunst
+      ghostty
       google-chrome
       handbrake
       libmediainfo

@@ -3,14 +3,14 @@ set $mod Mod4
 # alt key
 #set $mod Mod1
 
-font pango: JetBrainsMonoNL Nerd Font 9
+font pango: JetBrainsMono Nerd Font 9
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
 # bindsym $mod+Return exec ~/.local/bin/st -e tmux new-session -t global-session || tmux new-session -s global-session
-bindsym $mod+Return exec alacritty -e ~/bin/tmx
+bindsym $mod+Return exec ghostty -e tmx
 
 # kill focused window
 bindsym $mod+Shift+q kill
