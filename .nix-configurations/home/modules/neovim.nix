@@ -8,6 +8,7 @@ in {
       # formatter
       black
       clang-tools
+      golines
       hclfmt
       nixfmt-classic
       nodePackages.prettier
