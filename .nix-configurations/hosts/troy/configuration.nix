@@ -170,8 +170,8 @@
             crtc = 0;
             primary = true;
             position = "0x768";
-            mode = "2048x1152";
-            rate = "59.90";
+            mode = "1920x1080";
+            rate = "59.96";
           };
 
           DP-1 = {
