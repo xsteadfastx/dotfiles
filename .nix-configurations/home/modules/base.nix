@@ -22,6 +22,7 @@
     viddy
 
     # mail
+    aerc
     msmtp
     neomutt
     (writeShellScriptBin "checkmail" ''
@@ -88,7 +89,7 @@
       sudo ${openfortivpn}/bin/openfortivpn vpn.wobcom.de -u mpreuss -p $(${gopass}/bin/gopass show -o WOBCOM/ldap)
     '')
 
-    #tmux wrapper for always same session
+    # tmux wrapper for always same session
     (writeShellScriptBin "tmx" ''
       set -e
 
