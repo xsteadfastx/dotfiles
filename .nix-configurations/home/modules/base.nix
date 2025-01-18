@@ -16,6 +16,7 @@
     nodejs
     python3
     ripgrep
+    rlwrap
     starship
     tree
     unzip
@@ -80,6 +81,7 @@
     rclone
     tectonic
     w3m
+    yaegi
 
     # vpn
     (writeShellScriptBin "wobcom-vpn" ''
