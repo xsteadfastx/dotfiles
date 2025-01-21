@@ -26,10 +26,10 @@ return {
 					fullscreen = true,
 				},
 				files = {
-					fd_opts = "--color=always --type f --hidden --no-ignore --follow --exclude .git --exclude vendor --exclude .cache --exclude .direnv",
+					fd_opts = "--color=always --type f --hidden --no-ignore --follow --exclude .git --exclude vendor --exclude .cache --exclude .direnv --exclude result",
 				},
 				grep = {
-					rg_opts = "--no-ignore-vcs --hidden --column --line-number --no-heading --color=always --smart-case --max-columns=512 -g '!vendor/*' -g '!.git/*' -g '!.direnv/*'",
+					rg_opts = "--no-ignore-vcs --hidden --column --line-number --no-heading --color=always --smart-case --max-columns=512 -g '!vendor/*' -g '!.git/*' -g '!.direnv/*' -g '!result/*'",
 				},
 			})
 		end,
