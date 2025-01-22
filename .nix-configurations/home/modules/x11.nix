@@ -6,11 +6,12 @@ in {
   home.packages = with pkgsUnstable;
     lib.mkIf cfg.x11 [
       arandr
-      evince
       bumblebee-status
       dunst
       evince
+      evince
       ghostty
+      gimp
       google-chrome
       handbrake
       libmediainfo
