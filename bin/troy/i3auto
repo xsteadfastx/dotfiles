@@ -9,3 +9,6 @@ setxkbmap -option "caps:super"
 
 # ~/.screenlayout/troy/standalone.sh
 autorandr -c
+
+# 60 seconds screenlock
+xset s 60 60
