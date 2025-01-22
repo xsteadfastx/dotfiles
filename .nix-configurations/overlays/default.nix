@@ -12,15 +12,15 @@ final: prev: {
   # };
 
   # needed because there is a system gpg-agent and gpg from wrapped gopass mismatch
-  # gopass = prev.gopass.overrideAttrs rec {
-  #   wrapperPath = pkgs.lib.makeBinPath ([ prev.git prev.xclip ]
-  #     ++ pkgs.lib.optional prev.stdenv.isLinux prev.wl-clipboard);
-  #   postFixup = ''
-  #     wrapProgram $out/bin/gopass \
-  #       --prefix PATH : "${wrapperPath}" \
-  #       --set GOPASS_NO_REMINDER true
-  #   '';
-  # };
+  gopass = prev.gopass.overrideAttrs rec {
+    wrapperPath = prev.lib.makeBinPath ([ prev.git prev.xclip ]
+      ++ prev.lib.optional prev.stdenv.isLinux prev.wl-clipboard);
+    postFixup = ''
+      wrapProgram $out/bin/gopass \
+        --prefix PATH : "${wrapperPath}" \
+        --set GOPASS_NO_REMINDER true
+    '';
+  };
 
   go-task =
     prev.go-task.overrideAttrs (finalAttrs: previousAttrs: { patches = [ ]; });

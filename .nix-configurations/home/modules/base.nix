@@ -1,10 +1,11 @@
-{ pkgsUnstable, ... }: {
+{ pkgs, pkgsUnstable, ... }: {
   home.packages = with pkgsUnstable; [
     # systemtools
     bat
     btop
     eza
     fd
+    file
     fish
     fzf
     git-annex
@@ -73,7 +74,7 @@
     fx
     git-credential-gopass
     glab
-    gnupg
+    pkgs.gnupg
     go-task
     gopass
     pandoc
