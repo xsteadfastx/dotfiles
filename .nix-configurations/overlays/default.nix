@@ -25,15 +25,15 @@ final: prev: {
   go-task =
     prev.go-task.overrideAttrs (finalAttrs: previousAttrs: { patches = [ ]; });
 
-  localsend-go = prev.buildGo123Module rec {
+  localsend-go = prev.buildGo123Module {
     pname = "localsend-go";
     version = "1.2.0";
 
     src = prev.fetchFromGitHub {
       owner = "meowrain";
       repo = "localsend-go";
-      rev = "v${version}";
-      hash = "sha256-6gvN6Ny9FOUu6ieI5NuaGMNEEtrgYqHmkTZUqobxLiM=";
+      rev = "6f3dec9";
+      hash = "sha256-NxR5fn9h3a3qXYfJJLqqKiyUazEoqstZYpAfhD02Ai8=";
     };
 
     vendorHash = "sha256-2R8L+CIJKRGcX19udw60eM1Qwpo2RXDWL6N8s7lVN8s=";
