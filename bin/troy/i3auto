@@ -5,7 +5,7 @@ set -e
 setxkbmap -option "caps:super"
 
 # pasystray &
-# blueman-applet &
+blueman-applet &
 
 # ~/.screenlayout/troy/standalone.sh
 autorandr -c
