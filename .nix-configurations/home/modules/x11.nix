@@ -17,6 +17,7 @@ in {
       libmediainfo
       makemkv
       mediaelch
+      mpv
       networkmanagerapplet
       pavucontrol
       rofi
