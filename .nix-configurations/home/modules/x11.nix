@@ -24,7 +24,6 @@ in {
       signal-desktop
       slack
       system-config-printer
-      unclutter-xfixes
       xdotool
     ];
 }

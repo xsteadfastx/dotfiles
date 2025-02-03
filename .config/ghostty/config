@@ -1,8 +1,8 @@
 font-family = JetBrainsMono Nerd Font
 font-style = Regular
 font-size = 13
-font-thicken = true
 shell-integration = fish
 theme = Dracula
 window-decoration = false
 gtk-single-instance = true
+mouse-hide-while-typing = true
