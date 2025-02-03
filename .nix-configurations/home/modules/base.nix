@@ -11,6 +11,7 @@
     git-annex
     gping
     htop
+    killall
     mtr
     ncdu
     nmap
