@@ -23,6 +23,10 @@
       url = "github:aksiksi/compose2nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # needed because of https://github.com/ghostty-org/ghostty/issues/5494
+    workingGhostty.url =
+      "github:nixos/nixpkgs/f7b11968ea1d19496487f6afaac99c130a87c1ff";
   };
 
   outputs = inputs: {
