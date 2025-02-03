@@ -173,7 +173,7 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [ tmux vim wget ];
+  environment.systemPackages = with pkgs; [ tmux vim wget brightnessctl ];
 
   # Needs to be enabled for completions
   programs.fish.enable = true;
