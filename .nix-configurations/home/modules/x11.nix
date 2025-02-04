@@ -1,4 +1,4 @@
-{ nixosConfig, lib, pkgsUnstable, pkgsGhostty, ... }:
+{ nixosConfig, lib, pkgsUnstable, ... }:
 let cfg = nixosConfig.xsfx;
 in {
   programs.firefox.enable = lib.mkIf cfg.x11 true;
@@ -10,7 +10,7 @@ in {
       dunst
       evince
       evince
-      pkgsGhostty.ghostty
+      ghostty
       gimp
       google-chrome
       handbrake

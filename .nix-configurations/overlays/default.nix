@@ -52,4 +52,6 @@ final: prev: {
 
   bumblebee-status =
     prev.bumblebee-status.override { plugins = p: [ p.cpu p.nic p.pipewire ]; };
+
+  ghostty = prev.callPackage ./ghostty/package.nix { };
 }
