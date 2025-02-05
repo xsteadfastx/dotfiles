@@ -200,5 +200,8 @@ for_window [class="^.*"] border pixel 1
 for_window [class="org-openstreetmap-josm-Main"] floating disable
 for_window [class="org-openstreetmap-josm-Main"] layout splitv
 
+# qemu to scratchpad
+for_window [class="Qemu-kvm"] move scratchpad
+
 # AUTOSTART
 exec --no-startup-id exec /bin/sh ~/bin/i3auto

@@ -20,6 +20,7 @@ in {
       mpv
       networkmanagerapplet
       pavucontrol
+      quickemu
       rofi
       signal-desktop
       slack
