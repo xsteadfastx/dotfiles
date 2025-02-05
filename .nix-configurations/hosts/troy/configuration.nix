@@ -226,5 +226,8 @@
   services.blueman.enable = true;
   systemd.services.bluetooth.serviceConfig.ConfigurationDirectoryMode = "755";
 
+  # memory save
+  services.earlyoom.enable = true;
+
   system.stateVersion = "24.11"; # Did you read the comment?
 }
