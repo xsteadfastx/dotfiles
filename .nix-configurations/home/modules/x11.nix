@@ -34,6 +34,7 @@ in {
       signal-desktop
       slack
       system-config-printer
+      tor-browser-bundle-bin
       xdotool
     ];
 }
