@@ -19,6 +19,7 @@ in {
       dunst
       evince
       evince
+      flameshot
       ghostty
       gimp
       handbrake
