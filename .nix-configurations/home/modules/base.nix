@@ -22,6 +22,7 @@
     starship
     tree
     unzip
+    veilig
     viddy
 
     # mail
