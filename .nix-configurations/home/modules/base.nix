@@ -42,7 +42,6 @@
 
     # dev
     difftastic
-    earthly
     git
     gcc
 
