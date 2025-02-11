@@ -20,29 +20,29 @@ return {
 
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-			lspconfig.lua_ls.setup {}
+			lspconfig.lua_ls.setup({})
 
-			lspconfig.nil_ls.setup {
+			lspconfig.nil_ls.setup({
 				capabilities = capabilities,
 				settings = {
-					['nil'] = {
+					["nil"] = {
 						formatting = {
-							command = { "nixfmt" }
-						}
-					}
-				}
-			}
+							command = { "nixfmt" },
+						},
+					},
+				},
+			})
 
 			lspconfig.gopls.setup({
 				capabilities = capabilities,
 				settings = {
 					gopls = {
-						gofumpt = true
-					}
+						gofumpt = true,
+					},
 				},
 			})
 
-			lspconfig.golangci_lint_ls.setup {}
+			lspconfig.golangci_lint_ls.setup({})
 
 			lspconfig.jsonls.setup({
 				capabilities = capabilities,
@@ -68,6 +68,8 @@ return {
 				},
 				filetypes = { "yaml", "yaml.docker-compose", "taskfile" },
 			})
+
+			lspconfig.pylsp.setup({})
 
 			vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 				border = "single",

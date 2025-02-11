@@ -22,6 +22,7 @@ in {
       gopls
       lua-language-server
       nil
+      python312Packages.python-lsp-server
       vscode-langservers-extracted
       yaml-language-server
 
