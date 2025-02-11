@@ -2,15 +2,14 @@
   "nodes": {
     "airmtp": {
       "inputs": {
-        "flake-compat": "flake-compat",
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1721128771,
-        "narHash": "sha256-InV9I9jcKBbfd/V84MxGS9m3J8EQX1x6u8NLd4fxyVg=",
+        "lastModified": 1739265760,
+        "narHash": "sha256-01k1e5ac+cB6MHqam4n+KHpizoe31B4ajF6MzgwEjb0=",
         "owner": "xsteadfastx",
         "repo": "airmtp",
-        "rev": "333c72e17fef5ad6d4010b31a95f0e8cb5ce2a9b",
+        "rev": "dfa08541e39220cafc34b1f641e9c8ca67c0ba6f",
         "type": "github"
       },
       "original": {
@@ -38,20 +37,6 @@
         "owner": "aksiksi",
         "repo": "compose2nix",
         "type": "github"
-      }
-    },
-    "flake-compat": {
-      "locked": {
-        "lastModified": 1696426674,
-        "narHash": "sha256-kvjfFW7WAETZlt09AgDn1MrtKzP7t90Vf7vypd3OL1U=",
-        "rev": "0f9255e01c2351cc7d116c072cb317785dd33b33",
-        "revCount": 57,
-        "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/edolstra/flake-compat/1.0.1/018afb31-abd1-7bff-a5e4-cff7e18efb7a/source.tar.gz"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://flakehub.com/f/edolstra/flake-compat/1.tar.gz"
       }
     },
     "flake-schemas": {
@@ -145,11 +130,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1720957393,
-        "narHash": "sha256-oedh2RwpjEa+TNxhg5Je9Ch6d3W1NKi7DbRO1ziHemA=",
+        "lastModified": 1739020877,
+        "narHash": "sha256-mIvECo/NNdJJ/bXjNqIh8yeoSjVLAuDuTUzAo7dzs8Y=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "693bc46d169f5af9c992095736e82c3488bf7dbb",
+        "rev": "a79cfe0ebd24952b580b1cf08cd906354996d547",
         "type": "github"
       },
       "original": {
