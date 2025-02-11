@@ -16,6 +16,7 @@
     ncdu
     nmap
     nodejs
+    progress
     python3
     ripgrep
     rlwrap
