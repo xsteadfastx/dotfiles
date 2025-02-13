@@ -31,6 +31,7 @@ in {
       networkmanagerapplet
       pavucontrol
       quickemu
+      remmina
       rofi
       signal-desktop
       slack
