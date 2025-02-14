@@ -224,7 +224,7 @@ return {
 	-- Detect tabstop and shiftwidth automatically
 	-- "tpope/vim-sleuth",
 
-	"terrastruct/d2-vim",
+	{ "terrastruct/d2-vim", ft = { "d2" } },
 
 	"David-Kunz/markid",
 
