@@ -4,7 +4,7 @@ in {
   programs.chromium = lib.mkIf cfg.x11 {
     enable = true;
     package = (pkgsUnstable.chromium.override { enableWideVine = true; });
-    commandLineArgs = [ "--enable-features=WebContentsForceDark" ];
+    # commandLineArgs = [ "--enable-features=WebContentsForceDark" ];
     extensions = [
       { id = "gfapcejdoghpoidkfodoiiffaaibpaem"; } # dracula
       { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock
