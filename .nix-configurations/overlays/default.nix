@@ -53,8 +53,6 @@ final: prev: {
   bumblebee-status =
     prev.bumblebee-status.override { plugins = p: [ p.cpu p.nic p.pipewire ]; };
 
-  ghostty = prev.callPackage ./ghostty/package.nix { };
-
   quickemu = inputs.quickemu.packages.${system}.default;
 
   veilig = prev.buildGo123Module rec {
