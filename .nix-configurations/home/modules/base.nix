@@ -82,7 +82,7 @@
     pandoc
     qrcp # easy sending files to android
     rclone
-    tectonic
+    pkgs.tectonic
     w3m
     yaegi
 
