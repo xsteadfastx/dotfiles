@@ -10,6 +10,7 @@ in {
       { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock
       { id = "dbepggeogbaibhgnhhndojpepiihcmeb"; } # vimium
       { id = "fihnjjcciajhdojfnbdddfaoknhalnja"; } # i dont care about cookies
+      { id = "dhdgffkkebhmkfjojejmpbldmpobfkfo"; } # tampermonkey
     ];
   };
 
