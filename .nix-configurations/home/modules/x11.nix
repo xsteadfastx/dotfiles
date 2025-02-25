@@ -20,7 +20,6 @@ in {
       bumblebee-status
       dunst
       evince
-      evince
       flameshot
       ghostty
       gimp
@@ -39,5 +38,7 @@ in {
       system-config-printer
       tor-browser-bundle-bin
       xdotool
+      (lib.mkIf cfg.work _1password-cli)
+      (lib.mkIf cfg.work _1password-gui)
     ];
 }

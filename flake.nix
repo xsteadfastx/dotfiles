@@ -38,6 +38,7 @@
           {
             xsfx.neovim = true;
             xsfx.x11 = true;
+            xsfx.work = true;
 
             home-manager.users.marv =
               import ./.nix-configurations/home/marv.nix;

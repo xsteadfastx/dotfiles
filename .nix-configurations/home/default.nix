@@ -4,6 +4,7 @@ let
 in {
   options.xsfx.neovim = lib.mkEnableOption "enable neovim";
   options.xsfx.x11 = lib.mkEnableOption "enable x11";
+  options.xsfx.work = lib.mkEnableOption "enable work";
 
   config = {
     home-manager.useGlobalPkgs = true;
