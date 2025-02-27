@@ -101,7 +101,7 @@ return {
 	},
 
 	-- dirsettings allow you to customize the behaviro of VIM in a single subtree by placing a .vimdir file in the root of that directory
-	"chazy/dirsettings",
+	-- "chazy/dirsettings",
 
 	-- automatic table creator & formatter
 	"dhruvasagar/vim-table-mode",
@@ -208,25 +208,17 @@ return {
 		lazy = false,
 	},
 
-	-- minimap plugin for neovim
-	{
-		"gorbit99/codewindow.nvim",
-		config = function()
-			local codewindow = require("codewindow")
-			codewindow.setup({
-				auto_enable = false,
-			})
-			codewindow.apply_default_keybinds()
-		end,
-	},
-
 	-- Detect tabstop and shiftwidth automatically
 	-- "tpope/vim-sleuth",
 
 	{ "terrastruct/d2-vim", ft = { "d2" } },
 
+	-- A Neovim extension to highlight same-name identifiers with the same color
 	"David-Kunz/markid",
 
 	-- Grafana Alloy support for Vim/Neovim
 	"grafana/vim-alloy",
+
+	-- Rainbow delimiters for Neovim with Tree-sitter
+	"https://gitlab.com/HiPhish/rainbow-delimiters.nvim",
 }
