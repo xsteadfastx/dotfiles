@@ -1,4 +1,3 @@
-local fn = vim.fn -- to call vim functions e.g. fn.bufnr()
 local cmd = vim.cmd -- to execute vim commands e.g. cmd('pwd')
 
 return {
