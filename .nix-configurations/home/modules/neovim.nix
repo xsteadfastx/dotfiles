@@ -27,6 +27,7 @@ in {
       yaml-language-server
 
       # lint
+      markdownlint-cli
       shellcheck
     ];
 }
