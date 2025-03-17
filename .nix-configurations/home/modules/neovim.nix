@@ -10,7 +10,7 @@ in {
       clang-tools
       golines
       hclfmt
-      nixfmt-classic
+      nixfmt-rfc-style
       nodePackages.prettier
       shfmt
       sql-formatter
