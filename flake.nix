@@ -40,8 +40,7 @@
             xsfx.x11 = true;
             xsfx.work = true;
 
-            home-manager.users.marv =
-              import ./.nix-configurations/home/marv.nix;
+            home-manager.users.marv = import ./.nix-configurations/home/marv.nix;
           }
           ./.nix-configurations/home
           ./.nix-configurations/hosts/troy/configuration.nix
