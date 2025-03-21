@@ -13,8 +13,13 @@ final: prev: {
 
   # needed because there is a system gpg-agent and gpg from wrapped gopass mismatch
   gopass = prev.gopass.overrideAttrs rec {
-    wrapperPath = prev.lib.makeBinPath ([ prev.git prev.xclip ]
-      ++ prev.lib.optional prev.stdenv.isLinux prev.wl-clipboard);
+    wrapperPath = prev.lib.makeBinPath (
+      [
+        prev.git
+        prev.xclip
+      ]
+      ++ prev.lib.optional prev.stdenv.isLinux prev.wl-clipboard
+    );
     postFixup = ''
       wrapProgram $out/bin/gopass \
         --prefix PATH : "${wrapperPath}" \
@@ -22,8 +27,7 @@ final: prev: {
     '';
   };
 
-  go-task =
-    prev.go-task.overrideAttrs (finalAttrs: previousAttrs: { patches = [ ]; });
+  go-task = prev.go-task.overrideAttrs (finalAttrs: previousAttrs: { patches = [ ]; });
 
   localsend-go = prev.buildGo123Module {
     pname = "localsend-go";
@@ -38,7 +42,10 @@ final: prev: {
 
     vendorHash = "sha256-2R8L+CIJKRGcX19udw60eM1Qwpo2RXDWL6N8s7lVN8s=";
     subPackages = "cmd/";
-    ldflags = [ "-s" "-w" ];
+    ldflags = [
+      "-s"
+      "-w"
+    ];
     env.CGO_ENABLED = 0;
 
     postInstall = ''
@@ -50,8 +57,13 @@ final: prev: {
 
   compose2nix = inputs.compose2nix.packages.${system}.default;
 
-  bumblebee-status =
-    prev.bumblebee-status.override { plugins = p: [ p.cpu p.nic p.pipewire ]; };
+  bumblebee-status = prev.bumblebee-status.override {
+    plugins = p: [
+      p.cpu
+      p.nic
+      p.pipewire
+    ];
+  };
 
   quickemu = inputs.quickemu.packages.${system}.default;
 
@@ -67,7 +79,12 @@ final: prev: {
     };
 
     vendorHash = "sha256-7s1duYsogz3YizYLsZ8Vcc1EiSq2gWf+eA++QCeSKjY=";
-    ldflags = [ "-s" "-w" ];
+    ldflags = [
+      "-s"
+      "-w"
+    ];
     env.CGO_ENABLED = 0;
   };
+
+  tinymediamanager = prev.callPackage ./tinymediamanager/package.nix { };
 }

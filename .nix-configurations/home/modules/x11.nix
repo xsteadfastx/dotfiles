@@ -1,6 +1,13 @@
-{ nixosConfig, lib, pkgsUnstable, ... }:
-let cfg = nixosConfig.xsfx;
-in {
+{
+  nixosConfig,
+  lib,
+  pkgsUnstable,
+  ...
+}:
+let
+  cfg = nixosConfig.xsfx;
+in
+{
   programs.chromium = lib.mkIf cfg.x11 {
     enable = true;
     package = (pkgsUnstable.chromium.override { enableWideVine = true; });
@@ -16,7 +23,8 @@ in {
     ];
   };
 
-  home.packages = with pkgsUnstable;
+  home.packages =
+    with pkgsUnstable;
     lib.mkIf cfg.x11 [
       arandr
       bumblebee-status
@@ -38,8 +46,10 @@ in {
       signal-desktop
       slack
       system-config-printer
+      tinymediamanager
       tor-browser-bundle-bin
       xdotool
+
       (lib.mkIf cfg.work _1password-cli)
       (lib.mkIf cfg.work _1password-gui)
     ];
