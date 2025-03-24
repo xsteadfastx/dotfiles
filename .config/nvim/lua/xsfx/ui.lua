@@ -30,3 +30,6 @@ opt.hlsearch = false -- no highlights for search
 -- folding
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
+
+-- no info msg
+opt.shortmess = "I"
