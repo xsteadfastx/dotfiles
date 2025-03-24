@@ -87,4 +87,6 @@ final: prev: {
   };
 
   tinymediamanager = prev.callPackage ./tinymediamanager/package.nix { };
+
+  agenix = inputs.agenix.packages.${system}.default;
 }

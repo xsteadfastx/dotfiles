@@ -1,7 +1,15 @@
-{ nixosConfig, lib, pkgsUnstable, ... }:
-let cfg = nixosConfig.xsfx;
-in {
-  home.packages = with pkgsUnstable;
+{
+  nixosConfig,
+  lib,
+  pkgsUnstable,
+  ...
+}:
+let
+  cfg = nixosConfig.xsfx;
+in
+{
+  home.packages =
+    with pkgsUnstable;
     lib.mkIf cfg.neovim [
       neovim
 

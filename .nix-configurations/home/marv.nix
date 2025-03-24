@@ -1,5 +1,9 @@
-{ ... }: {
-  imports = [ ./modules ];
+{ inputs, ... }:
+{
+  imports = [
+    ./modules
+    inputs.agenix.homeManagerModules.age
+  ];
 
   home.username = "marv";
   home.homeDirectory = "/home/marv";

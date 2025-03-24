@@ -28,6 +28,12 @@
       url = "github:quickemu-project/quickemu";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
   outputs = inputs: {
@@ -36,18 +42,22 @@
         system = "x86_64-linux";
         modules = [
           {
+            xsfx.kodi = true;
             xsfx.neovim = true;
-            xsfx.x11 = true;
             xsfx.work = true;
+            xsfx.x11 = true;
 
             home-manager.users.marv = import ./.nix-configurations/home/marv.nix;
           }
+
           ./.nix-configurations/home
           ./.nix-configurations/hosts/troy/configuration.nix
           ./.nix-configurations/hosts/troy/hardware-configuration.nix
           ./.nix-configurations/hosts/troy/syncthing.nix
+
           inputs.home-manager.nixosModules.home-manager
           inputs.nixos-hardware.nixosModules.dell-xps-13-7390
+
           { _module.args = { inherit inputs system; }; }
         ];
       };

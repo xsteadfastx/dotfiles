@@ -1,4 +1,11 @@
-{ pkgs, pkgsUnstable, ... }: {
+{
+  pkgs,
+  pkgsUnstable,
+  ...
+}:
+{
+  systemd.user.startServices = "sd-switch";
+
   home.packages = with pkgsUnstable; [
     # systemtools
     bat
@@ -103,6 +110,8 @@
 
     # ssh
     sshfs
+
+    agenix
   ];
 
 }
