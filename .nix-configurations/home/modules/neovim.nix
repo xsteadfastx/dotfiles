@@ -1,6 +1,7 @@
 {
   nixosConfig,
   lib,
+  pkgs,
   pkgsUnstable,
   ...
 }:
@@ -26,7 +27,7 @@ in
       yamlfmt
 
       # lsp
-      golangci-lint-langserver
+      pkgs.golangci-lint-langserver
       gopls
       lua-language-server
       nil
