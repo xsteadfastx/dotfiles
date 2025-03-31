@@ -86,7 +86,7 @@ final: prev: {
     env.CGO_ENABLED = 0;
   };
 
-  tinymediamanager = prev.callPackage ./tinymediamanager/package.nix { };
+  # tinymediamanager = prev.callPackage ./tinymediamanager/package.nix { };
 
   agenix = inputs.agenix.packages.${system}.default;
 }

@@ -46,7 +46,6 @@ in
       signal-desktop
       slack
       system-config-printer
-      tinymediamanager
       tor-browser-bundle-bin
       xdotool
 
