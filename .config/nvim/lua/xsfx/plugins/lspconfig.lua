@@ -42,7 +42,11 @@ return {
 				},
 			})
 
-			lspconfig.golangci_lint_ls.setup({})
+			lspconfig.golangci_lint_ls.setup({
+				init_options = {
+					command = { "golangci-lint", "run", "--out-format", "json" },
+				},
+			})
 
 			lspconfig.jsonls.setup({
 				capabilities = capabilities,
