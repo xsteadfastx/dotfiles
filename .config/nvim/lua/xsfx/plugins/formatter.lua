@@ -24,10 +24,6 @@ return {
 				prepend_args = { "--base-formatter=gofumpt" },
 			}
 
-			require("conform").formatters.sql_formatter = {
-				prepend_args = { "-l", "postgresql" },
-			}
-
 			require("conform").formatters.injected = {
 				options = {
 					ignore_errors = false,
@@ -44,14 +40,14 @@ return {
 					proto = { "clang_format" },
 					python = { "black" },
 					sh = { "shfmt" },
-					sql = { "sql_formatter" },
+					sql = { "sqlfluff" },
 					taskfile = { "prettier" },
 					yaml = { "yamlfmt" },
 				},
 
 				format_on_save = {
 					lsp_format = "fallback",
-					timeout_ms = 500,
+					timeout_ms = 50000,
 				},
 			})
 		end,

@@ -38,5 +38,6 @@ in
       # lint
       markdownlint-cli
       shellcheck
+      sqlfluff
     ];
 }

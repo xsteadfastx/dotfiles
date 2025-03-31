@@ -5,11 +5,18 @@ return {
 		config = function()
 			local lint = require("lint")
 
+			lint.linters.sqlfluff.args = {
+				"lint",
+				"--format=json",
+				"--dialect=postgres",
+			}
+
 			lint.linters_by_ft = {
 				sh = { "shellcheck" },
 				ansible = { "ansible_lint" },
 				dockerfile = { "hadolint" },
 				markdown = { "markdownlint" },
+				sql = { "sqlfluff" },
 			}
 
 			local api = vim.api
