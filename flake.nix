@@ -55,6 +55,9 @@
           ./.nix-configurations/hosts/troy/hardware-configuration.nix
           ./.nix-configurations/hosts/troy/syncthing.nix
 
+          # temp dev configs
+          ./.nix-configurations/dev/chirpstack.nix
+
           inputs.home-manager.nixosModules.home-manager
           inputs.nixos-hardware.nixosModules.dell-xps-13-7390
 
