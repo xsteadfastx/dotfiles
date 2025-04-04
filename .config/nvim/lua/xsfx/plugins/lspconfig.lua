@@ -7,7 +7,7 @@ return {
 		},
 		lazy = false, -- needed, else its not working at all!
 		keys = {
-			{ "<Leader>ho", "<cmd>lua vim.lsp.buf.hover()<CR>" },
+			{ "<Leader>ho", "<cmd>lua vim.lsp.buf.hover({border = 'single'})<CR>" },
 			{ "<Leader>gd", "<cmd>lua vim.lsp.buf.definition()<CR>" },
 			{ "<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>" },
 		},
