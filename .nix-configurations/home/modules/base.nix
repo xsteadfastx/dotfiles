@@ -72,7 +72,6 @@
     localsend-go
 
     # other tools
-    airmtp
     ansible
     babelfish
     bumblebee-status
@@ -110,8 +109,11 @@
 
     # ssh
     sshfs
-
     agenix
+
+    # camera
+    airmtp
+    imagingedge4linux
   ];
 
 }

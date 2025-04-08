@@ -1,16 +1,5 @@
 { system, inputs, ... }:
 final: prev: {
-
-  # up to date neovim
-  # neovim = prev.neovim-unwrapped.overrideAttrs {
-  #   src = prev.fetchFromGitHub {
-  #     owner = "neovim";
-  #     repo = "neovim";
-  #     rev = "v0.10.3";
-  #     hash = "sha256-nmnEyHE/HcrwK+CyJHNoLG0BqjnWleiBy0UYcJL7Ecc=";
-  #   };
-  # };
-
   # needed because there is a system gpg-agent and gpg from wrapped gopass mismatch
   gopass = prev.gopass.overrideAttrs rec {
     wrapperPath = prev.lib.makeBinPath (
@@ -89,4 +78,6 @@ final: prev: {
   # tinymediamanager = prev.callPackage ./tinymediamanager/package.nix { };
 
   agenix = inputs.agenix.packages.${system}.default;
+
+  imagingedge4linux = prev.callPackage ./imagingedge4linux/package.nix { };
 }
