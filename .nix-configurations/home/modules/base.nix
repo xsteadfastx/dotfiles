@@ -8,6 +8,7 @@
 
   home.packages = with pkgsUnstable; [
     # systemtools
+    appimage-run
     bat
     btop
     eza
