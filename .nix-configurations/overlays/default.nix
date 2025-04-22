@@ -80,4 +80,6 @@ final: prev: {
   agenix = inputs.agenix.packages.${system}.default;
 
   imagingedge4linux = prev.callPackage ./imagingedge4linux/package.nix { };
+
+  importsony = prev.callPackage ./importsony/package.nix { };
 }
