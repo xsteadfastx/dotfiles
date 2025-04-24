@@ -40,7 +40,7 @@ in
       mpv
       networkmanagerapplet
       pavucontrol
-      quickemu
+      # quickemu
       remmina
       rofi
       signal-desktop
