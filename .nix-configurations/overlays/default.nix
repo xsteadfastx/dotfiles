@@ -81,5 +81,6 @@ final: prev: {
 
   imagingedge4linux = prev.callPackage ./imagingedge4linux/package.nix { };
 
+  importsony = prev.callPackage ./importsony/package.nix { };
   importsony-jpegs = prev.callPackage ./importsony-jpegs/package.nix { };
 }

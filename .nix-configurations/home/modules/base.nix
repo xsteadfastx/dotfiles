@@ -73,6 +73,7 @@
     localsend-go
 
     # other tools
+    agenix
     ansible
     babelfish
     bumblebee-status
@@ -83,13 +84,13 @@
     fx
     git-credential-gopass
     glab
-    pkgs.gnupg
     go-task
     gopass
     pandoc
+    pkgs.gnupg
+    pkgs.tectonic
     qrcp # easy sending files to android
     rclone
-    pkgs.tectonic
     w3m
     yaegi
 
@@ -110,11 +111,11 @@
 
     # ssh
     sshfs
-    agenix
 
     # camera
     airmtp
     imagingedge4linux
+    importsony
     importsony-jpegs
   ];
 
