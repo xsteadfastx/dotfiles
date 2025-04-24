@@ -5,11 +5,11 @@
   writeShellScriptBin,
   ...
 }:
-writeShellScriptBin "importsony" ''
+writeShellScriptBin "importsony-jpegs" ''
   set -euo pipefail
 
-  SSID=""
-  PASSWORD=""
+  SSID="DIRECT-wRE0:Stevie's_Alpha7II"
+  PASSWORD="FdsmQEwS"
   DEV="wlp2s0"
 
   TMPDIR=$(mktemp -p ~/tmp -d -t photoprism-XXXXXXX)
@@ -18,6 +18,8 @@ writeShellScriptBin "importsony" ''
 
   CURRENT_SSID=$($NMCLI -t c show --active | grep "$DEV" | head -n 1 | cut -d ':' -f 1)
 
+  $NMCLI connection delete "$SSID" || true
+  sleep 2
   $NMCLI dev wifi connect "$SSID" password "$PASSWORD"
 
   echo "Waiting..."
@@ -33,7 +35,10 @@ writeShellScriptBin "importsony" ''
     exit 1
   fi
 
-  # echo "Removing tmp dir $TMPDIR..."
+  echo "Copy to photoprism..."
+  # ${rclone}/bin/rclone copy -P "$TMPDIR/PushRoot" photoprism-import:
+
+  echo "Removing tmp dir $TMPDIR..."
   # rm -rf $TMPDIR
 
   echo "Done."

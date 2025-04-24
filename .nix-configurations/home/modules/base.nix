@@ -115,7 +115,7 @@
     # camera
     airmtp
     imagingedge4linux
-    importsony
+    importsony-jpegs
   ];
 
 }
