@@ -16,7 +16,8 @@ in
     ];
     extensions = [
       { id = "gfapcejdoghpoidkfodoiiffaaibpaem"; } # dracula
-      { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock
+      # { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock
+      { id = "ddkjiahejlhfcafbddmgiahcphecmpfh"; } # ublock origin lite
       { id = "dbepggeogbaibhgnhhndojpepiihcmeb"; } # vimium
       { id = "fihnjjcciajhdojfnbdddfaoknhalnja"; } # i dont care about cookies
       { id = "dhdgffkkebhmkfjojejmpbldmpobfkfo"; } # tampermonkey
