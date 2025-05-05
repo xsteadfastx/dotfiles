@@ -10,8 +10,8 @@ blueman-applet &
 # ~/.screenlayout/troy/standalone.sh
 autorandr -c
 
-# 600 seconds screenlock
-xset s 600 600
+# screenlock
+xset s 60 60
 
 # screenshots
 flameshot &
