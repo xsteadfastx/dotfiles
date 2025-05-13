@@ -63,13 +63,8 @@
     let
       lock = pkgs.writeShellScriptBin "lock" ''
         XSECURELOCK_SAVER=${pkgs.writeShellScriptBin "saver_mpv" ''
-          # XSECURELOCK_VIDEO_FILE=~/Videos
           XSECURELOCK_VIDEO_FILE=~/Videos/paris-night.mp4
           XSECURELOCK_IMAGE_DURATION_SECONDS=1
-
-          if [ -d "$XSECURELOCK_VIDEO_FILE" ]; then
-           XSECURELOCK_VIDEO_FILE=$(find $XSECURELOCK_VIDEO_FILE -type f | shuf | head -n 1)
-          fi
 
           while true; do
             ${pkgs.mpv}/bin/mpv \
@@ -77,11 +72,10 @@
               --really-quiet \
               --no-stop-screensaver \
               --wid="$XSCREENSAVER_WINDOW" \
+              --image-display-duration="$XSECURELOCK_IMAGE_DURATION_SECONDS" \
               --no-audio \
               --loop=inf \
               "$XSECURELOCK_VIDEO_FILE"
-            # Avoid spinning if mpv exits immediately, but don't wait to restart mpv in
-            # the common case.
             sleep 1
             wait
           done
