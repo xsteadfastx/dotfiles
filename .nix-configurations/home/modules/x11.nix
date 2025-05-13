@@ -82,6 +82,7 @@ in
       };
       extensions = with pkgsUnstable.firefox-addons; [
         dracula-dark-colorscheme
+        greasemonkey
         i-dont-care-about-cookies
         ublock-origin
         vimium
