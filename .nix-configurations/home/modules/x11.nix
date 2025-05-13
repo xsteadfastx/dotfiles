@@ -1,6 +1,7 @@
 {
   nixosConfig,
   lib,
+  pkgs,
   pkgsUnstable,
   ...
 }:
@@ -93,8 +94,10 @@ in
   home.packages =
     with pkgsUnstable;
     lib.mkIf cfg.x11 [
+      # quickemu
       arandr
       bumblebee-status
+      pkgs.calibre
       dunst
       evince
       flameshot
@@ -107,7 +110,6 @@ in
       mpv
       networkmanagerapplet
       pavucontrol
-      # quickemu
       remmina
       rofi
       signal-desktop
