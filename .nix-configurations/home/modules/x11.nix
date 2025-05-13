@@ -82,6 +82,7 @@ in
         # "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
       };
       extensions = with pkgsUnstable.firefox-addons; [
+        darkreader
         dracula-dark-colorscheme
         greasemonkey
         i-dont-care-about-cookies
