@@ -83,4 +83,6 @@ final: prev: {
 
   importsony = prev.callPackage ./importsony/package.nix { };
   importsony-jpegs = prev.callPackage ./importsony-jpegs/package.nix { };
+
+  xsaneGimp = prev.xsane.override { gimpSupport = true; };
 }

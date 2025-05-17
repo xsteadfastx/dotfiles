@@ -199,9 +199,11 @@
     isNormalUser = true;
     description = "marv";
     extraGroups = [
-      "networkmanager"
-      "wheel"
       "docker"
+      "lp"
+      "networkmanager"
+      "scanner"
+      "wheel"
     ];
     # packages = with pkgs; [
     # ];
@@ -269,6 +271,14 @@
   };
   services.blueman.enable = true;
   systemd.services.bluetooth.serviceConfig.ConfigurationDirectoryMode = "755";
+
+  # scanner
+  hardware.sane = {
+    enable = true;
+    extraBackends = [ pkgs.epkowa ];
+  };
+
+  services.udev.packages = [ pkgs.epkowa ];
 
   # memory save
   services.earlyoom.enable = true;

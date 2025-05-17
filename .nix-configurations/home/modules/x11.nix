@@ -95,10 +95,8 @@ in
   home.packages =
     with pkgsUnstable;
     lib.mkIf cfg.x11 [
-      # quickemu
       arandr
       bumblebee-status
-      pkgs.calibre
       dunst
       evince
       flameshot
@@ -111,6 +109,10 @@ in
       mpv
       networkmanagerapplet
       pavucontrol
+      pcmanfm
+      pkgs.calibre
+      quickemu
+      rawtherapee
       remmina
       rofi
       signal-desktop
@@ -118,6 +120,7 @@ in
       system-config-printer
       tor-browser-bundle-bin
       xdotool
+      xsaneGimp
 
       (lib.mkIf cfg.work _1password-cli)
       (lib.mkIf cfg.work _1password-gui)
