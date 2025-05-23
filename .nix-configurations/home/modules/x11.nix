@@ -96,6 +96,7 @@ in
     with pkgsUnstable;
     lib.mkIf cfg.x11 [
       arandr
+      # beekeeper-studio # sql
       bumblebee-status
       dunst
       evince
@@ -107,6 +108,7 @@ in
       makemkv
       mediaelch
       mpv
+      mqttx
       networkmanagerapplet
       pavucontrol
       pcmanfm
