@@ -18,28 +18,26 @@ final: prev: {
 
   go-task = prev.go-task.overrideAttrs (finalAttrs: previousAttrs: { patches = [ ]; });
 
-  localsend-go = prev.buildGo123Module {
+  localsend-go = prev.buildGo123Module rec {
     pname = "localsend-go";
-    version = "1.2.0";
+    version = "1.2.7";
+
+    doCheck = false;
 
     src = prev.fetchFromGitHub {
       owner = "meowrain";
       repo = "localsend-go";
-      rev = "6f3dec9";
-      hash = "sha256-NxR5fn9h3a3qXYfJJLqqKiyUazEoqstZYpAfhD02Ai8=";
+      rev = "v${version}";
+      hash = "sha256-Aier2AhFVi0jJ34VQtCGvOw1mHmfHH6a2697iYyZggo=";
     };
 
-    vendorHash = "sha256-2R8L+CIJKRGcX19udw60eM1Qwpo2RXDWL6N8s7lVN8s=";
-    subPackages = "cmd/";
+    vendorHash = "sha256-LtYzNt5YmBJWFB6tIidy+4xzgXOwcmy0Yms3Ppx7ooY=";
     ldflags = [
       "-s"
       "-w"
     ];
-    env.CGO_ENABLED = 0;
 
-    postInstall = ''
-      mv $out/bin/cmd $out/bin/localsend-go
-    '';
+    env.CGO_ENABLED = 0;
   };
 
   airmtp = inputs.airmtp.packages.${system}.default;
