@@ -176,7 +176,7 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -275,7 +275,6 @@
     powerOnBoot = true;
   };
   services.blueman.enable = true;
-  systemd.services.bluetooth.serviceConfig.ConfigurationDirectoryMode = "755";
 
   # scanner
   hardware.sane = {

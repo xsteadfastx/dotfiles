@@ -81,7 +81,7 @@ in
         # "svg.context-properties.content.enabled" = true;
         # "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
       };
-      extensions = with pkgsUnstable.firefox-addons; [
+      extensions.packages = with pkgsUnstable.firefox-addons; [
         darkreader
         dracula-dark-colorscheme
         greasemonkey
