@@ -43,9 +43,9 @@ return {
 			})
 
 			lspconfig.golangci_lint_ls.setup({
-				init_options = {
-					command = { "golangci-lint", "run", "--out-format", "json" },
-				},
+				-- init_options = {
+				-- 	command = { "golangci-lint", "run", "--out-format", "json" },
+				-- },
 			})
 
 			lspconfig.jsonls.setup({
