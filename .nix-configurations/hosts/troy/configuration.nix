@@ -173,7 +173,14 @@
   # systemd.services.autorandr.wantedBy = lib.mkForce [ ];
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  services.printing = {
+    enable = true;
+    drivers = [
+      pkgs.brlaser
+      pkgs.brgenml1lpr
+      pkgs.brgenml1cupswrapper
+    ];
+  };
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
