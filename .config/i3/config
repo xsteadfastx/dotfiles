@@ -203,5 +203,8 @@ for_window [class="org-openstreetmap-josm-Main"] layout splitv
 # qemu to scratchpad
 for_window [class="Qemu-kvm"] move scratchpad
 
+# ghostty fullscreen
+for_window [class="com.mitchellh.ghostty"] fullscreen enable
+
 # AUTOSTART
 exec --no-startup-id exec /bin/sh ~/bin/i3auto
