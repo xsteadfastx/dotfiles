@@ -62,24 +62,6 @@
   programs.xss-lock =
     let
       lock = pkgs.writeShellScriptBin "lock" ''
-        XSECURELOCK_SAVER=${pkgs.writeShellScriptBin "saver_mpv" ''
-          XSECURELOCK_VIDEO_FILE=~/Videos/paris-night.mp4
-          XSECURELOCK_IMAGE_DURATION_SECONDS=1
-
-          while true; do
-            ${pkgs.mpv}/bin/mpv \
-              --no-input-terminal \
-              --really-quiet \
-              --no-stop-screensaver \
-              --wid="$XSCREENSAVER_WINDOW" \
-              --image-display-duration="$XSECURELOCK_IMAGE_DURATION_SECONDS" \
-              --no-audio \
-              --loop=inf \
-              "$XSECURELOCK_VIDEO_FILE"
-            sleep 1
-            wait
-          done
-        ''}/bin/saver_mpv \
         XSECURELOCK_PASSWORD_PROMPT=time_hex \
         XSECURELOCK_FONT='JetBrainsMono Nerd Font' \
         ${pkgs.xsecurelock}/bin/xsecurelock
