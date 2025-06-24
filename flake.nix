@@ -2,40 +2,20 @@
   description = "xsfx config";
 
   inputs = {
-    # Stable
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
-
-    # Unstable
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-
-    # hardware tweaks
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-
-    # home manager
-    home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
+    agenix.inputs.home-manager.follows = "home-manager";
+    agenix.inputs.nixpkgs.follows = "nixpkgs";
+    agenix.url = "github:ryantm/agenix";
     airmtp.url = "github:xsteadfastx/airmtp";
-
-    compose2nix = {
-      url = "github:aksiksi/compose2nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    quickemu = {
-      url = "github:quickemu-project/quickemu";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    agenix = {
-      url = "github:ryantm/agenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
-
+    compose2nix.inputs.nixpkgs.follows = "nixpkgs";
+    compose2nix.url = "github:aksiksi/compose2nix";
     firefox-addons.url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.url = "github:nix-community/home-manager/release-25.05";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    quickemu.inputs.nixpkgs.follows = "nixpkgs";
+    quickemu.url = "github:quickemu-project/quickemu";
   };
 
   outputs = inputs: {
