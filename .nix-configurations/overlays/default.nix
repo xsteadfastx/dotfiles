@@ -44,7 +44,8 @@ final: prev: {
 
   compose2nix = inputs.compose2nix.packages.${system}.default;
 
-  bumblebee-status = (prev.callPackage ./bumblebee-status { }).override {
+  # bumblebee-status = (prev.callPackage ./bumblebee-status { }).override {
+  bumblebee-status = prev.bumblebee-status.override {
     plugins = p: [
       p.cpu
       p.nic
