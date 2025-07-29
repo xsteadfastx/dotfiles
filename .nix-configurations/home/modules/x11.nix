@@ -113,7 +113,7 @@ in
       pavucontrol
       pcmanfm
       pkgs.calibre
-      quickemu
+      # quickemu
       rawtherapee
       remmina
       rofi
