@@ -16,6 +16,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     quickemu.inputs.nixpkgs.follows = "nixpkgs";
     quickemu.url = "github:quickemu-project/quickemu";
+    kerouac.url = "git+ssh://git@git.wobcom.de/smartmetering/kerouac.git?ref=refs/tags/v0.12.8";
   };
 
   outputs = inputs: {

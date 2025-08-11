@@ -1,8 +1,12 @@
 {
   pkgs,
   pkgsUnstable,
+  nixosConfig,
   ...
 }:
+let
+  cfg = nixosConfig.xsfx;
+in
 {
   systemd.user.startServices = "sd-switch";
 
@@ -121,6 +125,9 @@
     imagingedge4linux
     importsony
     importsony-jpegs
+
+    # work
+    (lib.mkIf cfg.work kerouac)
   ];
 
 }

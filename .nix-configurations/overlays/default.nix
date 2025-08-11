@@ -84,4 +84,6 @@ final: prev: {
   importsony-jpegs = prev.callPackage ./importsony-jpegs/package.nix { };
 
   xsaneGimp = prev.xsane.override { gimpSupport = true; };
+
+  kerouac = inputs.kerouac.packages.${system}.kerouacLinuxAmd64;
 }
