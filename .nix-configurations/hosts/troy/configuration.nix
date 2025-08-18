@@ -62,7 +62,7 @@
   # '';
 
   # https://github.com/kachick/dotfiles/issues/959
-  systemd.services.systemd-suspend.environment.SYSTEMD_SLEEP_FREEZE_USER_SESSIONS = "false";
+  # systemd.services.systemd-suspend.environment.SYSTEMD_SLEEP_FREEZE_USER_SESSIONS = "false";
 
   # locking screen
   programs.xss-lock =
@@ -255,6 +255,9 @@
       turbo = "auto";
     };
   };
+
+  # https://discourse.nixos.org/t/turn-off-autosuspend-for-usb/58933/3
+  boot.kernelParams = [ "usbcore.autosuspend=-1" ];
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
