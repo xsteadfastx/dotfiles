@@ -95,8 +95,9 @@ in
   home.packages =
     with pkgsUnstable;
     lib.mkIf cfg.x11 [
-      arandr
       # beekeeper-studio # sql
+      # quickemu
+      arandr
       bumblebee-status
       dunst
       evince
@@ -113,10 +114,10 @@ in
       pavucontrol
       pcmanfm
       pkgs.calibre
-      # quickemu
       rawtherapee
       remmina
       rofi
+      rustdesk
       signal-desktop
       slack
       system-config-printer
