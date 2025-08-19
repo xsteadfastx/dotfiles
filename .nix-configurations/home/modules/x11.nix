@@ -113,6 +113,7 @@ in
       networkmanagerapplet
       pavucontrol
       pcmanfm
+      peek # gif screen recorder
       pkgs.calibre
       rawtherapee
       remmina
