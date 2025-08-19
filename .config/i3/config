@@ -202,6 +202,7 @@ for_window [class="org-openstreetmap-josm-Main"] layout splitv
 
 # qemu to scratchpad
 for_window [class="Qemu-kvm"] move scratchpad
+for_window [class="Qemu-system-x86_64"] move scratchpad
 
 # ghostty fullscreen
 # for_window [class="com.mitchellh.ghostty"] fullscreen enable
