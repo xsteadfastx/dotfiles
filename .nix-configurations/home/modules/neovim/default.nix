@@ -16,7 +16,7 @@ in
     ./cmp.nix
     ./dracula.nix
     ./formatter.nix
-    # ./ftplugin.nix
+    ./ftplugin.nix
     ./fzf.nix
     ./keymaps.nix
     ./lspconfig.nix
@@ -28,7 +28,7 @@ in
   ];
 
   programs.neovim = mkIf cfg.neovim {
-    enable = false;
+    enable = true;
     package = pkgsUnstable.neovim-unwrapped;
     defaultEditor = true;
     viAlias = true;
@@ -41,6 +41,8 @@ in
       vim.g.netrw_liststyle = 3
       vim.g.netrw_banner = 0
       vim.g.netrw_winsize = 25
+
+      vim.opt.swapfile = false
     '';
   };
 }
