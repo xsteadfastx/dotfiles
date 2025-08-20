@@ -3,7 +3,7 @@
   imports = [
     ./base.nix
     ./kodi.nix
-    ./neovim.nix
+    ./neovim
     ./secrets.nix
     ./x11.nix
   ];
