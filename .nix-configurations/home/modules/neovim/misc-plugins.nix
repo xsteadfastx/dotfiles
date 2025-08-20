@@ -8,15 +8,25 @@ let
   cfg = nixosConfig.xsfx;
 
   inherit (lib) mkIf;
+
+  blame-nvim = pkgsUnstable.vimUtils.buildVimPlugin {
+    name = "blame-nvim";
+    src = pkgsUnstable.fetchFromGitHub {
+      owner = "FabijanZulj";
+      repo = "blame.nvim";
+      rev = "b87b8c820e4cec06fbbd2f946b7b35c45906ee0c";
+      hash = "sha256-v4ieZ7NIWP1khvrcyzTSGX6IHHn0kjZICbyRqS2xqHM=";
+    };
+  };
 in
 {
   programs.neovim = mkIf cfg.neovim {
     plugins = with pkgsUnstable.vimPlugins; [
+      blame-nvim
       comment-nvim
       csv-vim
       fidget-nvim
       follow-md-links-nvim
-      git-blame-nvim
       gitsigns-nvim
       indent-blankline-nvim
       lexima-vim
@@ -77,9 +87,6 @@ in
       -- comment-nvim
       require('Comment').setup()
 
-      -- git-blame-nvim
-      require("gitblame").setup()
-
       -- neoscroll-nvim
       require("neoscroll").setup()
 
@@ -109,6 +116,9 @@ in
 
       -- render-markdown-nvim
       require('render-markdown').setup()
+
+      -- blame-nvim
+      require("blame").setup({blame_options={"-w"}})
     '';
   };
 }
