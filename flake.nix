@@ -23,29 +23,24 @@
     nixosConfigurations = {
       troy = inputs.nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
-        modules = [
-          {
-            xsfx.kodi = true;
-            xsfx.neovim = true;
-            xsfx.work = true;
-            xsfx.x11 = true;
-
-            home-manager.users.marv = import ./.nix-configurations/home/marv.nix;
-          }
-
-          ./.nix-configurations/home
-          ./.nix-configurations/hosts/troy/configuration.nix
-          ./.nix-configurations/hosts/troy/hardware-configuration.nix
-          ./.nix-configurations/hosts/troy/syncthing.nix
-
-          # temp dev configs
-          ./.nix-configurations/dev/chirpstack.nix
-
-          inputs.home-manager.nixosModules.home-manager
-          inputs.nixos-hardware.nixosModules.dell-xps-13-7390
-
-          { _module.args = { inherit inputs system; }; }
-        ];
+        modules =
+          let
+            pkgsUnstable = (import ./.nix-configurations/pkgs/get.nix) inputs.nixpkgs-unstable system inputs;
+          in
+          [
+            {
+              xsfx.kodi = true;
+              xsfx.neovim = true;
+              xsfx.work = true;
+              xsfx.x11 = true;
+              home-manager.users.marv = import ./.nix-configurations/home/marv.nix;
+            }
+            ./.nix-configurations/home
+            ./.nix-configurations/hosts/troy
+            inputs.home-manager.nixosModules.home-manager
+            inputs.nixos-hardware.nixosModules.dell-xps-13-7390
+            { _module.args = { inherit inputs system pkgsUnstable; }; }
+          ];
       };
     };
   };

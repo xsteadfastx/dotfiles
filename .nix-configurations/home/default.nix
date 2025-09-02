@@ -1,12 +1,9 @@
 {
-  lib,
   inputs,
-  system,
+  lib,
+  pkgsUnstable,
   ...
 }:
-let
-  pkgsUnstable = (import ../pkgs/get.nix) inputs.nixpkgs-unstable system inputs;
-in
 {
   options.xsfx.kodi = lib.mkEnableOption "enable kodi";
   options.xsfx.neovim = lib.mkEnableOption "enable neovim";

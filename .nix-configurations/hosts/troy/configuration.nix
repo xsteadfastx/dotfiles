@@ -1,11 +1,11 @@
-{ pkgs, lib, ... }:
+{
+  lib,
+  pkgs,
+  pkgsUnstable,
+  ...
+}:
 
 {
-  # imports =
-  #   [
-  #     ./hardware-configuration.nix
-  #   ];
-
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -238,7 +238,11 @@
   # services.openssh.enable = true;
 
   services.pcscd.enable = true;
-  services.tailscale.enable = true;
+
+  services.tailscale = {
+    enable = true;
+    package = pkgsUnstable.tailscale;
+  };
 
   # Laptop stuff
   services.thermald.enable = true;
