@@ -13,10 +13,11 @@ in
 {
   programs.neovim = mkIf cfg.neovim {
     extraPackages = with pkgsUnstable; [
-      pkgs.golangci-lint-langserver
+      bash-language-server
       gopls
       lua-language-server
       nil
+      pkgs.golangci-lint-langserver
       python312Packages.python-lsp-server
       vscode-langservers-extracted
       yaml-language-server
@@ -32,9 +33,13 @@ in
 
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-      lspconfig.lua_ls.setup({})
+      vim.lsp.enable('lua_ls')
+      vim.lsp.config('lua_ls', {
+        capabilities = capabilities
+      })
 
-      lspconfig.nil_ls.setup({
+      vim.lsp.enable('nil_ls')
+      vim.lsp.config('nil_ls', {
         capabilities = capabilities,
         settings = {
           ["nil"] = {
@@ -45,7 +50,8 @@ in
         },
       })
 
-      lspconfig.gopls.setup({
+      vim.lsp.enable('gopls')
+      vim.lsp.config('gopls', {
         capabilities = capabilities,
         settings = {
           gopls = {
@@ -54,13 +60,13 @@ in
         },
       })
 
-      lspconfig.golangci_lint_ls.setup({
-        -- init_options = {
-        --  command = { "golangci-lint", "run", "--out-format", "json" },
-        -- },
+      vim.lsp.enable('golangci_lint_ls')
+      vim.lsp.config('golangci_lint_ls', {
+        capabilities = capabilities,
       })
 
-      lspconfig.jsonls.setup({
+      vim.lsp.enable('jsonls')
+      vim.lsp.config('jsonls', {
         capabilities = capabilities,
         settings = {
           json = {
@@ -70,7 +76,8 @@ in
         },
       })
 
-      lspconfig.yamlls.setup({
+      vim.lsp.enable('yamlls')
+      vim.lsp.config('yamlls', {
         capabilities = capabilities,
         settings = {
           schemaStore = {
@@ -85,7 +92,15 @@ in
         filetypes = { "yaml", "yaml.docker-compose", "taskfile" },
       })
 
-      lspconfig.pylsp.setup({})
+      vim.lsp.enable('pylsp')
+      vim.lsp.config('pylsp', {
+        capabilities = capabilities,
+      })
+
+      vim.lsp.enable('bashls')
+      vim.lsp.config('bashls', {
+        capabilities = capabilities,
+      })
 
       vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
         border = "single",
