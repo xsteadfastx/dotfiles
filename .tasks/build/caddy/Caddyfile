@@ -32,6 +32,7 @@
 		header User-Agent *SemrushBot*
 		header User-Agent *facebookexternalhit*
 		header User-Agent *meta-externalagent*
+		header User-Agent *bingbot*
 	}
 
 	abort @badbots
@@ -39,9 +40,10 @@
 
 git.xsfx.dev {
 	import subdomain-log git.xsfx.dev
-	import badbots
 
-	cache
+	defender block {
+		ranges aliyun vpn aws deepseek githubcopilot gcloud oci azurepubliccloud openai mistral vultr cloudflare digitalocean linode
+	}
 
 	reverse_proxy gitea:3000
 }
