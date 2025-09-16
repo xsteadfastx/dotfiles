@@ -55,24 +55,24 @@ final: prev: {
 
   quickemu = inputs.quickemu.packages.${system}.default;
 
-  veilig = prev.buildGo123Module rec {
-    pname = "veilig";
-    version = "1.4.2";
-
-    src = prev.fetchFromGitHub {
-      owner = "noqqe";
-      repo = "veilig";
-      rev = "v${version}";
-      hash = "sha256-zhFNBtEr1d425YJUKzOZE6AzMhM6n8wkzIPZ0NGms3k=";
-    };
-
-    vendorHash = "sha256-7s1duYsogz3YizYLsZ8Vcc1EiSq2gWf+eA++QCeSKjY=";
-    ldflags = [
-      "-s"
-      "-w"
-    ];
-    env.CGO_ENABLED = 0;
-  };
+  # veilig = prev.buildGo124Module rec {
+  #   pname = "veilig";
+  #   version = "1.4.2";
+  #
+  #   src = prev.fetchFromGitHub {
+  #     owner = "noqqe";
+  #     repo = "veilig";
+  #     rev = "v${version}";
+  #     hash = "sha256-zhFNBtEr1d425YJUKzOZE6AzMhM6n8wkzIPZ0NGms3k=";
+  #   };
+  #
+  #   vendorHash = "sha256-7s1duYsogz3YizYLsZ8Vcc1EiSq2gWf+eA++QCeSKjY=";
+  #   ldflags = [
+  #     "-s"
+  #     "-w"
+  #   ];
+  #   env.CGO_ENABLED = 0;
+  # };
 
   # tinymediamanager = prev.callPackage ./tinymediamanager/package.nix { };
 

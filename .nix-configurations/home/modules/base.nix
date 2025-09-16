@@ -35,7 +35,6 @@ in
     starship
     tree
     unzip
-    veilig
     viddy
 
     # mail
