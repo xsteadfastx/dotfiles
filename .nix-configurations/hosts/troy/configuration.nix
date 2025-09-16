@@ -1,7 +1,6 @@
 {
   lib,
   pkgs,
-  pkgsUnstable,
   ...
 }:
 
@@ -241,7 +240,7 @@
 
   services.tailscale = {
     enable = true;
-    package = pkgsUnstable.tailscale;
+    package = pkgs.tailscale.overrideAttrs { doCheck = false; };
   };
 
   # Laptop stuff
