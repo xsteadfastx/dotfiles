@@ -18,7 +18,7 @@ final: prev: {
 
   go-task = prev.go-task.overrideAttrs (finalAttrs: previousAttrs: { patches = [ ]; });
 
-  localsend-go = prev.buildGo123Module rec {
+  localsend-go = prev.buildGo124Module rec {
     pname = "localsend-go";
     version = "1.2.7";
 
