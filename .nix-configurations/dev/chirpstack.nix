@@ -8,4 +8,5 @@
   };
 
   networking.firewall.allowedTCPPorts = [ 8080 ];
+  networking.firewall.allowedUDPPorts = [ 1700 ];
 }
