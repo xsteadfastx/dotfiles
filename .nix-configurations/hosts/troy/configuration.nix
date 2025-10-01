@@ -45,6 +45,11 @@
     "flakes"
   ];
 
+  nix.settings.trusted-users = [
+    "root"
+    "marv"
+  ];
+
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 

@@ -6,17 +6,18 @@
     agenix.inputs.nixpkgs.follows = "nixpkgs";
     agenix.url = "github:ryantm/agenix";
     airmtp.url = "github:xsteadfastx/airmtp";
+    attic.url = "github:zhaofengli/attic";
     compose2nix.inputs.nixpkgs.follows = "nixpkgs";
     compose2nix.url = "github:aksiksi/compose2nix";
     firefox-addons.url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager/release-25.05";
+    kerouac.url = "git+ssh://git@git.wobcom.de/smartmetering/kerouac.git?ref=refs/tags/v0.12.8";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     quickemu.inputs.nixpkgs.follows = "nixpkgs";
     quickemu.url = "github:quickemu-project/quickemu";
-    kerouac.url = "git+ssh://git@git.wobcom.de/smartmetering/kerouac.git?ref=refs/tags/v0.12.8";
   };
 
   outputs = inputs: {

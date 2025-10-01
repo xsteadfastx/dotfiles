@@ -128,6 +128,9 @@ in
 
     # work
     (lib.mkIf cfg.work kerouac)
+
+    # caching
+    attic
   ];
 
 }
