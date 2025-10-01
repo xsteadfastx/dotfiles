@@ -40,6 +40,7 @@
 
 git.xsfx.dev {
 	import subdomain-log git.xsfx.dev
+	import badbots
 
 	defender block {
 		ranges aliyun vpn aws deepseek githubcopilot gcloud oci azurepubliccloud openai mistral vultr cloudflare digitalocean linode
