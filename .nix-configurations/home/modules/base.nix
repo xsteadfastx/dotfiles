@@ -107,7 +107,7 @@ in
       --trusted-cert 7a3f29e18c303c26080671cd1c0925ba2ae7c229c50eef6222d6f1453596e88d \
       --trusted-cert c815544ef4367147ab4bc564430efd72258eb2f6e1d634503c2f48c7b77da544 \
       -u mpreuss \
-      -p $(${gopass}/bin/gopass show -o WOBCOM/ldap)
+      -p $(${gopass}/bin/gopass show -o websites/id.wobcom.de/marvin.preuss@wobcom.de)
     '')
 
     # tmux wrapper for always same session
