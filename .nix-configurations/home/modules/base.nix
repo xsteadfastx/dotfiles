@@ -131,6 +131,11 @@ in
 
     # caching
     attic
+    (writeShellScriptBin "attic-push-store" ''
+      set -euo pipefail
+      ${attic}/bin/attic push --ignore-upstream-cache-filter iot $(ls -d /nix/store/*/|grep armv5tel)
+      ${attic}/bin/attic push --ignore-upstream-cache-filter iot $(ls -d /nix/store/*/|grep chirpstack)
+    '')
   ];
 
 }
