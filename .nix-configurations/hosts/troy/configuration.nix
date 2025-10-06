@@ -198,6 +198,7 @@
     isNormalUser = true;
     description = "marv";
     extraGroups = [
+      "dialout"
       "docker"
       "lp"
       "networkmanager"
