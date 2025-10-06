@@ -88,4 +88,6 @@ final: prev: {
   kerouac = inputs.kerouac.packages.${system}.kerouacLinuxAmd64;
 
   attic = inputs.attic.packages.${system}.attic;
+
+  meshcore-cli = prev.callPackage ./meshcore-cli/package.nix { };
 }

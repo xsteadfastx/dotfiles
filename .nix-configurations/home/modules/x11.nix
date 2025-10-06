@@ -125,6 +125,7 @@ in
       tor-browser-bundle-bin
       xdotool
       xsaneGimp
+      meshcore-cli
 
       (lib.mkIf cfg.work _1password-cli)
       (lib.mkIf cfg.work _1password-gui)
